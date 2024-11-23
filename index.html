@@ -3,25 +3,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="tailwindcss.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+
   <link rel="stylesheet" href="style.css">
-  <title>Icon Libery[itemID]</title>
+  <title>ff-item</title>
   <meta name="author" content="JINIX6">
-  <meta name="og:title" content="Open Website (FF CRAFTLAND RELATED)">
-  <meta name="og:description" content="Check out this website (ff craftland related)">
-  <meta name="og:image" content="https://dl.dir.freefiremobile.com/common/web_event/crafactory4.4/images/logo_template.png">
-  <meta name="theme-color" content="#CFD8DC">
+  <meta name="og:title" content="ff-items">
+  <meta name="og:description" content="Get item ID, name, and description for Free Fire game items by search.">
+  <meta name="og:image" content="favicon-32x32.png">
   <meta name="google-site-verification" content="J20YkdBYbFS0_YZdIu9Z-sKGKzYZfqOFFkQ0numjLq0" />
   <meta name="description" content="Free Fire is a multiplayer battle royale mobile game, developed and published by Garena for Android and iOS. Battle in Style and be the last survivor!">
   <meta name="keywords" content="survival, last survivor, battle royale, free mobile game, garena game, craftland, ugc, ff craftland, jinxx66, jinxx6_6, jinxx, craftland tutorial, free fire craftland">
-  <link rel="icon" type="image/x-icon" href="https://freefiremobile-a.akamaihd.net/common/web_event/common/images/ff-logo-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
   </style>
 </head>
 <body onload="setTimeout(hideain_load, 250);">
+  <div id="edge_btn" class="bounce-click text-white fixed bottom-3 right-3 w-10 bg-white p-1 rounded-full z-[1]">
+    <svg viewBox="0 0 48 48" fill="#000000">
+      <g stroke-width="0"></g>
+      <g stroke-linecap="round" stroke-linejoin="round"></g>
+      <g>
+        <defs>
+          <style>
+            .a {
+              fill: none;
+              stroke: #000000;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+          </style>
+        </defs>
+        <circle class="a" cx="24" cy="24" r="21.5"></circle>
+        <path class="a" d="M24,14.4159V33.5841"></path>
+        <path class="a" d="M33.0735,17.033V33.5841"></path>
+        <path class="a" d="M14.9265,26.228v7.3561"></path>
+      </g>
+    </svg>
+  </div>
+  <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[14px] fixed">
+    <img id="logo" class="w-[20%] mt-5" src="safari-pinned-tab.svg" alt="LoGo">
+    <h class="space-mono-regular text-[150%]">Ff-item</h>
+    <p class="space-mono-regular w-[95%] text-[#525252]">Get item ID, name, and description for Free Fire game items by search.</p>
+    <div>--------------------------------------------------------</div>
+    <button id="FFInformation" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[14px] py-[3%] text-white ">Get Player Outfit</button>
+    <div>‎</div>
+    <button id="clgroup" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[14px] py-[3%] text-white ">Craftland Group</button>
+    <div>‎</div>
+    <button id="clprogroup" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[14px] py-[3%] text-white ">Craftland Map Code & Files</button>
+    <div>‎</div>
+    <div class="flex justify-center items-center gap-2 w-[100%]">
+      <svg class="bounce-click" id="tg" width="6%" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .cls-1 {
+              fill: none;
+              stroke: #000000;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+          </style>
+        </defs>
+        <path class="cls-1" d="M40.83,8.48c1.14,0,2,1,1.54,2.86l-5.58,26.3c-.39,1.87-1.52,2.32-3.08,1.45L20.4,29.26a.4.4,0,0,1,0-.65L35.77,14.73c.7-.62-.15-.92-1.07-.36L15.41,26.54a.46.46,0,0,1-.4.05L6.82,24C5,23.47,5,22.22,7.23,21.33L40,8.69a2.16,2.16,0,0,1,.83-.21Z" />
+      </svg>
+      <svg class="bounce-click" id="ig" width="6%" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .cls-1 {
+              fill: none;
+              stroke: #000000;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+            }
+          </style>
+        </defs>
+        <path class="cls-1" d="M35.38,10.46a2.19,2.19,0,1,0,2.16,2.22v-.06A2.18,2.18,0,0,0,35.38,10.46Z" />
+        <path class="cls-1" d="M40.55,5.5H7.45a2,2,0,0,0-1.95,2v33.1a2,2,0,0,0,2,2h33.1a2,2,0,0,0,2-2V7.45A2,2,0,0,0,40.55,5.5Z" />
+        <path class="cls-1" d="M24,15.72A8.28,8.28,0,1,0,32.28,24h0A8.28,8.28,0,0,0,24,15.72Z" />
+      </svg>
+      <svg class="bounce-click" id="gt" width="6%" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .cls-1 {
+              fill: none;
+              stroke: #000000;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              fill-rule: evenodd;
+            }
+          </style>
+        </defs>
+        <path class="cls-1" d="M24,2.5a21.5,21.5,0,0,0-6.8,41.9c1.08.2,1.47-.46,1.47-1s0-1.86,0-3.65c-6,1.3-7.24-2.88-7.24-2.88A5.7,5.7,0,0,0,9,33.68c-1.95-1.33.15-1.31.15-1.31a4.52,4.52,0,0,1,3.29,2.22c1.92,3.29,5,2.34,6.26,1.79a4.61,4.61,0,0,1,1.37-2.88c-4.78-.54-9.8-2.38-9.8-10.62a8.29,8.29,0,0,1,2.22-5.77,7.68,7.68,0,0,1,.21-5.69s1.8-.58,5.91,2.2a20.46,20.46,0,0,1,10.76,0c4.11-2.78,5.91-2.2,5.91-2.2a7.74,7.74,0,0,1,.21,5.69,8.28,8.28,0,0,1,2.21,5.77c0,8.26-5,10.07-9.81,10.61a5.12,5.12,0,0,1,1.46,4c0,2.87,0,5.19,0,5.9s.39,1.24,1.48,1A21.5,21.5,0,0,0,24,2.5" />
+      </svg>
+    </div>
+    <div class="h-screen"></div>
+  </div>
+  <div class="invisible fixed" id="mainnnnn_bg">
+    <div id="dialog_main_bg" class="invisible fixed dialog_main_bg flex flex-col text-white shadow-md bg-clip-border rounded-[14px] w-96">
+      <div id="background_dia"></div>
+      <div class="container_dialog relative mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-[#423F3E] shadow-blue-gray-500/40">
+        <img id="cardimage" alt="No-Preview" />
+      </div>
+      <div class="p-6">
+        <h5 id="dialog_tittle" class="space-mono-bold  block mb-2  text-base antialiased  leading-snug tracking-normal text-blue-gray-900">
+        </h5>
+        <p id="dialog_tittle_p" class="space-mono-regular block text-sm antialiased font-light leading-relaxed text-inherit">
+        </p>
+        <p id="dialog_tittle_pp" class="space-mono-regular block  text-sm antialiased font-light leading-relaxed text-inherit">
+        </p>
+      </div>
+      <div class="p-6 pt-0">
+        <button onclick="hide_dialog();" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
+          Close
+        </button>
+        <button id="share_btn" data-ripple-light="true" onclick="setTimeout(Share_tg, 250);" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-lg bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
+          <svg id="tele_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="telegram">
+            <path d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427c0 0 7.961-3.267 10.722-4.418 1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
   <div id="main_load">
     <div id="loadingsin" role="status" class="absolute -translate-x-1/2 -translate-y-1/2 top-80 left-1/2">
       <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-[#245A64]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -31,49 +145,25 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <div id="mainnnnn_bg">
-    <div id="dialog_main_bg" class="dialog_main_bg flex flex-col text-white shadow-md bg-clip-border rounded-[14px] w-96">
-      <div id="background_dia"></div>
-      <div class="container_dialog relative mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-[#423F3E] shadow-blue-gray-500/40">
-        <img id="cardimage" alt="No-Preview" />
-      </div>
-      <div class="p-6">
-        <div id="loading" role="status" class="absolute -translate-x-1/2 -translate-y-1/2 top-80 left-1/2">
-          <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-[#245A64]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-            <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-          </svg>
-          <span class="sr-only">Loading...</span>
-        </div>
-        <h5 id="dialog_tittle" class="space-mono-bold  block mb-2  text-base antialiased  leading-snug tracking-normal text-blue-gray-900">
-        </h5>
-        <p id="dialog_tittle_p" class="space-mono-regular block text-sm antialiased font-light leading-relaxed text-inherit">
-        </p>
-        <p id="dialog_tittle_pp" class="space-mono-regular block  text-sm antialiased font-light leading-relaxed text-inherit">
-        </p>
-      </div>
-      <div class="p-6 pt-0">
-        <button data-ripple-light="true" onclick="hide_dialog();" class="align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
-          Close
-        </button>
-        <button id="share_btn" data-ripple-light="true" onclick="setTimeout(Share_tg, 250);" class="align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-lg bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
-          <svg id="tele_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="telegram">
-            <path d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427c0 0 7.961-3.267 10.722-4.418 1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path>
-          </svg>
-        </button>
+  <div id="container" class="container h-[100vh] flex mt-5 mb-5">
+   
+   
+    <div id="input_search_bg" class="w-full">
+      <div class="flex w-full min-w-[200px] h-10">
+        <input id="input_d" class="space-mono-regular peer w-full h-full bg-transparent text-white outline outline-0 placeholder-shown:border border text-sm px-3 py-2.5 rounded-[14px]  focus:border-[white]" placeholder="Search By Keyword, ItemID, Description" />
+        <button id="search_btn" onclick="search()" class="bounce-click bg-white space-mono-regular px-3 py-2 rounded-[14px] ml-2">Search</button>
       </div>
     </div>
-  </div>
-  <div class=" container">
-    <div id="input_search_bg" class="w-72">
-      <div class="relative w-full min-w-[200px] h-10">
-        <input id="input_d" onchange="onSearchInputChange(this.value)" class="space-mono-regular peer w-full h-full bg-transparent text-white outline outline-0 placeholder-shown:border border text-sm px-3 py-2.5 rounded-[14px]  focus:border-[white]" placeholder="Search By Keyword, ItemID, Description" />
-      </div>
-    </div>
+    
+    
     <div class="page" id="webpGallery"></div>
-    <div class="pagination" id="pagination"></div>
+    <div id="pagi73hd" class="invisible mt-5 w-[100%]">
+    <div class="bg-[white] h-[110%] rounded-full p-1 flex overflow-x-scroll gap-2" id="pagination"></div>
+    </div>
+    <div class="w-[100%]">‎</div>
+    
+    
   </div>
   <script src="script.js"></script>
 </body>
-
 </html>

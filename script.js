@@ -24,7 +24,7 @@ fetch('cdn.img')
     const decryptedText = decryptBinaryData(encryptedData);
     if (decryptedText !== null) {
       cdn_img_json = JSON.parse(decryptedText);
-      fetch('png_file_list.json')
+      fetch('pngs.json')
         .then(response => response.json())
         .then(data => (pngs_json_list = data));
       fetch('itemData.json')

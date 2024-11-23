@@ -4,34 +4,27 @@ body {
   align-items: center;
   flex-wrap: wrap;
   background: #171010;
-  height: 100vh;
   margin: 0;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  transition: width 500ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .container {
-  display: flex;
   flex-direction: column;
   align-items: center;
   padding-left: 5%;
   padding-right: 5%;
-  height: 100%;
 }
 
 .search-input {
   margin-bottom: 10px;
 }
 
-.pagination {
-  margin-top: 10px;
-}
-
 .page {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
-  justify-items: center;
-  width: 100%;
   margin-top: 5%;
 }
 
@@ -43,17 +36,6 @@ body {
   background: #423F3E;
 }
 
-.button_2 {
-  background: #2B2B2B;
-  border-radius: 14px;
-  margin: 5px;
-}
-
-.current-page {
-  background-color: #423F3E;
-  border-radius: 14px;
-}
-
 .container_dialog {
   display: flex;
   justify-content: center;
@@ -63,8 +45,6 @@ body {
 }
 
 .dialog_main_bg {
-  position: fixed;
-  visibility: hidden;
   background: #2B2B2B;
 }
 
@@ -79,9 +59,7 @@ body {
   z-index: -1;
 }
 
-#input_search_bg {
-  margin-top: 5%;
-}
+
 
 
 #main_load {
@@ -89,7 +67,7 @@ body {
   height: 100%;
   position: fixed;
   background: #171010;
-  z-index: 99999;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -158,12 +136,10 @@ body {
   backdrop-filter: blur(10px);
   width: 100%;
   height: 100vh;
-  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
-  z-index: 9999999999999;
+  z-index: 3;
   background: transparent;
 }
 
@@ -211,4 +187,44 @@ img {
   height: auto;
   width: 100%;
   border-radius: 14px;
+}
+
+
+.collapsed {
+  width: 0%;
+}
+
+.expanded {
+  width: 100%;
+}
+
+
+.collapsed2 {
+  visibility: visible;
+  width: 90vw;
+  height: 80%;
+}
+
+.expanded2 {
+  visibility: hidden;
+  width: 0vw;
+  height: 0%;
+}
+
+.bounce-click {
+  transition: transform 0.1s ease-in-out;
+}
+
+.bounce-click:active {
+  transform: scale(0.9);
+}
+
+#input_d {
+  transition: all 0.1s ease-in-out;
+}
+
+input[disabled] {
+  background-color: #f2f2f2;
+  color: #999;
+  cursor: not-allowed;
 }
