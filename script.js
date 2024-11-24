@@ -1,6 +1,7 @@
 var a1, a2, a3, a4;
 let hasRun = false;
 let itemData;
+let gl_ob47_added_itemData;
 let totalPages;
 let currentPage = 1;
 const webpsPerPage = 200;
@@ -21,19 +22,22 @@ Promise.all([
   // Fetching 'pngs.json' and parsing it as JSON
   fetch('pngs.json').then(response => response.json()),
   // Fetching 'itemData.json' and parsing it as JSON
-  fetch('itemData.json').then(response => response.json())
+  fetch('itemData.json').then(response => response.json()),
+  // Fetching 'ob47_added_itemData.json' and parsing it as JSON
+  fetch('ob47_added_itemData.json').then(response => response.json())
 ])
-  .then(([cdnData, pngsData, itemDatar]) => {
+  .then(([cdnData, pngsData, itemDatar, ob47_added_itemData]) => {
     // Assign the fetched data to global variables for further use
     cdn_img_json = cdnData;      // Contains data from 'cdn.json'
     pngs_json_list = pngsData;   // Contains data from 'pngs.json'
     itemData = itemDatar;        // Contains data from 'itemData.json'
-
-    // Display the first page of data, passing itemDatar and an empty string as arguments
-    displayPage(1, '', itemDatar);
-
+    gl_ob47_added_itemData = ob47_added_itemData;// Contains data from 'ob47_added_itemData.json'
+    
     // Execute additional logic based on URL parameters or other conditions
     check_parameter();
+    
+    // Display the first page of data, passing itemDatar and an empty string as arguments
+    displayPage(1, '', itemDatar);
   })
   .catch(error => {
     // Log any errors encountered during the fetch or processing
@@ -257,6 +261,8 @@ function updateCurrentPageSpan() {
 }
 
 function search() {
+  document.getElementById("Ob47Item_btn").textContent = "OB47 Items";
+  isFirstSet = true;
   const keyword = document.getElementById("input_d").value
   addParameterWithoutRefresh('icon', encrypt(keyword));
   displayPage(1, keyword, itemData);
@@ -344,3 +350,12 @@ Object.entries(links).forEach(([t, e]) => {
     window.open(e);
   });
 });
+
+
+let isFirstSet = true;
+function Ob47Item(element) {
+  displayPage(1, '', isFirstSet ? gl_ob47_added_itemData : itemData);
+  element.textContent = isFirstSet ? "Clear" : "OB47 Items";
+  isFirstSet = !isFirstSet;
+  document.getElementById('input_d').value = "";
+}

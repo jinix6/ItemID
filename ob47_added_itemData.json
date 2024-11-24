@@ -1,0 +1,2957 @@
+[
+    {
+        "itemID": "102000051",
+        "icon": "Icon_face_male_head_sc_Auroraboy",
+        "description": "None"
+    },
+    {
+        "itemID": "103000004",
+        "icon": "FF_UI_CharacterSkill_Bounty",
+        "description": "None"
+    },
+    {
+        "itemID": "170046100",
+        "icon": "Icon_box_FFWS_Box1_46_Hotfix",
+        "description": "None"
+    },
+    {
+        "itemID": "170046101",
+        "icon": "Icon_box_FFWS_Box2_46_Hotfix",
+        "description": "None"
+    },
+    {
+        "itemID": "170047001",
+        "icon": "Icon_OptionalBundle_default",
+        "description": "None"
+    },
+    {
+        "itemID": "203046034",
+        "icon": "Icon_avatar_cos_top_ffws_sea",
+        "description": "None"
+    },
+    {
+        "itemID": "203046065",
+        "icon": "Icon_avatar_cos_top_ffws_sea24",
+        "description": "None"
+    },
+    {
+        "itemID": "203047000",
+        "icon": "Icon_avatar_sc_top_auroraboy",
+        "description": "None"
+    },
+    {
+        "itemID": "203047001",
+        "icon": "Icon_avatar_male_cos_top_woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "203047002",
+        "icon": "Icon_avatar_male_cos_top_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "203047003",
+        "icon": "Icon_avatar_female_cos_top_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "203047004",
+        "icon": "Icon_avatar_male_cos_top_express",
+        "description": "None"
+    },
+    {
+        "itemID": "203047005",
+        "icon": "Icon_avatar_female_cos_top_express",
+        "description": "None"
+    },
+    {
+        "itemID": "203047006",
+        "icon": "Icon_avatar_cos_top_aurora_black",
+        "description": "None"
+    },
+    {
+        "itemID": "203047007",
+        "icon": "Icon_avatar_cos_top_aurora_white",
+        "description": "None"
+    },
+    {
+        "itemID": "203047008",
+        "icon": "Icon_avatar_male_cos_top_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "203047009",
+        "icon": "Icon_avatar_female_cos_top_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "203047010",
+        "icon": "Icon_avatar_male_cos_top_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "203047011",
+        "icon": "Icon_avatar_female_cos_top_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "203047012",
+        "icon": "Icon_avatar_male_cos_top_superstar24_black",
+        "description": "None"
+    },
+    {
+        "itemID": "203047013",
+        "icon": "Icon_avatar_male_cos_top_superstar24_white",
+        "description": "None"
+    },
+    {
+        "itemID": "203047014",
+        "icon": "Icon_avatar_male_cos_top_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "203047015",
+        "icon": "Icon_avatar_female_cos_top_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "203047016",
+        "icon": "Icon_avatar_male_cos_top_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "203047017",
+        "icon": "Icon_avatar_female_cos_top_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "203047018",
+        "icon": "Icon_avatar_male_cos_top_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "203047019",
+        "icon": "Icon_avatar_female_cos_top_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "203047020",
+        "icon": "Icon_avatar_male_cos_top_me_streetwear",
+        "description": "None"
+    },
+    {
+        "itemID": "203047022",
+        "icon": "Icon_avatar_male_cos_top_trend_man",
+        "description": "None"
+    },
+    {
+        "itemID": "203047023",
+        "icon": "Icon_avatar_male_cos_top_rank43",
+        "description": "None"
+    },
+    {
+        "itemID": "203047024",
+        "icon": "Icon_avatar_male_cos_top_csrank29",
+        "description": "None"
+    },
+    {
+        "itemID": "203047025",
+        "icon": "Icon_avatar_cos_top_trend_th",
+        "description": "None"
+    },
+    {
+        "itemID": "203047026",
+        "icon": "Icon_avatar_cos_top_tailor_top",
+        "description": "None"
+    },
+    {
+        "itemID": "203047027",
+        "icon": "Icon_avatar_male_cos_top_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "203047028",
+        "icon": "Icon_avatar_female_cos_top_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "203047029",
+        "icon": "Icon_avatar_male_cos_top_brrapper_47_top",
+        "description": "None"
+    },
+    {
+        "itemID": "203047030",
+        "icon": "Icon_avatar_cos_top_newbie24",
+        "description": "None"
+    },
+    {
+        "itemID": "203047031",
+        "icon": "Icon_avatar_male_cos_top_nb_yellow",
+        "description": "None"
+    },
+    {
+        "itemID": "203047032",
+        "icon": "Icon_avatar_male_cos_top_nb_black",
+        "description": "None"
+    },
+    {
+        "itemID": "203047033",
+        "icon": "Icon_avatar_female_cos_top_nb_pink",
+        "description": "None"
+    },
+    {
+        "itemID": "203047034",
+        "icon": "Icon_avatar_male_cos_top_nb_white",
+        "description": "None"
+    },
+    {
+        "itemID": "203047035",
+        "icon": "Icon_avatar_male_cos_top_nb_ji",
+        "description": "None"
+    },
+    {
+        "itemID": "203047036",
+        "icon": "Icon_avatar_female_cos_top_superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "204046037",
+        "icon": "Icon_avatar_cos_bottom_hippo",
+        "description": "None"
+    },
+    {
+        "itemID": "204047000",
+        "icon": "Icon_avatar_sc_bottom_auroraboy",
+        "description": "None"
+    },
+    {
+        "itemID": "204047001",
+        "icon": "Icon_avatar_male_cos_bottom_woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "204047002",
+        "icon": "Icon_avatar_male_cos_bottom_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "204047003",
+        "icon": "Icon_avatar_female_cos_bottom_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "204047004",
+        "icon": "Icon_avatar_male_cos_bottom_express",
+        "description": "None"
+    },
+    {
+        "itemID": "204047005",
+        "icon": "Icon_avatar_female_cos_bottom_express",
+        "description": "None"
+    },
+    {
+        "itemID": "204047006",
+        "icon": "Icon_avatar_cos_bottom_aurora_black",
+        "description": "None"
+    },
+    {
+        "itemID": "204047007",
+        "icon": "Icon_avatar_cos_bottom_aurora_white",
+        "description": "None"
+    },
+    {
+        "itemID": "204047008",
+        "icon": "Icon_avatar_male_cos_bottom_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "204047009",
+        "icon": "Icon_avatar_female_cos_bottom_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "204047010",
+        "icon": "Icon_avatar_male_cos_bottom_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "204047011",
+        "icon": "Icon_avatar_female_cos_bottom_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "204047012",
+        "icon": "Icon_avatar_male_cos_bottom_superstar24_black",
+        "description": "None"
+    },
+    {
+        "itemID": "204047013",
+        "icon": "Icon_avatar_male_cos_bottom_superstar24_white",
+        "description": "None"
+    },
+    {
+        "itemID": "204047014",
+        "icon": "Icon_avatar_male_cos_bottom_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "204047015",
+        "icon": "Icon_avatar_female_cos_bottom_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "204047016",
+        "icon": "Icon_avatar_male_cos_bottom_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "204047017",
+        "icon": "Icon_avatar_female_cos_bottom_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "204047018",
+        "icon": "Icon_avatar_male_cos_bottom_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "204047019",
+        "icon": "Icon_avatar_female_cos_bottom_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "204047020",
+        "icon": "Icon_avatar_male_cos_bottom_me_streetwear",
+        "description": "None"
+    },
+    {
+        "itemID": "204047022",
+        "icon": "Icon_avatar_male_cos_bottom_trend_man",
+        "description": "None"
+    },
+    {
+        "itemID": "204047023",
+        "icon": "Icon_avatar_male_cos_bottom_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "204047024",
+        "icon": "Icon_avatar_female_cos_bottom_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "204047025",
+        "icon": "Icon_avatar_cos_bottom_newbie24",
+        "description": "None"
+    },
+    {
+        "itemID": "204047026",
+        "icon": "Icon_avatar_male_cos_bottom_nb_yellow",
+        "description": "None"
+    },
+    {
+        "itemID": "204047027",
+        "icon": "Icon_avatar_male_cos_bottom_nb_black",
+        "description": "None"
+    },
+    {
+        "itemID": "204047028",
+        "icon": "Icon_avatar_female_cos_bottom_nb_pink",
+        "description": "None"
+    },
+    {
+        "itemID": "204047029",
+        "icon": "Icon_avatar_male_cos_bottom_nb_white",
+        "description": "None"
+    },
+    {
+        "itemID": "204047030",
+        "icon": "Icon_avatar_male_cos_bottom_nb_ji",
+        "description": "None"
+    },
+    {
+        "itemID": "204047031",
+        "icon": "Icon_avatar_female_cos_bottom_superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "205047000",
+        "icon": "Icon_avatar_sc_shoe_auroraboy",
+        "description": "None"
+    },
+    {
+        "itemID": "205047001",
+        "icon": "Icon_avatar_male_cos_shoe_woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "205047002",
+        "icon": "Icon_avatar_male_cos_shoe_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "205047003",
+        "icon": "Icon_avatar_female_cos_shoe_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "205047004",
+        "icon": "Icon_avatar_male_cos_shoe_express",
+        "description": "None"
+    },
+    {
+        "itemID": "205047005",
+        "icon": "Icon_avatar_female_cos_shoe_express",
+        "description": "None"
+    },
+    {
+        "itemID": "205047006",
+        "icon": "Icon_avatar_cos_shoe_aurora_black",
+        "description": "None"
+    },
+    {
+        "itemID": "205047007",
+        "icon": "Icon_avatar_cos_shoe_aurora_white",
+        "description": "None"
+    },
+    {
+        "itemID": "205047008",
+        "icon": "Icon_avatar_male_cos_shoe_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "205047009",
+        "icon": "Icon_avatar_female_cos_shoe_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "205047010",
+        "icon": "Icon_avatar_female_cos_shoe_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "205047011",
+        "icon": "Icon_avatar_male_cos_shoe_superstar24_black",
+        "description": "None"
+    },
+    {
+        "itemID": "205047012",
+        "icon": "Icon_avatar_male_cos_shoe_superstar24_white",
+        "description": "None"
+    },
+    {
+        "itemID": "205047013",
+        "icon": "Icon_avatar_male_cos_shoe_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "205047014",
+        "icon": "Icon_avatar_female_cos_shoe_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "205047015",
+        "icon": "Icon_avatar_male_cos_shoe_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "205047016",
+        "icon": "Icon_avatar_female_cos_shoe_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "205047017",
+        "icon": "Icon_avatar_male_cos_shoe_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "205047018",
+        "icon": "Icon_avatar_female_cos_shoe_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "205047019",
+        "icon": "Icon_avatar_male_cos_shoe_me_streetwear",
+        "description": "None"
+    },
+    {
+        "itemID": "205047021",
+        "icon": "Icon_avatar_male_cos_shoe_trend_man",
+        "description": "None"
+    },
+    {
+        "itemID": "205047022",
+        "icon": "Icon_avatar_male_cos_shoe_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "205047023",
+        "icon": "Icon_avatar_female_cos_shoe_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "205047024",
+        "icon": "Icon_avatar_cos_shoe_newbie24",
+        "description": "None"
+    },
+    {
+        "itemID": "205047025",
+        "icon": "Icon_avatar_male_cos_shoe_nb_yellow",
+        "description": "None"
+    },
+    {
+        "itemID": "205047026",
+        "icon": "Icon_avatar_male_cos_shoe_nb_black",
+        "description": "None"
+    },
+    {
+        "itemID": "205047027",
+        "icon": "Icon_avatar_female_cos_shoe_nb_pink",
+        "description": "None"
+    },
+    {
+        "itemID": "205047028",
+        "icon": "Icon_avatar_male_cos_shoe_nb_white",
+        "description": "None"
+    },
+    {
+        "itemID": "205047029",
+        "icon": "Icon_avatar_male_cos_shoe_nb_ji",
+        "description": "None"
+    },
+    {
+        "itemID": "205047030",
+        "icon": "Icon_avatar_female_cos_shoe_superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "211047000",
+        "icon": "Icon_avatar_male_cos_accessory_woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "211047001",
+        "icon": "Icon_avatar_male_cos_hair_woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "211047002",
+        "icon": "Icon_avatar_male_cos_accessory_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "211047004",
+        "icon": "Icon_avatar_female_cos_accessory_tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "211047006",
+        "icon": "Icon_avatar_male_cos_accessory_express",
+        "description": "None"
+    },
+    {
+        "itemID": "211047007",
+        "icon": "Icon_avatar_female_cos_accessory_express",
+        "description": "None"
+    },
+    {
+        "itemID": "211047008",
+        "icon": "Icon_avatar_cos_accessory_aurora_black",
+        "description": "None"
+    },
+    {
+        "itemID": "211047009",
+        "icon": "Icon_avatar_cos_hair_aurora_black",
+        "description": "None"
+    },
+    {
+        "itemID": "211047010",
+        "icon": "Icon_avatar_cos_accessory_aurora_white",
+        "description": "None"
+    },
+    {
+        "itemID": "211047011",
+        "icon": "Icon_avatar_cos_hair_aurora_white",
+        "description": "None"
+    },
+    {
+        "itemID": "211047012",
+        "icon": "Icon_avatar_male_cos_hair_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "211047013",
+        "icon": "Icon_avatar_female_cos_accessory_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "211047014",
+        "icon": "Icon_avatar_female_cos_hair_equation",
+        "description": "None"
+    },
+    {
+        "itemID": "211047015",
+        "icon": "Icon_avatar_male_cos_accessory_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "211047016",
+        "icon": "Icon_avatar_female_cos_accessory_catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "211047017",
+        "icon": "0Icon_avatar_male_cos_accessory_superstar24_black",
+        "description": "None"
+    },
+    {
+        "itemID": "211047018",
+        "icon": "Icon_avatar_male_cos_hair_superstar24_black",
+        "description": "None"
+    },
+    {
+        "itemID": "211047019",
+        "icon": "0Icon_avatar_male_cos_accessory_superstar24_white",
+        "description": "None"
+    },
+    {
+        "itemID": "211047020",
+        "icon": "Icon_avatar_male_cos_hair_superstar24_white",
+        "description": "None"
+    },
+    {
+        "itemID": "211047022",
+        "icon": "Icon_avatar_male_cos_hair_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047023",
+        "icon": "Icon_avatar_female_cos_accessory_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047024",
+        "icon": "Icon_avatar_female_cos_hair_valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047025",
+        "icon": "Icon_avatar_male_cos_accessory_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047026",
+        "icon": "Icon_avatar_male_cos_hair_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047027",
+        "icon": "Icon_avatar_female_cos_accessory_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047028",
+        "icon": "Icon_avatar_female_cos_hair_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047029",
+        "icon": "Icon_avatar_male_cos_hair_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047030",
+        "icon": "Icon_avatar_female_cos_hair_vnnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "211047031",
+        "icon": "Icon_avatar_male_cos_hair_me_streetwear",
+        "description": "None"
+    },
+    {
+        "itemID": "211047034",
+        "icon": "Icon_avatar_male_cos_accessory_trend_man",
+        "description": "None"
+    },
+    {
+        "itemID": "211047035",
+        "icon": "Icon_avatar_male_cos_hair_trend_man",
+        "description": "None"
+    },
+    {
+        "itemID": "211047036",
+        "icon": "Icon_avatar_cos_hair_trend_th",
+        "description": "None"
+    },
+    {
+        "itemID": "211047037",
+        "icon": "Icon_avatar_cos_accessory_winterfest25_mask",
+        "description": "None"
+    },
+    {
+        "itemID": "211047038",
+        "icon": "Icon_avatar_cos_accessory_express_mask",
+        "description": "None"
+    },
+    {
+        "itemID": "211047039",
+        "icon": "Icon_avatar_male_cos_hair_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "211047040",
+        "icon": "Icon_avatar_female_cos_accessory_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "211047041",
+        "icon": "Icon_avatar_female_cos_hair_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "211047042",
+        "icon": "Icon_avatar_male_cos_hair_brrapper_47_head",
+        "description": "None"
+    },
+    {
+        "itemID": "211047043",
+        "icon": "Icon_avatar_male_cos_accessory_nb_yellow",
+        "description": "None"
+    },
+    {
+        "itemID": "211047044",
+        "icon": "Icon_avatar_male_cos_accessory_nb_black",
+        "description": "None"
+    },
+    {
+        "itemID": "211047045",
+        "icon": "Icon_avatar_female_cos_accessory_nb_pink",
+        "description": "None"
+    },
+    {
+        "itemID": "211047046",
+        "icon": "Icon_avatar_male_cos_accessory_nb_white",
+        "description": "None"
+    },
+    {
+        "itemID": "211047047",
+        "icon": "Icon_avatar_male_cos_accessory_nb_ji",
+        "description": "None"
+    },
+    {
+        "itemID": "211047048",
+        "icon": "Icon_avatar_cos_accessory_nb_mask",
+        "description": "None"
+    },
+    {
+        "itemID": "211047049",
+        "icon": "Icon_avatar_cos_accessory_nb_brows",
+        "description": "None"
+    },
+    {
+        "itemID": "211047050",
+        "icon": "Icon_avatar_cos_hair_nb_wood",
+        "description": "None"
+    },
+    {
+        "itemID": "211047051",
+        "icon": "Icon_avatar_female_cos_accessory_superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "211047052",
+        "icon": "Icon_avatar_female_cos_hair_superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "214047000",
+        "icon": "Icon_avatar_sc_headadditive_auroraboy",
+        "description": "None"
+    },
+    {
+        "itemID": "214047001",
+        "icon": "Icon_avatar_cos_headadditive_aurora_black",
+        "description": "None"
+    },
+    {
+        "itemID": "214047002",
+        "icon": "Icon_avatar_cos_headadditive_aurora_white",
+        "description": "None"
+    },
+    {
+        "itemID": "214047003",
+        "icon": "Icon_avatar_male_cos_headadditive_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "214047004",
+        "icon": "0Icon_avatar_female_cos_headadditive_winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "214047005",
+        "icon": "Icon_avatar_cos_headadditive_winterfest25_fp",
+        "description": "None"
+    },
+    {
+        "itemID": "214047006",
+        "icon": "Icon_avatar_male_cos_headadditive_brrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047001",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047002",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047003",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047004",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047005",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047006",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047007",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047008",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047009",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047010",
+        "icon": "Icon_box_Snow1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047011",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047012",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047013",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047014",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047015",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047016",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047017",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047018",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047019",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047020",
+        "icon": "Icon_box_Snow2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047021",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047022",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047023",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047024",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047025",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047026",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047027",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047028",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047029",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047030",
+        "icon": "Icon_box_Snow3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047031",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047032",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047033",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047034",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047035",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047036",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047037",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047038",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047039",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047040",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047041",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047042",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047043",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047044",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047045",
+        "icon": "Icon_box_Circle1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047046",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047047",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047048",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047049",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047050",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047051",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047052",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047053",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047054",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047055",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047056",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047057",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047058",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047059",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047060",
+        "icon": "Icon_box_Circle2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047101",
+        "icon": "Icon_box_Nbx1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047102",
+        "icon": "Icon_box_Nbx2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047103",
+        "icon": "Icon_box_Nbx3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047104",
+        "icon": "Icon_box_Nbx4_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047105",
+        "icon": "Icon_box_Nbx5_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047106",
+        "icon": "Icon_box_Nbx6_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047501",
+        "icon": "Icon_box_LDB_SG_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047502",
+        "icon": "ES_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047503",
+        "icon": "ES_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047504",
+        "icon": "ES_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047505",
+        "icon": "ES_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047506",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047507",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047508",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047509",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047510",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047511",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047512",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047513",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047514",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047515",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "400047516",
+        "icon": "Icon_box_LFB_VN_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047517",
+        "icon": "Icon_box_JSB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047518",
+        "icon": "Icon_box_EEB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047519",
+        "icon": "Icon_box_FJB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047520",
+        "icon": "Icon_box_NYB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047521",
+        "icon": "Icon_box_CTB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047522",
+        "icon": "Icon_box_CDB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047523",
+        "icon": "Icon_box_CNYB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047524",
+        "icon": "Icon_box_VTB_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047525",
+        "icon": "Icon_box_GB1_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047526",
+        "icon": "Icon_box_GB1_TH_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047527",
+        "icon": "Icon_box_UET10_170042512_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047528",
+        "icon": "Icon_box_UET30_170042513_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047529",
+        "icon": "Icon_box_UET50_170042514_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047530",
+        "icon": "Icon_box_UET100_170042515_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047531",
+        "icon": "Icon_box_2EFB_ME_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047532",
+        "icon": "Icon_box_2EAB_ME_47",
+        "description": "None"
+    },
+    {
+        "itemID": "400047533",
+        "icon": "Icon_box_weaponskin_Random",
+        "description": "None"
+    },
+    {
+        "itemID": "400047534",
+        "icon": "Icon_box_weaponskin_Random",
+        "description": "None"
+    },
+    {
+        "itemID": "710046047",
+        "icon": "FF_UI_Voiceitem_BRrapper",
+        "description": "None"
+    },
+    {
+        "itemID": "710046048",
+        "icon": "FF_UI_Voiceitem_Windah",
+        "description": "None"
+    },
+    {
+        "itemID": "710046049",
+        "icon": "FF_UI_Voiceitem_Windah",
+        "description": "None"
+    },
+    {
+        "itemID": "710046050",
+        "icon": "FF_UI_Voiceitem_TH46",
+        "description": "None"
+    },
+    {
+        "itemID": "710046051",
+        "icon": "FF_UI_Voiceitem_IND46",
+        "description": "None"
+    },
+    {
+        "itemID": "710046052",
+        "icon": "FF_UI_Voiceitem_VN46",
+        "description": "None"
+    },
+    {
+        "itemID": "710046053",
+        "icon": "FF_UI_Voiceitem_Windah",
+        "description": "None"
+    },
+    {
+        "itemID": "710046054",
+        "icon": "FF_UI_Voiceitem_Windah",
+        "description": "None"
+    },
+    {
+        "itemID": "710047001",
+        "icon": "Icon_bundle_male_Tailor_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047002",
+        "icon": "Icon_bundle_female_Tailor_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047003",
+        "icon": "Icon_bundle_male_Express_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047004",
+        "icon": "Icon_bundle_female_Express_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047005",
+        "icon": "Icon_bundle_Aurora_Black_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047006",
+        "icon": "Icon_bundle_Aurora_White_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047007",
+        "icon": "Icon_bundle_male_Equation_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047008",
+        "icon": "Icon_bundle_female_Equation_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047009",
+        "icon": "Icon_bundle_male_Superstar24_Black_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047010",
+        "icon": "Icon_bundle_male_Superstar24_White_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047011",
+        "icon": "Icon_bundle_female_Superstar24_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047012",
+        "icon": "Icon_bundle_male_Valentine25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047013",
+        "icon": "Icon_bundle_female_Valentine25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047014",
+        "icon": "Icon_bundle_male_Winterfest25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047015",
+        "icon": "Icon_bundle_female_Winterfest25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047016",
+        "icon": "Icon_bundle_male_VNnewyear25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047017",
+        "icon": "Icon_bundle_female_VNnewyear25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047018",
+        "icon": "Icon_bundle_male_ME_Streetwear_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047019",
+        "icon": "Icon_bundle_male_Brrapper_47_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047020",
+        "icon": "Icon_bundle_female_Brrapper_47_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047021",
+        "icon": "Icon_bundle_male_Woodcrafter_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047022",
+        "icon": "Icon_bundle_male_NB_Yellow_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047023",
+        "icon": "Icon_bundle_male_NB_Black_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047024",
+        "icon": "Icon_bundle_female_NB_Pink_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047025",
+        "icon": "Icon_bundle_male_NB_White_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047026",
+        "icon": "Icon_bundle_male_NB_Ji_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047027",
+        "icon": "Icon_bundle_Newbie24_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047028",
+        "icon": "Icon_bundle_male_Trend_Man_47",
+        "description": "None"
+    },
+    {
+        "itemID": "710047037",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "710047038",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "710047039",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "710047040",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "710099999",
+        "icon": "Icon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "800047660",
+        "icon": "UI_Customize_WS_NB_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "801047001",
+        "icon": "Icon_exchange_Newbiegacha_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047002",
+        "icon": "Icon_exchange_Winterlands1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047003",
+        "icon": "Icon_exchange_Winterlands2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047004",
+        "icon": "Icon_exchange_Winterlands3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047005",
+        "icon": "Icon_exchange_Aurora_Cloth_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047006",
+        "icon": "Icon_exchange_Aurora_Aug_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047007",
+        "icon": "Icon_exchange_Equation_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047008",
+        "icon": "Icon_exchange_Catdog_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047009",
+        "icon": "Icon_exchange_Valentine25_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047010",
+        "icon": "Icon_exchange_Superstar24_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047101",
+        "icon": "Icon_exchange_ntk1_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047102",
+        "icon": "Icon_exchange_ntk2_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047103",
+        "icon": "Icon_exchange_ntk3_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047104",
+        "icon": "Icon_exchange_ntk4_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047105",
+        "icon": "Icon_exchange_ntk5_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047106",
+        "icon": "Icon_exchange_ntk6_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047107",
+        "icon": "Icon_exchange_ntk7_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047108",
+        "icon": "Icon_exchange_ntk8_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047109",
+        "icon": "Icon_exchange_ntk9_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047501",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047502",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047503",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047504",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047505",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047506",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047507",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047508",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047509",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047510",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047511",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047512",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047513",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047514",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047515",
+        "icon": "es_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047516",
+        "icon": "Icon_exchange_LFT_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047517",
+        "icon": "Icon_exchange_J2T_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047518",
+        "icon": "Icon_exchange_F2T_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047519",
+        "icon": "Icon_exchange_M2T_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047520",
+        "icon": "Icon_exchange_SKT_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047521",
+        "icon": "Icon_exchange_CTN_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047522",
+        "icon": "Icon_exchange_ELT_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047523",
+        "icon": "Icon_exchange_VCT_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047524",
+        "icon": "Icon_exchange_FWT_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047525",
+        "icon": "Icon_exchange_ABO_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047526",
+        "icon": "Icon_exchange_PBO_vn_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047527",
+        "icon": "Icon_exchange_JST_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047528",
+        "icon": "Icon_exchange_ETN_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047529",
+        "icon": "Icon_exchange_FJT_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047530",
+        "icon": "Icon_exchange_2NYT_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047531",
+        "icon": "Icon_exchange_CMT_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047532",
+        "icon": "Icon_exchange_CDT_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047533",
+        "icon": "Icon_exchange_CNYT_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047534",
+        "icon": "Icon_exchange_VTT_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047535",
+        "icon": "Icon_exchange_BSD_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047536",
+        "icon": "Icon_exchange_UST_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047537",
+        "icon": "Icon_exchange_GT1_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047538",
+        "icon": "Icon_exchange_GT1_th_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047539",
+        "icon": "Icon_exchange_VET_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047540",
+        "icon": "Icon_exchange_NYT2_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047541",
+        "icon": "Icon_exchange_STN_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047542",
+        "icon": "Icon_exchange_DTN_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047543",
+        "icon": "Icon_exchange_WTN_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047544",
+        "icon": "Icon_exchange_SMT_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047545",
+        "icon": "Icon_exchange_FWT2_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047546",
+        "icon": "Icon_exchange_LTN_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047547",
+        "icon": "Icon_exchange_OTN_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047548",
+        "icon": "Icon_exchange_OGT_id_47",
+        "description": "None"
+    },
+    {
+        "itemID": "801047549",
+        "icon": "Icon_exchange_EMT_me_47",
+        "description": "None"
+    },
+    {
+        "itemID": "802000084",
+        "icon": "FF_Lottery_Newbie_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000085",
+        "icon": "FF_Lottery_Winterland_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000086",
+        "icon": "FF_Lottery_New_Year_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000087",
+        "icon": "FF_Lottery_Snake_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000088",
+        "icon": "FF_Lottery_School_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000089",
+        "icon": "FF_Lottery_General_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000090",
+        "icon": "FF_Lottery_Treasure_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "802000091",
+        "icon": "FF_Lottery_Special_Ring_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "804605801",
+        "icon": "Icon_ff_VIP_MonthCard",
+        "description": "None"
+    },
+    {
+        "itemID": "804605802",
+        "icon": "Icon_ff_VIP_WeekCard",
+        "description": "None"
+    },
+    {
+        "itemID": "819150430",
+        "icon": "FF_Lottery_gaindiamond_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819150531",
+        "icon": "FF_Lottery_gaindiamond_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819150630",
+        "icon": "FF_Lottery_gaindiamond_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819350430",
+        "icon": "FF_Lottery_anni_forge_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819350531",
+        "icon": "FF_Lottery_anni_forge_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819350630",
+        "icon": "FF_Lottery_anni_forge_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819450430",
+        "icon": "FF_Lottery_gaincoin_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819450531",
+        "icon": "FF_Lottery_gaincoin_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819450630",
+        "icon": "FF_Lottery_gaincoin_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819650228",
+        "icon": "FF_Lottery_UniversalRing_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "819650331",
+        "icon": "FF_Lottery_UniversalRing_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "819650430",
+        "icon": "FF_Lottery_UniversalRing_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "819750131",
+        "icon": "FF_Lottery_Special_Ring_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819750222",
+        "icon": "FF_Lottery_fragment_NB_47",
+        "description": "None"
+    },
+    {
+        "itemID": "819750228",
+        "icon": "FF_Lottery_Special_Ring_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819750331",
+        "icon": "FF_Lottery_Special_Ring_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819750430",
+        "icon": "FF_Lottery_Special_Ring_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819850228",
+        "icon": "FF_Lottery_Lunar_New_Year_2025_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819900000",
+        "icon": "FF_Lottery_COOPA_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819900001",
+        "icon": "FF_Lottery_COOPB_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "840000106",
+        "icon": "UI_NoDeductCard02_CS",
+        "description": "None"
+    },
+    {
+        "itemID": "900000016",
+        "icon": "Icon_slot_Superemote_Default",
+        "description": "None"
+    },
+    {
+        "itemID": "900000017",
+        "icon": "UI_Icon_SpeedMode_MOTO_Bounty",
+        "description": "None"
+    },
+    {
+        "itemID": "900000018",
+        "icon": "UI_Icon_SpeedMode_Helicopter",
+        "description": "None"
+    },
+    {
+        "itemID": "901046017",
+        "icon": "Icon_callsign_storebg_Hippo",
+        "description": "None"
+    },
+    {
+        "itemID": "901046018",
+        "icon": "Icon_callsign_storebg_Reward_TH",
+        "description": "None"
+    },
+    {
+        "itemID": "901047001",
+        "icon": "Icon_callsign_storebg_Rank43_01",
+        "description": "None"
+    },
+    {
+        "itemID": "901047002",
+        "icon": "Icon_callsign_storebg_Rank43_02",
+        "description": "None"
+    },
+    {
+        "itemID": "901047003",
+        "icon": "Icon_callsign_storebg_Rank43_03",
+        "description": "None"
+    },
+    {
+        "itemID": "901047004",
+        "icon": "Icon_callsign_storebg_CSRank29_01",
+        "description": "None"
+    },
+    {
+        "itemID": "901047005",
+        "icon": "Icon_callsign_storebg_CSRank29_02",
+        "description": "None"
+    },
+    {
+        "itemID": "901047006",
+        "icon": "Icon_callsign_storebg_CSRank29_03",
+        "description": "None"
+    },
+    {
+        "itemID": "901047007",
+        "icon": "Icon_callsign_storebg_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "901047008",
+        "icon": "Icon_callsign_storebg_Festival_ID02",
+        "description": "None"
+    },
+    {
+        "itemID": "901047009",
+        "icon": "Icon_callsign_storebg_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "901047010",
+        "icon": "Icon_callsign_storebg_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "901047011",
+        "icon": "Icon_callsign_storebg_BRrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "901047012",
+        "icon": "Icon_callsign_storebg_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "902046037",
+        "icon": "Icon_face_Hippo",
+        "description": "None"
+    },
+    {
+        "itemID": "902046038",
+        "icon": "Icon_face_Reward_TH",
+        "description": "None"
+    },
+    {
+        "itemID": "902047001",
+        "icon": "Icon_face_Rank43_01",
+        "description": "None"
+    },
+    {
+        "itemID": "902047002",
+        "icon": "Icon_face_Rank43_02",
+        "description": "None"
+    },
+    {
+        "itemID": "902047003",
+        "icon": "Icon_face_CSRank29_01",
+        "description": "None"
+    },
+    {
+        "itemID": "902047004",
+        "icon": "Icon_face_CSRank29_02",
+        "description": "None"
+    },
+    {
+        "itemID": "902047005",
+        "icon": "Icon_face_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "902047006",
+        "icon": "Icon_face_Festival_ID02",
+        "description": "None"
+    },
+    {
+        "itemID": "902047007",
+        "icon": "Icon_face_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "902047008",
+        "icon": "Icon_face_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "902047009",
+        "icon": "Icon_face_BRrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "902047010",
+        "icon": "Icon_face_NB_Yellow",
+        "description": "None"
+    },
+    {
+        "itemID": "902047011",
+        "icon": "Icon_face_NB_Black",
+        "description": "None"
+    },
+    {
+        "itemID": "902047012",
+        "icon": "Icon_face_NB_Pink",
+        "description": "None"
+    },
+    {
+        "itemID": "902047013",
+        "icon": "Icon_face_NB_White",
+        "description": "None"
+    },
+    {
+        "itemID": "902047014",
+        "icon": "Icon_face_NB_Ji",
+        "description": "None"
+    },
+    {
+        "itemID": "902047015",
+        "icon": "Icon_face_Auroraboy_Q",
+        "description": "None"
+    },
+    {
+        "itemID": "902047016",
+        "icon": "Icon_face_HuntSeason",
+        "description": "None"
+    },
+    {
+        "itemID": "902047017",
+        "icon": "Icon_face_HuntKing",
+        "description": "None"
+    },
+    {
+        "itemID": "903047001",
+        "icon": "Icon_Deadloot_CSRank29",
+        "description": "None"
+    },
+    {
+        "itemID": "903047002",
+        "icon": "Icon_Deadloot_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "903047003",
+        "icon": "Icon_Deadloot_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "903047004",
+        "icon": "Icon_Deadloot_Valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "903047005",
+        "icon": "Icon_Deadloot_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "903047006",
+        "icon": "Icon_Deadloot_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "903047007",
+        "icon": "Icon_Deadloot_Express01",
+        "description": "None"
+    },
+    {
+        "itemID": "903047008",
+        "icon": "Icon_Deadloot_NB_Wood",
+        "description": "None"
+    },
+    {
+        "itemID": "903047009",
+        "icon": "Icon_Deadloot_NB_Ramen",
+        "description": "None"
+    },
+    {
+        "itemID": "903047010",
+        "icon": "Icon_Deadloot_NB_RamenNo",
+        "description": "None"
+    },
+    {
+        "itemID": "904047001",
+        "icon": "Icon_Bag_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "904047002",
+        "icon": "Icon_Bag_Equation",
+        "description": "None"
+    },
+    {
+        "itemID": "904047003",
+        "icon": "Icon_Bag_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "904047004",
+        "icon": "Icon_Bag_Valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "904047005",
+        "icon": "Icon_Bag_VNnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "904047006",
+        "icon": "Icon_Bag_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "904047007",
+        "icon": "Icon_Bag_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "904047008",
+        "icon": "Icon_Bag_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "905047001",
+        "icon": "Icon_Avatar_PARACHUTE_Valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "905047002",
+        "icon": "Icon_Avatar_PARACHUTE_Allseason25",
+        "description": "None"
+    },
+    {
+        "itemID": "906047001",
+        "icon": "Icon_Avatar_Surfboard_Rank43",
+        "description": "None"
+    },
+    {
+        "itemID": "906047002",
+        "icon": "Icon_Avatar_Surfboard_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "906047003",
+        "icon": "Icon_Avatar_Surfboard_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "906047004",
+        "icon": "Icon_Avatar_Surfboard_Tailor01",
+        "description": "None"
+    },
+    {
+        "itemID": "906047005",
+        "icon": "Icon_Avatar_Surfboard_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "906047006",
+        "icon": "Icon_Avatar_Surfboard_BRrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "907104656",
+        "icon": "Icon_GlooShield_Hippo",
+        "description": "None"
+    },
+    {
+        "itemID": "907104701",
+        "icon": "Icon_Machete_Woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "907104702",
+        "icon": "Icon_VSK94_Projector",
+        "description": "None"
+    },
+    {
+        "itemID": "907104703",
+        "icon": "Icon_Kord_Orchestral",
+        "description": "None"
+    },
+    {
+        "itemID": "907104704",
+        "icon": "Icon_ChargeShot_Phonograph",
+        "description": "None"
+    },
+    {
+        "itemID": "907104705",
+        "icon": "Icon_SCAR_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "907104706",
+        "icon": "Icon_BM94_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "907104707",
+        "icon": "Icon_Sickle_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "907104708",
+        "icon": "Icon_Machete_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "907104709",
+        "icon": "Icon_AUG_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "907104710",
+        "icon": "Icon_Mac10_Equation",
+        "description": "None"
+    },
+    {
+        "itemID": "907104711",
+        "icon": "Icon_Vector_Snake25",
+        "description": "None"
+    },
+    {
+        "itemID": "907104712",
+        "icon": "Icon_AWM_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "907104713",
+        "icon": "Icon_VSK94_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "907104714",
+        "icon": "Icon_P90_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "907104715",
+        "icon": "Icon_TreatmentGun_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "907104716",
+        "icon": "Icon_M1873_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "907104717",
+        "icon": "Icon_Baseballbat_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "907104718",
+        "icon": "Icon_ThrowingKnife_Equation",
+        "description": "None"
+    },
+    {
+        "itemID": "907104719",
+        "icon": "Icon_Katana_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "907104720",
+        "icon": "Icon_Machete_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "907104721",
+        "icon": "Icon_Pan_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "907104722",
+        "icon": "Icon_Sickle_Equation",
+        "description": "None"
+    },
+    {
+        "itemID": "907104723",
+        "icon": "Icon_Sickle_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "907104724",
+        "icon": "Icon_M249_Rank43",
+        "description": "None"
+    },
+    {
+        "itemID": "907104725",
+        "icon": "Icon_UMP45_CSRank29",
+        "description": "None"
+    },
+    {
+        "itemID": "907104726",
+        "icon": "Icon_Baseballbat_Rank43",
+        "description": "None"
+    },
+    {
+        "itemID": "907104727",
+        "icon": "Icon_Pan_CSRank29",
+        "description": "None"
+    },
+    {
+        "itemID": "907104728",
+        "icon": "Icon_Fist_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "907104729",
+        "icon": "Icon_M4A1_Allseason25",
+        "description": "None"
+    },
+    {
+        "itemID": "907104730",
+        "icon": "Icon_Katana_Valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "907104731",
+        "icon": "Icon_GlooShield_Woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "907104732",
+        "icon": "Icon_Tailor_Grenade",
+        "description": "None"
+    },
+    {
+        "itemID": "907104733",
+        "icon": "Icon_Express_Grenade",
+        "description": "None"
+    },
+    {
+        "itemID": "907104734",
+        "icon": "Icon_Equation_Grenade",
+        "description": "None"
+    },
+    {
+        "itemID": "907104735",
+        "icon": "Icon_Valentine25_Grenade",
+        "description": "None"
+    },
+    {
+        "itemID": "907104736",
+        "icon": "Icon_GlooShield_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "907104737",
+        "icon": "Icon_GlooShield_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "907104738",
+        "icon": "Icon_GlooShield_Equation",
+        "description": "None"
+    },
+    {
+        "itemID": "907104739",
+        "icon": "Icon_GlooShield_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "907104740",
+        "icon": "Icon_GlooShield_VNnewyear25",
+        "description": "None"
+    },
+    {
+        "itemID": "907104741",
+        "icon": "Icon_GlooShield_BRrapper_47",
+        "description": "None"
+    },
+    {
+        "itemID": "907104742",
+        "icon": "Icon_Katana_NB_Black",
+        "description": "None"
+    },
+    {
+        "itemID": "907104743",
+        "icon": "Icon_Groza_NB_Black",
+        "description": "None"
+    },
+    {
+        "itemID": "907104744",
+        "icon": "Icon_M4A1_NB_Yellow",
+        "description": "None"
+    },
+    {
+        "itemID": "907104745",
+        "icon": "Icon_Fist_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "907104746",
+        "icon": "Icon_GlooShield_NB_Ho",
+        "description": "None"
+    },
+    {
+        "itemID": "907104747",
+        "icon": "Icon_GlooShield_NB_Black",
+        "description": "None"
+    },
+    {
+        "itemID": "907104748",
+        "icon": "Icon_Katana_NB_Black",
+        "description": "None"
+    },
+    {
+        "itemID": "908047001",
+        "icon": "Icon_slot_MonsterTruck_Woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "908047002",
+        "icon": "Icon_slot_Jeep_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "908047003",
+        "icon": "Icon_slot_SUV_Express",
+        "description": "None"
+    },
+    {
+        "itemID": "908047004",
+        "icon": "Icon_slot_MonsterTruck_NB_White",
+        "description": "None"
+    },
+    {
+        "itemID": "908047005",
+        "icon": "Icon_slot_MonsterTruck_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "908047006",
+        "icon": "Icon_slot_Motobike_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "908047007",
+        "icon": "Icon_slot_Roadster_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "908047008",
+        "icon": "Icon_slot_TUTU_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "909046017",
+        "icon": "Icon_Emote_Stardance",
+        "description": "None"
+    },
+    {
+        "itemID": "909047001",
+        "icon": "Icon_Emote_Woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "909047002",
+        "icon": "Icon_Emote_Aurora_Duo",
+        "description": "None"
+    },
+    {
+        "itemID": "909047003",
+        "icon": "Icon_Emote_Valentine25_Duo",
+        "description": "None"
+    },
+    {
+        "itemID": "909047004",
+        "icon": "Icon_Emote_Angelic_Move",
+        "description": "None"
+    },
+    {
+        "itemID": "909047005",
+        "icon": "Icon_Emote_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "909047006",
+        "icon": "Icon_Emote_Superstar24",
+        "description": "None"
+    },
+    {
+        "itemID": "909047007",
+        "icon": "Icon_Emote_Valentine25",
+        "description": "None"
+    },
+    {
+        "itemID": "909047008",
+        "icon": "Icon_Emote_Tailor",
+        "description": "None"
+    },
+    {
+        "itemID": "909047009",
+        "icon": "Icon_Emote_Equation",
+        "description": "None"
+    },
+    {
+        "itemID": "909047010",
+        "icon": "Icon_Emote_Catdog",
+        "description": "None"
+    },
+    {
+        "itemID": "909047011",
+        "icon": "Icon_Emote_Winterfest25",
+        "description": "None"
+    },
+    {
+        "itemID": "909047012",
+        "icon": "Icon_Emote_POPID_47",
+        "description": "None"
+    },
+    {
+        "itemID": "909047013",
+        "icon": "Icon_Emote_Allseason25",
+        "description": "None"
+    },
+    {
+        "itemID": "909047015",
+        "icon": "Icon_Emote_NB_Ball",
+        "description": "None"
+    },
+    {
+        "itemID": "909047016",
+        "icon": "Icon_Emote_NB_Sennen",
+        "description": "None"
+    },
+    {
+        "itemID": "909047017",
+        "icon": "Icon_Emote_NB_Gesture",
+        "description": "None"
+    },
+    {
+        "itemID": "909047018",
+        "icon": "Icon_Emote_NB_Run",
+        "description": "None"
+    },
+    {
+        "itemID": "909047019",
+        "icon": "Icon_Emote_NB_Shadow",
+        "description": "None"
+    },
+    {
+        "itemID": "909547001",
+        "icon": "Icon_Emote_NB_Frog",
+        "description": "None"
+    },
+    {
+        "itemID": "911004701",
+        "icon": "Icon_Mounts_NB_Nine",
+        "description": "None"
+    },
+    {
+        "itemID": "912047001",
+        "icon": "Icon_GroupAnim_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "912047002",
+        "icon": "Icon_GroupAnim_NB_Nine",
+        "description": "None"
+    },
+    {
+        "itemID": "913047001",
+        "icon": "FF_UI_Vault_Music_Winterfest24_Sys",
+        "description": "None"
+    },
+    {
+        "itemID": "913047002",
+        "icon": "FF_UI_Vault_Music_Winterfest24_Sys",
+        "description": "None"
+    },
+    {
+        "itemID": "913047003",
+        "icon": "FF_UI_Vault_Music_ME_Regala",
+        "description": "None"
+    },
+    {
+        "itemID": "913047004",
+        "icon": "FF_UI_Vault_Music_ME_Regala",
+        "description": "None"
+    },
+    {
+        "itemID": "913047005",
+        "icon": "FF_UI_Vault_Music_ID_GYC",
+        "description": "None"
+    },
+    {
+        "itemID": "913047006",
+        "icon": "FF_UI_Vault_Music_ID_GYC",
+        "description": "None"
+    },
+    {
+        "itemID": "913047007",
+        "icon": "FF_UI_Vault_Music_BRrapper",
+        "description": "None"
+    },
+    {
+        "itemID": "913047008",
+        "icon": "FF_UI_Vault_Music_BRrapper",
+        "description": "None"
+    },
+    {
+        "itemID": "913047009",
+        "icon": "FF_UI_Vault_Music_Woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "913047010",
+        "icon": "FF_UI_Vault_Music_Woodcrafter",
+        "description": "None"
+    },
+    {
+        "itemID": "913047011",
+        "icon": "FF_UI_Vault_Music_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "914047001",
+        "icon": "Icon_Emote_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "914047002",
+        "icon": "FF_UI_Transform_icon_Aurora_Transform",
+        "description": "None"
+    },
+    {
+        "itemID": "921046023",
+        "icon": "FF_UI_Voiceitem_IHPopular",
+        "description": "None"
+    },
+    {
+        "itemID": "921046024",
+        "icon": "FF_UI_Voiceitem_IHPopular",
+        "description": "None"
+    },
+    {
+        "itemID": "921046025",
+        "icon": "FF_UI_Voiceitem_IHPopular",
+        "description": "None"
+    },
+    {
+        "itemID": "921046026",
+        "icon": "FF_UI_Voiceitem_IHPopular",
+        "description": "None"
+    },
+    {
+        "itemID": "921047001",
+        "icon": "FF_UI_Voiceitem_Winterfest25_1",
+        "description": "None"
+    },
+    {
+        "itemID": "921047002",
+        "icon": "FF_UI_Voiceitem_Winterfest25_2",
+        "description": "None"
+    },
+    {
+        "itemID": "921047003",
+        "icon": "FF_UI_Voiceitem_Winterfest25_3",
+        "description": "None"
+    },
+    {
+        "itemID": "921047004",
+        "icon": "FF_UI_Voiceitem_Winterfest25_4",
+        "description": "None"
+    },
+    {
+        "itemID": "921047005",
+        "icon": "FF_UI_Voiceitem_ME47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047006",
+        "icon": "FF_UI_Voiceitem_ME47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047007",
+        "icon": "FF_UI_Voiceitem_ID47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047008",
+        "icon": "FF_UI_Voiceitem_ID47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047009",
+        "icon": "FF_UI_Voiceitem_ID47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047010",
+        "icon": "FF_UI_Voiceitem_ID47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047011",
+        "icon": "FF_UI_Voiceitem_ID47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047018",
+        "icon": "FF_UI_Voiceitem_BD47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047019",
+        "icon": "FF_UI_Voiceitem_BD47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047020",
+        "icon": "FF_UI_Voiceitem_BD47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047021",
+        "icon": "FF_UI_Voiceitem_BD47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047022",
+        "icon": "FF_UI_Voiceitem_BD47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047023",
+        "icon": "FF_UI_Voiceitem_VN47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047024",
+        "icon": "FF_UI_Voiceitem_VN47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047025",
+        "icon": "FF_UI_Voiceitem_VN47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047026",
+        "icon": "FF_UI_Voiceitem_VN47",
+        "description": "None"
+    },
+    {
+        "itemID": "921047027",
+        "icon": "FF_UI_Voiceitem_VN47",
+        "description": "None"
+    },
+    {
+        "itemID": "922047001",
+        "icon": "UI_Icon_SkillSkin_MonkeyGod_Wukong_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "923387586",
+        "icon": "T_47_HX_M_T_NB_YellowIcon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "923387587",
+        "icon": "T_47_HX_M_T_NB_BlackIcon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "923387588",
+        "icon": "T_47_HX_M_T_NB_PinkIcon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "923387589",
+        "icon": "T_47_HX_M_T_NB_WhiteIcon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "923387590",
+        "icon": "T_47_HX_M_T_NB_JiIcon_box_3",
+        "description": "None"
+    },
+    {
+        "itemID": "925047001",
+        "icon": "Icon_BattleCard_default",
+        "description": "None"
+    },
+    {
+        "itemID": "925047002",
+        "icon": "Icon_BattleCard_Aurora",
+        "description": "None"
+    },
+    {
+        "itemID": "925047003",
+        "icon": "Icon_BattleCard_NB",
+        "description": "None"
+    },
+    {
+        "itemID": "1310000057",
+        "icon": "Icon_Pet_Aurorafox",
+        "description": "None"
+    }
+]
