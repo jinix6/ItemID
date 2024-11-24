@@ -6,36 +6,40 @@ let currentPage = 1;
 const webpsPerPage = 200;
 let cdn_img_json;
 let pngs_json_list;
-const edge_btn = document.getElementById("edge_btn");
 const bodyElement = document.body;
 const extra_set = document.getElementById("extra_set")
 extra_set.classList.remove("collapsed2");
 extra_set.classList.add("expanded2");
 const p = console.log;
-fetch('cdn.img')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.arrayBuffer();
+const notFoundText = () => document.getElementById('not_found_text');
+
+
+// Fetch data from multiple JSON files concurrently using Promise.all
+Promise.all([
+  // Fetching 'cdn.json' and parsing it as JSON
+  fetch('cdn.json').then(response => response.json()),
+  // Fetching 'pngs.json' and parsing it as JSON
+  fetch('pngs.json').then(response => response.json()),
+  // Fetching 'itemData.json' and parsing it as JSON
+  fetch('itemData.json').then(response => response.json())
+])
+  .then(([cdnData, pngsData, itemDatar]) => {
+    // Assign the fetched data to global variables for further use
+    cdn_img_json = cdnData;      // Contains data from 'cdn.json'
+    pngs_json_list = pngsData;   // Contains data from 'pngs.json'
+    itemData = itemDatar;        // Contains data from 'itemData.json'
+
+    // Display the first page of data, passing itemDatar and an empty string as arguments
+    displayPage(1, '', itemDatar);
+
+    // Execute additional logic based on URL parameters or other conditions
+    check_parameter();
   })
-  .then(data => {
-    const encryptedData = new Uint8Array(data); // Convert ArrayBuffer to Uint8Array if needed
-    const decryptedText = decryptBinaryData(encryptedData);
-    if (decryptedText !== null) {
-      cdn_img_json = JSON.parse(decryptedText);
-      fetch('pngs.json')
-        .then(response => response.json())
-        .then(data => (pngs_json_list = data));
-      fetch('itemData.json')
-        .then(response => response.json())
-        .then(data => {
-          itemData = data
-          displayPage(1, '', itemData);
-          check_parameter();
-        });
-    }
-  })
+  .catch(error => {
+    // Log any errors encountered during the fetch or processing
+    console.error('Error fetching data:', error);
+  });
+
 
 
 const encrypt = (longUrl) => {
@@ -134,17 +138,17 @@ async function displayPage(pageNumber, searchTerm, webps) {
   webpGallery.innerHTML = '';
   for (let i = startIdx; i < endIdx && i < filteredItems.length; i++) {
     const image = document.createElement("img");
-    image.addEventListener('click', () => {
-      show_item_info(filteredItems[i])
-    });
+    let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png"
     if (pngs_json_list) {
       if (pngs_json_list.includes(filteredItems[i].icon + ".png")) {
         image.src = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/" + filteredItems[i].icon + ".png";
+        imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/" + filteredItems[i].icon + ".png";
       } else {
         const keyToFind = (filteredItems[i].itemID).toString()
         const value = cdn_img_json.find(obj => obj[keyToFind])?.[keyToFind] ?? null;
         if (value !== null) {
           image.src = value;
+          imgSrc = value;
         } else {
           image.src = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png"
         }
@@ -155,6 +159,11 @@ async function displayPage(pageNumber, searchTerm, webps) {
     } 
       webpGallery.appendChild(image);
     }
+    
+    image.addEventListener('click', () => {
+      show_item_info(filteredItems[i], imgSrc)
+    });
+    
   }
   totalPages = Math.ceil(filteredItems.length / webpsPerPage);
   renderPagination(searchTerm, webps);
@@ -162,14 +171,14 @@ async function displayPage(pageNumber, searchTerm, webps) {
   updateUrl();
 }
 
-function show_item_info(data) {
+function show_item_info(data, imgSrc) {
   document.getElementById('cardimage').src = '';
   const { icon, description, description2, itemID } = data;
   const itemDetail = description2 ? `${description} - ${description2}` : description;
   ["mainnnnn_bg", "dialog_main_bg"].forEach(id => {
     document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
   });
-  document.getElementById('cardimage').src = `https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/${icon}.png`;
+  document.getElementById('cardimage').src = imgSrc;
   a1 = itemDetail;
   a2 = itemID;
   a3 = icon;
@@ -202,7 +211,7 @@ async function renderPagination(searchTerm, webps) {
   const paginationNumbers = generate_pagination_numbers();
   if (paginationNumbers.length === 0) {
     document.getElementById("pagi73hd").style.visibility = "hidden";
-    if (!document.getElementById('not_found_text')) {
+    if (!notFoundText()) {
     const notFoundText = document.createElement('h1');
     notFoundText.id = 'not_found_text';
     notFoundText.className = 'transition-all duration-100 ease-in-out mt-[10vh] font-black select-none space-mono-regular text-zinc-500 rotate-90 text-[1000%] w-[100vw] text-center whitespace-nowrap';
@@ -211,9 +220,8 @@ async function renderPagination(searchTerm, webps) {
     }
   } else {
     document.getElementById("pagi73hd").style.visibility = "visible";
-    const notFoundText = document.getElementById('not_found_text');
-    if (notFoundText) {
-      notFoundText.remove();
+    if (notFoundText()) {
+      notFoundText().remove();
     }
     const pagination = document.getElementById('pagination');
     pagination.innerHTML = '';
@@ -265,53 +273,74 @@ function decryptBinaryData(encryptedData) {
   });
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
+
+
+
+
+
+
+// Event listener to run the function when the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', (event) => {
-  edge_btn.addEventListener('click', () => {
-    const notFoundText = document.getElementById('not_found_text');
+
+  // Add click event listener to the element with id "edge_btn"
+  document.getElementById("edge_btn").addEventListener('click', () => {
+
+    // Check if the body element has the class "collapsed"
     if (bodyElement.classList.contains("collapsed")) {
+
+      // If it's collapsed, expand it by changing classes
       bodyElement.classList.remove("collapsed");
       bodyElement.classList.add("expanded");
+
+      // Similarly, expand the extra set by changing its classes
       extra_set.classList.remove("collapsed2");
       extra_set.classList.add("expanded2");
+
+      // Enable the input element with id "input_d"
       document.getElementById("input_d").disabled = false;
-      if (notFoundText) {
-        notFoundText.style.opacity = 1
+
+      // If a "notFoundText" element exists, make it visible (set opacity to 1)
+      if (notFoundText()) {
+        notFoundText().style.opacity = 1;
       }
-    } else {
+
+    } else {  // If the body is already expanded, collapse it
       bodyElement.classList.remove("expanded");
       bodyElement.classList.add("collapsed");
+
+      // Similarly, collapse the extra set by changing its classes
       extra_set.classList.remove("expanded2");
       extra_set.classList.add("collapsed2");
+
+      // Disable the input element with id "input_d"
       document.getElementById("input_d").disabled = true;
-      if (notFoundText) {
-        notFoundText.style.opacity = 0
+
+      // If a "notFoundText" element exists, hide it (set opacity to 0)
+      if (notFoundText()) {
+        notFoundText().style.opacity = 0;
       }
     }
   });
 });
 
-document.getElementById("FFInformation").addEventListener("click", function() {
-  window.open("https://jinix6.github.io/FFInformation");
-});
-document.getElementById("clgroup").addEventListener("click", function() {
-  window.open("https://t.me/freefirecraftlandgroup");
-});
-document.getElementById("clprogroup").addEventListener("click", function() {
-  window.open("https://t.me/ffcsharezone");
-});
 
-document.getElementById("tg").addEventListener("click", function() {
-  window.open("https://t.me/Crystal_Person");
-});
 
-document.getElementById("ig").addEventListener("click", function() {
-  window.open("https://www.instagram.com/crystal.pers0n");
-});
 
-document.getElementById("gt").addEventListener("click", function() {
-  window.open("https://github.com/jinix6");
-});
 
-document.getElementById("logo").addEventListener("click", function() {
-  window.open("https://ff-items.pages.dev");
+
+// Define an object containing key-value pairs for link identifiers and their corresponding URLs
+const links = {
+  clgroup: "https://t.me/freefirecraftlandgroup", // Telegram group for Craftland
+  clprogroup: "https://t.me/ffcsharezone",        // Telegram group for sharing zone
+  tg: "https://t.me/Crystal_Person",              // Telegram link for a person
+  gt: "https://github.com/jinix6"                 // GitHub profile link
+};
+
+// Iterate over the entries of the 'links' object
+Object.entries(links).forEach(([t, e]) => {
+  // For each entry, add a 'click' event listener to the element with the corresponding ID
+  document.getElementById(t).addEventListener("click", () => {
+    // On click, open the associated URL in a new browser tab/window
+    window.open(e);
+  });
 });
