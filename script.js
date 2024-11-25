@@ -2,6 +2,7 @@ var a1, a2, a3, a4;
 let hasRun = false;
 let itemData;
 let gl_ob47_added_itemData;
+let gl_ob46_added_itemData;
 let totalPages;
 let currentPage = 1;
 const webpsPerPage = 200;
@@ -24,14 +25,17 @@ Promise.all([
   // Fetching 'itemData.json' and parsing it as JSON
   fetch('itemData.json').then(response => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
-  fetch('ob47_added_itemData.json').then(response => response.json())
+  fetch('ob47_added_itemData.json').then(response => response.json()),
+  
+  fetch('ob46_added_itemData.json').then(response => response.json())
 ])
-  .then(([cdnData, pngsData, itemDatar, ob47_added_itemData]) => {
+  .then(([cdnData, pngsData, itemDatar, ob47_added_itemData, ob46_added_itemData]) => {
     // Assign the fetched data to global variables for further use
     cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
     pngs_json_list = pngsData;   // Contains data from 'pngs.json'
     itemData = itemDatar;        // Contains data from 'itemData.json'
     gl_ob47_added_itemData = ob47_added_itemData;// Contains data from 'ob47_added_itemData.json'
+    gl_ob46_added_itemData = ob46_added_itemData;
     // Display the first page of data, passing itemDatar and an empty string as arguments
     displayPage(1, '', itemDatar);
         // Execute additional logic based on URL parameters or other conditions
@@ -165,7 +169,7 @@ async function displayPage(pageNumber, searchTerm, webps) {
 const hide_dialog = () => ["dialog_main_bg", "mainnnnn_bg"]
   .forEach(id => document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards");
 
-
+  
 
 
 function s2how_item_info(data, imgSrc) {
@@ -272,7 +276,9 @@ async function goToPage(pageNumber, searchTerm, webps) {
 
 function search() {
   document.getElementById("Ob47Item_btn").textContent = "OB47 Items";
-  isFirstSet = true;
+  document.getElementById("Ob46Item_btn").textContent = "OB46 Items";
+  Ob47Itemboolean = true;
+  Ob46Itemboolean = true;
   const keyword = document.getElementById("input_d").value
   addParameterWithoutRefresh('icon', encrypt(keyword));
   displayPage(1, keyword, itemData);
@@ -344,15 +350,27 @@ Object.entries(links).forEach(([t, e]) => {
 
 
 
+
+
+
+let Ob46Itemboolean = true;
+async function Ob46Item(element) {
+  Ob47Itemboolean = true;
+  document.getElementById("Ob47Item_btn").textContent = "OB47 Items";
+  await displayPage(1, '', Ob46Itemboolean ? gl_ob46_added_itemData : itemData);
+  element.textContent = Ob46Itemboolean ? "Clear" : "OB46 Items";
+  Ob46Itemboolean = !Ob46Itemboolean;
+  document.getElementById('input_d').value = "";
+}
+
+
+
+let Ob47Itemboolean = true;
 async function Ob47Item(element) {
-  // Get the current state from the element's dataset or initialize it
-  const isFirstSet = element.dataset.isFirstSet === "true";
-  // Update the page based on the current state
-  await displayPage(1, '', isFirstSet ? gl_ob47_added_itemData : itemData);
-  // Toggle the button text
-  element.textContent = isFirstSet ? "Clear" : "OB47 Items";
-  // Toggle the state and save it back to the element's dataset
-  element.dataset.isFirstSet = !isFirstSet;
-  // Clear the input field
+  Ob46Itemboolean = true;
+  document.getElementById("Ob46Item_btn").textContent = "OB46 Items";
+  await displayPage(1, '', Ob47Itemboolean ? gl_ob47_added_itemData : itemData);
+  element.textContent = Ob47Itemboolean ? "Clear" : "OB47 Items";
+  Ob47Itemboolean = !Ob47Itemboolean;
   document.getElementById('input_d').value = "";
 }

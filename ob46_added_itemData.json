@@ -1,0 +1,3933 @@
+[
+    {
+        "itemID": "1002000201",
+        "description": "Defender Gadget",
+        "description2": "Increases Gloo Wall durability and auto-releases a Gloo Wall when downed (with cooldown)",
+        "icon": "FF_UI_Glooworld_Sys_Module_Guard"
+    },
+    {
+        "itemID": "1002000202",
+        "description": "Wrecking Gadget",
+        "description2": "Increases weapon damage to Gloo Walls. Causes an explosion after destroying them (with cooldown) to deal damage to enemies nearby.",
+        "icon": "FF_UI_Glooworld_Sys_Module_Attack"
+    },
+    {
+        "itemID": "1002000203",
+        "description": "Scanner Gadget",
+        "description2": "After placing a Gloo Wall (with cooldown)",
+        "icon": "FF_UI_Glooworld_Sys_Module_Radar"
+    },
+    {
+        "itemID": "1002000204",
+        "description": "Lavish Gadget",
+        "description2": "After placing a Gloo Wall (with cooldown)",
+        "icon": "FF_UI_Glooworld_Sys_Module_Alchemy"
+    },
+    {
+        "itemID": "101000050",
+        "description": "Lila",
+        "description2": "A cool",
+        "icon": "Icon_face_female_head_sc_MischiefGirl"
+    },
+    {
+        "itemID": "170046001",
+        "description": "Choice Crate 10",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046002",
+        "description": "Choice Crate 11",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046003",
+        "description": "Your Choice Crate 1",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046004",
+        "description": "Your Choice Crate 2",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046005",
+        "description": "Your Choice Crate 3",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046006",
+        "description": "Your Choice Crate 4",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046007",
+        "description": "Your Choice Crate 5",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046008",
+        "description": "Your Choice Crate 6",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046009",
+        "description": "Your Choice Crate 7",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046010",
+        "description": "Your Choice Crate 8",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046011",
+        "description": "Your Choice Crate 9",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "170046012",
+        "description": "Your Choice Crate 10",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_OptionalBundle_default"
+    },
+    {
+        "itemID": "203046000",
+        "description": "Jagged Grin (Top)",
+        "icon": "Icon_avatar_male_cos_top_smile"
+    },
+    {
+        "itemID": "203046001",
+        "description": "Jagged Smile (Top)",
+        "icon": "Icon_avatar_female_cos_top_smile"
+    },
+    {
+        "itemID": "203046002",
+        "description": "Complete Combustion (Top)",
+        "icon": "Icon_avatar_male_cos_top_microwaves"
+    },
+    {
+        "itemID": "203046003",
+        "description": "Rapid Combustion (Top)",
+        "icon": "Icon_avatar_female_cos_top_microwaves"
+    },
+    {
+        "itemID": "203046004",
+        "description": "Horsin' Around (Top)",
+        "icon": "Icon_avatar_male_cos_top_pinata"
+    },
+    {
+        "itemID": "203046005",
+        "description": "No Horsin' Around (Top)",
+        "icon": "Icon_avatar_female_cos_top_pinata"
+    },
+    {
+        "itemID": "203046006",
+        "description": "Violet Vortex (Top)",
+        "icon": "Icon_avatar_male_cos_top_purplelight"
+    },
+    {
+        "itemID": "203046007",
+        "description": "Violet Voltage (Top)",
+        "icon": "Icon_avatar_female_cos_top_purplelight"
+    },
+    {
+        "itemID": "203046008",
+        "description": "Wrap in Style (Top)",
+        "icon": "Icon_avatar_male_cos_top_sushi24"
+    },
+    {
+        "itemID": "203046009",
+        "description": "Roll in Style (Top)",
+        "icon": "Icon_avatar_female_cos_top_sushi24"
+    },
+    {
+        "itemID": "203046010",
+        "description": "Mystic Aura (Top)",
+        "icon": "Icon_avatar_male_cos_top_yinyang24"
+    },
+    {
+        "itemID": "203046011",
+        "description": "Tainted Aura (Top)",
+        "icon": "Icon_avatar_female_cos_top_yinyang24"
+    },
+    {
+        "itemID": "203046012",
+        "description": "Booyah Captain (Top)",
+        "icon": "Icon_avatar_male_cos_top_booyahday24"
+    },
+    {
+        "itemID": "203046013",
+        "description": "Booyah Leader (Top)",
+        "icon": "Icon_avatar_female_cos_top_booyahday24"
+    },
+    {
+        "itemID": "203046014",
+        "description": "Eternal Avenger (Top)",
+        "icon": "Icon_avatar_cos_top_iron_blue"
+    },
+    {
+        "itemID": "203046015",
+        "description": "Eternal Essence (Top)",
+        "icon": "Icon_avatar_cos_top_iron_red"
+    },
+    {
+        "itemID": "203046016",
+        "description": "On Vacation (Top)",
+        "icon": "Icon_avatar_male_cos_top_ffws2204"
+    },
+    {
+        "itemID": "203046017",
+        "description": "Top of Class (Top)",
+        "icon": "Icon_avatar_cos_top_school_vn"
+    },
+    {
+        "itemID": "203046018",
+        "description": "Magma Born (Top)",
+        "icon": "Icon_avatar_male_cos_top_lightfest24_monkey"
+    },
+    {
+        "itemID": "203046019",
+        "description": "Grizzly Born (Top)",
+        "icon": "Icon_avatar_male_cos_top_lightfest24_bear"
+    },
+    {
+        "itemID": "203046020",
+        "description": "Loy Lotus (Top)",
+        "icon": "Icon_avatar_cos_top_loyfest"
+    },
+    {
+        "itemID": "203046021",
+        "description": "Necro Walker (Top)",
+        "icon": "Icon_avatar_male_cos_top_sugarskull24_01"
+    },
+    {
+        "itemID": "203046022",
+        "description": "Bony Punch (Top)",
+        "icon": "Icon_avatar_male_cos_top_sugarskull24_02"
+    },
+    {
+        "itemID": "203046023",
+        "description": "Bony Catrina (Top)",
+        "icon": "Icon_avatar_female_cos_top_sugarskull24_02"
+    },
+    {
+        "itemID": "203046024",
+        "description": "Gloo Sploosh (Top)",
+        "icon": "Icon_avatar_female_cos_top_glooworld"
+    },
+    {
+        "itemID": "203046025",
+        "description": "Shadow Prowler (Top)",
+        "icon": "Icon_avatar_male_cos_top_dreadlocks"
+    },
+    {
+        "itemID": "203046026",
+        "description": "Shadow Dancer (Top)",
+        "icon": "Icon_avatar_female_cos_top_dreadlocks"
+    },
+    {
+        "itemID": "203046027",
+        "description": "Aero Flex (Top)",
+        "icon": "Icon_avatar_male_cos_top_sportswear_bw"
+    },
+    {
+        "itemID": "203046028",
+        "description": "Aero Ready (Top)",
+        "icon": "Icon_avatar_female_cos_top_sportswear_bw"
+    },
+    {
+        "itemID": "203046029",
+        "description": "CS-Ranked S27 Heroic",
+        "icon": "Icon_avatar_male_cos_top_csrank27"
+    },
+    {
+        "itemID": "203046030",
+        "description": "BR-Ranked S42 Heroic",
+        "icon": "Icon_avatar_male_cos_top_rank42"
+    },
+    {
+        "itemID": "203046031",
+        "description": "CS-Ranked S28 Heroic",
+        "icon": "Icon_avatar_male_cos_top_csrank28"
+    },
+    {
+        "itemID": "203046032",
+        "description": "FFWS 2024 Fall T-shirt",
+        "icon": "Icon_avatar_cos_top_ffws_sf"
+    },
+    {
+        "itemID": "203046033",
+        "description": "Gloo Artist (Top)",
+        "icon": "Icon_avatar_sc_top_mischiefgirl"
+    },
+    {
+        "itemID": "203046036",
+        "description": "Street Savvy (Top)",
+        "icon": "Icon_avatar_male_cos_top_th_jp"
+    },
+    {
+        "itemID": "203046037",
+        "description": "Fashion Savvy (Top)",
+        "icon": "Icon_avatar_female_cos_top_th_jp"
+    },
+    {
+        "itemID": "203046038",
+        "description": "FFWS TEAM 1",
+        "icon": "Icon_avatar_cos_top_ffws_sf01"
+    },
+    {
+        "itemID": "203046039",
+        "description": "FFWS TEAM 2",
+        "icon": "Icon_avatar_cos_top_ffws_sf02"
+    },
+    {
+        "itemID": "203046040",
+        "description": "FFWS TEAM 3",
+        "icon": "Icon_avatar_cos_top_ffws_sf03"
+    },
+    {
+        "itemID": "203046041",
+        "description": "FFWS TEAM 4",
+        "icon": "Icon_avatar_cos_top_ffws_sf04"
+    },
+    {
+        "itemID": "203046042",
+        "description": "FFWS TEAM 5",
+        "icon": "Icon_avatar_cos_top_ffws_sf05"
+    },
+    {
+        "itemID": "203046043",
+        "description": "FFWS TEAM 6",
+        "icon": "Icon_avatar_cos_top_ffws_sf06"
+    },
+    {
+        "itemID": "203046044",
+        "description": "FFWS TEAM 7",
+        "icon": "Icon_avatar_cos_top_ffws_sf07"
+    },
+    {
+        "itemID": "203046045",
+        "description": "FFWS TEAM 8",
+        "icon": "Icon_avatar_cos_top_ffws_sf08"
+    },
+    {
+        "itemID": "203046046",
+        "description": "FFWS TEAM 9",
+        "icon": "Icon_avatar_cos_top_ffws_sf09"
+    },
+    {
+        "itemID": "203046047",
+        "description": "FFWS TEAM 10",
+        "icon": "Icon_avatar_cos_top_ffws_sf10"
+    },
+    {
+        "itemID": "203046048",
+        "description": "FFWS TEAM 11",
+        "icon": "Icon_avatar_cos_top_ffws_sf11"
+    },
+    {
+        "itemID": "203046049",
+        "description": "FFWS TEAM 12",
+        "icon": "Icon_avatar_cos_top_ffws_sf12"
+    },
+    {
+        "itemID": "203046050",
+        "description": "FFWS TEAM 13",
+        "icon": "Icon_avatar_cos_top_ffws_sf13"
+    },
+    {
+        "itemID": "203046051",
+        "description": "FFWS TEAM 14",
+        "icon": "Icon_avatar_cos_top_ffws_sf14"
+    },
+    {
+        "itemID": "203046052",
+        "description": "FFWS TEAM 15",
+        "icon": "Icon_avatar_cos_top_ffws_sf15"
+    },
+    {
+        "itemID": "203046053",
+        "description": "FFWS TEAM 16",
+        "icon": "Icon_avatar_cos_top_ffws_sf16"
+    },
+    {
+        "itemID": "203046054",
+        "description": "FFWS TEAM 17",
+        "icon": "Icon_avatar_cos_top_ffws_sf17"
+    },
+    {
+        "itemID": "203046055",
+        "description": "FFWS TEAM 18",
+        "icon": "Icon_avatar_cos_top_ffws_sf18"
+    },
+    {
+        "itemID": "203046056",
+        "description": "Pringles Pop Jacket",
+        "icon": "Icon_avatar_cos_top_br_chips"
+    },
+    {
+        "itemID": "203046057",
+        "description": "Code K (Top)",
+        "icon": "Icon_avatar_male_cos_top_br_security"
+    },
+    {
+        "itemID": "203046058",
+        "description": "Dusky Mood Jacket",
+        "icon": "Icon_avatar_male_cos_top_trending_th"
+    },
+    {
+        "itemID": "203046059",
+        "description": "Pawsky Mood Top",
+        "icon": "Icon_avatar_female_cos_top_trending_th"
+    },
+    {
+        "itemID": "203046060",
+        "description": "Isagi - Team Z (Top)",
+        "icon": "Icon_avatar_male_cos_top_fb_black"
+    },
+    {
+        "itemID": "203046061",
+        "description": "Nagi - Team V (Top)",
+        "icon": "Icon_avatar_male_cos_top_fb_white"
+    },
+    {
+        "itemID": "203046062",
+        "description": "BLUE LOCK BODYSUIT (Top)",
+        "icon": "Icon_avatar_cos_top_fb_common"
+    },
+    {
+        "itemID": "203046063",
+        "description": "Isagi - Team White (Top)",
+        "icon": "Icon_avatar_male_cos_top_fb_black02"
+    },
+    {
+        "itemID": "203046064",
+        "description": "Nagi - Team White (Top)",
+        "icon": "Icon_avatar_male_cos_top_fb_white02"
+    },
+    {
+        "itemID": "204046000",
+        "description": "Jagged Grin (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_smile"
+    },
+    {
+        "itemID": "204046001",
+        "description": "Jagged Smile (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_smile"
+    },
+    {
+        "itemID": "204046002",
+        "description": "Complete Combustion (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_microwaves"
+    },
+    {
+        "itemID": "204046003",
+        "description": "Rapid Combustion (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_microwaves"
+    },
+    {
+        "itemID": "204046004",
+        "description": "Horsin' Around (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_pinata"
+    },
+    {
+        "itemID": "204046005",
+        "description": "No Horsin' Around (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_pinata"
+    },
+    {
+        "itemID": "204046006",
+        "description": "Violet Vortex (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_purplelight"
+    },
+    {
+        "itemID": "204046007",
+        "description": "Violet Voltage (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_purplelight"
+    },
+    {
+        "itemID": "204046008",
+        "description": "Wrap in Style (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_sushi24"
+    },
+    {
+        "itemID": "204046009",
+        "description": "Roll in Style (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_sushi24"
+    },
+    {
+        "itemID": "204046010",
+        "description": "Mystic Aura (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_yinyang24"
+    },
+    {
+        "itemID": "204046011",
+        "description": "Tainted Aura (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_yinyang24"
+    },
+    {
+        "itemID": "204046012",
+        "description": "Booyah Captain (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_booyahday24"
+    },
+    {
+        "itemID": "204046013",
+        "description": "Booyah Leader (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_booyahday24"
+    },
+    {
+        "itemID": "204046014",
+        "description": "On Vacation (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_ffws2204"
+    },
+    {
+        "itemID": "204046015",
+        "description": "Top of Class (Bottom)",
+        "icon": "Icon_avatar_cos_bottom_school_vn"
+    },
+    {
+        "itemID": "204046016",
+        "description": "Magma Born (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_lightfest24_monkey"
+    },
+    {
+        "itemID": "204046017",
+        "description": "Grizzly Born (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_lightfest24_bear"
+    },
+    {
+        "itemID": "204046018",
+        "description": "Loy Lotus (Bottom)",
+        "icon": "Icon_avatar_cos_bottom_loyfest"
+    },
+    {
+        "itemID": "204046019",
+        "description": "Necro Walker (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_sugarskull24_01"
+    },
+    {
+        "itemID": "204046020",
+        "description": "Bony Punch (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_sugarskull24_02"
+    },
+    {
+        "itemID": "204046021",
+        "description": "Bony Catrina (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_sugarskull24_02"
+    },
+    {
+        "itemID": "204046022",
+        "description": "Gloo Sploosh (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_glooworld"
+    },
+    {
+        "itemID": "204046023",
+        "description": "Shadow Prowler (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_dreadlocks"
+    },
+    {
+        "itemID": "204046024",
+        "description": "Shadow Dancer (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_dreadlocks"
+    },
+    {
+        "itemID": "204046025",
+        "description": "Aero Flex (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_sportswear_bw"
+    },
+    {
+        "itemID": "204046026",
+        "description": "Aero Ready (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_sportswear_bw"
+    },
+    {
+        "itemID": "204046027",
+        "description": "Horsey Shorts",
+        "icon": "Icon_avatar_cos_bottom_pinata_fp"
+    },
+    {
+        "itemID": "204046028",
+        "description": "Gloo Artist (Bottom)",
+        "icon": "Icon_avatar_sc_bottom_mischiefgirl"
+    },
+    {
+        "itemID": "204046029",
+        "description": "Street Savvy (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_th_jp"
+    },
+    {
+        "itemID": "204046030",
+        "description": "Fashion Savvy (Bottom)",
+        "icon": "Icon_avatar_female_cos_bottom_th_jp"
+    },
+    {
+        "itemID": "204046031",
+        "description": "Code K (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_br_security"
+    },
+    {
+        "itemID": "204046032",
+        "description": "Isagi - Team Z (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_fb_black"
+    },
+    {
+        "itemID": "204046033",
+        "description": "Nagi - Team V (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_fb_white"
+    },
+    {
+        "itemID": "204046034",
+        "description": "BLUE LOCK BODYSUIT (Bottom)",
+        "icon": "Icon_avatar_cos_bottom_fb_common"
+    },
+    {
+        "itemID": "204046035",
+        "description": "Isagi - Team White (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_fb_black02"
+    },
+    {
+        "itemID": "204046036",
+        "description": "Nagi - Team White (Bottom)",
+        "icon": "Icon_avatar_male_cos_bottom_fb_white02"
+    },
+    {
+        "itemID": "205046000",
+        "description": "Jagged Grin (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_smile"
+    },
+    {
+        "itemID": "205046001",
+        "description": "Jagged Smile (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_smile"
+    },
+    {
+        "itemID": "205046002",
+        "description": "Complete Combustion (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_microwaves"
+    },
+    {
+        "itemID": "205046003",
+        "description": "Rapid Combustion (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_microwaves"
+    },
+    {
+        "itemID": "205046004",
+        "description": "Horsin' Around (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_pinata"
+    },
+    {
+        "itemID": "205046005",
+        "description": "No Horsin' Around (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_pinata"
+    },
+    {
+        "itemID": "205046006",
+        "description": "Violet Vortex (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_purplelight"
+    },
+    {
+        "itemID": "205046007",
+        "description": "Violet Voltage (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_purplelight"
+    },
+    {
+        "itemID": "205046008",
+        "description": "Wrap in Style (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_sushi24"
+    },
+    {
+        "itemID": "205046009",
+        "description": "Roll in Style (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_sushi24"
+    },
+    {
+        "itemID": "205046010",
+        "description": "Mystic Aura (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_yinyang24"
+    },
+    {
+        "itemID": "205046011",
+        "description": "Tainted Aura (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_yinyang24"
+    },
+    {
+        "itemID": "205046012",
+        "description": "Booyah Captain (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_booyahday24"
+    },
+    {
+        "itemID": "205046013",
+        "description": "Booyah Leader (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_booyahday24"
+    },
+    {
+        "itemID": "205046014",
+        "description": "On Vacation (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_ffws2204"
+    },
+    {
+        "itemID": "205046015",
+        "description": "Top of Class (Shoes)",
+        "icon": "Icon_avatar_cos_shoe_school_vn"
+    },
+    {
+        "itemID": "205046016",
+        "description": "Magma Born (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_lightfest24_monkey"
+    },
+    {
+        "itemID": "205046017",
+        "description": "Grizzly Born (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_lightfest24_bear"
+    },
+    {
+        "itemID": "205046018",
+        "description": "Loy Lotus (Shoes)",
+        "icon": "Icon_avatar_cos_shoe_loyfest"
+    },
+    {
+        "itemID": "205046019",
+        "description": "Necro Walker (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_sugarskull24_01"
+    },
+    {
+        "itemID": "205046020",
+        "description": "Bony Punch (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_sugarskull24_02"
+    },
+    {
+        "itemID": "205046021",
+        "description": "Bony Catrina (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_sugarskull24_02"
+    },
+    {
+        "itemID": "205046022",
+        "description": "Gloo Sploosh (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_glooworld"
+    },
+    {
+        "itemID": "205046023",
+        "description": "Shadow Prowler (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_dreadlocks"
+    },
+    {
+        "itemID": "205046024",
+        "description": "Shadow Dancer (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_dreadlocks"
+    },
+    {
+        "itemID": "205046025",
+        "description": "Aero Flex (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_sportswear_bw"
+    },
+    {
+        "itemID": "205046026",
+        "description": "Aero Ready (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_sportswear_bw"
+    },
+    {
+        "itemID": "205046027",
+        "description": "Combustible Shoes",
+        "icon": "Icon_avatar_cos_shoe_microwaves_fp"
+    },
+    {
+        "itemID": "205046028",
+        "description": "Gloo Artist (Shoes)",
+        "icon": "Icon_avatar_sc_shoe_mischiefgirl"
+    },
+    {
+        "itemID": "205046029",
+        "description": "Street Savvy (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_th_jp"
+    },
+    {
+        "itemID": "205046030",
+        "description": "Fashion Savvy (Shoes)",
+        "icon": "Icon_avatar_female_cos_shoe_th_jp"
+    },
+    {
+        "itemID": "205046031",
+        "description": "Code K (Shoes)",
+        "icon": "Icon_avatar_male_cos_shoe_br_security"
+    },
+    {
+        "itemID": "205046032",
+        "description": "Isagi Shoes",
+        "icon": "Icon_avatar_male_cos_shoe_fb_black"
+    },
+    {
+        "itemID": "205046033",
+        "description": "Nagi Shoes",
+        "icon": "Icon_avatar_male_cos_shoe_fb_white"
+    },
+    {
+        "itemID": "211046000",
+        "description": "Jagged Grin (Head)",
+        "icon": "Icon_avatar_male_cos_hair_smile"
+    },
+    {
+        "itemID": "211046001",
+        "description": "Jagged Smile (Head)",
+        "icon": "Icon_avatar_female_cos_hair_smile"
+    },
+    {
+        "itemID": "211046002",
+        "description": "Complete Combustion (Head)",
+        "icon": "Icon_avatar_male_cos_accessory_microwaves"
+    },
+    {
+        "itemID": "211046003",
+        "description": "Rapid Combustion (Head)",
+        "icon": "Icon_avatar_female_cos_accessory_microwaves"
+    },
+    {
+        "itemID": "211046004",
+        "description": "Horsin' Around (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_pinata"
+    },
+    {
+        "itemID": "211046005",
+        "description": "Horsin' Around (Head)",
+        "icon": "Icon_avatar_male_cos_hair_pinata"
+    },
+    {
+        "itemID": "211046006",
+        "description": "No Horsin' Around (Head)",
+        "icon": "Icon_avatar_female_cos_hair_pinata"
+    },
+    {
+        "itemID": "211046007",
+        "description": "Violet Vortex (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_purplelight"
+    },
+    {
+        "itemID": "211046008",
+        "description": "Violet Vortex (Head)",
+        "icon": "Icon_avatar_male_cos_hair_purplelight"
+    },
+    {
+        "itemID": "211046009",
+        "description": "Violet Voltage (Head)",
+        "icon": "Icon_avatar_female_cos_hair_purplelight"
+    },
+    {
+        "itemID": "211046010",
+        "description": "Wrap in Style (Head)",
+        "icon": "Icon_avatar_male_cos_hair_sushi24"
+    },
+    {
+        "itemID": "211046011",
+        "description": "Roll in Style (Head)",
+        "icon": "Icon_avatar_female_cos_hair_sushi24"
+    },
+    {
+        "itemID": "211046012",
+        "description": "Mystic Aura (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_yinyang24"
+    },
+    {
+        "itemID": "211046013",
+        "description": "Mystic Aura (Head)",
+        "icon": "Icon_avatar_male_cos_hair_yinyang24"
+    },
+    {
+        "itemID": "211046014",
+        "description": "Tainted Aura (Mask)",
+        "icon": "Icon_avatar_female_cos_accessory_yinyang24"
+    },
+    {
+        "itemID": "211046015",
+        "description": "Tainted Aura (Head)",
+        "icon": "Icon_avatar_female_cos_hair_yinyang24"
+    },
+    {
+        "itemID": "211046016",
+        "description": "Booyah Captain (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_booyahday24"
+    },
+    {
+        "itemID": "211046017",
+        "description": "Booyah Captain (Head)",
+        "icon": "Icon_avatar_male_cos_hair_booyahday24"
+    },
+    {
+        "itemID": "211046018",
+        "description": "Booyah Leader (Head)",
+        "icon": "Icon_avatar_female_cos_hair_booyahday24"
+    },
+    {
+        "itemID": "211046019",
+        "description": "Eternal Avenger (Mask)",
+        "icon": "Icon_avatar_cos_accessory_iron_blue"
+    },
+    {
+        "itemID": "211046020",
+        "description": "Eternal Essence (Mask)",
+        "icon": "Icon_avatar_cos_accessory_iron_red"
+    },
+    {
+        "itemID": "211046021",
+        "description": "Eternal Essence (Head)",
+        "icon": "Icon_avatar_cos_hair_iron_red"
+    },
+    {
+        "itemID": "211046022",
+        "description": "On Vacation (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_ffws2204"
+    },
+    {
+        "itemID": "211046023",
+        "description": "On Vacation (Head)",
+        "icon": "Icon_avatar_male_cos_hair_ffws2204"
+    },
+    {
+        "itemID": "211046024",
+        "description": "Top of Class (Head)",
+        "icon": "Icon_avatar_cos_hair_school_vn"
+    },
+    {
+        "itemID": "211046025",
+        "description": "Magma Born (Head)",
+        "icon": "Icon_avatar_male_cos_hair_lightfest24_monkey"
+    },
+    {
+        "itemID": "211046026",
+        "description": "Grizzly Born (Mask)",
+        "icon": "Icon_avatar_male_cos_hair_lightfest24_bear"
+    },
+    {
+        "itemID": "211046027",
+        "description": "Loy Lotus (Mask)",
+        "icon": "Icon_avatar_cos_accessory_loyfest"
+    },
+    {
+        "itemID": "211046028",
+        "description": "Loy Lotus (Head)",
+        "icon": "Icon_avatar_cos_hair_loyfest"
+    },
+    {
+        "itemID": "211046029",
+        "description": "Necro Walker (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_sugarskull24_01"
+    },
+    {
+        "itemID": "211046030",
+        "description": "Necro Walker (Head)",
+        "icon": "Icon_avatar_male_cos_hair_sugarskull24_01"
+    },
+    {
+        "itemID": "211046031",
+        "description": "Bony Punch (Head)",
+        "icon": "Icon_avatar_male_cos_hair_sugarskull24_02"
+    },
+    {
+        "itemID": "211046032",
+        "description": "Bony Catrina (Head)",
+        "icon": "Icon_avatar_female_cos_hair_sugarskull24_02"
+    },
+    {
+        "itemID": "211046033",
+        "description": "Gloo Sploosh (Head)",
+        "icon": "Icon_avatar_female_cos_hair_glooworld"
+    },
+    {
+        "itemID": "211046034",
+        "description": "Shadow Prowler (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_dreadlocks"
+    },
+    {
+        "itemID": "211046035",
+        "description": "Shadow Prowler (Head)",
+        "icon": "Icon_avatar_male_cos_hair_dreadlocks"
+    },
+    {
+        "itemID": "211046036",
+        "description": "Shadow Dancer (Mask)",
+        "icon": "Icon_avatar_female_cos_accessory_dreadlocks"
+    },
+    {
+        "itemID": "211046037",
+        "description": "Shadow Dancer (Head)",
+        "icon": "Icon_avatar_female_cos_hair_dreadlocks"
+    },
+    {
+        "itemID": "211046038",
+        "description": "Aero Flex (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_sportswear_bw"
+    },
+    {
+        "itemID": "211046039",
+        "description": "Aero Flex (Head)",
+        "icon": "Icon_avatar_male_cos_hair_sportswear_bw"
+    },
+    {
+        "itemID": "211046040",
+        "description": "Aero Ready (Mask)",
+        "icon": "Icon_avatar_female_cos_accessory_sportswear_bw"
+    },
+    {
+        "itemID": "211046041",
+        "description": "Aero Ready (Head)",
+        "icon": "Icon_avatar_female_cos_hair_sportswear_bw"
+    },
+    {
+        "itemID": "211046043",
+        "description": "Fluffy Hair",
+        "icon": "Icon_avatar_cos_hair_loyfest_hw1"
+    },
+    {
+        "itemID": "211046045",
+        "description": "Bone White Mask",
+        "icon": "Icon_avatar_cos_accessory_sugarskull24_mask"
+    },
+    {
+        "itemID": "211046046",
+        "description": "Jagged Sunglasses",
+        "icon": "Icon_avatar_cos_accessory_smile_fp"
+    },
+    {
+        "itemID": "211046048",
+        "description": "Booyah Hair",
+        "icon": "Icon_avatar_male_cos_hair_booyahday24_001"
+    },
+    {
+        "itemID": "211046049",
+        "description": "Street Savvy (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_th_jp"
+    },
+    {
+        "itemID": "211046050",
+        "description": "Street Savvy (Head)",
+        "icon": "Icon_avatar_male_cos_hair_th_jp"
+    },
+    {
+        "itemID": "211046051",
+        "description": "Fashion Savvy (Mask)",
+        "icon": "Icon_avatar_female_cos_accessory_th_jp"
+    },
+    {
+        "itemID": "211046052",
+        "description": "Fashion Savvy (Head)",
+        "icon": "Icon_avatar_female_cos_hair_th_jp"
+    },
+    {
+        "itemID": "211046053",
+        "description": "Code K (Mask)",
+        "icon": "Icon_avatar_male_cos_accessory_br_security"
+    },
+    {
+        "itemID": "211046054",
+        "description": "Code K (Head)",
+        "icon": "Icon_avatar_male_cos_hair_br_security"
+    },
+    {
+        "itemID": "211046055",
+        "description": "Isagi Head",
+        "icon": "Icon_avatar_male_cos_accessory_fb_black"
+    },
+    {
+        "itemID": "211046056",
+        "description": "Nagi Head",
+        "icon": "Icon_avatar_male_cos_accessory_fb_white"
+    },
+    {
+        "itemID": "211046060",
+        "description": "Booyah Hair",
+        "icon": "Icon_avatar_male_cos_hair_booyahday24_001"
+    },
+    {
+        "itemID": "211046061",
+        "description": "Booyah Hair",
+        "icon": "Icon_avatar_male_cos_hair_booyahday24_001"
+    },
+    {
+        "itemID": "211046062",
+        "description": "Booyah Hair",
+        "icon": "Icon_avatar_male_cos_hair_booyahday24_001"
+    },
+    {
+        "itemID": "214046000",
+        "description": "Mystic Aura (Facepaint)",
+        "icon": "Icon_avatar_male_cos_headadditive_yinyang24"
+    },
+    {
+        "itemID": "214046001",
+        "description": "Booyah Captain (Facepaint)",
+        "icon": "Icon_avatar_male_cos_headadditive_booyahday24"
+    },
+    {
+        "itemID": "214046002",
+        "description": "Necro Walker (Facepaint)",
+        "icon": "1Icon_avatar_male_cos_headadditive_sugarskull24_01"
+    },
+    {
+        "itemID": "214046003",
+        "description": "Bony Punch (Facepaint)",
+        "icon": "1Icon_avatar_male_cos_headadditive_sugarskull24_02"
+    },
+    {
+        "itemID": "214046004",
+        "description": "Bony Catrina (Facepaint)",
+        "icon": "3Icon_avatar_female_cos_headadditive_sugarskull24_02"
+    },
+    {
+        "itemID": "214046005",
+        "description": "Gloo Sploosh (Facepaint)",
+        "icon": "Icon_avatar_female_cos_headadditive_glooworld"
+    },
+    {
+        "itemID": "214046006",
+        "description": "Shadow Dancer (Facepaint)",
+        "icon": "Icon_avatar_female_cos_headadditive_dreadlocks"
+    },
+    {
+        "itemID": "214046007",
+        "description": "Grim Aura Facepaint",
+        "icon": "Icon_avatar_cos_headadditive_yinyang24_fp"
+    },
+    {
+        "itemID": "214046008",
+        "description": "Gloo-ed Facepaint",
+        "icon": "Icon_avatar_cos_headadditive_glooworld_mask"
+    },
+    {
+        "itemID": "214046009",
+        "description": "Street Savvy Facepaint",
+        "icon": "Icon_avatar_male_cos_headadditive_th_jp"
+    },
+    {
+        "itemID": "400046001",
+        "description": "BLUE LOCK (FAMAS) Weapon Loot Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_FB_White_Box_46"
+    },
+    {
+        "itemID": "400046002",
+        "description": "BLUE LOCK (Vector) Weapon Loot Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Common_GunBox_46"
+    },
+    {
+        "itemID": "400046003",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046004",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046005",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046006",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046007",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046008",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046009",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046010",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046011",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046012",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046013",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046014",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046015",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046016",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046017",
+        "description": "BP S22 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S19_Smile_46"
+    },
+    {
+        "itemID": "400046018",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046019",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046020",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046021",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046022",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046023",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046024",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046025",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046026",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046027",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046028",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046029",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046030",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046031",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046032",
+        "description": "BP S23 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S20_Microwaves_46"
+    },
+    {
+        "itemID": "400046033",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046034",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046035",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046036",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046037",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046038",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046039",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046040",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046041",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046042",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046043",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046044",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046045",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046046",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046047",
+        "description": "BP S24 Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BP_S21_Pinata_46"
+    },
+    {
+        "itemID": "400046048",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046049",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046050",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046051",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046052",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046053",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046054",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046055",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046056",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046057",
+        "description": "Glooey Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_1_46"
+    },
+    {
+        "itemID": "400046058",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046059",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046060",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046061",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046062",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046063",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046064",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046065",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046066",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046067",
+        "description": "Glootastic Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_2_46"
+    },
+    {
+        "itemID": "400046068",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046069",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046070",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046071",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046072",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046073",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046074",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046075",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046076",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046077",
+        "description": "Nova Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_GlooWorld_Token_3_46"
+    },
+    {
+        "itemID": "400046078",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046079",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046080",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046081",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046082",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046083",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046084",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046085",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046086",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046087",
+        "description": "Booyah Blue Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box1_46"
+    },
+    {
+        "itemID": "400046088",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046089",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046090",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046091",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046092",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046093",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046094",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046095",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046096",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046097",
+        "description": "Booyah Olive Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box2_46"
+    },
+    {
+        "itemID": "400046098",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046099",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046100",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046101",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046102",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046103",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046104",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046105",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046106",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046107",
+        "description": "Golden Booyah Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_BooyahDay_Box3_46"
+    },
+    {
+        "itemID": "400046108",
+        "description": "Woodpecker Jam Sessions Loot Crate",
+        "description2": "Open to receive a Woodpecker Jam Sessions",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "400046109",
+        "description": "Bizon Wraith Patrol Loot Crate",
+        "description2": "Open to receive a Bizon Wraith Patrol",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "400046110",
+        "description": "AN94 Dart Electric Loot Crate",
+        "description2": "Open to receive an AN94 Dart Electric",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "400046111",
+        "description": "Rockie 30D Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Mr_Waggor_30D_ID_42"
+    },
+    {
+        "itemID": "400046112",
+        "description": "Ottero 30D Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Mr_Waggor_30D_ID_42"
+    },
+    {
+        "itemID": "400046113",
+        "description": "Universal Evo Token Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Universal_Evo_43"
+    },
+    {
+        "itemID": "400046114",
+        "description": "Universal Evo Token Crate",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Universal_Evo_43"
+    },
+    {
+        "itemID": "400046501",
+        "description": "Diwali 2024 Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Diwali_Box_SG_46"
+    },
+    {
+        "itemID": "400046502",
+        "description": "Festival of Lights 2024 Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Fes2024_Box_SG_46"
+    },
+    {
+        "itemID": "400046503",
+        "description": "Scorpio Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046504",
+        "description": "Coffin Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046505",
+        "description": "Spooky Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046506",
+        "description": "FCB Pink Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046507",
+        "description": "FCB Blue Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046508",
+        "description": "FCB Yellow Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046509",
+        "description": "Horror Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "ES_46"
+    },
+    {
+        "itemID": "400046510",
+        "description": "Box 201",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046511",
+        "description": "Box 202",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046512",
+        "description": "Box 203",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046513",
+        "description": "Box 204",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046514",
+        "description": "Box 205",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046515",
+        "description": "Box 206",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046516",
+        "description": "Box 207",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046517",
+        "description": "Box 208",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046518",
+        "description": "Box 209",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046519",
+        "description": "Box 210",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046520",
+        "description": "Box 211",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046521",
+        "description": "Autumn box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046522",
+        "description": "10.10 box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046523",
+        "description": "Booyah Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046524",
+        "description": "Gift Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046525",
+        "description": "Wonder Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046526",
+        "description": "Happy Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Happy_Box_TH_46"
+    },
+    {
+        "itemID": "400046527",
+        "description": "11.11 Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_DoubEle_Box_TH_46"
+    },
+    {
+        "itemID": "400046528",
+        "description": "Turkey Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Turkey_Box_TH_46"
+    },
+    {
+        "itemID": "400046529",
+        "description": "Head Box 2",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Head_Box2_TH_46"
+    },
+    {
+        "itemID": "400046530",
+        "description": "Mask Box 2",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Mask_Box2_TH_46"
+    },
+    {
+        "itemID": "400046531",
+        "description": "Slipper Box 2",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Slipper_Box2_TH_46"
+    },
+    {
+        "itemID": "400046532",
+        "description": "Shirt Box 2",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Shirt_Box2_TH_46"
+    },
+    {
+        "itemID": "400046533",
+        "description": "Bottom Box 2",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Bottom_Box2_TH_46"
+    },
+    {
+        "itemID": "400046534",
+        "description": "Krathong Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Krathong_Box_TH_46"
+    },
+    {
+        "itemID": "400046535",
+        "description": "Cute Ghost Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_CuteGhost_Box_TH_46"
+    },
+    {
+        "itemID": "400046536",
+        "description": "Costume Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Costume_Box_TH_46"
+    },
+    {
+        "itemID": "400046537",
+        "description": "Star 1 Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Star1_Box_TH_46"
+    },
+    {
+        "itemID": "400046538",
+        "description": "Star 2 Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_Star2_Box_TH_46"
+    },
+    {
+        "itemID": "400046539",
+        "description": "Orange Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046540",
+        "description": "Peach Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046541",
+        "description": "Coral Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046542",
+        "description": "Apricot Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046543",
+        "description": "Tangerine Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046544",
+        "description": "Amber Box",
+        "description2": "Open to receive exciting rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046545",
+        "description": "Back to School Box",
+        "description2": "Something special to accompany you through school time!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "400046546",
+        "description": "Year End Box",
+        "description2": "Something special to accompany you through the end-of-year holiday!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "407104601",
+        "description": "Road Savvy (G36) Weapon Loot Crate",
+        "description2": "Open to receive a random gun skin (G36) from the Road Savvy weapon set",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "407104602",
+        "description": "Aura of Chaos (M1873 + PLASMA) Weapon Loot Crate",
+        "description2": "Open to receive a random gun skin (M1873 + PLASMA) from the Aura of Chaos weapon set",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "407104603",
+        "description": "Eternal Enigma (SVD + Mini Uzi) Weapon Loot Crate",
+        "description2": "Open to receive a random gun skin (SVD + Mini Uzi) from the Eternal Enigma weapon set",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "407104604",
+        "description": "Noble Sanction (MAG-7 + Trogon) Weapon Loot Crate",
+        "description2": "Open to receive a random gun skin (MAG-7 + Trogon) from the Noble Sanction weapon set",
+        "icon": "Icon_box_weaponskin_Random"
+    },
+    {
+        "itemID": "710046001",
+        "description": "Jagged Grin Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Smile_46"
+    },
+    {
+        "itemID": "710046002",
+        "description": "Jagged Smile Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Smile_46"
+    },
+    {
+        "itemID": "710046003",
+        "description": "Complete Combustion Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Microwaves_46"
+    },
+    {
+        "itemID": "710046004",
+        "description": "Rapid Combustion Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Microwaves_46"
+    },
+    {
+        "itemID": "710046005",
+        "description": "Horsin' Around Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Pinata_46"
+    },
+    {
+        "itemID": "710046006",
+        "description": "No Horsin' Around Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Pinata_46"
+    },
+    {
+        "itemID": "710046007",
+        "description": "Violet Vortex Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Purplelight_46"
+    },
+    {
+        "itemID": "710046008",
+        "description": "Violet Voltage Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Purplelight_46"
+    },
+    {
+        "itemID": "710046009",
+        "description": "Wrap in Style Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Sushi24_46"
+    },
+    {
+        "itemID": "710046010",
+        "description": "Roll in Style Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Sushi24_46"
+    },
+    {
+        "itemID": "710046011",
+        "description": "Mystic Aura Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Yinyang24_46"
+    },
+    {
+        "itemID": "710046012",
+        "description": "Tainted Aura Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Yinyang24_46"
+    },
+    {
+        "itemID": "710046013",
+        "description": "Booyah Captain Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Booyahday24_46"
+    },
+    {
+        "itemID": "710046014",
+        "description": "Booyah Leader Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Booyahday24_46"
+    },
+    {
+        "itemID": "710046015",
+        "description": "Eternal Avenger Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_Iron_Blue_46"
+    },
+    {
+        "itemID": "710046016",
+        "description": "Eternal Essence Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_Iron_Red_46"
+    },
+    {
+        "itemID": "710046017",
+        "description": "On Vacation Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FFWS2204_46"
+    },
+    {
+        "itemID": "710046018",
+        "description": "Top of Class Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_School_VN_46"
+    },
+    {
+        "itemID": "710046019",
+        "description": "Magma Born Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Lightfest24_Monkey_46"
+    },
+    {
+        "itemID": "710046020",
+        "description": "Grizzly Born Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Lightfest24_Bear_46"
+    },
+    {
+        "itemID": "710046021",
+        "description": "Loy Lotus Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_Loyfest_46"
+    },
+    {
+        "itemID": "710046022",
+        "description": "Necro Walker Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Sugarskull24_01_46"
+    },
+    {
+        "itemID": "710046023",
+        "description": "Bony Punch Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Sugarskull24_02_46"
+    },
+    {
+        "itemID": "710046024",
+        "description": "Bony Catrina Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Sugarskull24_02_46"
+    },
+    {
+        "itemID": "710046025",
+        "description": "Gloo Sploosh Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Glooworld_46"
+    },
+    {
+        "itemID": "710046026",
+        "description": "Shadow Prowler Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Dreadlocks_46"
+    },
+    {
+        "itemID": "710046027",
+        "description": "Shadow Dancer Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Dreadlocks_46"
+    },
+    {
+        "itemID": "710046028",
+        "description": "Aero Flex Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_Sportswear_BW_46"
+    },
+    {
+        "itemID": "710046029",
+        "description": "Aero Ready Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_Sportswear_BW_46"
+    },
+    {
+        "itemID": "710046030",
+        "description": "Street Savvy Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_TH_JP_46"
+    },
+    {
+        "itemID": "710046031",
+        "description": "Fashion Savvy Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_female_TH_JP_46"
+    },
+    {
+        "itemID": "710046032",
+        "description": "Code K Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_BR_Security_46"
+    },
+    {
+        "itemID": "710046033",
+        "description": "Isagi Team Z Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FB_Black_46"
+    },
+    {
+        "itemID": "710046034",
+        "description": "Nagi Team V Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FB_White_46"
+    },
+    {
+        "itemID": "710046035",
+        "description": "BLUE LOCK Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_FB_Common_46"
+    },
+    {
+        "itemID": "710046036",
+        "description": "Isagi Team White Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FB_Black02_46"
+    },
+    {
+        "itemID": "710046037",
+        "description": "Nagi Team White Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FB_White02_46"
+    },
+    {
+        "itemID": "710046038",
+        "description": "100 Diamonds Package - Newbie Offer 1",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046039",
+        "description": "200 Diamonds Package - Newbie Offer 1",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046040",
+        "description": "300 Diamonds Package - Newbie Offer 1",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046041",
+        "description": "300 Diamonds Package - Newbie Offer 2",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046042",
+        "description": "300 Diamonds Package - Newbie Offer 3",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046043",
+        "description": "Isagi Team White Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FB_Black02_46"
+    },
+    {
+        "itemID": "710046044",
+        "description": "Nagi Team White Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_bundle_male_FB_White02_46"
+    },
+    {
+        "itemID": "710046055",
+        "description": "BR-Ranked Heroic Profile Bundle",
+        "description2": "Open to receive the exclusive avatar and banner for BR-Ranked Heroic",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046056",
+        "description": "BR-Ranked Master Profile Bundle",
+        "description2": "Open to receive the exclusive avatar and banner for BR-Ranked Master",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046057",
+        "description": "CS-Ranked Heroic Profile Bundle",
+        "description2": "Open to receive the exclusive avatar and banner for CS-Ranked Heroic",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046058",
+        "description": "CS-Ranked Master Profile Bundle",
+        "description2": "Open to receive the exclusive avatar and banner for CS-Ranked Master",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046059",
+        "description": "CS-Ranked Heroic Profile Bundle",
+        "description2": "Open to receive the exclusive avatar and banner for CS-Ranked Heroic",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046060",
+        "description": "CS-Ranked Master Profile Bundle",
+        "description2": "Open to receive the exclusive avatar and banner for CS-Ranked Master",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046100",
+        "description": "Preset 7D Trial Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "710046101",
+        "description": "Weapon 7D Trial Bundle",
+        "description2": "Open to receive all the items in the bundle!",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "770000011",
+        "description": "Daily Bonus Reward",
+        "description2": "M82B - Operano Sheng",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "770000012",
+        "description": "Daily Bonus Reward",
+        "description2": "P90 - Xtreme Adventure",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "801046001",
+        "description": "Aura Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Denshoup_46"
+    },
+    {
+        "itemID": "801046002",
+        "description": "Booyah Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Captaingold_46"
+    },
+    {
+        "itemID": "801046003",
+        "description": "Claw Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Mechanicaltiger_46"
+    },
+    {
+        "itemID": "801046004",
+        "description": "Eternal Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Iron_46"
+    },
+    {
+        "itemID": "801046006",
+        "description": "Glooey Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Glooworld_Sys_1_46"
+    },
+    {
+        "itemID": "801046007",
+        "description": "Glootastic Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Glooworld_Sys_2_46"
+    },
+    {
+        "itemID": "801046008",
+        "description": "Nova Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Glooworld_Sys_3_46"
+    },
+    {
+        "itemID": "801046009",
+        "description": "Booyah Blue Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Booyahday24_Sys_1_46"
+    },
+    {
+        "itemID": "801046010",
+        "description": "Booyah Olive Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Booyahday24_Sys_2_46"
+    },
+    {
+        "itemID": "801046011",
+        "description": "Golden Booyah Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Booyahday24_Sys_3_46"
+    },
+    {
+        "itemID": "801046101",
+        "description": "Isagi Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_FB_Black_Egg_46"
+    },
+    {
+        "itemID": "801046102",
+        "description": "Nagi Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_FB_White_Egg_46"
+    },
+    {
+        "itemID": "801046500",
+        "description": "Diwali 2024 Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Diwali_2024_sg_46"
+    },
+    {
+        "itemID": "801046501",
+        "description": "Festival of Lights 2024 Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_FesLights_2024_sg_46"
+    },
+    {
+        "itemID": "801046502",
+        "description": "Pink Booyah Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046503",
+        "description": "Blue Booyah Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046504",
+        "description": "Firebones Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046505",
+        "description": "Soccer Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046506",
+        "description": "Dino Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046507",
+        "description": "Egg Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046508",
+        "description": "Top Criminal Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046509",
+        "description": "Red Criminal Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046510",
+        "description": "Green Criminal Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046511",
+        "description": "Skull Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046512",
+        "description": "Fist Bump Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046513",
+        "description": "Ball Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046514",
+        "description": "Wealthy Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046515",
+        "description": "Scorpio Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "es_46"
+    },
+    {
+        "itemID": "801046516",
+        "description": "Leaf Fall Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Leaf_Token_th_46"
+    },
+    {
+        "itemID": "801046517",
+        "description": "Silver Coin Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Sliver_Token_th_46"
+    },
+    {
+        "itemID": "801046518",
+        "description": "Golden Crown Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Crown_Token_th_46"
+    },
+    {
+        "itemID": "801046519",
+        "description": "Golden Coin Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Coin_Token_th_46"
+    },
+    {
+        "itemID": "801046520",
+        "description": "Happy Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Happy_Token_th_46"
+    },
+    {
+        "itemID": "801046521",
+        "description": "11.11 Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_DoubleEleven_th_46"
+    },
+    {
+        "itemID": "801046522",
+        "description": "Turkey Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Turkey_Token_th_46"
+    },
+    {
+        "itemID": "801046523",
+        "description": "Head Token 2",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Head_Token_th_46"
+    },
+    {
+        "itemID": "801046524",
+        "description": "Mask Token 2",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Mask_Token_th_46"
+    },
+    {
+        "itemID": "801046525",
+        "description": "Slipper Token 2",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Slipper_Token_th_46"
+    },
+    {
+        "itemID": "801046526",
+        "description": "Shirt Token 2",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Shirt_Token_th_46"
+    },
+    {
+        "itemID": "801046527",
+        "description": "Bottom Token 2",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Krath_Token_th_46"
+    },
+    {
+        "itemID": "801046528",
+        "description": "Krathong Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_box_3"
+    },
+    {
+        "itemID": "801046529",
+        "description": "Cute Ghost Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Ghost_Token_th_46"
+    },
+    {
+        "itemID": "801046530",
+        "description": "Costume Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Cost_Token_th_46"
+    },
+    {
+        "itemID": "801046531",
+        "description": "Star 1 Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Star1_Token_th_46"
+    },
+    {
+        "itemID": "801046532",
+        "description": "Star 2 Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Top_notch_fashion_th_46"
+    },
+    {
+        "itemID": "801046533",
+        "description": "Pale Stone Token",
+        "description2": "Exchange for wonderful rewards!",
+        "icon": "Icon_exchange_Pale_Stone_Token_th_46"
+    },
+    {
+        "itemID": "801046534",
+        "description": "Shiny Stone Token",
+        "description2": "Exchange for wonderful rewards!",
+        "icon": "Icon_exchange_Shiny_Stone_Token_th_46"
+    },
+    {
+        "itemID": "801046535",
+        "description": "Dagger Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Dagger_Token_id_46"
+    },
+    {
+        "itemID": "801046536",
+        "description": "Shield Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Shield_Token_id_46"
+    },
+    {
+        "itemID": "801046537",
+        "description": "Cat Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Cat_Token_id_46"
+    },
+    {
+        "itemID": "801046538",
+        "description": "Dog Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Dog_Token_id_46"
+    },
+    {
+        "itemID": "801046539",
+        "description": "Pumpkin Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Halloween_Token_id_46"
+    },
+    {
+        "itemID": "801046540",
+        "description": "Note Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_School_Token_id_46"
+    },
+    {
+        "itemID": "801046541",
+        "description": "Silver Collection Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Sliver2_Token_id_46"
+    },
+    {
+        "itemID": "801046542",
+        "description": "Gold Collection Token",
+        "description2": "Tokens can be used for redeeming rewards",
+        "icon": "Icon_exchange_Gold_Token_id_46"
+    },
+    {
+        "itemID": "802000072",
+        "description": "Premium Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_Lottery_RoyaleVoucher_03"
+    },
+    {
+        "itemID": "802000073",
+        "description": "Royale Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_Lottery_Royale_Voucher_08"
+    },
+    {
+        "itemID": "802000074",
+        "description": "New Year Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_Lottery_Generic_Voucher_1"
+    },
+    {
+        "itemID": "802000075",
+        "description": "Halloween Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_UI_Lottery_CommonUse"
+    },
+    {
+        "itemID": "802000076",
+        "description": "Winterlands Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_Lottery_Royale_Voucher_07"
+    },
+    {
+        "itemID": "802000077",
+        "description": "Favor Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_Lottery_Generic_Voucher_2"
+    },
+    {
+        "itemID": "802000082",
+        "description": "Soccer Voucher",
+        "description2": "Use to spin for exciting prizes!",
+        "icon": "FF_Lottery_Soccer_Voucher"
+    },
+    {
+        "itemID": "802000083",
+        "description": "Spin Shard",
+        "description2": "For some Token Tower events",
+        "icon": "FF_Lottery_fragment"
+    },
+    {
+        "itemID": "806000005",
+        "description": "Light Display",
+        "description2": "See something you like? (User will be able to place secret presents - random amounts of loadout",
+        "icon": "Icon_Diwali24_Sys"
+    },
+    {
+        "itemID": "901046001",
+        "description": "Last Laugh Banner",
+        "icon": "Icon_callsign_storebg_Smile"
+    },
+    {
+        "itemID": "901046002",
+        "description": "Ding Ding! Banner",
+        "icon": "Icon_callsign_storebg_Microwaves"
+    },
+    {
+        "itemID": "901046003",
+        "description": "Giddy Runaway Banner",
+        "icon": "Icon_callsign_storebg_Pinata"
+    },
+    {
+        "itemID": "901046004",
+        "description": "Gloo Artist Banner",
+        "icon": "Icon_callsign_storebg_MischiefGirl"
+    },
+    {
+        "itemID": "901046005",
+        "description": "Light Fest Banner",
+        "icon": "Icon_callsign_storebg_Lightfest24"
+    },
+    {
+        "itemID": "901046006",
+        "description": "Street Savvy Banner",
+        "icon": "Icon_callsign_storebg_TH_JP"
+    },
+    {
+        "itemID": "901046007",
+        "description": "FFWS 2024 Fall Banner",
+        "icon": "Icon_callsign_storebg_FFWS_SF"
+    },
+    {
+        "itemID": "901046008",
+        "description": "CS-Ranked S27 Heroic Banner",
+        "icon": "Icon_callsign_storebg_CSRank27_01"
+    },
+    {
+        "itemID": "901046009",
+        "description": "CS-Ranked S27 Master Banner",
+        "icon": "Icon_callsign_storebg_CSRank27_02"
+    },
+    {
+        "itemID": "901046010",
+        "description": "BR-Ranked S42 Heroic Banner",
+        "icon": "Icon_callsign_storebg_Rank42_01"
+    },
+    {
+        "itemID": "901046011",
+        "description": "BR-Ranked S42 Master Banner",
+        "icon": "Icon_callsign_storebg_Rank42_02"
+    },
+    {
+        "itemID": "901046012",
+        "description": "CS-Ranked S28 Heroic Banner",
+        "icon": "Icon_callsign_storebg_CSRank28_01"
+    },
+    {
+        "itemID": "901046013",
+        "description": "CS-Ranked S28 Master Banner",
+        "icon": "Icon_callsign_storebg_CSRank28_02"
+    },
+    {
+        "itemID": "901046014",
+        "description": "BLUE LOCK Banner",
+        "icon": "Icon_callsign_storebg_FB"
+    },
+    {
+        "itemID": "901046015",
+        "description": "Stellar Creator Banner",
+        "icon": "Icon_callsign_storebg_Creator_VN_01"
+    },
+    {
+        "itemID": "901046016",
+        "description": "Stellar Partner Banner",
+        "icon": "Icon_callsign_storebg_Creator_VN_02"
+    },
+    {
+        "itemID": "902046001",
+        "description": "Last Laugh Avatar",
+        "icon": "Icon_face_Smile"
+    },
+    {
+        "itemID": "902046002",
+        "description": "Ding Ding! Avatar",
+        "icon": "Icon_face_Microwaves"
+    },
+    {
+        "itemID": "902046003",
+        "description": "Giddy Runaway Avatar",
+        "icon": "Icon_face_Pinata"
+    },
+    {
+        "itemID": "902046004",
+        "description": "Gloo Artist Avatar",
+        "icon": "Icon_face_MischiefGirl"
+    },
+    {
+        "itemID": "902046005",
+        "description": "Lila Bobblehead",
+        "icon": "Icon_face_MischiefGirl_Q"
+    },
+    {
+        "itemID": "902046006",
+        "description": "Light Fest Avatar",
+        "icon": "Icon_face_Lightfest24"
+    },
+    {
+        "itemID": "902046007",
+        "description": "Street Savvy Avatar",
+        "icon": "Icon_face_TH_JP"
+    },
+    {
+        "itemID": "902046008",
+        "description": "FFWS 2024 Fall Avatar",
+        "icon": "Icon_face_FFWS_SF"
+    },
+    {
+        "itemID": "902046009",
+        "description": "Stellar Creator",
+        "icon": "Icon_face_Creator_VN_01"
+    },
+    {
+        "itemID": "902046010",
+        "description": "Stellar Partner",
+        "icon": "Icon_face_Creator_VN_02"
+    },
+    {
+        "itemID": "902046011",
+        "description": "CS-Ranked S27 Heroic Avatar",
+        "icon": "Icon_face_CSRank27_01"
+    },
+    {
+        "itemID": "902046012",
+        "description": "CS-Ranked S27 Master Avatar",
+        "icon": "Icon_face_CSRank27_02"
+    },
+    {
+        "itemID": "902046013",
+        "description": "BR-Ranked S42 Heroic Avatar",
+        "icon": "Icon_face_Rank42_01"
+    },
+    {
+        "itemID": "902046014",
+        "description": "BR-Ranked S42 Master Avatar",
+        "icon": "Icon_face_Rank42_02"
+    },
+    {
+        "itemID": "902046015",
+        "description": "CS-Ranked S28 Heroic Avatar",
+        "icon": "Icon_face_CSRank28_01"
+    },
+    {
+        "itemID": "902046016",
+        "description": "CS-Ranked S28 Master Avatar",
+        "icon": "Icon_face_CSRank28_02"
+    },
+    {
+        "itemID": "902046017",
+        "description": "FFWS Avatar 1",
+        "icon": "Icon_face_FFWS_SF01"
+    },
+    {
+        "itemID": "902046018",
+        "description": "FFWS Avatar 2",
+        "icon": "Icon_face_FFWS_SF02"
+    },
+    {
+        "itemID": "902046019",
+        "description": "FFWS Avatar 3",
+        "icon": "Icon_face_FFWS_SF03"
+    },
+    {
+        "itemID": "902046020",
+        "description": "FFWS Avatar 4",
+        "icon": "Icon_face_FFWS_SF04"
+    },
+    {
+        "itemID": "902046021",
+        "description": "FFWS Avatar 5",
+        "icon": "Icon_face_FFWS_SF05"
+    },
+    {
+        "itemID": "902046022",
+        "description": "FFWS Avatar 6",
+        "icon": "Icon_face_FFWS_SF06"
+    },
+    {
+        "itemID": "902046023",
+        "description": "FFWS Avatar 7",
+        "icon": "Icon_face_FFWS_SF07"
+    },
+    {
+        "itemID": "902046024",
+        "description": "FFWS Avatar 8",
+        "icon": "Icon_face_FFWS_SF08"
+    },
+    {
+        "itemID": "902046025",
+        "description": "FFWS Avatar 9",
+        "icon": "Icon_face_FFWS_SF09"
+    },
+    {
+        "itemID": "902046026",
+        "description": "FFWS Avatar 10",
+        "icon": "Icon_face_FFWS_SF10"
+    },
+    {
+        "itemID": "902046027",
+        "description": "FFWS Avatar 11",
+        "icon": "Icon_face_FFWS_SF11"
+    },
+    {
+        "itemID": "902046028",
+        "description": "FFWS Avatar 12",
+        "icon": "Icon_face_FFWS_SF12"
+    },
+    {
+        "itemID": "902046029",
+        "description": "FFWS Avatar 13",
+        "icon": "Icon_face_FFWS_SF13"
+    },
+    {
+        "itemID": "902046030",
+        "description": "FFWS Avatar 14",
+        "icon": "Icon_face_FFWS_SF14"
+    },
+    {
+        "itemID": "902046031",
+        "description": "FFWS Avatar 15",
+        "icon": "Icon_face_FFWS_SF15"
+    },
+    {
+        "itemID": "902046032",
+        "description": "FFWS Avatar 16",
+        "icon": "Icon_face_FFWS_SF16"
+    },
+    {
+        "itemID": "902046033",
+        "description": "FFWS Avatar 17",
+        "icon": "Icon_face_FFWS_SF17"
+    },
+    {
+        "itemID": "902046034",
+        "description": "FFWS Avatar 18",
+        "icon": "Icon_face_FFWS_SF18"
+    },
+    {
+        "itemID": "902046035",
+        "description": "Isagi Avatar",
+        "icon": "Icon_face_FB_01"
+    },
+    {
+        "itemID": "902046036",
+        "description": "Nagi Avatar",
+        "icon": "Icon_face_FB_02"
+    },
+    {
+        "itemID": "903046001",
+        "description": "Loot Box - Combust Countdown",
+        "icon": "Icon_Deadloot_Microwaves"
+    },
+    {
+        "itemID": "903046002",
+        "description": "Loot Box - Horsey's Remains",
+        "icon": "Icon_Deadloot_Pinata"
+    },
+    {
+        "itemID": "903046003",
+        "description": "Loot Box - Surf in Delicious",
+        "icon": "Icon_Deadloot_Sushi24"
+    },
+    {
+        "itemID": "903046004",
+        "description": "Loot Box - Light Fireworks",
+        "icon": "Icon_Deadloot_Lightfest24"
+    },
+    {
+        "itemID": "903046005",
+        "description": "Loot Box - FFWS 2024 Fall",
+        "icon": "Icon_Deadloot_FFWS_SF"
+    },
+    {
+        "itemID": "903046006",
+        "description": "Loot Box - Bony Candles",
+        "icon": "Icon_Deadloot_Sugarskull24"
+    },
+    {
+        "itemID": "903046007",
+        "description": "Loot Box - S42 Exclusive: Combustion",
+        "description2": "unread",
+        "icon": "Icon_Deadloot_Rank42"
+    },
+    {
+        "itemID": "903046008",
+        "description": "Loot Box - Jagged Mischief",
+        "icon": "Icon_Deadloot_Smile"
+    },
+    {
+        "itemID": "903046009",
+        "description": "Loot Box - BLUE LOCK",
+        "icon": "Icon_Deadloot_FB"
+    },
+    {
+        "itemID": "904046001",
+        "description": "Backpack - Jagged Grin",
+        "icon": "Icon_Bag_Smile"
+    },
+    {
+        "itemID": "904046002",
+        "description": "Backpack - Ultra Combustible",
+        "icon": "Icon_Bag_Microwaves"
+    },
+    {
+        "itemID": "904046003",
+        "description": "Backpack - Goofy Horsey",
+        "icon": "Icon_Bag_Pinata_Orange"
+    },
+    {
+        "itemID": "904046004",
+        "description": "Backpack - Horsin' Holiday",
+        "icon": "Icon_Bag_Pinata_Blue"
+    },
+    {
+        "itemID": "904046005",
+        "description": "Backpack - Eternal Knight",
+        "icon": "Icon_Bag_Iron"
+    },
+    {
+        "itemID": "904046006",
+        "description": "Backpack - Violet Discharge",
+        "icon": "Icon_Bag_Purplelight"
+    },
+    {
+        "itemID": "904046007",
+        "description": "Backpack - Armed to Bone",
+        "icon": "Icon_Bag_Sugarskull24"
+    },
+    {
+        "itemID": "904046008",
+        "description": "Backpack - Shadow's Wing",
+        "icon": "Icon_Bag_Dreadlocks"
+    },
+    {
+        "itemID": "904046009",
+        "description": "Backpack - FFWS 2024 Fall",
+        "icon": "Icon_Bag_FFWS_SF"
+    },
+    {
+        "itemID": "904690060",
+        "description": "CS Booyah Streak Pro",
+        "description2": "Received by completing the hardest level in the Booyah Streak Challenge (CS-Ranked) during the Booyah Day event",
+        "icon": "FF_Icon_Title_CommonIcon"
+    },
+    {
+        "itemID": "904690061",
+        "description": "BR Booyah Streak Pro",
+        "description2": "Received by completing the hardest level in the Booyah Streak Challenge (BR-Ranked) during the Booyah Day event",
+        "icon": "FF_Icon_Title_CommonIcon"
+    },
+    {
+        "itemID": "905046001",
+        "description": "Parachute - Jagged Grin",
+        "icon": "Icon_Avatar_PARACHUTE_Smile_purple"
+    },
+    {
+        "itemID": "905046002",
+        "description": "Parachute - Violet Descent",
+        "icon": "Icon_Avatar_PARACHUTE_Purplelight"
+    },
+    {
+        "itemID": "905046003",
+        "description": "Parachute - Gloo Sploosh",
+        "icon": "Icon_Avatar_PARACHUTE_Glooworld"
+    },
+    {
+        "itemID": "905046004",
+        "description": "Parachute - FFWS 2024 Fall",
+        "icon": "Icon_Avatar_PARACHUTE_FFWS_SF"
+    },
+    {
+        "itemID": "905046005",
+        "description": "Parachute - S28 Exclusive: Horsin'",
+        "description2": "unread",
+        "icon": "Icon_Avatar_PARACHUTE_CSRank28"
+    },
+    {
+        "itemID": "905046006",
+        "description": "Parachute - BLUE LOCK",
+        "icon": "Icon_Avatar_PARACHUTE_FB"
+    },
+    {
+        "itemID": "906046001",
+        "description": "Skyboard - Jagged Grin",
+        "icon": "Icon_Avatar_Surfboard_Smile"
+    },
+    {
+        "itemID": "906046002",
+        "description": "Skyboard - Superheat Combustion",
+        "icon": "Icon_Avatar_Surfboard_Microwaves"
+    },
+    {
+        "itemID": "906046003",
+        "description": "Skyboard - Horsin' Heist",
+        "icon": "Icon_Avatar_Surfboard_Pinata"
+    },
+    {
+        "itemID": "906046004",
+        "description": "Skyboard - Complete Combustion",
+        "icon": "Icon_Avatar_Surfboard_Microwaves_Blue"
+    },
+    {
+        "itemID": "906046005",
+        "description": "Skyboard - Violet Discharge",
+        "icon": "Icon_Avatar_Surfboard_Purplelight"
+    },
+    {
+        "itemID": "906046006",
+        "description": "Skyboard - Booyah Bling",
+        "icon": "Icon_Avatar_Surfboard_Booyahday24"
+    },
+    {
+        "itemID": "906046007",
+        "description": "Skyboard - Loy Float",
+        "icon": "Icon_Avatar_Surfboard_Loyfest"
+    },
+    {
+        "itemID": "906046008",
+        "description": "Skyboard - FFWS 2024 Fall",
+        "icon": "Icon_Avatar_Surfboard_FFWS_SF"
+    },
+    {
+        "itemID": "906046009",
+        "description": "Skyboard - S27 Exclusive: Jagged",
+        "description2": "unread",
+        "icon": "Icon_Avatar_Surfboard_CSRank27"
+    },
+    {
+        "itemID": "907104601",
+        "description": "M249 - Jagged Laughs",
+        "icon": "Icon_M249_Smile"
+    },
+    {
+        "itemID": "907104602",
+        "description": "MP40 - Robust Combust",
+        "icon": "Icon_MP40_Microwaves"
+    },
+    {
+        "itemID": "907104603",
+        "description": "M1917 - Horsin' Holiday",
+        "icon": "Icon_M1917_Pinata"
+    },
+    {
+        "itemID": "907104604",
+        "description": "Pan - Jagged Laughs",
+        "icon": "Icon_Pan_Smile"
+    },
+    {
+        "itemID": "907104605",
+        "description": "Dagger - Robust Combust",
+        "icon": "Icon_ThrowingKnife_Microwaves"
+    },
+    {
+        "itemID": "907104606",
+        "description": "Bat - Horsin' Holiday",
+        "icon": "Icon_Baseballbat_Pinata"
+    },
+    {
+        "itemID": "907104607",
+        "description": "Thompson - Cyber Claws",
+        "icon": "Icon_Thompson_Tiger_Machine"
+    },
+    {
+        "itemID": "907104608",
+        "description": "AC80 - Aura of Chaos",
+        "icon": "Icon_MINI_Yinyang24"
+    },
+    {
+        "itemID": "907104609",
+        "description": "G18 - Sharp Aim",
+        "icon": "Icon_G18_Edge"
+    },
+    {
+        "itemID": "907104610",
+        "description": "Groza - Bony Tunes",
+        "icon": "Icon_Groza_Skeleton_Guitar"
+    },
+    {
+        "itemID": "907104611",
+        "description": "G36 - Road Savvy",
+        "icon": "Icon_G36_TH_JP"
+    },
+    {
+        "itemID": "907104612",
+        "description": "M1873 - Aura of Chaos",
+        "icon": "Icon_M1873_Yinyang24"
+    },
+    {
+        "itemID": "907104613",
+        "description": "PLASMA - Aura of Chaos",
+        "icon": "Icon_Superheat_Gun_Yinyang24"
+    },
+    {
+        "itemID": "907104614",
+        "description": "SVD - Eternal Enigma",
+        "icon": "Icon_SVD_Iron"
+    },
+    {
+        "itemID": "907104615",
+        "description": "Mini Uzi - Eternal Enigma",
+        "icon": "Icon_Uzi_Iron"
+    },
+    {
+        "itemID": "907104616",
+        "description": "Katana - Eternal Blade",
+        "icon": "Icon_Katana_Iron"
+    },
+    {
+        "itemID": "907104617",
+        "description": "Parang - Booyah Bling",
+        "icon": "Icon_Machete_Booyahday24"
+    },
+    {
+        "itemID": "907104618",
+        "description": "Parang - Gloo Power",
+        "icon": "Icon_Machete_Glooworld"
+    },
+    {
+        "itemID": "907104619",
+        "description": "Scythe - Violet Discharge",
+        "icon": "Icon_Sickle_Purplelight"
+    },
+    {
+        "itemID": "907104620",
+        "description": "Bat - Surf in Style",
+        "icon": "Icon_Baseballbat_Sushi24"
+    },
+    {
+        "itemID": "907104621",
+        "description": "Dagger - Aura of Chaos",
+        "icon": "Icon_ThrowingKnife_Yinyang24"
+    },
+    {
+        "itemID": "907104622",
+        "description": "Katana - Booyah Bling",
+        "icon": "Icon_Katana_Booyahday24"
+    },
+    {
+        "itemID": "907104623",
+        "description": "Katana - Bone Slasher",
+        "icon": "Icon_Katana_Sugarskull24"
+    },
+    {
+        "itemID": "907104624",
+        "description": "PARAFAL - S27 Exclusive: Jagged",
+        "description2": "CS-Ranked S27 Reward",
+        "icon": "Icon_FAL_CSRank27"
+    },
+    {
+        "itemID": "907104625",
+        "description": "M1014 - S42 Exclusive: Combustion",
+        "description2": "unread",
+        "icon": "Icon_M1014_Rank42"
+    },
+    {
+        "itemID": "907104626",
+        "description": "G36 - S28 Exclusive: Horsin'",
+        "description2": "CS-Ranked S28 Reward",
+        "icon": "Icon_G36_CSRank28"
+    },
+    {
+        "itemID": "907104627",
+        "description": "Parang - S27 Exclusive: Jagged",
+        "description2": "CS-Ranked S27 Reward",
+        "icon": "Icon_Machete_CSRank27"
+    },
+    {
+        "itemID": "907104628",
+        "description": "Bat - S42 Exclusive: Combustion",
+        "description2": "BR-Ranked S42 Reward",
+        "icon": "Icon_Baseballbat_Rank42"
+    },
+    {
+        "itemID": "907104629",
+        "description": "Pan - S28 Exclusive: Horsin'",
+        "description2": "CS-Ranked S28 Reward",
+        "icon": "Icon_Pan_CSRank28"
+    },
+    {
+        "itemID": "907104630",
+        "description": "SPAS12 - Rip and Tear",
+        "icon": "Icon_SPAS12_Sculpture"
+    },
+    {
+        "itemID": "907104631",
+        "description": "VSS - Glyph Grip",
+        "icon": "Icon_VSS_Monument"
+    },
+    {
+        "itemID": "907104632",
+        "description": "M1917 - Ace of Hearts",
+        "icon": "Icon_M1917_Wheel"
+    },
+    {
+        "itemID": "907104633",
+        "description": "Fist - Booyah Bling",
+        "icon": "Icon_Fist_Booyahday24"
+    },
+    {
+        "itemID": "907104634",
+        "description": "Pan - FFWS 2024 Fall",
+        "icon": "Icon_Pan_FFWS_SF"
+    },
+    {
+        "itemID": "907104635",
+        "description": "Grenade - Jagged Boom",
+        "icon": "Icon_Smile_Grenade"
+    },
+    {
+        "itemID": "907104636",
+        "description": "Grenade - Highly Combustible",
+        "icon": "Icon_Microwaves_Grenade"
+    },
+    {
+        "itemID": "907104637",
+        "description": "Grenade - Poppin' Horsey",
+        "icon": "Icon_Pinata_Grenade"
+    },
+    {
+        "itemID": "907104638",
+        "description": "Grenade - Booyah Bling",
+        "icon": "Icon_Booyahday24_Grenade"
+    },
+    {
+        "itemID": "907104639",
+        "description": "Grenade - Vacation Vibes",
+        "icon": "Icon_FFWS2024_Grenade"
+    },
+    {
+        "itemID": "907104640",
+        "description": "Grenade - Bare Bones",
+        "icon": "Icon_Sugarskull24_Grenade"
+    },
+    {
+        "itemID": "907104641",
+        "description": "Gloo Wall - Jagged Laughs",
+        "icon": "Icon_GlooShield_Smile"
+    },
+    {
+        "itemID": "907104642",
+        "description": "Gloo Wall - Horsin' Holiday",
+        "icon": "Icon_GlooShield_Pinata"
+    },
+    {
+        "itemID": "907104643",
+        "description": "Gloo Wall - Aura of Chaos",
+        "icon": "Icon_GlooShield_Yinyang24"
+    },
+    {
+        "itemID": "907104644",
+        "description": "Gloo Wall - Booyah Bling",
+        "icon": "Icon_GlooShield_Booyahday24"
+    },
+    {
+        "itemID": "907104645",
+        "description": "Gloo Wall - Wrap in Style",
+        "icon": "Icon_GlooShield_Sushi24"
+    },
+    {
+        "itemID": "907104646",
+        "description": "Gloo Wall - Booyah Champ",
+        "icon": "Icon_GlooShield_Booyahday24_Team"
+    },
+    {
+        "itemID": "907104647",
+        "description": "Gloo Wall - Light Fest",
+        "icon": "Icon_GlooShield_Lightfest24"
+    },
+    {
+        "itemID": "907104648",
+        "description": "Gloo Wall - Class Begin",
+        "icon": "Icon_GlooShield_School_VN"
+    },
+    {
+        "itemID": "907104649",
+        "description": "Gloo Wall - Bony Rattles",
+        "icon": "Icon_GlooShield_Sugarskull24"
+    },
+    {
+        "itemID": "907104650",
+        "description": "Gloo Wall - Road Savvy",
+        "icon": "Icon_GlooShield_TH_JP"
+    },
+    {
+        "itemID": "907104651",
+        "description": "Gloo Wall - Shadow Activity",
+        "icon": "Icon_GlooShield_Dreadlocks"
+    },
+    {
+        "itemID": "907104652",
+        "description": "FAMAS - BLUE LOCK",
+        "icon": "Icon_FAMAS_FB"
+    },
+    {
+        "itemID": "907104653",
+        "description": "Vector - BLUE LOCK",
+        "icon": "Icon_Vector_FB"
+    },
+    {
+        "itemID": "907104654",
+        "description": "Gloo Wall - BLUE LOCK",
+        "icon": "Icon_GlooShield_FB"
+    },
+    {
+        "itemID": "907104655",
+        "description": "M590 - Mamba Gnaw",
+        "icon": "Icon_FAL_Mambas"
+    },
+    {
+        "itemID": "908046001",
+        "description": "Pickup Truck - Jagged Grin",
+        "icon": "Icon_slot_SUV_Smile"
+    },
+    {
+        "itemID": "908046002",
+        "description": "Sports Car - Combust Engine",
+        "icon": "Icon_slot_Roadster_Microwaves"
+    },
+    {
+        "itemID": "908046003",
+        "description": "Tuk Tuk - Horse Power",
+        "icon": "Icon_slot_TUTU_Pinata"
+    },
+    {
+        "itemID": "908046004",
+        "description": "Sports Car - Road Savvy",
+        "icon": "Icon_slot_Roadster_TH_JP"
+    },
+    {
+        "itemID": "908046005",
+        "description": "Pickup Truck - Revvy Bones",
+        "icon": "Icon_slot_SUV_Sugarskull24"
+    },
+    {
+        "itemID": "908046006",
+        "description": "Jeep - Gloo Vroom",
+        "icon": "Icon_slot_Jeep_Glooworld"
+    },
+    {
+        "itemID": "908046007",
+        "description": "Motorbike - Aura of Chaos",
+        "icon": "Icon_slot_Motobike_Yinyang24"
+    },
+    {
+        "itemID": "908046008",
+        "description": "Sports Car - Vacation Vibes",
+        "icon": "Icon_slot_Roadster_FFWS2024"
+    },
+    {
+        "itemID": "908046009",
+        "description": "Motorbike - BLUE LOCK",
+        "icon": "Icon_slot_Motobike_FB"
+    },
+    {
+        "itemID": "909000150",
+        "description": "Raise Your Thumb!",
+        "icon": "Icon_Emote_Memes1"
+    },
+    {
+        "itemID": "909045016",
+        "description": "Naatu Naatu",
+        "icon": "Icon_Emote_Folkdance"
+    },
+    {
+        "itemID": "909045017",
+        "description": "Champion's Walk",
+        "icon": "Icon_Emote_MVPDance"
+    },
+    {
+        "itemID": "909046001",
+        "description": "Aura Boarder",
+        "icon": "Icon_Emote_Yinyang24"
+    },
+    {
+        "itemID": "909046002",
+        "description": "Who's the Booyah Champ!",
+        "icon": "Icon_Emote_Booyahday24"
+    },
+    {
+        "itemID": "909046003",
+        "description": "Controlled Combustion",
+        "icon": "Icon_Emote_Microwaves"
+    },
+    {
+        "itemID": "909046004",
+        "description": "Cheers to Victory!",
+        "icon": "Icon_Emote_Drinkcola"
+    },
+    {
+        "itemID": "909046005",
+        "description": "Shoe Shining",
+        "icon": "Icon_Emote_Football_Duo"
+    },
+    {
+        "itemID": "909046006",
+        "description": "Gunspinning",
+        "icon": "Icon_Emote_Gunspin"
+    },
+    {
+        "itemID": "909046007",
+        "description": "Crowd Pleaser",
+        "icon": "Icon_Emote_Meme5"
+    },
+    {
+        "itemID": "909046008",
+        "description": "No Sweat",
+        "icon": "Icon_Emote_Meme6"
+    },
+    {
+        "itemID": "909046009",
+        "description": "Magma Quake",
+        "icon": "Icon_Emote_Lightfest24"
+    },
+    {
+        "itemID": "909046010",
+        "description": "Max Firepower",
+        "icon": "Icon_Emote_Strafe"
+    },
+    {
+        "itemID": "909046011",
+        "description": "Can't Touch This",
+        "icon": "Icon_Emote_School_VN"
+    },
+    {
+        "itemID": "909046012",
+        "description": "Firestarter",
+        "icon": "Icon_Emote_Sugarskull24"
+    },
+    {
+        "itemID": "909046013",
+        "description": "FFWS Flag Flair",
+        "icon": "Icon_Emote_BRFFWS"
+    },
+    {
+        "itemID": "909046014",
+        "description": "Beat Drop",
+        "icon": "Icon_Emote_BRrapper_Orange"
+    },
+    {
+        "itemID": "909046015",
+        "description": "Isagi's Spatial Awareness",
+        "icon": "Icon_Emote_FB_Black"
+    },
+    {
+        "itemID": "909046016",
+        "description": "Nagi's Trapping",
+        "icon": "Icon_Emote_FB_White"
+    },
+    {
+        "itemID": "911004601",
+        "description": "Skydive - Winged Aura",
+        "icon": "Icon_Mounts_flymove_Yinyang24"
+    },
+    {
+        "itemID": "912046001",
+        "description": "Feathered Aura",
+        "description2": "Equip to display special effects during team matchmaking",
+        "icon": "Icon_GroupAnim_Yinyang24"
+    },
+    {
+        "itemID": "912046002",
+        "description": "Boom and Crackle",
+        "description2": "Equip to display special effects during team matchmaking",
+        "icon": "Icon_GroupAnim_Lightfest24"
+    },
+    {
+        "itemID": "913046001",
+        "description": "Gloo Nova",
+        "description2": "Theme song of \"Gloo Nova\" event",
+        "icon": "FF_UI_Vault_Music_Glooworld"
+    },
+    {
+        "itemID": "913046002",
+        "description": "Gloo Nova",
+        "description2": "Theme song of \"Gloo Nova\" event",
+        "icon": "FF_UI_Vault_Music_Glooworld"
+    },
+    {
+        "itemID": "913046003",
+        "description": "Booyah Day 2024",
+        "description2": "Booyah Day 2024 lobby music",
+        "icon": "FF_UI_Vault_Music_Booyahday24"
+    },
+    {
+        "itemID": "913046004",
+        "description": "Booyah Day 2024",
+        "description2": "Booyah Day 2024 lobby music",
+        "icon": "FF_UI_Vault_Music_Booyahday24"
+    },
+    {
+        "itemID": "913046005",
+        "description": "Light Fest 2024",
+        "description2": "Light Fest 2024 lobby music",
+        "icon": "FF_UI_Vault_Music_Lightfest24"
+    },
+    {
+        "itemID": "913046006",
+        "description": "Light Fest 2024",
+        "description2": "Light Fest 2024 lobby music",
+        "icon": "FF_UI_Vault_Music_Lightfest24"
+    },
+    {
+        "itemID": "913046007",
+        "description": "Death Accompanies Me (Rock)",
+        "description2": "Day of the Dead 2024 lobby music",
+        "icon": "FF_UI_Vault_Music_Sugarskull24"
+    },
+    {
+        "itemID": "921046001",
+        "description": "Booyahahaha",
+        "description2": "BOOYAH DAY 2024 Voice Pack",
+        "icon": "FF_UI_Voiceitem_Booyahday24"
+    },
+    {
+        "itemID": "921046002",
+        "description": "Boom shaka laka",
+        "description2": "Gloo Nova Voice Pack",
+        "icon": "FF_UI_Voiceitem_Glooworld_1"
+    },
+    {
+        "itemID": "921046003",
+        "description": "Boom shaka laka",
+        "description2": "Gloo Nova Voice Pack",
+        "icon": "FF_UI_Voiceitem_Glooworld_2"
+    },
+    {
+        "itemID": "921046004",
+        "description": "Found a mushroom",
+        "description2": "Matuê",
+        "icon": "FF_UI_Voiceitem_BRrapper"
+    },
+    {
+        "itemID": "921046005",
+        "description": "I got another plan for us",
+        "description2": "Matuê",
+        "icon": "FF_UI_Voiceitem_BRrapper"
+    },
+    {
+        "itemID": "921046006",
+        "description": "Pass it to me!",
+        "description2": "Matuê",
+        "icon": "FF_UI_Voiceitem_BRrapper"
+    },
+    {
+        "itemID": "921046007",
+        "description": "Got a bit too proud",
+        "description2": "Matuê",
+        "icon": "FF_UI_Voiceitem_BRrapper"
+    },
+    {
+        "itemID": "921046008",
+        "description": "[Windah] Let's take attendance!",
+        "description2": "Windah Voice Pack",
+        "icon": "FF_UI_Voiceitem_Windah"
+    },
+    {
+        "itemID": "921046009",
+        "description": "[Windah] The hope is to Booyah",
+        "description2": "Windah Voice Pack",
+        "icon": "FF_UI_Voiceitem_Windah"
+    },
+    {
+        "itemID": "921046010",
+        "description": "[Windah] Weak",
+        "description2": "Windah Voice Pack",
+        "icon": "FF_UI_Voiceitem_Windah"
+    },
+    {
+        "itemID": "921046011",
+        "description": "[Windah] Let's loot first",
+        "description2": "Windah Voice Pack 2",
+        "icon": "FF_UI_Voiceitem_Windah"
+    },
+    {
+        "itemID": "921046012",
+        "description": "[Windah] Mama help me",
+        "description2": "Windah Voice Pack 2",
+        "icon": "FF_UI_Voiceitem_Windah"
+    },
+    {
+        "itemID": "921046013",
+        "description": "[Windah] The boss is here",
+        "description2": "Windah Voice Pack 2",
+        "icon": "FF_UI_Voiceitem_Windah"
+    },
+    {
+        "itemID": "921046014",
+        "description": "Come on baby!",
+        "description2": "Trendy Voice Pack",
+        "icon": "FF_UI_Voiceitem_TH46"
+    },
+    {
+        "itemID": "921046015",
+        "description": "Very impulsive!",
+        "description2": "Trendy Voice Pack",
+        "icon": "FF_UI_Voiceitem_TH46"
+    },
+    {
+        "itemID": "921046016",
+        "description": "Aren't I cool?",
+        "description2": "Trendy Voice Pack",
+        "icon": "FF_UI_Voiceitem_TH46"
+    },
+    {
+        "itemID": "921046017",
+        "description": "Here I come!",
+        "description2": "Trendy Voice Pack",
+        "icon": "FF_UI_Voiceitem_TH46"
+    },
+    {
+        "itemID": "921046018",
+        "description": "Tumse na ho payega",
+        "description2": "Bolly Boli Voice Pack",
+        "icon": "FF_UI_Voiceitem_IND46"
+    },
+    {
+        "itemID": "921046019",
+        "description": "Tera bhai samhaal lega",
+        "description2": "Bolly Boli Voice Pack",
+        "icon": "FF_UI_Voiceitem_IND46"
+    },
+    {
+        "itemID": "921046020",
+        "description": "Swagat nahi karoge hamara",
+        "description2": "Bolly Boli Voice Pack",
+        "icon": "FF_UI_Voiceitem_IND46"
+    },
+    {
+        "itemID": "921046021",
+        "description": "Waat lag gayi",
+        "description2": "Bolly Boli Voice Pack",
+        "icon": "FF_UI_Voiceitem_IND46"
+    },
+    {
+        "itemID": "921046022",
+        "description": "Go home if you're scared!",
+        "description2": "Trendy Voice Pack",
+        "icon": "FF_UI_Voiceitem_VN46"
+    },
+    {
+        "itemID": "801046005",
+        "icon": "Icon_exchange_Purplelight",
+        "description": "None"
+    },
+    {
+        "itemID": "802000078",
+        "icon": "FF_Lottery_UniversalRing_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "802000079",
+        "icon": "FF_Lottery_UniversalRing_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "802000080",
+        "icon": "FF_Lottery_UniversalRing_Token",
+        "description": "None"
+    },
+    {
+        "itemID": "802000081",
+        "icon": "FF_Lottery_Diwali_2024_Voucher",
+        "description": "None"
+    },
+    {
+        "itemID": "819150131",
+        "icon": "FF_Lottery_gaindiamond_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819150228",
+        "icon": "FF_Lottery_gaindiamond_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819150331",
+        "icon": "FF_Lottery_gaindiamond_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819350131",
+        "icon": "FF_Lottery_anni_forge_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819350228",
+        "icon": "FF_Lottery_anni_forge_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819350331",
+        "icon": "FF_Lottery_anni_forge_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819450131",
+        "icon": "FF_Lottery_gaincoin_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819450228",
+        "icon": "FF_Lottery_gaincoin_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "819450331",
+        "icon": "FF_Lottery_gaincoin_Limit",
+        "description": "None"
+    },
+    {
+        "itemID": "829004601",
+        "icon": "Icon_exchange_FlashGem_35",
+        "description": "None"
+    },
+    {
+        "itemID": "840000105",
+        "icon": "UI_NoDeductCard02_CS",
+        "description": "None"
+    }
+]
