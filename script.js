@@ -28,16 +28,14 @@ Promise.all([
 ])
   .then(([cdnData, pngsData, itemDatar, ob47_added_itemData]) => {
     // Assign the fetched data to global variables for further use
-    cdn_img_json = cdnData;      // Contains data from 'cdn.json'
+    cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
     pngs_json_list = pngsData;   // Contains data from 'pngs.json'
     itemData = itemDatar;        // Contains data from 'itemData.json'
     gl_ob47_added_itemData = ob47_added_itemData;// Contains data from 'ob47_added_itemData.json'
-    
-    // Execute additional logic based on URL parameters or other conditions
-    check_parameter();
-    
     // Display the first page of data, passing itemDatar and an empty string as arguments
     displayPage(1, '', itemDatar);
+        // Execute additional logic based on URL parameters or other conditions
+    check_parameter();
   })
   .catch(error => {
     // Log any errors encountered during the fetch or processing
@@ -94,14 +92,7 @@ function Share_tg() {
   var message = "Title: `" + a1 + "`\nID: `" + a2 + "`\nIcon Name: `" + a3 + "`\n\nView: " + a4;
   window.open("https://t.me/share/url?url=" + encodeURIComponent(message) + "&text=");
 }
-function hideain_load() {
-  document.getElementById("main_load").style.animation = "fadeOut 250ms 1 forwards";
-}
 
-function showeain_load() {
-  var dialog_main_bg = document.getElementById('main_load');
-  dialog_main_bg.style.visibility = "visible"
-}
 
 
 
@@ -123,7 +114,6 @@ function filterItemsBySearch(items, searchTerm) {
 
 function removeDuplicates(jsonArray, key) {
   const uniqueItems = new Map();
-
   jsonArray.forEach(item => {
     if (!uniqueItems.has(item[key])) {
       uniqueItems.set(item[key], item);
@@ -131,15 +121,61 @@ function removeDuplicates(jsonArray, key) {
   });
   return Array.from(uniqueItems.values());
 }
+
+function hideain_load() {
+  document.getElementById("main_load").style.animation = "fadeOut 250ms 1 forwards";
+}
+
+
 async function displayPage(pageNumber, searchTerm, webps) {
-  showeain_load();
+  const filteredItems = filterItemsBySearch(webps, searchTerm);
+  const startIdx = (pageNumber - 1) * webpsPerPage;
+  const endIdx = Math.min(startIdx + webpsPerPage, filteredItems.length);
+  const webpGallery = document.getElementById('webpGallery');
+  const fragment = document.createDocumentFragment(); // Use DocumentFragment for batch DOM updates
+  webpGallery.innerHTML = ''; // Clear existing content
+  for (let i = startIdx; i < endIdx; i++) {
+    const item = filteredItems[i];
+    const image = document.createElement("img");
+    image.loading = "lazy";
+    // Determine image source
+    let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png";
+    if (pngs_json_list?.includes(item.icon + ".png")) {
+      imgSrc = `https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/${item.icon}.png`;
+    } else {
+      const keyToFind = item.itemID.toString();
+      const value = cdn_img_json[item.itemID.toString()] ?? null;
+      if (value) imgSrc = value;
+    }
+    image.src = imgSrc;
+    image.className = "image bounce-click";
+    // Apply background color if description matches
+    if (item.description === "Didn't have an ID and description.") {
+      image.style.background = '#607D8B';
+    }
+    // Add click event listener
+    image.addEventListener('click', () => show_item_info(item, imgSrc));
+
+    // Append image to fragment
+    fragment.appendChild(image);
+  }
+
+  webpGallery.appendChild(fragment); // Add all images at once
+  totalPages = Math.ceil(filteredItems.length / webpsPerPage);
+  
+  renderPagination(searchTerm, webps); // Render pagination
+  updateUrl(); // Update URL
+}
+
+
+async function displayPage2(pageNumber, searchTerm, webps) {
   const filteredItems = filterItemsBySearch(webps, searchTerm);
   //const filteredItems = removeDuplicates(filteredItems_, 'itemID');
   let startIdx = (pageNumber - 1) * webpsPerPage;
   const endIdx = startIdx + webpsPerPage;
   const webpGallery = document.getElementById('webpGallery');
-  const pagination = document.getElementById('pagination');
-  webpGallery.innerHTML = '';
+  const fragment = document.createDocumentFragment(); // Use DocumentFragment for batch DOM updates
+  webpGallery.innerHTML = ''; // Clear existing content
   for (let i = startIdx; i < endIdx && i < filteredItems.length; i++) {
     const image = document.createElement("img");
     let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png"
@@ -171,9 +207,11 @@ async function displayPage(pageNumber, searchTerm, webps) {
   }
   totalPages = Math.ceil(filteredItems.length / webpsPerPage);
   renderPagination(searchTerm, webps);
-  hideain_load();
   updateUrl();
 }
+
+
+
 
 function show_item_info(data, imgSrc) {
   document.getElementById('cardimage').src = '';
@@ -352,9 +390,11 @@ Object.entries(links).forEach(([t, e]) => {
 });
 
 
+
+
 let isFirstSet = true;
-function Ob47Item(element) {
-  displayPage(1, '', isFirstSet ? gl_ob47_added_itemData : itemData);
+async function Ob47Item(element) {
+  await displayPage(1, '', isFirstSet ? gl_ob47_added_itemData : itemData);
   element.textContent = isFirstSet ? "Clear" : "OB47 Items";
   isFirstSet = !isFirstSet;
   document.getElementById('input_d').value = "";
