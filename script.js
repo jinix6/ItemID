@@ -298,31 +298,34 @@ document.addEventListener('DOMContentLoaded', (event) => {
     if (bodyElement.classList.contains("collapsed")) {
       // If it's collapsed, expand it by changing classes
       bodyElement.classList.remove("collapsed");
-      bodyElement.classList.add("expanded");
-      // Similarly, expand the extra set by changing its classes
-      extra_set.classList.remove("collapsed2");
       extra_set.classList.add("expanded2");
-      // Enable the input element with id "input_d"
-      document.getElementById("input_d").disabled = false;
-      // If a "notFoundText" element exists, make it visible (set opacity to 1)
-      if (notFoundText()) {
-        notFoundText().style.opacity = 1;
-      }
+      ["extra_set", "edge_bg"].forEach(id => {
+      document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards";
+  });
     } else {  // If the body is already expanded, collapse it
-      bodyElement.classList.remove("expanded");
+      ["extra_set", "edge_bg"].forEach(id => document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards");
       bodyElement.classList.add("collapsed");
-      // Similarly, collapse the extra set by changing its classes
       extra_set.classList.remove("expanded2");
       extra_set.classList.add("collapsed2");
-      // Disable the input element with id "input_d"
-      document.getElementById("input_d").disabled = true;
-      // If a "notFoundText" element exists, hide it (set opacity to 0)
-      if (notFoundText()) {
-        notFoundText().style.opacity = 0;
-      }
+      
     }
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  document.getElementById("edge_bg").addEventListener('click', () => {
+    bodyElement.classList.remove("collapsed");
+    extra_set.classList.add("expanded2");
+    ["extra_set", "edge_bg"].forEach(id => {
+    document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards";
+    });
+  });
+});
+
+
+
+
 
 
 

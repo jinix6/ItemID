@@ -270,7 +270,7 @@ img {
 
 
 .collapsed {
-  width: 0%;
+  width: 100%;
 }
 
 .expanded {
