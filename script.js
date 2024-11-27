@@ -298,3 +298,11 @@ function setData(element) {
     displayPage(1, '', gl_ob47_added_itemData)
   }
 }
+
+
+ // Add Enter key listener to the input field
+ document.getElementById('input_d').addEventListener('keydown', function(event) {
+   if (event.key === 'Enter') { // Check if Enter key is pressed
+     search(); // Call the search function
+   }
+ });
