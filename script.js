@@ -1,21 +1,17 @@
-var a1, a2, a3, a4;
 let hasRun = false;
+const webpsPerPage = 200;
 let itemData;
 let gl_ob47_added_itemData;
 let gl_ob46_added_itemData;
 let totalPages;
 let currentPage = 1;
-const webpsPerPage = 200;
 let cdn_img_json;
 let pngs_json_list;
 const bodyElement = document.body;
 const extra_set = document.getElementById("extra_set")
 extra_set.classList.remove("collapsed2");
 extra_set.classList.add("expanded2");
-const p = console.log;
 const notFoundText = () => document.getElementById('not_found_text');
-
-
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
   // Fetching 'cdn.json' and parsing it as JSON
@@ -45,6 +41,10 @@ Promise.all([
     // Log any errors encountered during the fetch or processing
     console.error('Error fetching data:', error);
   });
+
+
+
+
 
 const encrypt = (longUrl) => {
   const encodedUrl = btoa(longUrl);
@@ -89,9 +89,9 @@ function updateUrl() {
 }
 
 function Share_tg() {
-  var currentURL = getUrlWithoutParameters();
-  a4 = currentURL + "?icon=" + encrypt(a3);
-  var message = "Title: `" + a1 + "`\nID: `" + a2 + "`\nIcon Name: `" + a3 + "`\n\nView: " + a4;
+  var iconName = document.getElementById('dialog_tittle_pp').textContent.replace("Icon Name: ", "");  
+  var url = getUrlWithoutParameters() + "?icon=" + encrypt(iconName);
+  var message = "Title: `" + document.getElementById('dialog_tittle').textContent + "`\nID: `" + document.getElementById('dialog_tittle_p').textContent.replace("Id: ", "") + "`\nIcon Name: `" + iconName + "`\n\nView: " + url;
   window.open("https://t.me/share/url?url=" + encodeURIComponent(message) + "&text=");
 }
 function filterWebpsBySearch(webps, searchTerm) {
@@ -164,10 +164,6 @@ function show_item_info(data, imgSrc) {
     document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
   });
   document.getElementById('cardimage').src = imgSrc;
-  a1 = itemDetail;
-  a2 = itemID;
-  a3 = icon;
-  a4 = `https://jinix6.github.io/Icon/webp/${icon}.webp`;
   document.getElementById('dialog_tittle').textContent = itemDetail;
   document.getElementById('dialog_tittle_p').textContent = `Id: ${itemID}`;
   document.getElementById('dialog_tittle_pp').textContent = `Icon Name: ${icon}`;
