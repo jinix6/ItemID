@@ -26,27 +26,25 @@ Promise.all([
   fetch('itemData.json').then(response => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
   fetch('ob47_added_itemData.json').then(response => response.json()),
-  
+
   fetch('ob46_added_itemData.json').then(response => response.json())
 ])
   .then(([cdnData, pngsData, itemDatar, ob47_added_itemData, ob46_added_itemData]) => {
     // Assign the fetched data to global variables for further use
     cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
-    pngs_json_list = pngsData;   // Contains data from 'pngs.json'
-    itemData = itemDatar;        // Contains data from 'itemData.json'
-    gl_ob47_added_itemData = ob47_added_itemData;// Contains data from 'ob47_added_itemData.json'
+    pngs_json_list = pngsData; // Contains data from 'pngs.json'
+    itemData = itemDatar; // Contains data from 'itemData.json'
+    gl_ob47_added_itemData = ob47_added_itemData; // Contains data from 'ob47_added_itemData.json'
     gl_ob46_added_itemData = ob46_added_itemData;
     // Display the first page of data, passing itemDatar and an empty string as arguments
     displayPage(1, '', itemDatar);
-        // Execute additional logic based on URL parameters or other conditions
+    // Execute additional logic based on URL parameters or other conditions
     check_parameter();
   })
   .catch(error => {
     // Log any errors encountered during the fetch or processing
     console.error('Error fetching data:', error);
   });
-
-
 
 const encrypt = (longUrl) => {
   const encodedUrl = btoa(longUrl);
@@ -90,26 +88,17 @@ function updateUrl() {
   }
 }
 
-
-
-
 function Share_tg() {
   var currentURL = getUrlWithoutParameters();
   a4 = currentURL + "?icon=" + encrypt(a3);
   var message = "Title: `" + a1 + "`\nID: `" + a2 + "`\nIcon Name: `" + a3 + "`\n\nView: " + a4;
   window.open("https://t.me/share/url?url=" + encodeURIComponent(message) + "&text=");
 }
-
-
-
-
 function filterWebpsBySearch(webps, searchTerm) {
   return webps.filter(webp =>
     webp.toLowerCase().includes(searchTerm.toLowerCase())
   );
 }
-
-
 
 function filterItemsBySearch(items, searchTerm) {
   return items.filter(item =>
@@ -119,15 +108,8 @@ function filterItemsBySearch(items, searchTerm) {
   );
 }
 
-
-
-
-function hideain_load() {
-  document.getElementById("main_load").style.animation = "fadeOut 250ms 1 forwards";
-}
-
-
 async function displayPage(pageNumber, searchTerm, webps) {
+  current_data = webps;
   const filteredItems = filterItemsBySearch(webps, searchTerm);
   const startIdx = (pageNumber - 1) * webpsPerPage;
   const endIdx = Math.min(startIdx + webpsPerPage, filteredItems.length);
@@ -137,6 +119,8 @@ async function displayPage(pageNumber, searchTerm, webps) {
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
     const image = document.createElement("img");
+    image.className = "image bounce-click ";
+    image.src = "https://placehold.co/300x300?text=Loading...";
     image.loading = "lazy";
     // Determine image source
     let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png";
@@ -147,17 +131,29 @@ async function displayPage(pageNumber, searchTerm, webps) {
       const value = cdn_img_json[item.itemID.toString()] ?? null;
       if (value) imgSrc = value;
     }
-    image.src = imgSrc;
-    image.className = "image bounce-click";
+    image.dataset.src = imgSrc;
+
+    // Set a placeholder image initially
+    image.src = "https://placehold.co/300x300?text=Loading...";
+
+    // Add onload event listener to add the loaded class
+    image.onload = () => {
+      image.src = image.dataset.src; // Set the actual image source
+      image.classList.add('loaded'); // Add 'loaded' class to trigger the fade-in
+    };
+
     // Apply background color if description matches
     if (item.description === "Didn't have an ID and description.") {
       image.style.background = '#607D8B';
     }
+
     // Add click event listener
     image.addEventListener('click', () => show_item_info(item, imgSrc));
+
     // Append image to fragment
     fragment.appendChild(image);
   }
+
   webpGallery.appendChild(fragment); // Add all images at once
   totalPages = Math.ceil(filteredItems.length / webpsPerPage);
   renderPagination(searchTerm, webps); // Render pagination
@@ -165,29 +161,8 @@ async function displayPage(pageNumber, searchTerm, webps) {
 }
 
 
-
 const hide_dialog = () => ["dialog_main_bg", "mainnnnn_bg"]
   .forEach(id => document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards");
-
-  
-
-
-function s2how_item_info(data, imgSrc) {
-  const cardimage = document.getElementById('cardimage');
-  cardimage.src = '';
-  cardimage.src = imgSrc;
-  const { icon, description, description2, itemID } = data;
-  const itemDetail = description2 ? `${description} - ${description2}` : description;
-  a1 = itemDetail;
-  a2 = itemID;
-  a3 = icon;
-  a4 = imgSrc;
-  document.getElementById('dialog_tittle').textContent = itemDetail;
-  document.getElementById('dialog_tittle_p').textContent = `Id: ${itemID}`;
-  document.getElementById('dialog_tittle_pp').textContent = `Icon Name: ${icon}`;
-}
-
-
 
 function show_item_info(data, imgSrc) {
   document.getElementById('cardimage').src = '';
@@ -206,9 +181,6 @@ function show_item_info(data, imgSrc) {
   document.getElementById('dialog_tittle_pp').textContent = `Icon Name: ${icon}`;
 }
 
-
-
-
 async function generate_pagination_numbers() {
   const pagination_Numbers = [];
   for (let i = 1; i <= totalPages; i++) {
@@ -217,21 +189,17 @@ async function generate_pagination_numbers() {
   return pagination_Numbers;
 }
 
-
-
-
-
 async function renderPagination(searchTerm, webps) {
   const paginationNumbers = await generate_pagination_numbers();
   const pagi73hd = document.getElementById("pagi73hd");
   if (paginationNumbers.length === 0) {
     pagi73hd.style.visibility = "hidden";
     if (!notFoundText()) {
-    const notFoundText = document.createElement('h1');
-    notFoundText.id = 'not_found_text';
-    notFoundText.className = 'transition-all duration-100 ease-in-out mt-[10vh] font-black select-none space-mono-regular text-zinc-500 rotate-90 text-[1000%] w-[100vw] text-center whitespace-nowrap';
-    notFoundText.innerText = 'NOT FOUND';
-    document.getElementById("container").appendChild(notFoundText);
+      const notFoundText = document.createElement('h1');
+      notFoundText.id = 'not_found_text';
+      notFoundText.className = 'transition-all duration-100 ease-in-out mt-[10vh] font-black select-none space-mono-regular text-zinc-500 rotate-90 text-[1000%] w-[100vw] text-center whitespace-nowrap';
+      notFoundText.innerText = 'NOT FOUND';
+      document.getElementById("container").appendChild(notFoundText);
     }
   } else {
     pagi73hd.style.visibility = "visible";
@@ -256,11 +224,6 @@ async function renderPagination(searchTerm, webps) {
   }
 }
 
-
-
-
-
-
 async function goToPage(pageNumber, searchTerm, webps) {
   if (pageNumber >= 1 && pageNumber <= totalPages) {
     currentPage = pageNumber;
@@ -268,27 +231,11 @@ async function goToPage(pageNumber, searchTerm, webps) {
     await displayPage(currentPage, currentSearchTerm, webps);
   }
 }
-
-
-
-
-
-
 function search() {
-  document.getElementById("Ob47Item_btn").textContent = "OB47 Items";
-  document.getElementById("Ob46Item_btn").textContent = "OB46 Items";
-  Ob47Itemboolean = true;
-  Ob46Itemboolean = true;
   const keyword = document.getElementById("input_d").value
   addParameterWithoutRefresh('icon', encrypt(keyword));
-  displayPage(1, keyword, itemData);
+  displayPage(1, keyword, current_data);
 }
-
-
-
-
-
-
 
 // Event listener to run the function when the DOM content is fully loaded
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -300,44 +247,33 @@ document.addEventListener('DOMContentLoaded', (event) => {
       bodyElement.classList.remove("collapsed");
       extra_set.classList.add("expanded2");
       ["extra_set", "edge_bg"].forEach(id => {
-      document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards";
-  });
-    } else {  // If the body is already expanded, collapse it
+        document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards";
+      });
+    } else { // If the body is already expanded, collapse it
       ["extra_set", "edge_bg"].forEach(id => document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards");
       bodyElement.classList.add("collapsed");
       extra_set.classList.remove("expanded2");
       extra_set.classList.add("collapsed2");
-      
+
     }
   });
 });
-
-
 document.addEventListener('DOMContentLoaded', (event) => {
   document.getElementById("edge_bg").addEventListener('click', () => {
     bodyElement.classList.remove("collapsed");
     extra_set.classList.add("expanded2");
     ["extra_set", "edge_bg"].forEach(id => {
-    document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards";
+      document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards";
     });
   });
 });
 
-
-
-
-
-
-
-
-
-
 // Define an object containing key-value pairs for link identifiers and their corresponding URLs
 const links = {
   clgroup: "https://t.me/freefirecraftlandgroup", // Telegram group for Craftland
-  clprogroup: "https://t.me/ffcsharezone",        // Telegram group for sharing zone
-  tg: "https://t.me/Crystal_Person",              // Telegram link for a person
-  gt: "https://github.com/jinix6"                 // GitHub profile link
+  clprogroup: "https://t.me/ffcsharezone", // Telegram group for sharing zone
+  tg: "https://t.me/Crystal_Person", // Telegram link for a person
+  gt: "https://github.com/jinix6" // GitHub profile link
 };
 // Iterate over the entries of the 'links' object
 Object.entries(links).forEach(([t, e]) => {
@@ -349,31 +285,24 @@ Object.entries(links).forEach(([t, e]) => {
 });
 
 
-
-
-
-
-
-
-
-let Ob46Itemboolean = true;
-async function Ob46Item(element) {
-  Ob47Itemboolean = true;
-  document.getElementById("Ob47Item_btn").textContent = "OB47 Items";
-  await displayPage(1, '', Ob46Itemboolean ? gl_ob46_added_itemData : itemData);
-  element.textContent = Ob46Itemboolean ? "Clear" : "OB46 Items";
-  Ob46Itemboolean = !Ob46Itemboolean;
-  document.getElementById('input_d').value = "";
-}
-
-
-
-let Ob47Itemboolean = true;
-async function Ob47Item(element) {
-  Ob46Itemboolean = true;
-  document.getElementById("Ob46Item_btn").textContent = "OB46 Items";
-  await displayPage(1, '', Ob47Itemboolean ? gl_ob47_added_itemData : itemData);
-  element.textContent = Ob47Itemboolean ? "Clear" : "OB47 Items";
-  Ob47Itemboolean = !Ob47Itemboolean;
-  document.getElementById('input_d').value = "";
+let current_data;
+let all_tag_id = document.getElementById("AllItem_btn");
+let ob46_tag_id = document.getElementById("Ob46Item_btn");
+let ob47_tag_id = document.getElementById("Ob47Item_btn");
+all_tag_id.classList.add("text-white", "bg-black");
+[ob47_tag_id, ob46_tag_id].forEach(el => el.classList.add("text-black", "bg-white"));
+function setData(element) {
+  if (element.textContent === "ALL") {
+    [ob47_tag_id, ob46_tag_id].forEach(el => el.classList.remove("text-white", "bg-black"));
+    element.classList.add("text-white", "bg-black");
+    displayPage(1, '', itemData)
+  } else if (element.textContent === "OB46") {
+    [ob47_tag_id, all_tag_id].forEach(el => el.classList.remove("text-white", "bg-black"));
+    element.classList.add("text-white", "bg-black");
+    displayPage(1, '', gl_ob46_added_itemData)
+  } else if (element.textContent === "OB47") {
+    [all_tag_id, ob46_tag_id].forEach(el => el.classList.remove("text-white", "bg-black"));
+    element.classList.add("text-white", "bg-black");
+    displayPage(1, '', gl_ob47_added_itemData)
+  }
 }

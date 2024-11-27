@@ -4,7 +4,7 @@
   <title>ff-item</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous">//TAILWIND</script>
+  <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="style.css">
@@ -22,14 +22,30 @@
   <link rel="mask-icon" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/6ee440b_1732415043180_sc.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#FFBA00">
-  <style>@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')</style>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
+  </style>
 </head>
-<body onload="setTimeout(hideain_load, 250);">
+<body>
   <div id="edge_btn" class="bounce-click text-white fixed bottom-3 right-3 w-10 bg-white p-1 rounded-full z-[1]">
-   <svg fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Circle_Info" data-name="Circle Info"> <g> <g> <path d="M11.5,15a.5.5,0,0,0,1,0h0V10.981a.5.5,0,0,0-1,0Z"></path> <circle cx="12" cy="8.999" r="0.5"></circle> </g> <path d="M12,2.065A9.934,9.934,0,1,1,2.066,12,9.945,9.945,0,0,1,12,2.065Zm0,18.867A8.934,8.934,0,1,0,3.066,12,8.944,8.944,0,0,0,12,20.932Z"></path> </g> </g> </g></svg>
+    <svg fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+      <g id="SVGRepo_iconCarrier">
+        <g id="Circle_Info" data-name="Circle Info">
+          <g>
+            <g>
+              <path d="M11.5,15a.5.5,0,0,0,1,0h0V10.981a.5.5,0,0,0-1,0Z"></path>
+              <circle cx="12" cy="8.999" r="0.5"></circle>
+            </g>
+            <path d="M12,2.065A9.934,9.934,0,1,1,2.066,12,9.945,9.945,0,0,1,12,2.065Zm0,18.867A8.934,8.934,0,1,0,3.066,12,8.944,8.944,0,0,0,12,20.932Z"></path>
+          </g>
+        </g>
+      </g>
+    </svg>
   </div>
-    <div id="edge_bg" class="w-[100vh] h-[100vh] bg-[rgba(0, 0, 0, 0.5)] fixed invisible"></div>
-    <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[14px] fixed z-50">
+  <div id="edge_bg" class="w-[100vh] h-[100vh] bg-[rgba(0, 0, 0, 0.5)] fixed invisible"></div>
+  <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[14px] fixed z-50">
     <img class="w-[20%] mt-5" src="https://cdn-sc-g.sharechat.com/33d5318_1c8/6ee440b_1732415043180_sc.svg" alt="LoGo">
     <h class="space-mono-regular text-[150%]">Ff-item</h>
     <p class="space-mono-regular w-[95%] text-[#525252]">Get item ID, name, and description for Free Fire game items by search.</p>
@@ -95,31 +111,27 @@
       </div>
     </div>
   </div>
-  <div id="main_load">
-    <div id="loadingsin" role="status" class="absolute -translate-x-1/2 -translate-y-1/2 top-80 left-1/2">
-      <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-[#245A64]" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
-        <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
-      </svg>
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
   <div id="container" class="container h-[100vh] flex mt-5 mb-5">
     <div id="input_search_bg" class="w-full">
-      <div class="flex w-full min-w-[200px] h-10">
-        <input id="input_d" class="space-mono-regular peer w-full h-full bg-transparent text-white outline outline-0 placeholder-shown:border border text-sm px-3 py-2.5 rounded-[14px]  focus:border-[white]" placeholder="Search By Keyword, ItemID, Description" />
-        <button id="search_btn" onclick="search()" class="bounce-click bg-white space-mono-regular px-3 py-2 rounded-[14px] ml-2">Search</button>
+      <div class="relative w-full min-w-[200px] h-10">
+        <input id="input_d" class="space-mono-regular pl-3 peer w-full h-full bg-transparent text-white outline outline-0 placeholder-shown:border border text-sm pr-10 py-2.5 rounded-[14px] focus:border-[white]" placeholder="Search By Keyword, ItemID, Description" />
+        <button id="search_btn" onclick="search()" class="absolute right-2 top-1/2 transform -translate-y-1/2 px-2 py-1 rounded bg-transparent">
+          <svg width="16" height="15" viewBox="0 0 16 15" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3776 11.5147C9.28828 12.3615 7.91946 12.8657 6.43286 12.8657C2.88009 12.8657 0 9.98564 0 6.43286C0 2.88009 2.88009 0 6.43286 0C9.98564 0 12.8657 2.88009 12.8657 6.43286C12.8657 7.32424 12.6844 8.17328 12.3567 8.9451L11.0941 7.6825C11.2007 7.28392 11.2575 6.865 11.2575 6.43281C11.2575 3.76823 9.09744 1.60816 6.43286 1.60816C3.76829 1.60816 1.60822 3.76823 1.60822 6.43281C1.60822 9.09739 3.76829 11.2575 6.43287 11.2575C8.05545 11.2575 9.49096 10.4565 10.3655 9.22832L10.7866 9.64933L10.7866 9.64929L16.0001 14.8628H13.7258L10.3776 11.5147Z" fill="#ffffff"></path>
+          </svg>
+        </button>
       </div>
     </div>
-    <div class="flex gap-2">
-      <button id="Ob46Item_btn" onclick="Ob46Item(this);" class="text-black space-mono-regular text-sm mt-2 bg-white bounce-click px-1 py-0 rounded-[14px]">OB46 Items</button>
-      <button id="Ob47Item_btn" onclick="Ob47Item(this);" class="text-black space-mono-regular text-sm mt-2 bg-white bounce-click px-1 py-0 rounded-[14px]">OB47 Items</button>
+    <div class="flex gap-2 mt-5 bg-white rounded-full">
+      <button id="AllItem_btn" onclick="setData(this)" class="border border-2 border-[#737373] m-1 space-mono-regular text-sm bounce-click px-5 py-1 rounded-[14px]">ALL</button>
+      <button id="Ob46Item_btn" onclick="setData(this)" class="border border-2 border-[#737373] m-1 space-mono-regular text-sm bounce-click px-5 py-1 rounded-[14px]">OB46</button>
+      <button id="Ob47Item_btn" onclick="setData(this)" class="border border-2 border-[#737373] m-1 space-mono-regular text-sm bounce-click px-5 py-1 rounded-[14px]">OB47</button>
     </div>
     <div class="page" id="webpGallery"></div>
-    <div id="pagi73hd" class="invisible mt-5 w-[100%]">
-    <div class="bg-[white] h-[110%] rounded-full p-1 flex overflow-x-scroll gap-2" id="pagination"></div>
+    <div id="pagi73hd" class="invisible mt-5 pb-5 w-[100%]">
+      <div class="bg-white h-[110%] rounded-full p-1 flex overflow-x-scroll gap-2" id="pagination"></div>
     </div>
-    <div class="w-[100%]">‎</div>
+
   </div>
   <script src="script.js"></script>
 </body>

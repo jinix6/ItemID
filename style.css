@@ -2,18 +2,19 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
 }
+
 body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   background: #171010;
   margin: 0;
   height: 100vh;
@@ -27,11 +28,11 @@ body {
 .container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -53,7 +54,7 @@ body {
   width: 100%;
   height: auto;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 14px;
   background: #423F3E;
 }
@@ -63,11 +64,11 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   background: #607D8B;
 
 }
@@ -81,8 +82,8 @@ body {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   background: transparent;
@@ -101,8 +102,8 @@ body {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   opacity: 0.5;
 }
 
@@ -111,8 +112,8 @@ body {
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 
@@ -193,18 +194,18 @@ body {
 
 #mainnnnn_bg {
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   width: 100%;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   z-index: 3;
   background: transparent;
 }
@@ -212,7 +213,7 @@ body {
 
 .copied-animation {
   -webkit-animation: fadeInOut 1s ease-in-out;
-          animation: fadeInOut 1s ease-in-out;
+  animation: fadeInOut 1s ease-in-out;
 }
 
 @-webkit-keyframes fadeInOut {
@@ -240,9 +241,7 @@ body {
 }
 
 #share_btn {
-
   padding: 3%;
-
   border-radius: 200px;
 }
 
@@ -300,8 +299,8 @@ img {
 
 .bounce-click:active {
   -webkit-transform: scale(0.9);
-      -ms-transform: scale(0.9);
-          transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
 }
 
 #input_d {
@@ -314,4 +313,17 @@ input[disabled] {
   background-color: #f2f2f2;
   color: #999;
   cursor: not-allowed;
+}
+
+
+/* Initially hide the image */
+.image {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out; /* Delay visibility change until fade-in completes */
+}
+
+/* When the image has loaded, it will fade in */
+.image.loaded {
+  opacity: 1;
+  
 }
