@@ -315,15 +315,3 @@ input[disabled] {
   cursor: not-allowed;
 }
 
-
-/* Initially hide the image */
-.image {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out; /* Delay visibility change until fade-in completes */
-}
-
-/* When the image has loaded, it will fade in */
-.image.loaded {
-  opacity: 1;
-  
-}

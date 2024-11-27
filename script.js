@@ -120,7 +120,6 @@ async function displayPage(pageNumber, searchTerm, webps) {
     const item = filteredItems[i];
     const image = document.createElement("img");
     image.className = "image bounce-click ";
-    image.src = "https://placehold.co/300x300?text=Loading...";
     image.loading = "lazy";
     // Determine image source
     let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png";
@@ -131,16 +130,9 @@ async function displayPage(pageNumber, searchTerm, webps) {
       const value = cdn_img_json[item.itemID.toString()] ?? null;
       if (value) imgSrc = value;
     }
-    image.dataset.src = imgSrc;
+    image.src = imgSrc;
 
-    // Set a placeholder image initially
-    image.src = "https://placehold.co/300x300?text=Loading...";
 
-    // Add onload event listener to add the loaded class
-    image.onload = () => {
-      image.src = image.dataset.src; // Set the actual image source
-      image.classList.add('loaded'); // Add 'loaded' class to trigger the fade-in
-    };
 
     // Apply background color if description matches
     if (item.description === "Didn't have an ID and description.") {
