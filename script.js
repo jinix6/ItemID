@@ -119,8 +119,9 @@ async function displayPage(pageNumber, searchTerm, webps) {
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
     const image = document.createElement("img");
-    image.className = "image p-4 bounce-click ";
+    image.className = "image p-3 bounce-click ";
     image.loading = "lazy";
+    image.id ="list_item_img"
     // Determine image source
     let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png";
     if (pngs_json_list?.includes(item.icon + ".png")) {
@@ -131,21 +132,15 @@ async function displayPage(pageNumber, searchTerm, webps) {
       if (value) imgSrc = value;
     }
     image.src = imgSrc;
-
-
-
     // Apply background color if description matches
     if (item.description === "Didn't have an ID and description.") {
       image.style.background = '#607D8B';
     }
-
     // Add click event listener
-    image.addEventListener('click', () => show_item_info(item, imgSrc));
-
+    image.addEventListener('click', () => show_item_info(item, imgSrc, image, fragment));
     // Append image to fragment
     fragment.appendChild(image);
   }
-
   webpGallery.appendChild(fragment); // Add all images at once
   totalPages = Math.ceil(filteredItems.length / webpsPerPage);
   renderPagination(searchTerm, webps); // Render pagination
@@ -156,18 +151,64 @@ async function displayPage(pageNumber, searchTerm, webps) {
 const hide_dialog = () => ["dialog_main_bg", "mainnnnn_bg"]
   .forEach(id => document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards");
 
-function show_item_info(data, imgSrc) {
-  document.getElementById('cardimage').src = '';
+
+function show_item_info(data, imgSrc, sharedElement, page1) {
+  const targetElement = document.getElementById('cardimage');
+  targetElement.src = '';
+  targetElement.src = imgSrc;
+  const page2 = document.getElementById('container_dialog');
+  const page2_bg = document.getElementById('mainnnnn_bg');
   const { icon, description, description2, itemID } = data;
   const itemDetail = description2 ? `${description} - ${description2}` : description;
-  ["mainnnnn_bg", "dialog_main_bg"].forEach(id => {
-    document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
+  ["mainnnnn_bg", "dialog_main_bg"].forEach(id => {document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";});
+  const dialog_tittle = document.getElementById('dialog_tittle');
+  const dialog_tittle_p = document.getElementById('dialog_tittle_p');
+  const dialog_tittle_pp = document.getElementById('dialog_tittle_pp');
+  dialog_tittle.textContent = itemDetail;
+  dialog_tittle_p.textContent = `Id: ${itemID}`;
+  dialog_tittle_pp.textContent = `Icon Name: ${icon}`;
+  [dialog_tittle, dialog_tittle_p, dialog_tittle_pp].forEach((element, index) => {
+    setTimeout(() => {
+      element.classList.add("text-pop-up-top");
+    }, index * 200);
   });
-  document.getElementById('cardimage').src = imgSrc;
-  document.getElementById('dialog_tittle').textContent = itemDetail;
-  document.getElementById('dialog_tittle_p').textContent = `Id: ${itemID}`;
-  document.getElementById('dialog_tittle_pp').textContent = `Icon Name: ${icon}`;
-}
+  sharedElement.classList.add("touch-none")
+  // Get the position and size of the shared element
+  const startRect = sharedElement.getBoundingClientRect();
+  const endRect = targetElement.getBoundingClientRect();
+  // Clone the shared element
+  const clone = sharedElement.cloneNode(true);
+  document.body.appendChild(clone);
+  // Style the clone to match the shared element
+  gsap.set(clone, {
+    position: 'absolute',
+    top: startRect.top + window.scrollY,
+    left: startRect.left + window.scrollX,
+    width: startRect.width,
+    height: startRect.height,
+    zIndex: 10,
+  });
+  // Animate the clone to the target element's position and size
+  gsap.to(clone, {
+    duration: 0.5,
+    top: endRect.top + window.scrollY,
+    left: endRect.left + window.scrollX,
+    width: endRect.width,
+    height: endRect.height,
+    ease: 'power2.inOut',
+    onComplete: () => {
+    },
+  });
+  document.getElementById("hide_dialg_btn").addEventListener('click', () => {
+    hide_dialog();
+    clone.remove();
+    [dialog_tittle, dialog_tittle_p, dialog_tittle_pp].forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.remove("text-pop-up-top");
+      }, index * 200);
+    });
+})};
+
 
 async function generate_pagination_numbers() {
   const pagination_Numbers = [];
