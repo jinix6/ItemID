@@ -119,7 +119,7 @@ async function displayPage(pageNumber, searchTerm, webps) {
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
     const image = document.createElement("img");
-    image.className = "image bounce-click ";
+    image.className = "image p-4 bounce-click ";
     image.loading = "lazy";
     // Determine image source
     let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ItemID@main/pngs/UI_EPFP_unknown.png";
