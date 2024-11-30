@@ -146,9 +146,6 @@ async function displayPage(pageNumber, searchTerm, webps) {
   renderPagination(searchTerm, webps); // Render pagination
   updateUrl(); // Update URL
 }
-
-
-
 function show_item_info(data, imgSrc, sharedElement, page1) {
   const targetElement = document.getElementById('cardimage');
   targetElement.src = '';
@@ -344,6 +341,10 @@ function setData(element) {
     element.classList.add("text-white", "bg-black");
     displayPage(1, '', gl_ob47_added_itemData)
   }
+  const el = document.getElementById("webpGallery");
+  el.classList.remove("slide-top");
+  void el.offsetWidth;
+  el.classList.add("slide-top");
 }
 
 
