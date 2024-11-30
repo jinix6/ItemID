@@ -148,9 +148,6 @@ async function displayPage(pageNumber, searchTerm, webps) {
 }
 
 
-const hide_dialog = () => ["dialog_main_bg", "mainnnnn_bg"]
-  .forEach(id => document.getElementById(id).style.animation = "fadeOut 250ms 1 forwards");
-
 
 function show_item_info(data, imgSrc, sharedElement, page1) {
   const targetElement = document.getElementById('cardimage');
@@ -169,7 +166,8 @@ function show_item_info(data, imgSrc, sharedElement, page1) {
   dialog_tittle_pp.textContent = `Icon Name: ${icon}`;
   [dialog_tittle, dialog_tittle_p, dialog_tittle_pp].forEach((element, index) => {
     setTimeout(() => {
-      element.classList.add("text-pop-up-top");
+      element.classList.add("slide-top");
+      element.classList.remove("slide-bottom");
     }, index * 200);
   });
   sharedElement.classList.add("touch-none")
@@ -200,14 +198,26 @@ function show_item_info(data, imgSrc, sharedElement, page1) {
     },
   });
   document.getElementById("hide_dialg_btn").addEventListener('click', () => {
-    hide_dialog();
-    clone.remove();
+    sharedElement.classList.remove("touch-none");
     [dialog_tittle, dialog_tittle_p, dialog_tittle_pp].forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.remove("text-pop-up-top");
-      }, index * 200);
-    });
-})};
+    setTimeout(() => {
+      element.classList.remove("slide-top");
+      element.classList.add("slide-bottom");
+      }, index * 100);
+      });
+    setTimeout(() =>{
+      ["dialog_main_bg", "mainnnnn_bg"].forEach(id => document.getElementById(id).style.animation = "fadeOut 300ms 1 forwards");}, 250)
+    gsap.to(clone, {
+      duration: 0.5,
+      top: startRect.top + window.scrollY,
+      left: startRect.left + window.scrollX,
+      width: startRect.width,
+      height: startRect.height,
+      ease: 'power2.inOut',
+      onComplete: () => {
+        clone.remove();
+      },});
+  })};
 
 
 async function generate_pagination_numbers() {
