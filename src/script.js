@@ -15,15 +15,15 @@ const notFoundText = () => document.getElementById('not_found_text');
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
   // Fetching 'cdn.json' and parsing it as JSON
-  fetch('cdn.json').then(response => response.json()),
+  fetch('assets/cdn.json').then(response => response.json()),
   // Fetching 'pngs.json' and parsing it as JSON
-  fetch('pngs.json').then(response => response.json()),
+  fetch('assets/pngs.json').then(response => response.json()),
   // Fetching 'itemData.json' and parsing it as JSON
-  fetch('itemData.json').then(response => response.json()),
+  fetch('assets/itemData.json').then(response => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
-  fetch('ob47_added_itemData.json').then(response => response.json()),
+  fetch('assets/ob47_added_itemData.json').then(response => response.json()),
 
-  fetch('ob46_added_itemData.json').then(response => response.json())
+  fetch('assets/ob46_added_itemData.json').then(response => response.json())
 ])
   .then(([cdnData, pngsData, itemDatar, ob47_added_itemData, ob46_added_itemData]) => {
     // Assign the fetched data to global variables for further use
