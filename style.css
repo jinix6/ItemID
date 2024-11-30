@@ -320,7 +320,7 @@ input[disabled] {
 }
 
 
-.text-pop-up-top {
+.slide-top {
     animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
@@ -336,5 +336,24 @@ input[disabled] {
             transform: translateY(0);
     opacity: 1;
     visibility: visible;
+  }
+}
+
+
+.slide-bottom {
+  animation: slide-bottom 0.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px);
+    opacity: 0;
+    visibility: hidden;
   }
 }
