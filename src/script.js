@@ -17,7 +17,7 @@ Promise.all([
   // Fetching 'cdn.json' and parsing it as JSON
   fetch('assets/cdn.json').then(response => response.json()),
   // Fetching 'pngs.json' and parsing it as JSON
-  fetch('https://cdn.jsdelivr.net/gh/jinix6/ff-resources@refs/heads/main/pngs/ob46/list.json').then(response => response.json()),
+  fetch('https://cdn.jsdelivr.net/gh/jinix6/ff-resources@refs/heads/main/pngs/300x300/list.json').then(response => response.json()),
   // Fetching 'itemData.json' and parsing it as JSON
   fetch('assets/itemData.json').then(response => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
@@ -123,9 +123,9 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.loading = "lazy";
     image.id ="list_item_img"
     // Determine image source
-    let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ff-resources@refs/heads/main/pngs/ob46/UI_EPFP_unknown.png"
+    let imgSrc = "https://cdn.jsdelivr.net/gh/jinix6/ff-resources@refs/heads/main/pngs/300x300/UI_EPFP_unknown.png"
     if (pngs_json_list?.includes(item.icon + ".png")) {
-      imgSrc = `https://cdn.jsdelivr.net/gh/jinix6/ff-resources@refs/heads/main/pngs/ob46/${item.icon}.png`;
+      imgSrc = `https://cdn.jsdelivr.net/gh/jinix6/ff-resources@refs/heads/main/pngs/300x300/${item.icon}.png`;
     } else {
       const keyToFind = item.itemID.toString();
       const value = cdn_img_json[item.itemID.toString()] ?? null;
