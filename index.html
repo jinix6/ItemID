@@ -5,8 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <link rel="stylesheet" href="src/style.css">
   <meta name="author" content="JINIX6">
   <meta name="og:title" content="ff-items">
@@ -27,7 +25,7 @@
   </style>
 </head>
 <body>
-  <div id="edge_btn" class="bounce-click text-white fixed bottom-3 right-3 w-10 bg-white p-1 rounded-full z-[1]">
+  <div id="edge_btn" class="bounce-click text-white fixed bottom-3 right-3 w-10 bg-white p-1 rounded-full z-50">
     <svg fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -44,8 +42,8 @@
       </g>
     </svg>
   </div>
-  <div id="edge_bg" class="w-[100vh] h-[100vh] bg-[rgba(0, 0, 0, 0.5)] fixed invisible"></div>
-  <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[14px] fixed z-50">
+  <div id="edge_bg" class="w-[100vh] h-[100vh] bg-[black] fixed invisible"></div>
+  <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[14px] fixed z-[99999]">
     <img class="w-[20%] mt-5" src="https://cdn-sc-g.sharechat.com/33d5318_1c8/6ee440b_1732415043180_sc.svg" alt="LoGo">
     <h class="space-mono-regular text-[150%]">Ff-item</h>
     <p class="space-mono-regular w-[95%] text-[#525252]">Get item ID, name, and description for Free Fire game items by search.</p>
@@ -85,7 +83,7 @@
     </div>
     <div class="h-screen"></div>
   </div>
-  <div class="invisible fixed touch-none" id="mainnnnn_bg">
+    <div class="invisible fixed touch-none" id="mainnnnn_bg">
     <div id="dialog_main_bg" class="invisible fixed dialog_main_bg flex flex-col text-white shadow-md bg-clip-border rounded-[14px] w-96">
       <div id="background_dia"></div>
       <div class="container_dialog touch-none relative mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-[#423F3E] shadow-blue-gray-500/40">
@@ -123,9 +121,10 @@
       </div>
     </div>
     <div class="flex gap-2 mt-5 bg-white rounded-full">
-      <button id="AllItem_btn" onclick="setData(this)" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">ALL</button>
-      <button id="Ob46Item_btn" onclick="setData(this)" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">OB46</button>
-      <button id="Ob47Item_btn" onclick="setData(this)" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">OB47</button>
+      <button value="1" id="trashItem_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">TRASH MODE</button>
+      <button value="2" id="AllItem_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">ALL</button>
+      <button value="3" id="Ob46Item_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">OB46</button>
+      <button value="4" id="Ob47Item_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">OB47</button>
     </div>
     <div class="page" id="webpGallery"></div>
     <div id="pagi73hd" class="invisible mt-5 pb-5 w-[100%]">
@@ -133,6 +132,7 @@
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="src/Util.js"></script>
   <script src="src/script.js"></script>
 </body>
 </html>
