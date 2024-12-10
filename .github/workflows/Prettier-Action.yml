@@ -1,11 +1,13 @@
 name: Continuous Integration
 
-# This action works with pull requests and pushes
+# This action works with pull requests and pushes to `main`
 on:
   pull_request:
+    branches:
+      - main  # Trigger when a PR is created targeting the main branch
   push:
     branches:
-      - main
+      - main  # Trigger on pushes to the main branch (but without pushing changes)
 
 jobs:
   prettier:
@@ -21,5 +23,7 @@ jobs:
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
-          # This part is also where you can pass other options, for example:
+          # This part is where you can pass other options, such as file types to prettify
           prettier_options: --write **/*.{js,md}
+          
+      # No push step is included here, so the code will not be pushed back to the repository
