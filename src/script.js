@@ -87,7 +87,7 @@ async function displayPage(pageNumber, searchTerm, webps) {
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
     const image = document.createElement("img");
-    image.className = "image p-3 bounce-click ";
+    image.className = "image border p-3 bounce-click ";
     image.loading = "lazy";
     image.id ="list_item_img"
     // Determine image source
@@ -136,10 +136,10 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
     pagination.innerHTML = '';
     paginationNumbers.forEach((pageNumber) => {
       const pageButton = document.createElement("button");
-      pageButton.className = "px-[8%] bg-white border border-2 border-[#737373] bounce-click select-none rounded-full text-center space-mono-regular font-medium uppercase text-black disabled:pointer-events-none disabled:shadow-none";
+      pageButton.className = "px-[8%] bg-white bounce-click select-none rounded-[11px] text-center space-mono-regular font-medium uppercase text-black disabled:pointer-events-none disabled:shadow-none";
       if (pageNumber === currentPage) {
         pageButton.classList.remove("bg-white", "text-black", "border", "border-2", "border-[#737373]");
-        pageButton.classList.add("text-white", "bg-[#2B2B2B]");
+        pageButton.classList.add("text-white", "bg-[black]");
       }
       pageButton.textContent = pageNumber;
       pageButton.addEventListener('click', async () => {

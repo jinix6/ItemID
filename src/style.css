@@ -15,7 +15,7 @@ body {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  background: #171010;
+  background: #000000;
   margin: 0;
   height: 100vh;
   width: 100vw;
@@ -55,8 +55,9 @@ body {
   height: auto;
   -o-object-fit: cover;
   object-fit: cover;
-  border-radius: 14px;
-  background: #423F3E;
+  border-radius: 24px;
+  background: #191919;
+  border-color: #252525;
 }
 
 .container_dialog {
@@ -74,7 +75,7 @@ body {
 }
 
 .dialog_main_bg {
-  background: #2B2B2B;
+  background: black;
 }
 
 #background_dia {
@@ -242,7 +243,7 @@ body {
 
 #share_btn {
   padding: 3%;
-  border-radius: 200px;
+  border-radius: 11px;
 }
 
 
@@ -264,7 +265,7 @@ body {
 img {
   height: auto;
   width: 100%;
-  border-radius: 14px;
+  border-radius: 11px;
 }
 
 
@@ -307,6 +308,7 @@ img {
   -webkit-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
+  border-color: #333333;
 }
 
 input[disabled] {
