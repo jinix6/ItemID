@@ -1,6 +1,6 @@
 let current_data;
 let itemData;
-   let gl_ob47_added_itemData;
+let gl_ob47_added_itemData;
 let gl_ob46_added_itemData;
 let currentPage = 1;
 let cdn_img_json;
