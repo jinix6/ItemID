@@ -25,7 +25,7 @@
   </style>
 </head>
 <body>
-  <div id="edge_btn" class="bounce-click text-white fixed bottom-3 right-3 w-10 bg-white p-1 rounded-full z-50">
+  <div id="edge_btn" class="bounce-click text-white fixed bottom-3 right-3 w-10 bg-white p-1 rounded-[11px] z-50">
     <svg fill="#000000" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -43,14 +43,14 @@
     </svg>
   </div>
   <div id="edge_bg" class="w-[100vh] h-[100vh] bg-[black] fixed invisible"></div>
-  <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[14px] fixed z-[99999]">
+  <div id="extra_set" class="transition-all grid place-items-center duration-250 ease-[cubic-bezier(0.23, 1, 0.32, 1)] text-black bg-[white] text-center bottom-[80px] right-3.5 rounded-[11px] fixed z-[99999]">
     <img class="w-[20%] mt-5" src="https://cdn-sc-g.sharechat.com/33d5318_1c8/6ee440b_1732415043180_sc.svg" alt="LoGo">
     <h class="space-mono-regular text-[150%]">Ff-item</h>
     <p class="space-mono-regular w-[95%] text-[#525252]">Get item ID, name, and description for Free Fire game items by search.</p>
     <div>--------------------------------------------------------</div>
-    <button id="clgroup" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[14px] py-[3%] text-white ">Craftland Group</button>
+    <button id="clgroup" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[11px] py-[3%] text-white ">Craftland Group</button>
     <div>‎</div>
-    <button id="clprogroup" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[14px] py-[3%] text-white ">Craftland Map Code & Files</button>
+    <button id="clprogroup" class="bounce-click bg-[black] w-[95%] space-mono-regular rounded-[11px] py-[3%] text-white ">Craftland Map Code & Files</button>
     <div>‎</div>
     <div class="flex justify-center items-center gap-2 w-[100%]">
       <svg class="bounce-click" id="tg" width="6%" viewBox="0 0 48 48" id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg">
@@ -84,11 +84,12 @@
     <div class="h-screen"></div>
   </div>
     <div class="invisible fixed touch-none" id="mainnnnn_bg">
-    <div id="dialog_main_bg" class="invisible fixed dialog_main_bg flex flex-col text-white shadow-md bg-clip-border rounded-[14px] w-96">
+    <div id="dialog_main_bg" class="invisible fixed dialog_main_bg flex flex-col text-white shadow-md bg-clip-border rounded-[24px] w-96">
       <div id="background_dia"></div>
-      <div class="container_dialog touch-none relative mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-[#423F3E] shadow-blue-gray-500/40">
+      <div class="container_dialog touch-none relative m-2 overflow-hidden text-white shadow-lg bg-clip-border rounded-[24px] bg-[#191919] shadow-blue-gray-500/40 border border-[#333333]">
         <img class="p-3 invisible" id="cardimage" alt="No-Preview" />
       </div>
+      <div class="bg-[#191919] rounded-[24px] m-2 border border-[#333333]">
       <div class="p-6">
         <h5 id="dialog_tittle" class="space-mono-bold  block mb-2  text-base antialiased  leading-snug tracking-normal text-blue-gray-900">
         </h5>
@@ -98,37 +99,39 @@
         </p>
       </div>
       <div class="p-6 pt-0">
-        <button id="hide_dialg_btn" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
+        <button id="hide_dialg_btn" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-[11px] bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
           Close
         </button>
-        <button id="share_btn" data-ripple-light="true" onclick="setTimeout(Share_tg, 250);" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-lg bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
+        <button id="share_btn" data-ripple-light="true" onclick="setTimeout(Share_tg, 250);" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-[11px] bg-[#423F3E] text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none" type="button">
           <svg id="tele_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="telegram">
             <path d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427c0 0 7.961-3.267 10.722-4.418 1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path>
           </svg>
         </button>
       </div>
+      </div>
+
+      
+      
     </div>
   </div>
   <div id="container" class="container h-[100vh] flex mt-5 mb-5">
     <div id="input_search_bg" class="w-full">
       <div class="relative w-full min-w-[200px] h-10">
-        <input id="input_d" class="space-mono-regular pl-3 peer w-full h-full bg-transparent text-white outline outline-0 placeholder-shown:border border text-sm pr-10 py-2.5 rounded-[14px] focus:border-[white]" placeholder="Search By Keyword, ItemID, Description" />
+        <input id="input_d" class="space-mono-regular pl-3 peer w-full h-full bg-transparent text-white outline outline-0 placeholder-shown:border border text-sm pr-10 py-2.5 rounded-[11px]" placeholder="Search By Keyword, ItemID, Description" />
         <button id="search_btn" onclick="search()" class="absolute right-2 top-1/2 transform -translate-y-1/2 px-2 py-1 rounded bg-transparent">
-          <svg width="16" height="15" viewBox="0 0 16 15" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.3776 11.5147C9.28828 12.3615 7.91946 12.8657 6.43286 12.8657C2.88009 12.8657 0 9.98564 0 6.43286C0 2.88009 2.88009 0 6.43286 0C9.98564 0 12.8657 2.88009 12.8657 6.43286C12.8657 7.32424 12.6844 8.17328 12.3567 8.9451L11.0941 7.6825C11.2007 7.28392 11.2575 6.865 11.2575 6.43281C11.2575 3.76823 9.09744 1.60816 6.43286 1.60816C3.76829 1.60816 1.60822 3.76823 1.60822 6.43281C1.60822 9.09739 3.76829 11.2575 6.43287 11.2575C8.05545 11.2575 9.49096 10.4565 10.3655 9.22832L10.7866 9.64933L10.7866 9.64929L16.0001 14.8628H13.7258L10.3776 11.5147Z" fill="#ffffff"></path>
-          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#E0E0E0" d="M6 2h8v2H6zM4 6V4h2v2zm0 8H2V6h2zm2 2H4v-2h2zm8 0v2H6v-2zm2-2h-2v2h2v2h2v2h2v2h2v-2h-2v-2h-2v-2h-2zm0-8h2v8h-2zm0 0V4h-2v2z"/></svg>
         </button>
       </div>
     </div>
-    <div class="flex gap-2 mt-5 bg-white rounded-full">
-      <button value="1" id="trashItem_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">TRASH MODE</button>
-      <button value="2" id="AllItem_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">ALL</button>
-      <button value="3" id="Ob46Item_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">OB46</button>
-      <button value="4" id="Ob47Item_btn" onclick="handleDisplayChange(this, '')" class="border border-2 border-[#737373] m-0.5 space-mono-regular text-sm bounce-click px-2 py-0 rounded-[14px]">OB47</button>
+    <div class="flex gap-1 mt-5 bg-white rounded-[7px] border border-[#333333]">
+      <button value="1" id="trashItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 space-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">TRASH MODE</button>
+      <button value="2" id="AllItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 space-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">ALL</button>
+      <button value="3" id="Ob46Item_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 space-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">OB46</button>
+      <button value="4" id="Ob47Item_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 space-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">OB47</button>
     </div>
     <div class="page" id="webpGallery"></div>
     <div id="pagi73hd" class="invisible mt-5 pb-5 w-[100%]">
-      <div class="bg-white h-[110%] rounded-full p-1 flex overflow-x-scroll gap-2" id="pagination"></div>
+      <div class="bg-white h-[110%] rounded-[7px] p-1 flex overflow-x-scroll gap-2" id="pagination"></div>
     </div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

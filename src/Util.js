@@ -203,7 +203,7 @@ function handleDisplayChange(element, searchKeyword) {
   const resetUI = () => {
     removeClasses(uiElements.tags, "text-white", "bg-black");
     removeClasses([uiElements.trashButton], "text-white", "bg-black");
-    addClasses(uiElements.trashButton, "bg-[#666666]", "text-[#ffffff]");
+    addClasses(uiElements.trashButton, "bg-[black]", "text-[white]");
   };
 
   // Update UI and call specific functions based on the selected mode
