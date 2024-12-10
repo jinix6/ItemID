@@ -17,8 +17,4 @@ jobs:
       # Use the Auto Tagger action
       - name: Auto Tagger
         uses: VegetableGarden/beet@0.0.3
-        with:
-          # Configure necessary inputs if applicable
-          # Example:
-          # tag_prefix: 'v'
-          # pattern: 'auto-tag-<date>'
+        
