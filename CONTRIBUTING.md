@@ -1,6 +1,5 @@
 Contribution Guidelines
 
-
 Thank you for your interest in contributing to this project! Please take a moment to read through the following guidelines before submitting any contributions.
 
 1. License
@@ -13,7 +12,6 @@ Non-Commercial Use: The files are for personal use only. Commercial use of the f
 
 Redistribution: Redistribution, selling, or sharing of the files, in any form, is not allowed without explicit permission.
 
-
 2. How to Contribute
 
 We welcome contributions! You can:
@@ -23,7 +21,6 @@ Fork the repository: Feel free to fork the repository and make modifications for
 Pull Requests: If you have changes you'd like to share, please submit a pull request. Ensure that your changes align with the project’s goals and maintain the integrity of the files.
 
 Credit the original creator: If you modify or build upon the files, please credit the original author when redistributing the content.
-
 
 3. Reporting Issues
 
