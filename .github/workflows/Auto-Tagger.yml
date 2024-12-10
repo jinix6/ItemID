@@ -1,0 +1,24 @@
+name: Auto Tagger Workflow
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action on push to the 'main' branch
+
+jobs:
+  auto-tag:
+    runs-on: ubuntu-latest  # You can change this to another runner if needed
+
+    steps:
+      # Check out the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Use the Auto Tagger action
+      - name: Auto Tagger
+        uses: VegetableGarden/beet@0.0.3
+        with:
+          # Configure necessary inputs if applicable
+          # Example:
+          # tag_prefix: 'v'
+          # pattern: 'auto-tag-<date>'
