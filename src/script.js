@@ -70,7 +70,7 @@ function Share_tg() {
     "&mode=" +
     itemID.state.displayMode;
   var message =
-      "Title: `" +
+    "Title: `" +
     document.getElementById("dialog_tittle").textContent +
     "`\nID: `" +
     document.getElementById("dialog_tittle_p").textContent.replace("Id: ", "") +
@@ -96,7 +96,6 @@ function filterItemsBySearch(items, searchTerm) {
     ),
   );
 }
-
 
 async function displayPage(pageNumber, searchTerm, webps) {
   current_data = webps;
