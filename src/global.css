@@ -1,0 +1,210 @@
+:root {
+  --white: #ffffff;
+  --red: #ed2236;
+  --dark-red: #d61c2e;
+  --button-elevated-shimmer: #ededed;
+  --sidebar-hover: rgba(255, 255, 255, .1);
+  --padding: 12px;
+  --border-radius: 11px;
+  --sidebar-width: 80px;
+  --sidebar-font-size: 11px;
+  --sidebar-inner-padding: 4px;
+  --sidebar-height-mobile: calc(50px + calc(var(--sidebar-inner-padding) * 2) + env(safe-area-inset-bottom));
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --switcher-padding: var(--sidebar-inner-padding);
+  --primary: #000000;
+  --secondary: #e1e1e1;
+  --gray: #818181;
+  --blue: #2a7ce1;
+  --green: #37aa42;
+  --button: #191919;
+  --button-hover: #2a2a2a;
+  --button-active-hover: #f9f9f9;
+  --button-hover-transparent: rgba(225, 225, 225, .1);
+  --button-stroke: rgba(255, 255, 255, .05);
+  --button-text: #e1e1e1;
+  --button-box-shadow: 0 0 0 1.5px var(--button-stroke) inset;
+  --button-elevated: #282828;
+  --button-elevated-hover: #323232;
+  --popup-bg: #191919;
+  --popup-stroke: rgba(255, 255, 255, .08);
+  --dialog-backdrop: rgba(0, 0, 0, .3);
+  --sidebar-bg: #101010;
+  --sidebar-highlight: #f2f2f2;
+  --input-border: #383838;
+  --toggle-bg: var(--input-border);
+  --toggle-bg-enabled: #8a8a8a;
+  --sidebar-mobile-gradient: linear-gradient(90deg, rgba(16, 16, 16, .9) 0%, rgba(16, 16, 16, 0) 4%, rgba(16, 16, 16, 0) 50%, rgba(16, 16, 16, 0) 96%, rgba(16, 16, 16, .9) 100%);
+  --skeleton-gradient: linear-gradient(90deg, var(--button), var(--button-hover), var(--button));
+  --skeleton-gradient-elevated: linear-gradient(90deg, var(--button-elevated), var(--button-elevated-hover), var(--button-elevated));
+  color: var(--secondary);
+  --subnav-padding: 30px;
+  --subnav-padding-small: calc(var(--subnav-padding) - var(--padding));
+  --subnav-nav-width: 100%;
+}
+
+.light-mode {
+  --primary: #ffffff;
+  --secondary: #000000;
+  --white: #ffffff;
+  --gray: #75757e;
+  --red: #ed2236;
+  --dark-red: #d61c2e;
+  --green: #51cf5e;
+  --blue: #2f8af9;
+  --button: #f4f4f4;
+  --button-hover: #e8e8e8;
+  --button-active-hover: #2a2a2a;
+  --button-hover-transparent: rgba(0, 0, 0, .06);
+  --button-stroke: rgba(0, 0, 0, .06);
+  --button-text: #282828;
+  --button-box-shadow: 0 0 0 1.5px var(--button-stroke) inset;
+  --button-elevated: #e3e3e3;
+  --button-elevated-hover: #dadada;
+  --button-elevated-shimmer: #ededed;
+  --popup-bg: #f1f1f1;
+  --popup-stroke: rgba(0, 0, 0, .08);
+  --dialog-backdrop: rgba(255, 255, 255, .3);
+  --sidebar-bg: #000000;
+  --sidebar-highlight: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, .1);
+  --input-border: #adadb7;
+  --toggle-bg: var(--input-border);
+  --toggle-bg-enabled: var(--secondary);
+  --padding: 12px;
+  --border-radius: 11px;
+  --sidebar-width: 80px;
+  --sidebar-font-size: 11px;
+  --sidebar-inner-padding: 4px;
+  --sidebar-height-mobile: calc(50px + calc(var(--sidebar-inner-padding) * 2) + env(safe-area-inset-bottom));
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --switcher-padding: var(--sidebar-inner-padding);
+  --sidebar-mobile-gradient: linear-gradient(90deg, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, 0) 4%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 96%, rgba(0, 0, 0, .9) 100%);
+  --skeleton-gradient: linear-gradient(90deg, var(--button-hover), var(--button), var(--button-hover));
+  --skeleton-gradient-elevated: linear-gradient(90deg, var(--button-elevated), var(--button-elevated-shimmer), var(--button-elevated));
+}
+
+#setting-toggle-appearance-autoLanguage {
+  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+  transition: opacity .2s;
+}
+
+.toggle-container {
+  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  font-size: 14.5px;
+  cursor: pointer;
+  background-color: var(--button);
+  color: var(--button-text);
+  box-shadow: var(--button-box-shadow);
+  font-weight: 500;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--padding);
+  justify-content: space-between;
+  text-align: start;
+  transform: none;
+  padding: calc(var(--switcher-padding) * 2) 16px;
+  border-radius: var(--border-radius);
+  overflow: scroll;
+
+}
+
+
+.toggle-title {
+
+  cursor: pointer;
+  color: var(--button-text);
+  text-align: start;
+  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
+  margin-block: 0;
+  font-size: 14.5px;
+}
+
+.toggle {
+  font-size: 14.5px;
+  cursor: pointer;
+  color: var(--button-text);
+  font-weight: 500;
+  text-align: start;
+  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  --base-size: 22px;
+  --ratio-factor: .9;
+  --enabled-pos: calc(100% * var(--ratio-factor));
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  min-width: calc(var(--base-size) * (1 + var(--ratio-factor)));
+  padding: 2px;
+  aspect-ratio: 2/1;
+  border-radius: 100px;
+  background: var(--toggle-bg);
+  transition: background .2s;
+
+}
+
+.toggle-switcher {
+  font-size: 14.5px;
+  cursor: pointer;
+  color: var(--button-text);
+  font-weight: 500;
+  text-align: start;
+  --base-size: 22px;
+  --ratio-factor: .9;
+  --enabled-pos: calc(100% * var(--ratio-factor));
+  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  height: var(--base-size);
+  width: var(--base-size);
+  background: var(--white);
+  border-radius: 100px;
+  transform: translate(5%);
+  transition: transform .2s, width .2s;
+
+}
+
+.light-toggle-on {
+  transform: translate(70%);
+}
+
+
+.light-toggle-on2 {
+  background: black;
+}
+
+button {
+  transition: background .2s;
+  color: var(--button-text);
+  box-shadow: var(--button-box-shadow);
+}
+button:hover {
+  background: var(--button-hover);
+}

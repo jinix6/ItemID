@@ -7,8 +7,12 @@ let cdn_img_json;
 let pngs_json_list;
 const bodyElement = document.body;
 const extra_set = document.getElementById("extra_set");
-extra_set.classList.remove("collapsed2");
-extra_set.classList.add("expanded2");
+//extra_set.classList.remove("collapsed2");
+//extra_set.classList.add("expanded2");
+
+//extra_set.classList.add("collapsed2");
+//extra_set.classList.remove("expanded2");
+
 const notFoundText = () => document.getElementById("not_found_text");
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
@@ -61,7 +65,7 @@ function getUrlWithoutParameters() {
 
 function Share_tg() {
   var iconName = document
-    .getElementById("dialog_tittle_pp")
+    .getElementById("dialog-tittle-pp")
     .textContent.replace("Icon Name: ", "");
   var url =
     getUrlWithoutParameters() +
@@ -71,9 +75,9 @@ function Share_tg() {
     itemID.state.displayMode;
   var message =
     "Title: `" +
-    document.getElementById("dialog_tittle").textContent +
+    document.getElementById("dialog-tittle").textContent +
     "`\nID: `" +
-    document.getElementById("dialog_tittle_p").textContent.replace("Id: ", "") +
+    document.getElementById("dialog-tittle-p").textContent.replace("Id: ", "") +
     "`\nIcon Name: `" +
     iconName +
     "`\n\nView: " +
@@ -167,16 +171,16 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
     paginationNumbers.forEach((pageNumber) => {
       const pageButton = document.createElement("button");
       pageButton.className =
-        "px-[8%] bg-white bounce-click select-none rounded-[11px] text-center space-mono-regular font-medium uppercase text-black disabled:pointer-events-none disabled:shadow-none";
+        "px-[8%] bg-[var(--secondary)] bounce-click select-none rounded-[11px] text-center space-mono-regular font-medium uppercase text-[var(--primary)] disabled:pointer-events-none disabled:shadow-none";
       if (pageNumber === currentPage) {
         pageButton.classList.remove(
-          "bg-white",
-          "text-black",
+          "bg-[var(--secondary)]",
+          "text-[var(--primary)]",
           "border",
           "border-2",
-          "border-[#737373]",
+          "border-[var(--border-color)]",
         );
-        pageButton.classList.add("text-white", "bg-[black]");
+        pageButton.classList.add("text-[var(--secondary)]", "bg-[var(--primary)]");
       }
       pageButton.textContent = pageNumber;
       pageButton.addEventListener("click", async () => {
@@ -190,7 +194,12 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
 // Wait for the DOM to be fully loaded before running the script
 document.addEventListener("DOMContentLoaded", () => {
   initializeInterfaceEdgeBtn();
-  styleTagButtons();
-  const inputField = document.getElementById("input_d");
+  const inputField = document.getElementById("search-input");
   addEnterKeyListener(inputField, search);
 });
+
+
+//document.body.style.overflowY = "hidden";
+
+
+

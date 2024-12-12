@@ -15,9 +15,9 @@ const itemID = {
  */
 function initializeInterfaceEdgeBtn() {
   const bodyElement = document.body;
-  const extraSetElement = document.getElementById("extra_set");
-  const edgeBgElement = document.getElementById("edge_bg");
+  const extraSetElement = document.getElementById("settings-bg");
   const edgeButtonElement = document.getElementById("edge_btn");
+  const settingsCloseBtn = document.getElementById("settings-close-btn");
 
   /**
    * Handles the animation for the specified elements.
@@ -27,7 +27,7 @@ function initializeInterfaceEdgeBtn() {
     const animationType = action === "expand" ? "fadeOut" : "fadeIn";
     const duration = "250ms";
 
-    ["extra_set", "edge_bg"].forEach((id) => {
+    ["extra_set"].forEach((id) => {
       const element = document.getElementById(id);
       element.style.animation = `${animationType} ${duration} 1 forwards`;
     });
@@ -52,32 +52,20 @@ function initializeInterfaceEdgeBtn() {
     handleAnimation("collapse");
   };
 
-  /**
-   * Toggles the interface state between expanded and collapsed.
-   */
-  const toggleInterface = () => {
-    if (bodyElement.classList.contains("collapsed")) {
-      expandInterface();
-    } else {
-      collapseInterface();
-    }
-  };
+//collapseInterface() // for test
+
 
   // Attach event listeners
-  edgeButtonElement.addEventListener("click", toggleInterface);
-  edgeBgElement.addEventListener("click", () => {
-    if (!bodyElement.classList.contains("collapsed")) {
-      collapseInterface();
-    }
-  });
+  edgeButtonElement.addEventListener("click", collapseInterface);
+  settingsCloseBtn.addEventListener("click", expandInterface);
+
 }
+
+
 
 // Define an object containing key-value pairs for link identifiers and their corresponding URLs
 const links = {
-  clgroup: "https://t.me/freefirecraftlandgroup", // Telegram group for Craftland
-  clprogroup: "https://t.me/ffcsharezone", // Telegram group for sharing zone
-  tg: "https://t.me/Crystal_Person", // Telegram link for a person
-  gt: "https://github.com/jinix6", // GitHub profile link
+  gt: "https://github.com/0xMe/ItemID2/" // GitHub profile link
 };
 // Iterate over the entries of the 'links' object
 Object.entries(links).forEach(([t, e]) => {
@@ -88,29 +76,8 @@ Object.entries(links).forEach(([t, e]) => {
   });
 });
 
-/**
- * Applies default styles to tag buttons on the page.
- */
-function styleTagButtons() {
-  // Button elements mapped by their respective IDs for clarity
-  const tagButtons = {
-    allItem: document.getElementById("AllItem_btn"),
-    ob46Item: document.getElementById("Ob46Item_btn"),
-    ob47Item: document.getElementById("Ob47Item_btn"),
-    trashItem: document.getElementById("trashItem_btn"),
-  };
 
-  // Apply default style to the 'trash' tag button
-  tagButtons.trashItem.classList.add("bg-[#666666]", "text-[#ffffff]");
 
-  // Apply active style to the 'All Item' tag button
-  tagButtons.allItem.classList.add("text-white", "bg-black");
-
-  // Apply default style to 'Ob46' and 'Ob47' tag buttons
-  [tagButtons.ob46Item, tagButtons.ob47Item].forEach((button) => {
-    button.classList.add("text-black", "bg-white");
-  });
-}
 
 /**
  * Filters items in trash mode based on a search term and logs the results.
@@ -187,8 +154,7 @@ function handleDisplayChange(element, searchKeyword) {
   ].map((id) => document.getElementById(id));
   // Common UI elements for mode switching
   const uiElements = {
-    tags: [ob46_tag_id, ob47_tag_id, all_tag_id],
-    trashButton: trashItem_btn,
+    tags: [ob46_tag_id, ob47_tag_id, all_tag_id, trashItem_btn],
     webpGallery: document.getElementById("webpGallery"),
   };
 
@@ -198,16 +164,20 @@ function handleDisplayChange(element, searchKeyword) {
   };
 
   const addClasses = (element, ...classes) => {
+    element.classList.remove("Mtext-color2");
     element.classList.add(...classes);
   };
+
+const addClassesList = (elements, ...classes) => {
+  elements.forEach((el) => el.classList.add(...classes));
+};
+
 
   /**
    * Resets the UI elements to their default state.
    */
   const resetUI = () => {
-    removeClasses(uiElements.tags, "text-white", "bg-black");
-    removeClasses([uiElements.trashButton], "text-white", "bg-black");
-    addClasses(uiElements.trashButton, "bg-[black]", "text-[white]");
+    removeClasses(uiElements.tags, "Mtext-color", "Mbg-color");
   };
 
   // Update UI and call specific functions based on the selected mode
@@ -215,28 +185,29 @@ function handleDisplayChange(element, searchKeyword) {
   searchKeyword = searchKeyword === null ? "" : searchKeyword;
   switch (displayMode) {
     case "1":
-      addClasses(element, "text-white", "bg-black");
+      addClassesList([ob46_tag_id, ob47_tag_id, all_tag_id], "Mtext-color2");
+      addClasses(element, "Mtext-color", "Mbg-color");
       displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
       itemID.state.displayMode = 1;
       break;
 
     case "2":
-      removeClasses([ob47_tag_id, ob46_tag_id], "text-white", "bg-black");
-      addClasses(element, "text-white", "bg-black");
+      addClassesList([ob46_tag_id, ob47_tag_id, trashItem_btn], "Mtext-color2");
+      addClasses(element, "Mtext-color", "Mbg-color");
       displayPage(1, searchKeyword, itemData);
       itemID.state.displayMode = 2;
       break;
 
     case "3":
-      removeClasses([ob47_tag_id, all_tag_id], "text-white", "bg-black");
-      addClasses(element, "text-white", "bg-black");
+      addClassesList([all_tag_id, ob47_tag_id, trashItem_btn], "Mtext-color2");
+      addClasses(element, "Mtext-color", "Mbg-color");
       displayPage(1, searchKeyword, gl_ob46_added_itemData);
       itemID.state.displayMode = 3;
       break;
 
     case "4":
-      removeClasses([all_tag_id, ob46_tag_id], "text-white", "bg-black");
-      addClasses(element, "text-white", "bg-black");
+      addClassesList([ob46_tag_id, all_tag_id, trashItem_btn], "Mtext-color2");
+      addClasses(element, "Mtext-color", "Mbg-color");
       displayPage(1, searchKeyword, gl_ob47_added_itemData);
       itemID.state.displayMode = 4;
       break;
@@ -288,13 +259,13 @@ function addEnterKeyListener(inputElement, searchFunction) {
  */
 function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   const targetElement = document.getElementById("cardimage");
-  const pageBackgrounds = ["mainnnnn_bg", "dialog_main_bg"];
+  const pageBackgrounds = ["mainnnnn-bg", "dialog-main-bg"];
   const dialogTitleParagraphs = {
-    hedear: document.getElementById("dialog_tittle"),
-    title: document.getElementById("dialog_tittle_p"),
-    iconName: document.getElementById("dialog_tittle_pp"),
+    hedear: document.getElementById("dialog-tittle"),
+    title: document.getElementById("dialog-tittle-p"),
+    iconName: document.getElementById("dialog-tittle-pp"),
     closeBtn: document.getElementById("hide_dialg_btn"),
-    shareButton: document.getElementById("share_btn"),
+    shareButton: document.getElementById("share-btn"),
   };
 
   // Set the image source for the item
@@ -433,7 +404,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
  */
 function search() {
   // Retrieve the search keyword from the input field
-  const searchKeyword = document.getElementById("input_d").value;
+  const searchKeyword = document.getElementById("search-input").value;
 
   // Encrypt and update the URL parameter for 'icon'
   updateUrlParameter("q", searchKeyword);
@@ -582,7 +553,7 @@ function handleDisplayBasedOnURL() {
   const displayMode = urlParams.get("mode");
 
   // Set the input field's value to the search keyword
-  document.getElementById("input_d").value = searchKeyword;
+  document.getElementById("search-input").value = searchKeyword;
 
   // Map of display modes to buttons
   const buttonMap = {
@@ -599,3 +570,110 @@ function handleDisplayBasedOnURL() {
   // Call the function to change the display with the selected button and search keyword
   handleDisplayChange(targetButton, searchKeyword);
 }
+
+
+
+/**
+ * Theme Switcher Module
+ * Responsible for toggling between light and dark themes,
+ * persisting the user's preference in localStorage, and detecting
+ * system theme preference changes.
+ */
+
+// Constants for theme classes and localStorage keys
+const THEME_STORAGE_KEY = 'theme';
+const LIGHT_MODE_CLASS = 'light-mode';
+const DARK_MODE_CLASS = 'dark-mode';
+
+/**
+ * Applies the given theme to the document body.
+ * 
+ * @param {string} theme - The theme to apply. Expected values: 'light' or 'dark'.
+ */
+function applyTheme(theme) {
+  if (theme === 'light') {
+    document.getElementById("toggle-switcher").classList.add("light-toggle-on")
+    document.getElementById("toggle").classList.add("light-toggle-on2")
+    document.body.classList.add(LIGHT_MODE_CLASS);
+    document.body.classList.remove(DARK_MODE_CLASS);
+  } else if (theme === 'dark') {
+    document.getElementById("toggle").classList.remove("light-toggle-on2")
+    document.getElementById("toggle-switcher").classList.remove("light-toggle-on")
+    document.body.classList.add(DARK_MODE_CLASS);
+    document.body.classList.remove(LIGHT_MODE_CLASS);
+  } else {
+    console.warn('Invalid theme selected. Defaulting to dark mode.');
+    document.body.classList.add(DARK_MODE_CLASS);
+    document.body.classList.remove(LIGHT_MODE_CLASS);
+  }
+}
+
+/**
+ * Saves the theme to localStorage for persistence across sessions.
+ * 
+ * @param {string} theme - The theme to save. Expected values: 'light' or 'dark'.
+ */
+function saveThemeToLocalStorage(theme) {
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
+}
+
+/**
+ * Retrieves the stored theme preference from localStorage.
+ * Defaults to dark mode if no preference is found.
+ * 
+ * @returns {string} - The stored theme or 'dark' if none is found.
+ */
+function getStoredTheme() {
+  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  return storedTheme === 'light' ? 'light' : 'dark'; // Default to 'dark' if no valid theme is stored
+}
+
+/**
+ * Initializes the theme based on the user's preference (localStorage or system preference).
+ */
+function initializeTheme() {
+  const storedTheme = getStoredTheme();
+  applyTheme(storedTheme);
+}
+
+/**
+ * Toggles between light and dark mode when the theme button is clicked.
+ * Also updates the localStorage with the user's choice.
+ */
+function toggleTheme() {
+  document.getElementById("toggle-switcher").classList.toggle("light-toggle-on")
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ? 'light' : 'dark';
+  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+
+  applyTheme(newTheme);
+  saveThemeToLocalStorage(newTheme);
+}
+
+/**
+ * Handles changes to the system theme preference (e.g., when the user switches system-wide theme).
+ * Automatically applies the appropriate theme unless the user has set a preference.
+ */
+function handleSystemThemeChange() {
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const currentTheme = getStoredTheme();
+
+  if (!localStorage.getItem(THEME_STORAGE_KEY)) {
+    applyTheme(systemPrefersDark ? 'dark' : 'light');
+  }
+}
+
+/**
+ * Event listener for the theme toggle button.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize the theme based on the stored or system preference
+  initializeTheme();
+
+  // Add event listener for the theme toggle button
+  const themeToggleButton = document.getElementById('setting-toggle-appearance-autoLanguage');
+  themeToggleButton.addEventListener('click', toggleTheme);
+
+
+  // Listen for changes in the system's theme preference
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleSystemThemeChange);
+});
