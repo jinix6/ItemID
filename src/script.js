@@ -180,7 +180,10 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
           "border-2",
           "border-[var(--border-color)]",
         );
-        pageButton.classList.add("text-[var(--secondary)]", "bg-[var(--primary)]");
+        pageButton.classList.add(
+          "text-[var(--secondary)]",
+          "bg-[var(--primary)]",
+        );
       }
       pageButton.textContent = pageNumber;
       pageButton.addEventListener("click", async () => {
@@ -198,8 +201,4 @@ document.addEventListener("DOMContentLoaded", () => {
   addEnterKeyListener(inputField, search);
 });
 
-
 //document.body.style.overflowY = "hidden";
-
-
-

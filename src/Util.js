@@ -52,20 +52,16 @@ function initializeInterfaceEdgeBtn() {
     handleAnimation("collapse");
   };
 
-//collapseInterface() // for test
-
+  //collapseInterface() // for test
 
   // Attach event listeners
   edgeButtonElement.addEventListener("click", collapseInterface);
   settingsCloseBtn.addEventListener("click", expandInterface);
-
 }
-
-
 
 // Define an object containing key-value pairs for link identifiers and their corresponding URLs
 const links = {
-  gt: "https://github.com/0xMe/ItemID2/" // GitHub profile link
+  gt: "https://github.com/0xMe/ItemID2/", // GitHub profile link
 };
 // Iterate over the entries of the 'links' object
 Object.entries(links).forEach(([t, e]) => {
@@ -75,9 +71,6 @@ Object.entries(links).forEach(([t, e]) => {
     window.open(e);
   });
 });
-
-
-
 
 /**
  * Filters items in trash mode based on a search term and logs the results.
@@ -168,10 +161,9 @@ function handleDisplayChange(element, searchKeyword) {
     element.classList.add(...classes);
   };
 
-const addClassesList = (elements, ...classes) => {
-  elements.forEach((el) => el.classList.add(...classes));
-};
-
+  const addClassesList = (elements, ...classes) => {
+    elements.forEach((el) => el.classList.add(...classes));
+  };
 
   /**
    * Resets the UI elements to their default state.
@@ -571,8 +563,6 @@ function handleDisplayBasedOnURL() {
   handleDisplayChange(targetButton, searchKeyword);
 }
 
-
-
 /**
  * Theme Switcher Module
  * Responsible for toggling between light and dark themes,
@@ -581,28 +571,30 @@ function handleDisplayBasedOnURL() {
  */
 
 // Constants for theme classes and localStorage keys
-const THEME_STORAGE_KEY = 'theme';
-const LIGHT_MODE_CLASS = 'light-mode';
-const DARK_MODE_CLASS = 'dark-mode';
+const THEME_STORAGE_KEY = "theme";
+const LIGHT_MODE_CLASS = "light-mode";
+const DARK_MODE_CLASS = "dark-mode";
 
 /**
  * Applies the given theme to the document body.
- * 
+ *
  * @param {string} theme - The theme to apply. Expected values: 'light' or 'dark'.
  */
 function applyTheme(theme) {
-  if (theme === 'light') {
-    document.getElementById("toggle-switcher").classList.add("light-toggle-on")
-    document.getElementById("toggle").classList.add("light-toggle-on2")
+  if (theme === "light") {
+    document.getElementById("toggle-switcher").classList.add("light-toggle-on");
+    document.getElementById("toggle").classList.add("light-toggle-on2");
     document.body.classList.add(LIGHT_MODE_CLASS);
     document.body.classList.remove(DARK_MODE_CLASS);
-  } else if (theme === 'dark') {
-    document.getElementById("toggle").classList.remove("light-toggle-on2")
-    document.getElementById("toggle-switcher").classList.remove("light-toggle-on")
+  } else if (theme === "dark") {
+    document.getElementById("toggle").classList.remove("light-toggle-on2");
+    document
+      .getElementById("toggle-switcher")
+      .classList.remove("light-toggle-on");
     document.body.classList.add(DARK_MODE_CLASS);
     document.body.classList.remove(LIGHT_MODE_CLASS);
   } else {
-    console.warn('Invalid theme selected. Defaulting to dark mode.');
+    console.warn("Invalid theme selected. Defaulting to dark mode.");
     document.body.classList.add(DARK_MODE_CLASS);
     document.body.classList.remove(LIGHT_MODE_CLASS);
   }
@@ -610,7 +602,7 @@ function applyTheme(theme) {
 
 /**
  * Saves the theme to localStorage for persistence across sessions.
- * 
+ *
  * @param {string} theme - The theme to save. Expected values: 'light' or 'dark'.
  */
 function saveThemeToLocalStorage(theme) {
@@ -620,12 +612,12 @@ function saveThemeToLocalStorage(theme) {
 /**
  * Retrieves the stored theme preference from localStorage.
  * Defaults to dark mode if no preference is found.
- * 
+ *
  * @returns {string} - The stored theme or 'dark' if none is found.
  */
 function getStoredTheme() {
   const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  return storedTheme === 'light' ? 'light' : 'dark'; // Default to 'dark' if no valid theme is stored
+  return storedTheme === "light" ? "light" : "dark"; // Default to 'dark' if no valid theme is stored
 }
 
 /**
@@ -641,9 +633,13 @@ function initializeTheme() {
  * Also updates the localStorage with the user's choice.
  */
 function toggleTheme() {
-  document.getElementById("toggle-switcher").classList.toggle("light-toggle-on")
-  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ? 'light' : 'dark';
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document
+    .getElementById("toggle-switcher")
+    .classList.toggle("light-toggle-on");
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS)
+    ? "light"
+    : "dark";
+  const newTheme = currentTheme === "light" ? "dark" : "light";
 
   applyTheme(newTheme);
   saveThemeToLocalStorage(newTheme);
@@ -654,26 +650,31 @@ function toggleTheme() {
  * Automatically applies the appropriate theme unless the user has set a preference.
  */
 function handleSystemThemeChange() {
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const systemPrefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)",
+  ).matches;
   const currentTheme = getStoredTheme();
 
   if (!localStorage.getItem(THEME_STORAGE_KEY)) {
-    applyTheme(systemPrefersDark ? 'dark' : 'light');
+    applyTheme(systemPrefersDark ? "dark" : "light");
   }
 }
 
 /**
  * Event listener for the theme toggle button.
  */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Initialize the theme based on the stored or system preference
   initializeTheme();
 
   // Add event listener for the theme toggle button
-  const themeToggleButton = document.getElementById('setting-toggle-appearance-autoLanguage');
-  themeToggleButton.addEventListener('click', toggleTheme);
-
+  const themeToggleButton = document.getElementById(
+    "setting-toggle-appearance-autoLanguage",
+  );
+  themeToggleButton.addEventListener("click", toggleTheme);
 
   // Listen for changes in the system's theme preference
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleSystemThemeChange);
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", handleSystemThemeChange);
 });
