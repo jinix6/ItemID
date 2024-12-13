@@ -1,6 +1,3 @@
-
-
-
 /**
  * Initializes the interactive behavior for the edge button and related elements.
  */
@@ -118,19 +115,19 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
   renderPagination(searchTerm, trashItems, (isTrashMode = true), totalPages); // Render pagination
 }
 
-  // Class utility functions
-  const removeClasses = (elements, ...classes) => {
-    elements.forEach((el) => el.classList.remove(...classes));
-  };
+// Class utility functions
+const removeClasses = (elements, ...classes) => {
+  elements.forEach((el) => el.classList.remove(...classes));
+};
 
-  const addClasses = (element, ...classes) => {
-    element.classList.remove("Mtext-color2");
-    element.classList.add(...classes);
-  };
+const addClasses = (element, ...classes) => {
+  element.classList.remove("Mtext-color2");
+  element.classList.add(...classes);
+};
 
-  const addClassesList = (elements, ...classes) => {
-    elements.forEach((el) => el.classList.add(...classes));
-  };
+const addClassesList = (elements, ...classes) => {
+  elements.forEach((el) => el.classList.add(...classes));
+};
 
 /**
  * Handles data display mode changes and UI updates.
@@ -155,8 +152,6 @@ function handleDisplayChange(element, searchKeyword) {
     tags: [ob46_tag_id, ob47_tag_id, all_tag_id, trashItem_btn],
     webpGallery: document.getElementById("webpGallery"),
   };
-
-
 
   /**
    * Resets the UI elements to their default state.
@@ -200,7 +195,6 @@ function handleDisplayChange(element, searchKeyword) {
     default:
       console.warn(`Unsupported display mode: ${displayMode}`);
       return; // Exit if the mode is invalid
-  
   }
 
   // Trigger animation on the gallery element
@@ -673,22 +667,23 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("change", handleSystemThemeChange);
 });
 
-
-
-
 // Initialize switcher elements
 const [m_Switcher1, m_Switcher2, m_Switcher3] = [
   document.getElementById("m-Switcher-1"),
   document.getElementById("m-Switcher-2"),
-  document.getElementById("m-Switcher-3")
+  document.getElementById("m-Switcher-3"),
 ];
 
 // Function to update switcher appearance based on quality index
 function updateSwitcherAppearance(qualityIndex) {
   const switchers = [m_Switcher1, m_Switcher2, m_Switcher3];
   switchers.forEach((switcher, index) => {
-    switcher.classList.toggle('setting-button-appearance-quality-on', index === qualityIndex);
-    switcher.style.color = index === qualityIndex ? "var(--primary)" : "var(--secondary)";
+    switcher.classList.toggle(
+      "setting-button-appearance-quality-on",
+      index === qualityIndex,
+    );
+    switcher.style.color =
+      index === qualityIndex ? "var(--primary)" : "var(--secondary)";
   });
 }
 
@@ -697,9 +692,9 @@ const qualityMapping = { "100x100": 0, "200x200": 1, "300x300": 2 };
 
 // Load stored quality from localStorage, default to 200x200
 function initializeQuality() {
-  const storedQuality = localStorage.getItem('pngsQuality') || "200x200";
+  const storedQuality = localStorage.getItem("pngsQuality") || "200x200";
   const qualityIndex = qualityMapping[storedQuality];
-  console.log(storedQuality)
+  console.log(storedQuality);
 
   // Validate stored quality
   if (qualityIndex !== undefined) {
@@ -707,7 +702,7 @@ function initializeQuality() {
     itemID.config.pngsQuality = storedQuality; // Ensure global config is updated
   } else {
     console.warn(`Invalid quality in localStorage: ${storedQuality}`);
-    localStorage.setItem('pngsQuality', "200x200");
+    localStorage.setItem("pngsQuality", "200x200");
     updateSwitcherAppearance(1); // Default to 200x200
     itemID.config.pngsQuality = "200x200";
   }
@@ -715,11 +710,11 @@ function initializeQuality() {
 
 // Function to set PNG quality
 function setPngQuality(element) {
-  const qualityMap = { "1": "100x100", "2": "200x200", "3": "300x300" };
+  const qualityMap = { 1: "100x100", 2: "200x200", 3: "300x300" };
   const selectedQuality = qualityMap[element.value];
 
   if (selectedQuality) {
-    localStorage.setItem('pngsQuality', selectedQuality); // Save quality in localStorage
+    localStorage.setItem("pngsQuality", selectedQuality); // Save quality in localStorage
     updateSwitcherAppearance(qualityMapping[selectedQuality]); // Update switcher appearance
     itemID.config.pngsQuality = selectedQuality; // Update global config
   } else {

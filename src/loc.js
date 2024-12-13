@@ -7,9 +7,8 @@ const en = {
     - High Quality: Offers the best image clarity and detail, perfect for professional or highly detailed visuals.
   `,
 
-  themeToggleDescription: `Toggle between light and dark modes for a better viewing experience!`
+  themeToggleDescription: `Toggle between light and dark modes for a better viewing experience!`,
 };
-
 
 // The object you want to save
 const itemID = {
@@ -23,8 +22,6 @@ const itemID = {
     displayMode: 2, // Default Mode: ALL
   },
 };
-
-
 
 let current_data;
 let itemData;
