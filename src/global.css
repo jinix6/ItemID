@@ -86,8 +86,92 @@
   --skeleton-gradient-elevated: linear-gradient(90deg, var(--button-elevated), var(--button-elevated-shimmer), var(--button-elevated));
 }
 
+.ibm-plex-mono-thin {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.ibm-plex-mono-extralight {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.ibm-plex-mono-light {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.ibm-plex-mono-medium {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.ibm-plex-mono-semibold {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.ibm-plex-mono-bold {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.ibm-plex-mono-thin-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 100;
+  font-style: italic;
+}
+
+.ibm-plex-mono-extralight-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.ibm-plex-mono-light-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.ibm-plex-mono-regular-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.ibm-plex-mono-medium-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.ibm-plex-mono-semibold-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.ibm-plex-mono-bold-italic {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
 #setting-toggle-appearance-autoLanguage {
-  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
   scrollbar-width: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -100,7 +184,7 @@
 }
 
 .toggle-container {
-  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
   scrollbar-width: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -128,11 +212,10 @@
 
 
 .toggle-title {
-
   cursor: pointer;
   color: var(--button-text);
   text-align: start;
-  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
   scrollbar-width: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -148,7 +231,7 @@
   color: var(--button-text);
   font-weight: 500;
   text-align: start;
-  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
   scrollbar-width: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -177,7 +260,7 @@
   --base-size: 22px;
   --ratio-factor: .9;
   --enabled-pos: calc(100% * var(--ratio-factor));
-  font-family: IBM Plex Mono, Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
   scrollbar-width: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
@@ -205,6 +288,118 @@ button {
   color: var(--button-text);
   box-shadow: var(--button-box-shadow);
 }
-button:hover {
+
+button:active {
   background: var(--button-hover);
+}
+
+.switcher-parent {
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+}
+
+.switcher {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  width: auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+  overflow-x: scroll;
+  border-radius: var(--border-radius);
+  background: var(--button);
+  box-shadow: var(--button-box-shadow);
+  padding: var(--switcher-padding);
+  gap: calc(var(--switcher-padding) - 1.5px);
+}
+
+
+
+.setting-button-appearance-quality-on {
+  color: var(--primary);
+  background-color: var(--secondary);
+  pointer-events: none;
+}
+
+
+.setting-button-appearance-quality {
+  color: var(--secondary);
+  height: calc(40px - var(--switcher-padding) * 1.5);
+  border-radius: calc(var(--border-radius) - var(--switcher-padding));
+  box-shadow: none;
+  width: 100%;
+  white-space: nowrap;
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 13px;
+  gap: 6px;
+  border: none;
+  font-size: 14.5px;
+  cursor: pointer;
+}
+
+.settings-content-description {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--gray);
+  line-height: 1.4;
+  padding: 0 var(--padding);
+  white-space: pre-line;
+  -webkit-user-select: text;
+}
+
+.settings-content {
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding);
+  border-radius: 18px;
+  transition: opacity .2s;
+  padding: var(--padding);
+}
+
+.heading-container {
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  gap: 6px;
+  justify-content: start;
+  align-items: center;
+  box-shadow: none;
+}
+
+.content-title {
+  font-family: "IBM Plex Mono", Noto Sans Mono Variable, Noto Sans Mono, monospace;
+  scrollbar-width: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
+  font-weight: 500;
+  margin-block: 0;
+  font-size: 16px;
+  color: var(--secondary);
 }

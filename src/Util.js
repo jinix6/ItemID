@@ -1,15 +1,3 @@
-// Define a namespace
-const itemID = {
-  config: {
-    theme: "dark",
-    language: "en-US",
-    perPageLimitItem: 200,
-  },
-  state: {
-    displayMode: 2, // Default Mode: ALL
-  },
-};
-
 /**
  * Initializes the interactive behavior for the edge button and related elements.
  */
@@ -52,20 +40,16 @@ function initializeInterfaceEdgeBtn() {
     handleAnimation("collapse");
   };
 
-//collapseInterface() // for test
-
+  //collapseInterface() // for test
 
   // Attach event listeners
   edgeButtonElement.addEventListener("click", collapseInterface);
   settingsCloseBtn.addEventListener("click", expandInterface);
-
 }
-
-
 
 // Define an object containing key-value pairs for link identifiers and their corresponding URLs
 const links = {
-  gt: "https://github.com/0xMe/ItemID2/" // GitHub profile link
+  gt: "https://github.com/0xMe/ItemID2/", // GitHub profile link
 };
 // Iterate over the entries of the 'links' object
 Object.entries(links).forEach(([t, e]) => {
@@ -75,9 +59,6 @@ Object.entries(links).forEach(([t, e]) => {
     window.open(e);
   });
 });
-
-
-
 
 /**
  * Filters items in trash mode based on a search term and logs the results.
@@ -121,7 +102,7 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
     image.loading = "lazy";
     image.id = "list_item_img";
     let imgSrc =
-      "https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/300x300/" +
+      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/` +
       item;
     image.src = imgSrc;
     image.addEventListener("click", () =>
@@ -133,6 +114,20 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
   totalPages = Math.ceil(filteredTrash.length / 200);
   renderPagination(searchTerm, trashItems, (isTrashMode = true), totalPages); // Render pagination
 }
+
+// Class utility functions
+const removeClasses = (elements, ...classes) => {
+  elements.forEach((el) => el.classList.remove(...classes));
+};
+
+const addClasses = (element, ...classes) => {
+  element.classList.remove("Mtext-color2");
+  element.classList.add(...classes);
+};
+
+const addClassesList = (elements, ...classes) => {
+  elements.forEach((el) => el.classList.add(...classes));
+};
 
 /**
  * Handles data display mode changes and UI updates.
@@ -157,21 +152,6 @@ function handleDisplayChange(element, searchKeyword) {
     tags: [ob46_tag_id, ob47_tag_id, all_tag_id, trashItem_btn],
     webpGallery: document.getElementById("webpGallery"),
   };
-
-  // Class utility functions
-  const removeClasses = (elements, ...classes) => {
-    elements.forEach((el) => el.classList.remove(...classes));
-  };
-
-  const addClasses = (element, ...classes) => {
-    element.classList.remove("Mtext-color2");
-    element.classList.add(...classes);
-  };
-
-const addClassesList = (elements, ...classes) => {
-  elements.forEach((el) => el.classList.add(...classes));
-};
-
 
   /**
    * Resets the UI elements to their default state.
@@ -571,8 +551,6 @@ function handleDisplayBasedOnURL() {
   handleDisplayChange(targetButton, searchKeyword);
 }
 
-
-
 /**
  * Theme Switcher Module
  * Responsible for toggling between light and dark themes,
@@ -581,28 +559,30 @@ function handleDisplayBasedOnURL() {
  */
 
 // Constants for theme classes and localStorage keys
-const THEME_STORAGE_KEY = 'theme';
-const LIGHT_MODE_CLASS = 'light-mode';
-const DARK_MODE_CLASS = 'dark-mode';
+const THEME_STORAGE_KEY = "theme";
+const LIGHT_MODE_CLASS = "light-mode";
+const DARK_MODE_CLASS = "dark-mode";
 
 /**
  * Applies the given theme to the document body.
- * 
+ *
  * @param {string} theme - The theme to apply. Expected values: 'light' or 'dark'.
  */
 function applyTheme(theme) {
-  if (theme === 'light') {
-    document.getElementById("toggle-switcher").classList.add("light-toggle-on")
-    document.getElementById("toggle").classList.add("light-toggle-on2")
+  if (theme === "light") {
+    document.getElementById("toggle-switcher").classList.add("light-toggle-on");
+    document.getElementById("toggle").classList.add("light-toggle-on2");
     document.body.classList.add(LIGHT_MODE_CLASS);
     document.body.classList.remove(DARK_MODE_CLASS);
-  } else if (theme === 'dark') {
-    document.getElementById("toggle").classList.remove("light-toggle-on2")
-    document.getElementById("toggle-switcher").classList.remove("light-toggle-on")
+  } else if (theme === "dark") {
+    document.getElementById("toggle").classList.remove("light-toggle-on2");
+    document
+      .getElementById("toggle-switcher")
+      .classList.remove("light-toggle-on");
     document.body.classList.add(DARK_MODE_CLASS);
     document.body.classList.remove(LIGHT_MODE_CLASS);
   } else {
-    console.warn('Invalid theme selected. Defaulting to dark mode.');
+    console.warn("Invalid theme selected. Defaulting to dark mode.");
     document.body.classList.add(DARK_MODE_CLASS);
     document.body.classList.remove(LIGHT_MODE_CLASS);
   }
@@ -610,7 +590,7 @@ function applyTheme(theme) {
 
 /**
  * Saves the theme to localStorage for persistence across sessions.
- * 
+ *
  * @param {string} theme - The theme to save. Expected values: 'light' or 'dark'.
  */
 function saveThemeToLocalStorage(theme) {
@@ -620,12 +600,12 @@ function saveThemeToLocalStorage(theme) {
 /**
  * Retrieves the stored theme preference from localStorage.
  * Defaults to dark mode if no preference is found.
- * 
+ *
  * @returns {string} - The stored theme or 'dark' if none is found.
  */
 function getStoredTheme() {
   const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  return storedTheme === 'light' ? 'light' : 'dark'; // Default to 'dark' if no valid theme is stored
+  return storedTheme === "light" ? "light" : "dark"; // Default to 'dark' if no valid theme is stored
 }
 
 /**
@@ -641,9 +621,13 @@ function initializeTheme() {
  * Also updates the localStorage with the user's choice.
  */
 function toggleTheme() {
-  document.getElementById("toggle-switcher").classList.toggle("light-toggle-on")
-  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ? 'light' : 'dark';
-  const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+  document
+    .getElementById("toggle-switcher")
+    .classList.toggle("light-toggle-on");
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS)
+    ? "light"
+    : "dark";
+  const newTheme = currentTheme === "light" ? "dark" : "light";
 
   applyTheme(newTheme);
   saveThemeToLocalStorage(newTheme);
@@ -654,26 +638,89 @@ function toggleTheme() {
  * Automatically applies the appropriate theme unless the user has set a preference.
  */
 function handleSystemThemeChange() {
-  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const systemPrefersDark = window.matchMedia(
+    "(prefers-color-scheme: dark)",
+  ).matches;
   const currentTheme = getStoredTheme();
 
   if (!localStorage.getItem(THEME_STORAGE_KEY)) {
-    applyTheme(systemPrefersDark ? 'dark' : 'light');
+    applyTheme(systemPrefersDark ? "dark" : "light");
   }
 }
 
 /**
  * Event listener for the theme toggle button.
  */
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Initialize the theme based on the stored or system preference
   initializeTheme();
 
   // Add event listener for the theme toggle button
-  const themeToggleButton = document.getElementById('setting-toggle-appearance-autoLanguage');
-  themeToggleButton.addEventListener('click', toggleTheme);
-
+  const themeToggleButton = document.getElementById(
+    "setting-toggle-appearance-autoLanguage",
+  );
+  themeToggleButton.addEventListener("click", toggleTheme);
 
   // Listen for changes in the system's theme preference
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', handleSystemThemeChange);
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", handleSystemThemeChange);
 });
+
+// Initialize switcher elements
+const [m_Switcher1, m_Switcher2, m_Switcher3] = [
+  document.getElementById("m-Switcher-1"),
+  document.getElementById("m-Switcher-2"),
+  document.getElementById("m-Switcher-3"),
+];
+
+// Function to update switcher appearance based on quality index
+function updateSwitcherAppearance(qualityIndex) {
+  const switchers = [m_Switcher1, m_Switcher2, m_Switcher3];
+  switchers.forEach((switcher, index) => {
+    switcher.classList.toggle(
+      "setting-button-appearance-quality-on",
+      index === qualityIndex,
+    );
+    switcher.style.color =
+      index === qualityIndex ? "var(--primary)" : "var(--secondary)";
+  });
+}
+
+// Quality mappings
+const qualityMapping = { "100x100": 0, "200x200": 1, "300x300": 2 };
+
+// Load stored quality from localStorage, default to 200x200
+function initializeQuality() {
+  const storedQuality = localStorage.getItem("pngsQuality") || "200x200";
+  const qualityIndex = qualityMapping[storedQuality];
+  console.log(storedQuality);
+
+  // Validate stored quality
+  if (qualityIndex !== undefined) {
+    updateSwitcherAppearance(qualityIndex);
+    itemID.config.pngsQuality = storedQuality; // Ensure global config is updated
+  } else {
+    console.warn(`Invalid quality in localStorage: ${storedQuality}`);
+    localStorage.setItem("pngsQuality", "200x200");
+    updateSwitcherAppearance(1); // Default to 200x200
+    itemID.config.pngsQuality = "200x200";
+  }
+}
+
+// Function to set PNG quality
+function setPngQuality(element) {
+  const qualityMap = { 1: "100x100", 2: "200x200", 3: "300x300" };
+  const selectedQuality = qualityMap[element.value];
+
+  if (selectedQuality) {
+    localStorage.setItem("pngsQuality", selectedQuality); // Save quality in localStorage
+    updateSwitcherAppearance(qualityMapping[selectedQuality]); // Update switcher appearance
+    itemID.config.pngsQuality = selectedQuality; // Update global config
+  } else {
+    console.warn(`Unsupported quality mode: ${element.value}`);
+  }
+}
+
+// Initialize quality settings on load
+initializeQuality();
