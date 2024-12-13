@@ -7,8 +7,8 @@ Promise.all([
   fetch("assets/cdn.json").then((response) => response.json()),
   // Fetching 'pngs.json' and parsing it as JSON
   fetch(
-    `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/list.json`,
-  ).then((response) => response.json()),
+      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/list.json`,
+    ).then((response) => response.json()),
   // Fetching 'itemData.json' and parsing it as JSON
   fetch("assets/itemData.json").then((response) => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
@@ -106,7 +106,8 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.loading = "lazy";
     image.id = "list_item_img";
     // Determine image source
-    let imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/UI_EPFP_unknown.png`;
+    let imgSrc =
+      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/UI_EPFP_unknown.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
       imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/${item.icon}.png`;
     } else {
