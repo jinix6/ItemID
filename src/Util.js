@@ -1,14 +1,5 @@
-// Define a namespace
-const itemID = {
-  config: {
-    theme: "dark",
-    language: "en-US",
-    perPageLimitItem: 200,
-  },
-  state: {
-    displayMode: 2, // Default Mode: ALL
-  },
-};
+
+
 
 /**
  * Initializes the interactive behavior for the edge button and related elements.
@@ -114,7 +105,7 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
     image.loading = "lazy";
     image.id = "list_item_img";
     let imgSrc =
-      "https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/300x300/" +
+      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/` +
       item;
     image.src = imgSrc;
     image.addEventListener("click", () =>
@@ -126,6 +117,20 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
   totalPages = Math.ceil(filteredTrash.length / 200);
   renderPagination(searchTerm, trashItems, (isTrashMode = true), totalPages); // Render pagination
 }
+
+  // Class utility functions
+  const removeClasses = (elements, ...classes) => {
+    elements.forEach((el) => el.classList.remove(...classes));
+  };
+
+  const addClasses = (element, ...classes) => {
+    element.classList.remove("Mtext-color2");
+    element.classList.add(...classes);
+  };
+
+  const addClassesList = (elements, ...classes) => {
+    elements.forEach((el) => el.classList.add(...classes));
+  };
 
 /**
  * Handles data display mode changes and UI updates.
@@ -151,19 +156,7 @@ function handleDisplayChange(element, searchKeyword) {
     webpGallery: document.getElementById("webpGallery"),
   };
 
-  // Class utility functions
-  const removeClasses = (elements, ...classes) => {
-    elements.forEach((el) => el.classList.remove(...classes));
-  };
 
-  const addClasses = (element, ...classes) => {
-    element.classList.remove("Mtext-color2");
-    element.classList.add(...classes);
-  };
-
-  const addClassesList = (elements, ...classes) => {
-    elements.forEach((el) => el.classList.add(...classes));
-  };
 
   /**
    * Resets the UI elements to their default state.
@@ -207,6 +200,7 @@ function handleDisplayChange(element, searchKeyword) {
     default:
       console.warn(`Unsupported display mode: ${displayMode}`);
       return; // Exit if the mode is invalid
+  
   }
 
   // Trigger animation on the gallery element
@@ -678,3 +672,44 @@ document.addEventListener("DOMContentLoaded", () => {
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", handleSystemThemeChange);
 });
+
+
+
+
+// Initialize switcher elements
+const [m_Switcher1, m_Switcher2, m_Switcher3] = [
+  document.getElementById("m-Switcher-1"),
+  document.getElementById("m-Switcher-2"),
+  document.getElementById("m-Switcher-3")
+];
+
+// Function to update switcher appearance based on stored quality
+function updateSwitcherAppearance(quality) {
+  const switchers = [m_Switcher1, m_Switcher2, m_Switcher3];
+  switchers.forEach((switcher, index) => {
+    switcher.classList.toggle('setting-button-appearance-quality-on', index === quality);
+    switcher.style.color = index === quality ? "var(--primary)" : "var(--secondary)";
+  });
+}
+
+// Load the stored PNG quality setting
+const qualityMapping = { "100x100": 0, "200x200": 1, "300x300": 2 };
+const storedQuality = localStorage.getItem('pngsQuality') || "200x200"; // Default to 200x200 if nothing stored
+const qualityIndex = qualityMapping[storedQuality] !== undefined ? qualityMapping[storedQuality] : 1; // Default to 200x200 if invalid stored value
+updateSwitcherAppearance(qualityIndex);
+
+// Set quality based on user selection
+function setPngQuality(element) {
+  const qualityMap = { "1": "100x100", "2": "200x200", "3": "300x300" };
+  const selectedQuality = qualityMap[element.value];
+
+  if (selectedQuality) {
+    localStorage.setItem('pngsQuality', selectedQuality);
+    const selectedQualityIndex = qualityMapping[selectedQuality];
+    updateSwitcherAppearance(selectedQualityIndex);
+  } else {
+    console.warn(`Unsupported quality mode: ${element.value}`);
+  }
+
+  itemID.config.pngsQuality = selectedQuality || '200x200';
+}

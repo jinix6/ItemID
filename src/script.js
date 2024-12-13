@@ -1,18 +1,5 @@
-let current_data;
-let itemData;
-let gl_ob47_added_itemData;
-let gl_ob46_added_itemData;
-let currentPage = 1;
-let cdn_img_json;
-let pngs_json_list;
 const bodyElement = document.body;
 const extra_set = document.getElementById("extra_set");
-//extra_set.classList.remove("collapsed2");
-//extra_set.classList.add("expanded2");
-
-//extra_set.classList.add("collapsed2");
-//extra_set.classList.remove("expanded2");
-
 const notFoundText = () => document.getElementById("not_found_text");
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
@@ -20,8 +7,8 @@ Promise.all([
   fetch("assets/cdn.json").then((response) => response.json()),
   // Fetching 'pngs.json' and parsing it as JSON
   fetch(
-    "https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/300x300/list.json",
-  ).then((response) => response.json()),
+      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/list.json`,
+    ).then((response) => response.json()),
   // Fetching 'itemData.json' and parsing it as JSON
   fetch("assets/itemData.json").then((response) => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
@@ -120,9 +107,9 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.id = "list_item_img";
     // Determine image source
     let imgSrc =
-      "https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/300x300/UI_EPFP_unknown.png";
+      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/UI_EPFP_unknown.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
-      imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/300x300/${item.icon}.png`;
+      imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/${item.icon}.png`;
     } else {
       const keyToFind = item.itemID.toString();
       const value = cdn_img_json[item.itemID.toString()] ?? null;
@@ -157,7 +144,7 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
       const notFoundText = document.createElement("h1");
       notFoundText.id = "not_found_text";
       notFoundText.className =
-        "transition-all duration-100 ease-in-out mt-[10vh] font-black select-none space-mono-regular text-zinc-500 rotate-90 text-[1000%] w-[100vw] text-center whitespace-nowrap";
+        "transition-all duration-100 ease-in-out mt-[10vh] font-black select-none ibm-plex-mono-regular text-zinc-500 rotate-90 text-[1000%] w-[100vw] text-center whitespace-nowrap";
       notFoundText.innerText = "NOT FOUND";
       document.getElementById("container").appendChild(notFoundText);
     }
@@ -171,7 +158,7 @@ async function renderPagination(searchTerm, webps, isTrashMode, totalPages) {
     paginationNumbers.forEach((pageNumber) => {
       const pageButton = document.createElement("button");
       pageButton.className =
-        "px-[8%] bg-[var(--secondary)] bounce-click select-none rounded-[11px] text-center space-mono-regular font-medium uppercase text-[var(--primary)] disabled:pointer-events-none disabled:shadow-none";
+        "px-[8%] bg-[var(--secondary)] bounce-click select-none rounded-[11px] text-center ibm-plex-mono-regular font-medium uppercase text-[var(--primary)] disabled:pointer-events-none disabled:shadow-none";
       if (pageNumber === currentPage) {
         pageButton.classList.remove(
           "bg-[var(--secondary)]",
@@ -200,5 +187,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.getElementById("search-input");
   addEnterKeyListener(inputField, search);
 });
-
-//document.body.style.overflowY = "hidden";
