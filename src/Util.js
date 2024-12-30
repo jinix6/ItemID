@@ -101,6 +101,7 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
     image.className = "image p-3 bounce-click ";
     image.loading = "lazy";
     image.id = "list_item_img";
+    image.setAttribute('crossorigin', 'anonymous');
     let imgSrc =
       `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/` +
       item;
@@ -220,13 +221,122 @@ function addEnterKeyListener(inputElement, searchFunction) {
   }
 
   // Add event listener for keydown events
-  inputElement.addEventListener("keydown", function (event) {
+  inputElement.addEventListener("keydown", function(event) {
     // Trigger search function when the Enter key is pressed
     if (event.key === "Enter") {
       searchFunction();
     }
   });
 }
+
+
+/**
+ * @function getDominantColor
+ * @description Extracts the dominant RGB color from an image, canvas, or video element.
+ * @param {HTMLImageElement | HTMLCanvasElement | HTMLVideoElement} element - The source element (image, canvas, or video).
+ * @returns {{ r: number, g: number, b: number } | null} The dominant color as an object with red, green, and blue components, or `null` if an error occurs.
+ */
+function getDominantColor(element) {
+  try {
+    // Validate the input element
+    if (!(element instanceof HTMLImageElement || element instanceof HTMLCanvasElement || element instanceof HTMLVideoElement)) {
+      throw new Error("Invalid element type. Expected an HTMLImageElement, HTMLCanvasElement, or HTMLVideoElement.");
+    }
+
+    // Ensure the element has valid dimensions
+    const width = element.naturalWidth || element.width || element.videoWidth;
+    const height = element.naturalHeight || element.height || element.videoHeight;
+    if (!width || !height) {
+      throw new Error("The element has invalid or zero dimensions.");
+    }
+
+    // Create a canvas to draw the element
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      throw new Error("Failed to get canvas 2D context.");
+    }
+
+    // Set canvas dimensions and draw the element
+    canvas.width = width;
+    canvas.height = height;
+    ctx.drawImage(element, 0, 0, width, height);
+
+    // Extract pixel data
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+
+    // Calculate the average RGB values
+    let r = 0,
+      g = 0,
+      b = 0,
+      count = 0;
+    for (let i = 0; i < imageData.length; i += 4) {
+      r += imageData[i]; // Red
+      g += imageData[i + 1]; // Green
+      b += imageData[i + 2]; // Blue
+      count++;
+    }
+
+    // Compute average values
+    r = Math.floor(r / count);
+    g = Math.floor(g / count);
+    b = Math.floor(b / count);
+
+    return { r, g, b };
+  } catch (error) {
+    console.error("Error in getDominantColor:", error.message);
+    return null; // Return null if an error occurs
+  }
+}
+
+/**
+ * Calculates the contrast color (text color) based on the background color.
+ * This function adjusts the brightness or darkness of the text color based on the luminance
+ * of the background color to ensure sufficient contrast.
+ *
+ * @param {object} rgbColor - The background color in RGB format.
+ * @param {number} rgbColor.r - The red component of the background color (0-255).
+ * @param {number} rgbColor.g - The green component of the background color (0-255).
+ * @param {number} rgbColor.b - The blue component of the background color (0-255).
+ * @param {number} adjustBrightness - The factor by which to brighten the text (positive number).
+ * @param {number} adjustDarkness - The factor by which to darken the text (positive number).
+ * @returns {string} - The calculated text color in hexadecimal format.
+ * @throws {Error} - Throws an error if the input `rgbColor` is not in the correct format or out of range.
+ */
+function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
+  // Validate input type for rgbColor
+  if (typeof rgbColor !== 'object' || !rgbColor || !('r' in rgbColor) || !('g' in rgbColor) || !('b' in rgbColor)) {
+    throw new Error('Invalid RGB color format. Expected an object with properties "r", "g", and "b".');
+  }
+
+  // Extract RGB values and ensure they're within valid range (0-255)
+  const { r, g, b } = rgbColor;
+  if (![r, g, b].every(val => Number.isInteger(val) && val >= 0 && val <= 255)) {
+    throw new Error('RGB values must be integers between 0 and 255.');
+  }
+
+  // Create a color object using chroma.js
+  const bgColorObj = chroma(r, g, b);
+
+  // Calculate luminance of the background color
+  const luminanceValue = bgColorObj.luminance();
+
+  // Default text color
+  let textColor;
+
+  // Adjust brightness or darkness based on luminance value
+  if (luminanceValue < 0.5) {
+    // If the background is dark, brighten the text
+    textColor = bgColorObj.brighten(adjustBrightness).hex();
+  } else {
+    // If the background is light, darken the text
+    textColor = bgColorObj.darken(adjustDarkness).hex();
+  }
+
+  // Return the calculated text color in hex format
+  return textColor;
+}
+
 
 /**
  * Displays detailed information about an item when the user interacts with an element.
@@ -251,6 +361,32 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   // Set the image source for the item
   targetElement.src = imageSource || "";
 
+  const imgBg = document.getElementById("info-dialoh-bg");
+  const dominantColor = getDominantColor(sharedElement);
+  if (dominantColor) {
+    imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b})`;
+    const dominantColorobj = {
+      r: dominantColor.r,
+      g: dominantColor.g,
+      b: dominantColor.b,
+    }
+    const dialogTitleElements = ["dialog-tittle", "dialog-tittle-p", "dialog-tittle-pp"];
+    const textColor = getContrastColor(dominantColorobj, 5, 5);
+    dialogTitleElements.forEach(id => document.getElementById(id).style.color = textColor);
+    const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
+    const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
+    const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
+    ["hide_dialg_btn", "share-btn"].forEach(id => {
+      const btn = document.getElementById(id);
+      btn.style.background = closebtnBgColor;
+      btn.style.borderColor = closebtnBrColor;
+      btn.style.textColor = closebtnTextColor;
+
+    });
+  } else {
+    console.error("Failed to extract the dominant color.");
+  }
+
   // Apply fade-in animation to background elements
   pageBackgrounds.forEach((id) => {
     document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
@@ -260,9 +396,9 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   if (!isTrashMode) {
     // Extract and display item details when not in trash mode
     const { icon, description, description2, itemID } = itemData;
-    const itemDetail = description2
-      ? `${description} - ${description2}`
-      : description;
+    const itemDetail = description2 ?
+      `${description} - ${description2}` :
+      description;
     dialogTitleParagraphs.hedear.textContent = itemDetail;
     dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
     dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
@@ -494,8 +630,7 @@ async function generatePaginationNumbers(totalPages) {
     throw new Error("Invalid totalPages value.");
   }
 
-  const paginationNumbers = Array.from(
-    { length: totalPages },
+  const paginationNumbers = Array.from({ length: totalPages },
     (_, index) => index + 1,
   );
   return paginationNumbers;
@@ -624,9 +759,9 @@ function toggleTheme() {
   document
     .getElementById("toggle-switcher")
     .classList.toggle("light-toggle-on");
-  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS)
-    ? "light"
-    : "dark";
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ?
+    "light" :
+    "dark";
   const newTheme = currentTheme === "light" ? "dark" : "light";
 
   applyTheme(newTheme);
