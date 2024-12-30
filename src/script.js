@@ -105,6 +105,7 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.className = "image border p-3 bounce-click ";
     image.loading = "lazy";
     image.id = "list_item_img";
+    image.setAttribute("crossorigin", "anonymous");
     // Determine image source
     let imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/UI_EPFP_unknown.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
@@ -123,6 +124,7 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.addEventListener("click", () =>
       displayItemInfo(item, imgSrc, image, (isTrashMode = false)),
     );
+
     // Append image to fragment
     fragment.appendChild(image);
   }
