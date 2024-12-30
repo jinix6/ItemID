@@ -101,7 +101,7 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
     image.className = "image p-3 bounce-click ";
     image.loading = "lazy";
     image.id = "list_item_img";
-    image.setAttribute('crossorigin', 'anonymous');
+    image.setAttribute("crossorigin", "anonymous");
     let imgSrc =
       `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/` +
       item;
@@ -221,14 +221,13 @@ function addEnterKeyListener(inputElement, searchFunction) {
   }
 
   // Add event listener for keydown events
-  inputElement.addEventListener("keydown", function(event) {
+  inputElement.addEventListener("keydown", function (event) {
     // Trigger search function when the Enter key is pressed
     if (event.key === "Enter") {
       searchFunction();
     }
   });
 }
-
 
 /**
  * @function getDominantColor
@@ -239,13 +238,22 @@ function addEnterKeyListener(inputElement, searchFunction) {
 function getDominantColor(element) {
   try {
     // Validate the input element
-    if (!(element instanceof HTMLImageElement || element instanceof HTMLCanvasElement || element instanceof HTMLVideoElement)) {
-      throw new Error("Invalid element type. Expected an HTMLImageElement, HTMLCanvasElement, or HTMLVideoElement.");
+    if (
+      !(
+        element instanceof HTMLImageElement ||
+        element instanceof HTMLCanvasElement ||
+        element instanceof HTMLVideoElement
+      )
+    ) {
+      throw new Error(
+        "Invalid element type. Expected an HTMLImageElement, HTMLCanvasElement, or HTMLVideoElement.",
+      );
     }
 
     // Ensure the element has valid dimensions
     const width = element.naturalWidth || element.width || element.videoWidth;
-    const height = element.naturalHeight || element.height || element.videoHeight;
+    const height =
+      element.naturalHeight || element.height || element.videoHeight;
     if (!width || !height) {
       throw new Error("The element has invalid or zero dimensions.");
     }
@@ -305,14 +313,24 @@ function getDominantColor(element) {
  */
 function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
   // Validate input type for rgbColor
-  if (typeof rgbColor !== 'object' || !rgbColor || !('r' in rgbColor) || !('g' in rgbColor) || !('b' in rgbColor)) {
-    throw new Error('Invalid RGB color format. Expected an object with properties "r", "g", and "b".');
+  if (
+    typeof rgbColor !== "object" ||
+    !rgbColor ||
+    !("r" in rgbColor) ||
+    !("g" in rgbColor) ||
+    !("b" in rgbColor)
+  ) {
+    throw new Error(
+      'Invalid RGB color format. Expected an object with properties "r", "g", and "b".',
+    );
   }
 
   // Extract RGB values and ensure they're within valid range (0-255)
   const { r, g, b } = rgbColor;
-  if (![r, g, b].every(val => Number.isInteger(val) && val >= 0 && val <= 255)) {
-    throw new Error('RGB values must be integers between 0 and 255.');
+  if (
+    ![r, g, b].every((val) => Number.isInteger(val) && val >= 0 && val <= 255)
+  ) {
+    throw new Error("RGB values must be integers between 0 and 255.");
   }
 
   // Create a color object using chroma.js
@@ -336,7 +354,6 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
   // Return the calculated text color in hex format
   return textColor;
 }
-
 
 /**
  * Displays detailed information about an item when the user interacts with an element.
@@ -369,19 +386,24 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
       r: dominantColor.r,
       g: dominantColor.g,
       b: dominantColor.b,
-    }
-    const dialogTitleElements = ["dialog-tittle", "dialog-tittle-p", "dialog-tittle-pp"];
+    };
+    const dialogTitleElements = [
+      "dialog-tittle",
+      "dialog-tittle-p",
+      "dialog-tittle-pp",
+    ];
     const textColor = getContrastColor(dominantColorobj, 5, 5);
-    dialogTitleElements.forEach(id => document.getElementById(id).style.color = textColor);
+    dialogTitleElements.forEach(
+      (id) => (document.getElementById(id).style.color = textColor),
+    );
     const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
     const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
     const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
-    ["hide_dialg_btn", "share-btn"].forEach(id => {
+    ["hide_dialg_btn", "share-btn"].forEach((id) => {
       const btn = document.getElementById(id);
       btn.style.background = closebtnBgColor;
       btn.style.borderColor = closebtnBrColor;
       btn.style.textColor = closebtnTextColor;
-
     });
   } else {
     console.error("Failed to extract the dominant color.");
@@ -396,9 +418,9 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   if (!isTrashMode) {
     // Extract and display item details when not in trash mode
     const { icon, description, description2, itemID } = itemData;
-    const itemDetail = description2 ?
-      `${description} - ${description2}` :
-      description;
+    const itemDetail = description2
+      ? `${description} - ${description2}`
+      : description;
     dialogTitleParagraphs.hedear.textContent = itemDetail;
     dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
     dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
@@ -630,7 +652,8 @@ async function generatePaginationNumbers(totalPages) {
     throw new Error("Invalid totalPages value.");
   }
 
-  const paginationNumbers = Array.from({ length: totalPages },
+  const paginationNumbers = Array.from(
+    { length: totalPages },
     (_, index) => index + 1,
   );
   return paginationNumbers;
@@ -759,9 +782,9 @@ function toggleTheme() {
   document
     .getElementById("toggle-switcher")
     .classList.toggle("light-toggle-on");
-  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ?
-    "light" :
-    "dark";
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS)
+    ? "light"
+    : "dark";
   const newTheme = currentTheme === "light" ? "dark" : "light";
 
   applyTheme(newTheme);
