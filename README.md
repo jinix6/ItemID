@@ -159,7 +159,7 @@
 <summary>Contributor Graph</summary>
 <br>
 <p align="left">
-   <a href="https://github.com{/jinix6/ItemID/}graphs/contributors">
+   <a href="https://github.com/jinix6/ItemID/graphs/contributors">
       <img src="https://contrib.rocks/image?repo=jinix6/ItemID">
    </a>
 </p>
