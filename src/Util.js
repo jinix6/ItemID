@@ -49,7 +49,7 @@ function initializeInterfaceEdgeBtn() {
 
 // Define an object containing key-value pairs for link identifiers and their corresponding URLs
 const links = {
-  gt: "https://github.com/0xMe/ItemID2/", // GitHub profile link
+  gt: "https://github.com/jinix6/ItemID",
 };
 // Iterate over the entries of the 'links' object
 Object.entries(links).forEach(([t, e]) => {
@@ -852,7 +852,7 @@ const qualityMapping = { "100x100": 0, "200x200": 1, "300x300": 2 };
 function initializeQuality() {
   const storedQuality = localStorage.getItem("pngsQuality") || "200x200";
   const qualityIndex = qualityMapping[storedQuality];
-  console.log(storedQuality);
+  
 
   // Validate stored quality
   if (qualityIndex !== undefined) {
