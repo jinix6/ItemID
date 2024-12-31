@@ -106,6 +106,7 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.loading = "lazy";
     image.id = "list_item_img";
     image.setAttribute("crossorigin", "anonymous");
+    image.setAttribute("alt", item.description);
     // Determine image source
     let imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/UI_EPFP_unknown.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
