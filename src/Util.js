@@ -49,7 +49,7 @@ function initializeInterfaceEdgeBtn() {
 
 // Define an object containing key-value pairs for link identifiers and their corresponding URLs
 const links = {
-  gt: "https://github.com/jinix6/ItemID",
+  gt: "https://github.com/0xme/ItemID2",
 };
 // Iterate over the entries of the 'links' object
 Object.entries(links).forEach(([t, e]) => {
@@ -103,7 +103,7 @@ async function displayFilteredTrashItems(currentPage, searchTerm, trashItems) {
     image.id = "list_item_img";
     image.setAttribute("crossorigin", "anonymous");
     let imgSrc =
-      `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/` +
+      `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/` +
       item;
     image.src = imgSrc;
     image.addEventListener("click", () =>
@@ -142,15 +142,12 @@ function handleDisplayChange(element, searchKeyword) {
   // Encrypt and update the URL parameter for 'mode'
   updateUrlParameter("mode", displayMode);
 
-  let [all_tag_id, ob46_tag_id, ob47_tag_id, trashItem_btn] = [
-    "AllItem_btn",
-    "Ob46Item_btn",
-    "Ob47Item_btn",
-    "trashItem_btn",
-  ].map((id) => document.getElementById(id));
+  let [all_tag_id, trashItem_btn] = ["AllItem_btn", "trashItem_btn"].map((id) =>
+    document.getElementById(id),
+  );
   // Common UI elements for mode switching
   const uiElements = {
-    tags: [ob46_tag_id, ob47_tag_id, all_tag_id, trashItem_btn],
+    tags: [all_tag_id, trashItem_btn],
     webpGallery: document.getElementById("webpGallery"),
   };
 
@@ -166,31 +163,17 @@ function handleDisplayChange(element, searchKeyword) {
   searchKeyword = searchKeyword === null ? "" : searchKeyword;
   switch (displayMode) {
     case "1":
-      addClassesList([ob46_tag_id, ob47_tag_id, all_tag_id], "Mtext-color2");
+      addClassesList([all_tag_id], "Mtext-color2");
       addClasses(element, "Mtext-color", "Mbg-color");
       displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
       itemID.state.displayMode = 1;
       break;
 
     case "2":
-      addClassesList([ob46_tag_id, ob47_tag_id, trashItem_btn], "Mtext-color2");
+      addClassesList([trashItem_btn], "Mtext-color2");
       addClasses(element, "Mtext-color", "Mbg-color");
       displayPage(1, searchKeyword, itemData);
       itemID.state.displayMode = 2;
-      break;
-
-    case "3":
-      addClassesList([all_tag_id, ob47_tag_id, trashItem_btn], "Mtext-color2");
-      addClasses(element, "Mtext-color", "Mbg-color");
-      displayPage(1, searchKeyword, gl_ob46_added_itemData);
-      itemID.state.displayMode = 3;
-      break;
-
-    case "4":
-      addClassesList([ob46_tag_id, all_tag_id, trashItem_btn], "Mtext-color2");
-      addClasses(element, "Mtext-color", "Mbg-color");
-      displayPage(1, searchKeyword, gl_ob47_added_itemData);
-      itemID.state.displayMode = 4;
       break;
 
     default:
@@ -682,6 +665,27 @@ function updateUrl() {
 }
 
 /**
+ * Filters an array of objects based on a search term.
+ *
+ * @param {Array<Object>} items - The list of objects to search through.
+ * @param {string} searchTerm - The term to match against object values.
+ * @returns {Array<Object>} - Filtered list of objects.
+ */
+function filterItemsBySearch(items, searchTerm) {
+  if (!Array.isArray(items) || typeof searchTerm !== "string") return [];
+
+  const lowerSearch = searchTerm.trim().toLowerCase();
+  if (!lowerSearch) return items; // Return all if search term is empty
+
+  return items.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        value != null && String(value).toLowerCase().includes(lowerSearch),
+    ),
+  );
+}
+
+/**
  * Checks URL parameters for a search keyword and display mode, then updates the UI accordingly.
  */
 function handleDisplayBasedOnURL() {
@@ -697,8 +701,6 @@ function handleDisplayBasedOnURL() {
   const buttonMap = {
     1: "trashItem_btn",
     2: "AllItem_btn",
-    3: "Ob46Item_btn",
-    4: "Ob47Item_btn",
   };
 
   // Determine the button to show based on the display mode or fallback to 'AllItem_btn'
@@ -845,40 +847,195 @@ function updateSwitcherAppearance(qualityIndex) {
   });
 }
 
-// Quality mappings
-const qualityMapping = { "100x100": 0, "200x200": 1, "300x300": 2 };
-
-// Load stored quality from localStorage, default to 200x200
-function initializeQuality() {
-  const storedQuality = localStorage.getItem("pngsQuality") || "200x200";
-  const qualityIndex = qualityMapping[storedQuality];
-  
-
-  // Validate stored quality
-  if (qualityIndex !== undefined) {
-    updateSwitcherAppearance(qualityIndex);
-    itemID.config.pngsQuality = storedQuality; // Ensure global config is updated
-  } else {
-    console.warn(`Invalid quality in localStorage: ${storedQuality}`);
-    localStorage.setItem("pngsQuality", "200x200");
-    updateSwitcherAppearance(1); // Default to 200x200
-    itemID.config.pngsQuality = "200x200";
+function filterItemsBySearch(item_data, query) {
+  // Validate input types
+  if (!Array.isArray(item_data)) {
+    throw new TypeError("Expected 'item_data' to be an array of objects.");
   }
+  if (query === undefined || query === null) {
+    throw new TypeError("Expected 'query' to be a string or number.");
+  }
+
+  // Convert query to string
+  query = String(query).trim();
+
+  // Return item IDs if query is empty
+  if (!query) return item_data.map((item) => item.itemID);
+
+  // Parse query filters
+  const filters = query.split("&").map((filter) => filter.trim());
+
+  // Filter data based on conditions
+  return item_data.filter((item) => {
+    return filters.every((filter) => {
+      if (filter.includes(":")) {
+        // Handle key-value filters (e.g., "collectionType:FINAL_SHOT")
+        const [key, value] = filter.split(":").map((str) => str.trim());
+        return (
+          item.hasOwnProperty(key) &&
+          typeof item[key] === "string" &&
+          item[key].toLowerCase() === value.toLowerCase()
+        );
+      } else {
+        // Handle general keyword/number search in all string values
+        return Object.values(item).some(
+          (value) =>
+            (typeof value === "string" &&
+              value.toLowerCase().includes(filter.toLowerCase())) ||
+            (typeof value === "number" && value.toString().includes(filter)),
+        );
+      }
+    });
+  });
 }
 
-// Function to set PNG quality
-function setPngQuality(element) {
-  const qualityMap = { 1: "100x100", 2: "200x200", 3: "300x300" };
-  const selectedQuality = qualityMap[element.value];
+/**
+ * Item Rarity Types
+ * Maps rarity names to their corresponding numeric values.
+ */
+const RareType = {
+  ALL: 0,
+  WHITE: 1,
+  GREEN: 2,
+  BLUE: 3,
+  PURPLE: 4,
+  ORANGE: 5,
+  CARD: 6,
+  RED: 7,
+  PURPLE_PLUS: 8,
+  ORANGE_PLUS: 9,
+  NONE: 10,
+};
 
-  if (selectedQuality) {
-    localStorage.setItem("pngsQuality", selectedQuality); // Save quality in localStorage
-    updateSwitcherAppearance(qualityMapping[selectedQuality]); // Update switcher appearance
-    itemID.config.pngsQuality = selectedQuality; // Update global config
-  } else {
-    console.warn(`Unsupported quality mode: ${element.value}`);
-  }
+/**
+ * Item Categories
+ * Represents different item types within the system.
+ */
+const ItemType = {
+  ALL: 0,
+  AVATAR: 1,
+  CLOTHES: 2,
+  LIMITEDCARD: 3,
+  TREASUREBOX: 4,
+  LOADOUTBOX: 5,
+  ROOMCARD: 6,
+  BUNDLE: 7,
+  DEBRIS: 8,
+  COLLECTION: 9,
+  VIRTUAL: 10,
+  BONUSCARD: 11,
+  STICKER: 12,
+  PET: 13,
+  BATTLEFLAG: 14,
+  EP_DEBRIS: 15,
+  OPTIONAL_BUNDLE: 17,
+  HYPERBOOK: 18,
+  TAILOR_EFFECT: 19,
+  BP_EXP: 20,
+  BR_RANKING_POINTS: 21,
+  CS_PROTECT_POINTS: 22,
+  NONE: 23,
+};
+
+/**
+ * Collection Types
+ * Represents different collectible categories.
+ */
+const CollectionType = {
+  ALL: 0,
+  BANNER: 1,
+  HEADPIC: 2,
+  LOOTBOX: 3,
+  GAMEBAG: 4,
+  PARACHUTE: 5,
+  SKATE: 6,
+  WEAPON_SKIN: 7,
+  VEHICLE_SKIN: 8,
+  EMOTE: 9,
+  PIN: 10,
+  FLIGHT: 11,
+  GROUPANIM: 12,
+  MUSIC: 13,
+  TRANSFORM_EMOTE: 14,
+  TITLE: 16,
+  ACTION_JUMP: 17,
+  ACTION_FIRST_AID_KIT: 18,
+  ACTION_CROSS_WINDOW: 19,
+  ACTION_FALL: 20,
+  QUICK_CHAT: 21,
+  SKILL_SKIN: 22,
+  FINAL_SHOT: 23,
+  SUPER_EMOTE: 24,
+  LOADING_CARD: 25,
+  NONE: 26,
+};
+
+/**
+ * Populates a given `<select>` dropdown with options from a dataset.
+ * @param {string} selectId - The ID of the select element.
+ * @param {Object} data - The dataset mapping keys to numeric values.
+ */
+function populateSelect(selectId, data) {
+  const selectElement = document.getElementById(selectId);
+  if (!selectElement) return; // Prevent errors if element is missing
+
+  Object.entries(data).forEach(([key, value]) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = key.replace(/_/g, " "); // Replace underscores with spaces for readability
+    selectElement.appendChild(option);
+  });
 }
 
-// Initialize quality settings on load
-initializeQuality();
+// Populate dropdowns on page load
+populateSelect("rareTypeSelect", RareType);
+populateSelect("itemTypeSelect", ItemType);
+populateSelect("collectionTypeSelect", CollectionType);
+
+/**
+ * Handles selection changes and updates the search input field.
+ * If a category is already in the search query, it updates the value.
+ * If "ALL" is selected, it removes the category from the search query.
+ * Otherwise, it appends the category to the query.
+ * @param {string} selectId - The ID of the select element.
+ * @param {Object} data - The dataset of key-value pairs.
+ * @param {string} label - The category label for filtering.
+ */
+function handleSelectionChange(selectId, data, label) {
+  const selectElement = document.getElementById(selectId);
+  if (!selectElement) return; // Ensure the select element exists
+
+  selectElement.addEventListener("change", function () {
+    const selectedKey = Object.keys(data).find(
+      (key) => data[key] == this.value,
+    );
+    const searchInput = document.getElementById("search-input");
+    if (!searchInput) return; // Ensure search input exists
+
+    let query = searchInput.value.trim();
+    let labelPattern = new RegExp(`\\b${label}:([^&]*)`, "i");
+
+    if (selectedKey === "ALL") {
+      // Remove the label if "ALL" is selected
+      searchInput.value = query
+        .replace(new RegExp(`(&?${label}:[^&]*)`, "i"), "")
+        .replace(/^&/, "");
+    } else if (labelPattern.test(query)) {
+      // Update existing label with the new selection
+      searchInput.value = query.replace(
+        labelPattern,
+        `${label}:${selectedKey}`,
+      );
+    } else {
+      // Append new label if not already present
+      searchInput.value = query
+        ? query + "&" + label + ":" + selectedKey
+        : label + ":" + selectedKey;
+    }
+  });
+}
+
+// Attach event listeners for dropdowns
+handleSelectionChange("rareTypeSelect", RareType, "Rare");
+handleSelectionChange("itemTypeSelect", ItemType, "itemType");
+handleSelectionChange("collectionTypeSelect", CollectionType, "collectionType");
