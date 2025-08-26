@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>ff-item</title>
+  <title>FF Items</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
@@ -12,13 +12,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
-  <meta name="author" content="JINIX6">
+  <meta name="author" content="0XME">
   <meta name="og:title" content="ff-items">
   <meta name="og:description" content="Get item ID, name, and description for Free Fire game items by search.">
   <meta name="og:image" content="https://cdn-sc-g.sharechat.com/33d5318_1c8/18293db7_1732413753390_sc.png">
   <meta name="google-site-verification" content="J20YkdBYbFS0_YZdIu9Z-sKGKzYZfqOFFkQ0numjLq0" />
   <meta name="description" content="Free Fire is a multiplayer battle royale mobile game, developed and published by Garena for Android and iOS. Battle in Style and be the last survivor!">
-  <meta name="keywords" content="survival, last survivor, battle royale, free mobile game, garena game, craftland, ugc, ff craftland, jinxx66, jinxx6_6, jinxx, craftland tutorial, free fire craftland">
+  <meta name="keywords" content="ffc, survival, last survivor, battle royale, free mobile game, garena game, craftland, ugc, ff craftland, jinxx66, jinxx6_6, jinxx, craftland tutorial, free fire craftland">
   <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/1442ba0a_1732413635253_sc.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/18293db7_1732413753390_sc.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/3cf0607_1732413785731_sc.png">
@@ -65,24 +65,6 @@
           </div>
         </div>
       </section>
-
-
-      <section id="theme" class="mx-2 settings-content svelte-11impmh" aria-hidden="false">
-        <div class="heading-container svelte-ui37rw">
-          <h3 class="content-title">Png Quality</h3>
-        </div>
-        <div class="switcher-parent">
-          <div class="switcher big" role="listbox">
-            <button value="1" id="m-Switcher-1" onclick="setPngQuality(this)" class="button setting-button-appearance-quality">Low </button>
-            <button value="2" id="m-Switcher-2" onclick="setPngQuality(this)" class="button setting-button-appearance-quality">Mid </button>
-            <button value="3" id="m-Switcher-3" onclick="setPngQuality(this)" class="button setting-button-appearance-quality">High </button>
-          </div>
-          <div class="settings-content-description subtext">
-            <script>
-              document.currentScript.parentElement.textContent = en.imageQualityDescription;
-            </script>
-          </div>
-        </div>
       </section>
       <!-- Icons -->
       <div class="flex justify-center items-center w-full space-x-4 mt-4">
@@ -131,11 +113,28 @@
         </button>
       </div>
     </div>
-    <div class="flex gap-1 mt-5 bg-[var(--secondary)] rounded-[7px] border border-[var(--border-color)]">
+<div class="mt-3 rounded-[var(--border-radius)] outline outline-[var(--border-color)]">
+  <div class="flex justify-center gap-3 p-5 flex-wrap">
+    <!-- Rarity Selection -->
+    <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
+      <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Rare Type</p>
+      <select id="rareTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+    </div>
+    <!-- Item Type Selection -->
+    <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
+      <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Item Type</p>
+      <select id="itemTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+    </div>
+    <!-- Collection Type Selection -->
+    <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
+      <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Collection Type</p>
+      <select id="collectionTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+    </div>
+  </div>
+</div>
+    <div class="flex gap-1 mt-3 bg-[var(--secondary)] rounded-[7px] border border-[var(--border-color)]">
       <button value="1" id="trashItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">TRASH MODE</button>
-      <button value="2" id="AllItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">ALL</button>
-      <button value="3" id="Ob46Item_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">OB46</button>
-      <button value="4" id="Ob47Item_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">OB47</button>
+      <button value="2" id="AllItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">ITEMS</button>
     </div>
     <div class="page" id="webpGallery"></div>
     <div id="pagi73hd" class="invisible mt-5 pb-5 w-[100%]">
@@ -152,10 +151,10 @@
       "keywords": "Open Source, Free Fire, Item ID, Tools, Static Website, Ff Craftland, Craftland",
       "author": {
         "@type": "Person",
-        "name": "jinix6"
+        "name": "0xme"
       },
       "programmingLanguage": ["JavaScript", "CSS", "HTML"],
-      "codeRepository": "https://github.com/jinix6/ItemID",
+      "codeRepository": "https://github.com/0xme/ItemID",
       "url": "https://0xme.github.io/ItemID2/",
       "isAccessibleForFree": true
     }

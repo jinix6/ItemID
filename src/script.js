@@ -7,32 +7,20 @@ Promise.all([
   fetch("assets/cdn.json").then((response) => response.json()),
   // Fetching 'pngs.json' and parsing it as JSON
   fetch(
-    `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/list.json`,
+    `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`,
   ).then((response) => response.json()),
   // Fetching 'itemData.json' and parsing it as JSON
   fetch("assets/itemData.json").then((response) => response.json()),
   // Fetching 'ob47_added_itemData.json' and parsing it as JSON
-  fetch("assets/ob47_added_itemData.json").then((response) => response.json()),
-
-  fetch("assets/ob46_added_itemData.json").then((response) => response.json()),
 ])
-  .then(
-    ([
-      cdnData,
-      pngsData,
-      itemDatar,
-      ob47_added_itemData,
-      ob46_added_itemData,
-    ]) => {
-      // Assign the fetched data to global variables for further use
-      cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
-      pngs_json_list = pngsData; // Contains data from 'pngs.json'
-      itemData = itemDatar; // Contains data from 'itemData.json'
-      gl_ob47_added_itemData = ob47_added_itemData; // Contains data from 'ob47_added_itemData.json'
-      gl_ob46_added_itemData = ob46_added_itemData;
-      handleDisplayBasedOnURL();
-    },
-  )
+  .then(([cdnData, pngsData, itemDatar]) => {
+    // Assign the fetched data to global variables for further use
+    cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
+    pngs_json_list = pngsData; // Contains data from 'pngs.json'
+    itemData = itemDatar; // Contains data from 'itemData.json'
+
+    handleDisplayBasedOnURL();
+  })
   .catch((error) => {
     // Log any errors encountered during the fetch or processing
     console.error("Error fetching data:", error);
@@ -73,24 +61,14 @@ function Share_tg() {
     "https://t.me/share/url?url=" + encodeURIComponent(message) + "&text=",
   );
 }
-
-function filterWebpsBySearch(webps, searchTerm) {
-  return webps.filter((webp) =>
-    webp.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
-}
-
-function filterItemsBySearch(items, searchTerm) {
-  return items.filter((item) =>
-    Object.keys(item).some((key) =>
-      item[key].toString().toLowerCase().includes(searchTerm.toLowerCase()),
-    ),
-  );
-}
-
 async function displayPage(pageNumber, searchTerm, webps) {
   current_data = webps;
-  const filteredItems = filterItemsBySearch(webps, searchTerm);
+  let filteredItems;
+  if (!searchTerm.trim()) {
+    filteredItems = webps;
+  } else {
+    filteredItems = filterItemsBySearch(webps, searchTerm);
+  }
   const startIdx = (pageNumber - 1) * itemID.config.perPageLimitItem;
   const endIdx = Math.min(
     startIdx + itemID.config.perPageLimitItem,
@@ -108,11 +86,11 @@ async function displayPage(pageNumber, searchTerm, webps) {
     image.setAttribute("crossorigin", "anonymous");
     image.setAttribute("alt", item.description);
     // Determine image source
-    let imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/UI_EPFP_unknown.png`;
+    let imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/UI_EPFP_unknown.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
-      imgSrc = `https://raw.githubusercontent.com/jinix6/ff-resources/refs/heads/main/pngs/${itemID.config.pngsQuality}/${item.icon}.png`;
+      imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/${item.icon}.png`;
     } else {
-      const keyToFind = item.itemID.toString();
+      const keyToFind = item?.itemID ? String(item.itemID) : "Not Provided";
       const value = cdn_img_json[item.itemID.toString()] ?? null;
       if (value) imgSrc = value;
     }
