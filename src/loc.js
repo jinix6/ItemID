@@ -16,17 +16,14 @@ const itemID = {
     theme: "dark",
     language: "en-US",
     perPageLimitItem: 200,
-    pngsQuality: "200x200",
+    pngsQuality: "300x300",
   },
   state: {
     displayMode: 2, // Default Mode: ALL
   },
 };
-
 let current_data;
 let itemData;
-let gl_ob47_added_itemData;
-let gl_ob46_added_itemData;
 let currentPage = 1;
 let cdn_img_json;
 let pngs_json_list;
