@@ -1,17 +1,17 @@
 const bodyElement = document.body;
 const extra_set = document.getElementById("extra_set");
 const notFoundText = () => document.getElementById("not_found_text");
+
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
   // Fetching 'cdn.json' and parsing it as JSON
-  fetch("assets/cdn.json").then((response) => response.json()),
+  smartFetch("assets/cdn.json", "data-cache-v1").then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
   // Fetching 'pngs.json' and parsing it as JSON
-  fetch(
-    `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`,
-  ).then((response) => response.json()),
+  smartFetch(
+    `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`, 'data-cache-v1'
+  ).then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
   // Fetching 'itemData.json' and parsing it as JSON
-  fetch("assets/itemData.json").then((response) => response.json()),
-  // Fetching 'ob47_added_itemData.json' and parsing it as JSON
+  smartFetch("assets/itemData.json", 'data-cache-v1').then(data => new TextDecoder().decode(data)).then(text => JSON.parse(text)),
 ])
   .then(([cdnData, pngsData, itemDatar]) => {
     // Assign the fetched data to global variables for further use
@@ -25,6 +25,9 @@ Promise.all([
     // Log any errors encountered during the fetch or processing
     console.error("Error fetching data:", error);
   });
+
+
+
 
 function addParameterWithoutRefresh(param, value) {
   const urlParams = new URLSearchParams(window.location.search);

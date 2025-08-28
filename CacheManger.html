@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Cache Viewer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .controls {
+            padding: 20px;
+            background: #f8f9fa;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        button.refresh {
+            background: #2ecc71;
+        }
+        
+        button.refresh:hover {
+            background: #27ae60;
+        }
+        
+        button.clear {
+            background: #e74c3c;
+        }
+        
+        button.clear:hover {
+            background: #c0392b;
+        }
+        
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 20px;
+            background: #e8f4fc;
+            border-bottom: 1px solid #d0e6f7;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .cache-list {
+            padding: 20px;
+        }
+        
+        .cache-item {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .cache-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .cache-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        
+        .cache-size {
+            background: #ecf0f1;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .resource-list {
+            margin-top: 10px;
+        }
+        
+        .resource-item {
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 4px solid #3498db;
+            margin-bottom: 8px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .resource-url {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: 15px;
+        }
+        
+        .resource-size {
+            background: #e0f7fa;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stat-item {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Browser Cache Viewer</h1>
+            <p class="description">View and manage your browser's cache storage</p>
+        </header>
+        
+        <div class="controls">
+            <button class="refresh" id="refreshBtn">Refresh Cache Data</button>
+            <button id="viewAllBtn">View All Caches</button>
+            <button class="clear" id="clearAllBtn">Clear All Caches</button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <span class="stat-value" id="totalCaches">0</span>
+                <span class="stat-label">Total Caches</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="totalResources">0</span>
+                <span class="stat-label">Cached Resources</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="totalSize">0 KB</span>
+                <span class="stat-label">Total Size</span>
+            </div>
+        </div>
+        
+        <div class="cache-list" id="cacheList">
+            <div class="loading" id="loadingState">Loading cache data...</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const refreshBtn = document.getElementById('refreshBtn');
+            const viewAllBtn = document.getElementById('viewAllBtn');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+            const cacheList = document.getElementById('cacheList');
+            const loadingState = document.getElementById('loadingState');
+            const totalCaches = document.getElementById('totalCaches');
+            const totalResources = document.getElementById('totalResources');
+            const totalSize = document.getElementById('totalSize');
+            
+            // Load cache data on page load
+            loadCacheData();
+            
+            // Event listeners
+            refreshBtn.addEventListener('click', loadCacheData);
+            viewAllBtn.addEventListener('click', loadCacheData);
+            clearAllBtn.addEventListener('click', clearAllCaches);
+            
+            // Function to load and display cache data
+            async function loadCacheData() {
+                loadingState.style.display = 'block';
+                cacheList.innerHTML = '';
+                
+                try {
+                    const cacheNames = await caches.keys();
+                    totalCaches.textContent = cacheNames.length;
+                    
+                    if (cacheNames.length === 0) {
+                        loadingState.innerHTML = '<div class="empty-state">No caches found in this browser.</div>';
+                        return;
+                    }
+                    
+                    let resourcesCount = 0;
+                    let totalSizeBytes = 0;
+                    
+                    // Process each cache
+                    for (const cacheName of cacheNames) {
+                        const cache = await caches.open(cacheName);
+                        const requests = await cache.keys();
+                        
+                        resourcesCount += requests.length;
+                        
+                        // Create cache item UI
+                        const cacheItem = document.createElement('div');
+                        cacheItem.className = 'cache-item';
+                        
+                        const cacheHeader = document.createElement('div');
+                        cacheHeader.className = 'cache-header';
+                        
+                        const nameElement = document.createElement('div');
+                        nameElement.className = 'cache-name';
+                        nameElement.textContent = cacheName;
+                        
+                        const sizeElement = document.createElement('div');
+                        sizeElement.className = 'cache-size';
+                        sizeElement.textContent = `${requests.length} resources`;
+                        
+                        cacheHeader.appendChild(nameElement);
+                        cacheHeader.appendChild(sizeElement);
+                        
+                        const resourceList = document.createElement('div');
+                        resourceList.className = 'resource-list';
+                        
+                        // Process each resource in the cache
+                        for (const request of requests) {
+                            const response = await cache.match(request);
+                            if (response) {
+                                const blob = await response.blob();
+                                const size = blob.size;
+                                totalSizeBytes += size;
+                                
+                                const resourceItem = document.createElement('div');
+                                resourceItem.className = 'resource-item';
+                                
+                                const urlElement = document.createElement('div');
+                                urlElement.className = 'resource-url';
+                                urlElement.textContent = request.url;
+                                
+                                const sizeElement = document.createElement('div');
+                                sizeElement.className = 'resource-size';
+                                sizeElement.textContent = formatBytes(size);
+                                
+                                resourceItem.appendChild(urlElement);
+                                resourceItem.appendChild(sizeElement);
+                                resourceList.appendChild(resourceItem);
+                            }
+                        }
+                        
+                        cacheItem.appendChild(cacheHeader);
+                        cacheItem.appendChild(resourceList);
+                        cacheList.appendChild(cacheItem);
+                    }
+                    
+                    // Update statistics
+                    totalResources.textContent = resourcesCount;
+                    totalSize.textContent = formatBytes(totalSizeBytes);
+                    
+                    loadingState.style.display = 'none';
+                    
+                } catch (error) {
+                    console.error('Error loading cache data:', error);
+                    loadingState.innerHTML = `<div class="empty-state">Error loading cache data: ${error.message}</div>`;
+                }
+            }
+            
+            // Function to clear all caches
+            async function clearAllCaches() {
+                if (!confirm('Are you sure you want to clear all caches? This action cannot be undone.')) {
+                    return;
+                }
+                
+                try {
+                    const cacheNames = await caches.keys();
+                    
+                    for (const cacheName of cacheNames) {
+                        await caches.delete(cacheName);
+                    }
+                    
+                    alert('All caches have been cleared successfully!');
+                    loadCacheData();
+                } catch (error) {
+                    console.error('Error clearing caches:', error);
+                    alert('Error clearing caches: ' + error.message);
+                }
+            }
+            
+            // Helper function to format bytes into human-readable format
+            function formatBytes(bytes, decimals = 2) {
+                if (bytes === 0) return '0 Bytes';
+                
+                const k = 1024;
+                const dm = decimals < 0 ? 0 : decimals;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            }
+        });
+    </script>
+</body>
+</html>
