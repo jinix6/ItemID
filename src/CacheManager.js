@@ -25,7 +25,7 @@ async function smartFetch(url, cacheName = 'texture-cache-v1') {
     const response = await fetch(url);
     
     if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        return null;
     }
     
     // Clone before consuming
@@ -40,6 +40,8 @@ async function smartFetch(url, cacheName = 'texture-cache-v1') {
         } catch (error) {
             // Silent fail - caching is optional
         }
+    } else {
+        return null;
     }
     
     return arrayBuffer;

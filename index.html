@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>FF Items</title>
   <meta charset="UTF-8">
@@ -28,6 +29,7 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#FFBA00">
 </head>
+
 <body>
   <div id="edge_btn" class="bounce-click fixed bottom-3 right-3 w-10 bg-[var(--secondary)] p-1 rounded-[11px] z-50">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
@@ -66,6 +68,40 @@
           </div>
         </div>
       </section>
+      <section id="GitHub-info" class="mx-2 settings-content svelte-11impmh" aria-hidden="false">
+        <div class="heading-container svelte-ui37rw">
+          <h3 class="content-title">Live Update From Repo</h3>
+        </div>
+        <div id="commit-list" class="bg-[var(--button-text)] rounded-lg p-4 shadow-sm border border-zinc-300">
+          <p class="text-[var(--button)] ibm-plex-mono-regular font-medium mb-2">Latest Commits</p>
+          <ul class="text-[var(--button)] ibm-plex-mono-regular list-disc list-inside text-sm space-y-1">
+            <li class="ibm-plex-mono-regular">Loading commits...</li>
+          </ul>
+        </div>
+      </section>
+      <script>
+        const repoOwner = "0xMe";
+        const repoName = "ItemID2";
+        async function fetchRecentCommits() {
+          const commitsUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/commits`;
+          try {
+            const res = await fetch(commitsUrl);
+            const commits = await res.json();
+            const topCommits = commits.slice(0, 2).map(commit => {
+              const msg = commit.commit.message;
+              const author = commit.commit.author.name;
+              const date = new Date(commit.commit.author.date).toLocaleString();
+              const sha = commit.sha.slice(0, 7);
+              return `<li><code>${sha}</code> — <strong>${author}</strong>: ${msg} <em class="text-zinc-500">(${date})</em></li>`;
+            }).join("");
+            
+            document.querySelector("#commit-list ul").innerHTML = topCommits;
+          } catch (err) {
+            document.querySelector("#commit-list ul").innerHTML = `<li>Failed to load commits.</li>`;
+            console.error("Commit fetch error:", err);
+          }
+        }
+      </script>
       </section>
       <!-- Icons -->
       <div class="flex justify-center items-center w-full space-x-4 mt-4">
@@ -94,7 +130,7 @@
           <button id="hide_dialg_btn" class="bounce-click align-middle select-none ibm-plex-mono-bold font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-[var(--border-radius)] bg-[var(--button-bg-color)] text-[black] shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none border border-[var(--border-color)]" type="button">
             Close
           </button>
-          <button id="share-btn" data-ripple-light="true" onclick="setTimeout(Share_tg, 250);" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-[var(--border-radius)] bg-[var(--button-bg-color)] text-[var(--secondary)] shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none border border-[var(--border-color)]" type="button">
+          <button id="share-btn" data-ripple-light="true" onclick="setTimeout(shareToTelegram, 250);" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-[var(--border-radius)] bg-[var(--button-bg-color)] text-[var(--secondary)] shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none border border-[var(--border-color)]" type="button">
             <svg id="telegram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="telegram">
               <path fill="#000000" d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427c0 0 7.961-3.267 10.722-4.418 1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path>
             </svg>
@@ -114,25 +150,25 @@
         </button>
       </div>
     </div>
-<div class="mt-3 rounded-[var(--border-radius)] outline outline-[var(--border-color)]">
-  <div class="flex justify-center gap-3 p-5 flex-wrap">
-    <!-- Rarity Selection -->
-    <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
-      <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Rare Type</p>
-      <select id="rareTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+    <div class="mt-3 rounded-[var(--border-radius)] outline outline-[var(--border-color)]">
+      <div class="flex justify-center gap-3 p-5 flex-wrap">
+        <!-- Rarity Selection -->
+        <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
+          <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Rare Type</p>
+          <select id="rareTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+        </div>
+        <!-- Item Type Selection -->
+        <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
+          <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Item Type</p>
+          <select id="itemTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+        </div>
+        <!-- Collection Type Selection -->
+        <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
+          <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Collection Type</p>
+          <select id="collectionTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
+        </div>
+      </div>
     </div>
-    <!-- Item Type Selection -->
-    <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
-      <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Item Type</p>
-      <select id="itemTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
-    </div>
-    <!-- Collection Type Selection -->
-    <div class="flex-1 min-w-[200px] text-center flex items-center justify-between">
-      <p class="ibm-plex-mono-regular text-sm text-[var(--secondary)]">Collection Type</p>
-      <select id="collectionTypeSelect" class="text-sm ibm-plex-mono-regular w-[60%] text-[var(--secondary)] rounded-[var(--border-radius)] transition-transform duration-200 active:scale-105 focus:scale-105 focus:bg-opacity-80 outline outline-0 bg-transparent"></select>
-    </div>
-  </div>
-</div>
     <div class="flex gap-1 mt-3 bg-[var(--secondary)] rounded-[7px] border border-[var(--border-color)]">
       <button value="1" id="trashItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">TRASH MODE</button>
       <button value="2" id="AllItem_btn" onclick="handleDisplayChange(this, '')" class="m-0.5 ibm-plex-mono-regular text-sm bounce-click px-2 py-1 rounded-[7px]">ITEMS</button>
@@ -164,4 +200,5 @@
   <script src="src/Util.js"></script>
   <script src="src/script.js"></script>
 </body>
+
 </html>

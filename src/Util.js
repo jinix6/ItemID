@@ -1,12 +1,86 @@
 /**
+ * Renders pagination controls based on total page count and current search context.
+ * Handles empty results by showing a "NOT FOUND" message and hiding pagination.
+ *
+ * @param {string} searchTerm - Current search input
+ * @param {Array} itemList - Full dataset of items
+ * @param {boolean} isTrashMode - Flag for alternate rendering mode
+ * @param {number} totalPages - Total number of pages to render
+ */
+async function renderPagination(searchTerm, itemList, isTrashMode, totalPages) {
+  const pageNumbers = await generatePaginationNumbers(totalPages);
+  const paginationHeader = document.getElementById("pagi73hd");
+  const paginationContainer = document.getElementById("pagination");
+  
+  // Handle empty result set: hide pagination and show "NOT FOUND" message
+  if (pageNumbers.length === 0) {
+    paginationHeader.style.visibility = "hidden";
+    
+    // Prevent duplicate "NOT FOUND" message
+    if (!notFoundText()) {
+      const notFoundMessage = document.createElement("h1");
+      notFoundMessage.id = "not_found_text";
+      notFoundMessage.className =
+        "transition-all duration-100 ease-in-out font-black select-none ibm-plex-mono-regular text-zinc-500 rotate-90 text-[500%] w-[10vw] text-center whitespace-nowrap";
+      notFoundMessage.innerText = "NOT FOUND";
+      document.getElementById("container").appendChild(notFoundMessage);
+    }
+    return;
+  }
+  
+  // Valid results: show pagination and remove "NOT FOUND" if present
+  paginationHeader.style.visibility = "visible";
+  const notFoundElement = notFoundText();
+  if (notFoundElement) notFoundElement.remove();
+  
+  // Clear existing pagination buttons
+  paginationContainer.innerHTML = "";
+  
+  // Render each pagination button
+  pageNumbers.forEach((pageNum) => {
+    const button = document.createElement("button");
+    button.className =
+      "px-[8%] bg-[var(--secondary)] bounce-click select-none rounded-[11px] text-center ibm-plex-mono-regular font-medium uppercase text-[var(--primary)] disabled:pointer-events-none disabled:shadow-none";
+    
+    // Highlight the active page
+    if (pageNum === currentPage) {
+      button.classList.remove(
+        "bg-[var(--secondary)]",
+        "text-[var(--primary)]",
+        "border",
+        "border-2",
+        "border-[var(--border-color)]"
+      );
+      button.classList.add(
+        "text-[var(--secondary)]",
+        "bg-[var(--primary)]"
+      );
+    }
+    
+    button.textContent = pageNum;
+    
+    // Attach click handler to navigate to selected page
+    button.addEventListener("click", async () => {
+      await goToPage(pageNum, searchTerm, itemList, isTrashMode, totalPages);
+    });
+    
+    paginationContainer.appendChild(button);
+  });
+}
+
+
+
+
+
+
+/**
  * Initializes the interactive behavior for the edge button and related elements.
  */
 function initializeInterfaceEdgeBtn() {
-  const bodyElement = document.body;
   const extraSetElement = document.getElementById("settings-bg");
   const edgeButtonElement = document.getElementById("edge_btn");
   const settingsCloseBtn = document.getElementById("settings-close-btn");
-
+  
   /**
    * Handles the animation for the specified elements.
    * @param {string} action - The action to perform ('expand' or 'collapse').
@@ -14,34 +88,35 @@ function initializeInterfaceEdgeBtn() {
   const handleAnimation = (action) => {
     const animationType = action === "expand" ? "fadeOut" : "fadeIn";
     const duration = "250ms";
-
+    
     ["extra_set"].forEach((id) => {
       const element = document.getElementById(id);
       element.style.animation = `${animationType} ${duration} 1 forwards`;
     });
   };
-
+  
   /**
    * Expands the interface by updating classes and triggering animations.
    */
   const expandInterface = () => {
-    bodyElement.classList.remove("collapsed");
+    document.body.classList.remove("collapsed");
     extraSetElement.classList.add("expanded2");
     handleAnimation("expand");
   };
-
+  
   /**
    * Collapses the interface by updating classes and triggering animations.
    */
   const collapseInterface = () => {
-    bodyElement.classList.add("collapsed");
+    fetchRecentCommits();
+    document.body.classList.add("collapsed");
     extraSetElement.classList.remove("expanded2");
     extraSetElement.classList.add("collapsed2");
     handleAnimation("collapse");
   };
-
+  
   //collapseInterface() // for test
-
+  
   // Attach event listeners
   edgeButtonElement.addEventListener("click", collapseInterface);
   settingsCloseBtn.addEventListener("click", expandInterface);
@@ -138,10 +213,10 @@ const addClassesList = (elements, ...classes) => {
  */
 function handleDisplayChange(element, searchKeyword) {
   const displayMode = element.value;
-
+  
   // Encrypt and update the URL parameter for 'mode'
   updateUrlParameter("mode", displayMode);
-
+  
   let [all_tag_id, trashItem_btn] = ["AllItem_btn", "trashItem_btn"].map((id) =>
     document.getElementById(id),
   );
@@ -150,14 +225,14 @@ function handleDisplayChange(element, searchKeyword) {
     tags: [all_tag_id, trashItem_btn],
     webpGallery: document.getElementById("webpGallery"),
   };
-
+  
   /**
    * Resets the UI elements to their default state.
    */
   const resetUI = () => {
     removeClasses(uiElements.tags, "Mtext-color", "Mbg-color");
   };
-
+  
   // Update UI and call specific functions based on the selected mode
   resetUI();
   searchKeyword = searchKeyword === null ? "" : searchKeyword;
@@ -168,19 +243,19 @@ function handleDisplayChange(element, searchKeyword) {
       displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
       itemID.state.displayMode = 1;
       break;
-
+      
     case "2":
       addClassesList([trashItem_btn], "Mtext-color2");
       addClasses(element, "Mtext-color", "Mbg-color");
       displayPage(1, searchKeyword, itemData);
       itemID.state.displayMode = 2;
       break;
-
+      
     default:
       console.warn(`Unsupported display mode: ${displayMode}`);
       return; // Exit if the mode is invalid
   }
-
+  
   // Trigger animation on the gallery element
   if (uiElements.webpGallery) {
     uiElements.webpGallery.classList.remove("slide-top");
@@ -202,9 +277,9 @@ function addEnterKeyListener(inputElement, searchFunction) {
     );
     return;
   }
-
+  
   // Add event listener for keydown events
-  inputElement.addEventListener("keydown", function (event) {
+  inputElement.addEventListener("keydown", function(event) {
     // Trigger search function when the Enter key is pressed
     if (event.key === "Enter") {
       searchFunction();
@@ -232,7 +307,7 @@ function getDominantColor(element) {
         "Invalid element type. Expected an HTMLImageElement, HTMLCanvasElement, or HTMLVideoElement.",
       );
     }
-
+    
     // Ensure the element has valid dimensions
     const width = element.naturalWidth || element.width || element.videoWidth;
     const height =
@@ -240,22 +315,22 @@ function getDominantColor(element) {
     if (!width || !height) {
       throw new Error("The element has invalid or zero dimensions.");
     }
-
+    
     // Create a canvas to draw the element
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     if (!ctx) {
       throw new Error("Failed to get canvas 2D context.");
     }
-
+    
     // Set canvas dimensions and draw the element
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(element, 0, 0, width, height);
-
+    
     // Extract pixel data
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-
+    
     // Calculate the average RGB values
     let r = 0,
       g = 0,
@@ -267,12 +342,12 @@ function getDominantColor(element) {
       b += imageData[i + 2]; // Blue
       count++;
     }
-
+    
     // Compute average values
     r = Math.floor(r / count);
     g = Math.floor(g / count);
     b = Math.floor(b / count);
-
+    
     return { r, g, b };
   } catch (error) {
     console.error("Error in getDominantColor:", error.message);
@@ -307,7 +382,7 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
       'Invalid RGB color format. Expected an object with properties "r", "g", and "b".',
     );
   }
-
+  
   // Extract RGB values and ensure they're within valid range (0-255)
   const { r, g, b } = rgbColor;
   if (
@@ -315,16 +390,16 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
   ) {
     throw new Error("RGB values must be integers between 0 and 255.");
   }
-
+  
   // Create a color object using chroma.js
   const bgColorObj = chroma(r, g, b);
-
+  
   // Calculate luminance of the background color
   const luminanceValue = bgColorObj.luminance();
-
+  
   // Default text color
   let textColor;
-
+  
   // Adjust brightness or darkness based on luminance value
   if (luminanceValue < 0.5) {
     // If the background is dark, brighten the text
@@ -333,7 +408,7 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
     // If the background is light, darken the text
     textColor = bgColorObj.darken(adjustDarkness).hex();
   }
-
+  
   // Return the calculated text color in hex format
   return textColor;
 }
@@ -357,10 +432,10 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
     closeBtn: document.getElementById("hide_dialg_btn"),
     shareButton: document.getElementById("share-btn"),
   };
-
+  
   // Set the image source for the item
   targetElement.src = imageSource || "";
-
+  
   const imgBg = document.getElementById("info-dialoh-bg");
   const dominantColor = getDominantColor(sharedElement);
   if (dominantColor) {
@@ -391,23 +466,23 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   } else {
     console.error("Failed to extract the dominant color.");
   }
-
+  
   // Apply fade-in animation to background elements
   pageBackgrounds.forEach((id) => {
     document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
   });
-
+  
   // Handle display content based on trash mode
   if (!isTrashMode) {
     // Extract and display item details when not in trash mode
     const { icon, description, description2, itemID } = itemData;
-    const itemDetail = description2
-      ? `${description} - ${description2}`
-      : description;
+    const itemDetail = description2 ?
+      `${description} - ${description2}` :
+      description;
     dialogTitleParagraphs.hedear.textContent = itemDetail;
     dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
     dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
-
+    
     // Show dialog title, description, and icon name with animation
     [
       dialogTitleParagraphs.hedear,
@@ -420,7 +495,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         element.classList.remove("slide-bottom");
       }, index * 200);
     });
-
+    
     // Ensure the share button is visible in normal mode
     if (dialogTitleParagraphs.shareButton) {
       dialogTitleParagraphs.shareButton.style.display = "";
@@ -428,37 +503,37 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   } else {
     // Display item name in trash mode (without description)
     dialogTitleParagraphs.hedear.textContent = itemData.replace(".png", "");
-
+    
     // Hide unnecessary elements (title, iconName) in trash mode
     [dialogTitleParagraphs.title, dialogTitleParagraphs.iconName].forEach(
       (element) => {
         element.style.display = "none";
       },
     );
-
+    
     // Apply animation for dialog title in trash mode
     setTimeout(() => {
       dialogTitleParagraphs.hedear.classList.add("slide-top");
       dialogTitleParagraphs.hedear.classList.remove("slide-bottom");
     }, 0);
-
+    
     // Hide the share button in trash mode
     if (dialogTitleParagraphs.shareButton) {
       dialogTitleParagraphs.shareButton.style.display = "none";
     }
   }
-
+  
   // Disable interactions with the shared element during transition
   sharedElement.classList.add("touch-none");
-
+  
   // Get the position and size of the shared element and target element
   const startRect = sharedElement.getBoundingClientRect();
   const endRect = targetElement.getBoundingClientRect();
-
+  
   // Clone the shared element for the animation
   const clone = sharedElement.cloneNode(true);
   document.body.appendChild(clone);
-
+  
   // Style the clone element to match the shared element's position and size
   gsap.set(clone, {
     position: "absolute",
@@ -468,7 +543,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
     height: startRect.height,
     zIndex: 10,
   });
-
+  
   // Animate the clone to the target element's position
   gsap.to(clone, {
     duration: 0.5,
@@ -478,12 +553,12 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
     height: endRect.height,
     ease: "power2.inOut",
   });
-
+  
   // Event listener to close the dialog and return the shared element to its original position
   dialogTitleParagraphs.closeBtn.addEventListener("click", () => {
     // Restore interaction with the shared element
     sharedElement.classList.remove("touch-none");
-
+    
     // Animate closing of dialog title and paragraphs
     [
       dialogTitleParagraphs.hedear,
@@ -495,7 +570,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         element.classList.add("slide-bottom");
       }, index * 100);
     });
-
+    
     // Apply fade-out animation to the background
     setTimeout(() => {
       pageBackgrounds.forEach((id) => {
@@ -503,7 +578,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
           "fadeOut 300ms 1 forwards";
       });
     }, 250);
-
+    
     // Animate the clone back to its original position and remove it after completion
     gsap.to(clone, {
       duration: 0.5,
@@ -526,10 +601,10 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
 function search() {
   // Retrieve the search keyword from the input field
   const searchKeyword = document.getElementById("search-input").value;
-
+  
   // Encrypt and update the URL parameter for 'icon'
   updateUrlParameter("q", searchKeyword);
-
+  
   // Determine the current display mode and call the corresponding function
   if (itemID.state.displayMode === 1) {
     // Display filtered trash items if the display mode is set to 1
@@ -540,14 +615,82 @@ function search() {
   }
 }
 
+
 /**
- * Updates the URL parameter without refreshing the page.
- * @param {string} paramName - The name of the URL parameter.
- * @param {string} paramValue - The value of the URL parameter.
+ * Updates the browser URL by adding or modifying a query parameter,
+ * without triggering a page reload. Useful for dynamic filtering or state tracking.
+ *
+ * @param {string} key - The query parameter name to add or update
+ * @param {string} value - The value to assign to the parameter
  */
-function updateUrlParameter(paramName, paramValue) {
-  addParameterWithoutRefresh(paramName, paramValue);
+function updateUrlParameter(key, value) {
+  // Parse current query parameters
+  const queryParams = new URLSearchParams(window.location.search);
+  
+  // Set or update the specified parameter
+  queryParams.set(key, value);
+  
+  // Construct the new URL without reloading the page
+  const baseUrl = `${window.location.origin}${window.location.pathname}`;
+  const updatedUrl = `${baseUrl}?${queryParams.toString()}`;
+  
+  // Push the new URL to browser history
+  history.pushState({ path: updatedUrl }, "", updatedUrl);
 }
+
+
+/**
+ * Returns the current page URL without any query parameters or hash fragments.
+ * Useful for generating clean base URLs for sharing or navigation.
+ *
+ * @returns {string} Base URL (origin + pathname)
+ */
+function getBaseUrl() {
+  const origin = window.location.origin; // e.g., https://example.com
+  const path = window.location.pathname; // e.g., /gallery/view.html
+  return `${origin}${path}`; // Combined clean URL
+}
+
+
+
+/**
+ * Shares item details via Telegram using a formatted message and dynamic URL.
+ * Extracts title, ID, and icon name from dialog elements and opens Telegram share link.
+ */
+function shareToTelegram() {
+  // Extract icon name from dialog element
+  const iconName = document
+    .getElementById("dialog-tittle-pp")
+    .textContent.replace("Icon Name: ", "");
+  
+  // Build view URL without query parameters
+  const viewUrl =
+    getBaseUrl() +
+    "?q=" + encodeURIComponent(iconName) +
+    "&mode=" + encodeURIComponent(itemID.state.displayMode);
+  
+  // Extract title and ID from dialog elements
+  const itemTitle = document.getElementById("dialog-tittle").textContent;
+  const itemId = document
+    .getElementById("dialog-tittle-p")
+    .textContent.replace("Id: ", "");
+  
+  // Construct Telegram message with Markdown formatting
+  const telegramMessage =
+    `Title: \`${itemTitle}\`\n` +
+    `ID: \`${itemId}\`\n` +
+    `Icon Name: \`${iconName}\`\n\n` +
+    `View: ${viewUrl}`;
+  
+  // Open Telegram share URL with encoded message
+  window.open(
+    `https://t.me/share/url?url=${encodeURIComponent(telegramMessage)}&text=`,
+    "_blank"
+  );
+}
+
+
+
 
 /**
  * Filters and displays trash items based on the search keyword.
@@ -590,21 +733,21 @@ async function goToPage(
     console.error("Invalid page number:", pageNumber);
     return;
   }
-
+  
   if (typeof searchTerm !== "string") {
     console.error("Invalid search term:", searchTerm);
     return;
   }
-
+  
   if (!Array.isArray(webps)) {
     console.error("Invalid webps array:", webps);
     return;
   }
-
+  
   // Set the current page and search term
   currentPage = pageNumber;
   currentSearchTerm = searchTerm;
-
+  
   try {
     // Display content based on trash mode
     if (isTrashMode) {
@@ -634,9 +777,8 @@ async function generatePaginationNumbers(totalPages) {
   if (typeof totalPages !== "number") {
     throw new Error("Invalid totalPages value.");
   }
-
-  const paginationNumbers = Array.from(
-    { length: totalPages },
+  
+  const paginationNumbers = Array.from({ length: totalPages },
     (_, index) => index + 1,
   );
   return paginationNumbers;
@@ -648,7 +790,7 @@ async function generatePaginationNumbers(totalPages) {
 function updateUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   let isUrlUpdated = false;
-
+  
   // Iterate through all parameters and remove those with empty values
   for (const [key, value] of urlParams.entries()) {
     if (value === "") {
@@ -656,7 +798,7 @@ function updateUrl() {
       isUrlUpdated = true;
     }
   }
-
+  
   // Update the URL in the browser if changes were made
   if (isUrlUpdated) {
     const newUrl = `${window.location.origin}${window.location.pathname}${urlParams.toString() ? "?" + urlParams.toString() : ""}`;
@@ -673,14 +815,14 @@ function updateUrl() {
  */
 function filterItemsBySearch(items, searchTerm) {
   if (!Array.isArray(items) || typeof searchTerm !== "string") return [];
-
+  
   const lowerSearch = searchTerm.trim().toLowerCase();
   if (!lowerSearch) return items; // Return all if search term is empty
-
+  
   return items.filter((item) =>
     Object.values(item).some(
       (value) =>
-        value != null && String(value).toLowerCase().includes(lowerSearch),
+      value != null && String(value).toLowerCase().includes(lowerSearch),
     ),
   );
 }
@@ -693,20 +835,20 @@ function handleDisplayBasedOnURL() {
   const urlParams = new URLSearchParams(window.location.search);
   const searchKeyword = urlParams.get("q") || ""; // Default to empty string if 'q' is not set
   const displayMode = urlParams.get("mode");
-
+  
   // Set the input field's value to the search keyword
   document.getElementById("search-input").value = searchKeyword;
-
+  
   // Map of display modes to buttons
   const buttonMap = {
     1: "trashItem_btn",
     2: "AllItem_btn",
   };
-
+  
   // Determine the button to show based on the display mode or fallback to 'AllItem_btn'
   const buttonId = buttonMap[displayMode] || "AllItem_btn";
   const targetButton = document.getElementById(buttonId);
-
+  
   // Call the function to change the display with the selected button and search keyword
   handleDisplayChange(targetButton, searchKeyword);
 }
@@ -784,11 +926,11 @@ function toggleTheme() {
   document
     .getElementById("toggle-switcher")
     .classList.toggle("light-toggle-on");
-  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS)
-    ? "light"
-    : "dark";
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ?
+    "light" :
+    "dark";
   const newTheme = currentTheme === "light" ? "dark" : "light";
-
+  
   applyTheme(newTheme);
   saveThemeToLocalStorage(newTheme);
 }
@@ -802,7 +944,7 @@ function handleSystemThemeChange() {
     "(prefers-color-scheme: dark)",
   ).matches;
   const currentTheme = getStoredTheme();
-
+  
   if (!localStorage.getItem(THEME_STORAGE_KEY)) {
     applyTheme(systemPrefersDark ? "dark" : "light");
   }
@@ -814,13 +956,13 @@ function handleSystemThemeChange() {
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize the theme based on the stored or system preference
   initializeTheme();
-
+  
   // Add event listener for the theme toggle button
   const themeToggleButton = document.getElementById(
     "setting-toggle-appearance-autoLanguage",
   );
   themeToggleButton.addEventListener("click", toggleTheme);
-
+  
   // Listen for changes in the system's theme preference
   window
     .matchMedia("(prefers-color-scheme: dark)")
@@ -855,16 +997,16 @@ function filterItemsBySearch(item_data, query) {
   if (query === undefined || query === null) {
     throw new TypeError("Expected 'query' to be a string or number.");
   }
-
+  
   // Convert query to string
   query = String(query).trim();
-
+  
   // Return item IDs if query is empty
   if (!query) return item_data.map((item) => item.itemID);
-
+  
   // Parse query filters
   const filters = query.split("&").map((filter) => filter.trim());
-
+  
   // Filter data based on conditions
   return item_data.filter((item) => {
     return filters.every((filter) => {
@@ -880,9 +1022,9 @@ function filterItemsBySearch(item_data, query) {
         // Handle general keyword/number search in all string values
         return Object.values(item).some(
           (value) =>
-            (typeof value === "string" &&
-              value.toLowerCase().includes(filter.toLowerCase())) ||
-            (typeof value === "number" && value.toString().includes(filter)),
+          (typeof value === "string" &&
+            value.toLowerCase().includes(filter.toLowerCase())) ||
+          (typeof value === "number" && value.toString().includes(filter)),
         );
       }
     });
@@ -978,7 +1120,7 @@ const CollectionType = {
 function populateSelect(selectId, data) {
   const selectElement = document.getElementById(selectId);
   if (!selectElement) return; // Prevent errors if element is missing
-
+  
   Object.entries(data).forEach(([key, value]) => {
     const option = document.createElement("option");
     option.value = value;
@@ -1004,17 +1146,17 @@ populateSelect("collectionTypeSelect", CollectionType);
 function handleSelectionChange(selectId, data, label) {
   const selectElement = document.getElementById(selectId);
   if (!selectElement) return; // Ensure the select element exists
-
-  selectElement.addEventListener("change", function () {
+  
+  selectElement.addEventListener("change", function() {
     const selectedKey = Object.keys(data).find(
       (key) => data[key] == this.value,
     );
     const searchInput = document.getElementById("search-input");
     if (!searchInput) return; // Ensure search input exists
-
+    
     let query = searchInput.value.trim();
     let labelPattern = new RegExp(`\\b${label}:([^&]*)`, "i");
-
+    
     if (selectedKey === "ALL") {
       // Remove the label if "ALL" is selected
       searchInput.value = query
@@ -1028,9 +1170,9 @@ function handleSelectionChange(selectId, data, label) {
       );
     } else {
       // Append new label if not already present
-      searchInput.value = query
-        ? query + "&" + label + ":" + selectedKey
-        : label + ":" + selectedKey;
+      searchInput.value = query ?
+        query + "&" + label + ":" + selectedKey :
+        label + ":" + selectedKey;
     }
   });
 }

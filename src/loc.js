@@ -6,7 +6,7 @@ const en = {
     - Medium Quality: Balances file size and image clarity, making it suitable for general use cases.
     - High Quality: Offers the best image clarity and detail, perfect for professional or highly detailed visuals.
   `,
-
+  
   themeToggleDescription: `Toggle between light and dark modes for a better viewing experience!`,
 };
 
@@ -27,3 +27,4 @@ let itemData;
 let currentPage = 1;
 let cdn_img_json;
 let pngs_json_list;
+const notFoundText = () => document.getElementById("not_found_text");
