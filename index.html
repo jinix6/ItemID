@@ -1,36 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 
 <head>
-  <title>FF Items</title>
+  <title>Free Fire Items Database - Find Item IDs, Names & Descriptions</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.0/chroma.min.js"></script>
-  <script src="src/CacheManager.js"></script>
-  <link rel="stylesheet" href="src/style.css">
-  <link rel="stylesheet" href="src/global.css">
-  <script src="src/loc.js"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <meta name="description" content="Comprehensive Free Fire items database. Search by keyword, item ID, or description to find rare items, weapons, characters, and collectibles from Garena's battle royale game.">
+  <meta name="keywords" content="free fire, ff items, free fire item id, garena free fire, battle royale, free fire database, item search, free fire weapons, free fire characters, ff collectibles, item description, ff craftland">
   <meta name="author" content="0XME">
-  <meta name="og:title" content="ff-items">
-  <meta name="og:description" content="Get item ID, name, and description for Free Fire game items by search.">
-  <meta name="og:image" content="https://cdn-sc-g.sharechat.com/33d5318_1c8/18293db7_1732413753390_sc.png">
-  <meta name="google-site-verification" content="J20YkdBYbFS0_YZdIu9Z-sKGKzYZfqOFFkQ0numjLq0" />
-  <meta name="description" content="Free Fire is a multiplayer battle royale mobile game, developed and published by Garena for Android and iOS. Battle in Style and be the last survivor!">
-  <meta name="keywords" content="ffc, survival, last survivor, battle royale, free mobile game, garena game, craftland, ugc, ff craftland, jinxx66, jinxx6_6, jinxx, craftland tutorial, free fire craftland">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="revisit-after" content="7 days">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://0xme.github.io/ItemID2/">
+  <meta property="og:title" content="Free Fire Items Database - Find Item IDs, Names & Descriptions">
+  <meta property="og:description" content="Search our comprehensive Free Fire items database to find item IDs, names, and descriptions for all in-game items including weapons, characters, and collectibles.">
+  <meta property="og:image" content="https://cdn-sc-g.sharechat.com/33d5318_1c8/18293db7_1732413753390_sc.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="FF Items Database">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://0xme.github.io/ItemID2/">
+  <meta property="twitter:title" content="Free Fire Items Database - Find Item IDs, Names & Descriptions">
+  <meta property="twitter:description" content="Search our comprehensive Free Fire items database to find item IDs, names, and descriptions for all in-game items.">
+  <meta property="twitter:image" content="https://cdn-sc-g.sharechat.com/33d5318_1c8/18293db7_1732413753390_sc.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://0xme.github.io/ItemID2/">
+  
+  <!-- Favicons and App Icons -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/1442ba0a_1732413635253_sc.png">
   <link rel="icon" type="image/png" sizes="32x32" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/18293db7_1732413753390_sc.png">
   <link rel="icon" type="image/png" sizes="16x16" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/3cf0607_1732413785731_sc.png">
   <link rel="manifest" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/16b5018c_1732413885040_sc.txt">
   <link rel="mask-icon" href="https://cdn-sc-g.sharechat.com/33d5318_1c8/6ee440b_1732415043180_sc.svg" color="#5bbad5">
+  
+  <!-- Theme Color -->
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#FFBA00">
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn-sc-g.sharechat.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com/ajax/libs">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="src/global.css">
+  
+  <!-- Scripts -->
+  <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.0/chroma.min.js"></script>
+  <script src="src/CacheManager.js"></script>
+  <script src="src/loc.js"></script>
+  
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="J20YkdBYbFS0_YZdIu9Z-sKGKzYZfqOFFkQ0numjLq0" />
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Free Fire Items Database",
+      "url": "https://0xme.github.io/ItemID2/",
+      "description": "Comprehensive searchable database of Free Fire game items with IDs, names, and descriptions.",
+      "applicationCategory": "GameApplication",
+      "operatingSystem": "Any",
+      "permissions": "browser",
+      "author": {
+        "@type": "Person",
+        "name": "0xme"
+      },
+      "softwareVersion": "2.0"
+    }
+  </script>
 </head>
 
 <body>
+  <!-- Rest of your HTML content remains exactly the same -->
   <div id="edge_btn" class="bounce-click fixed bottom-3 right-3 w-10 bg-[var(--secondary)] p-1 rounded-[11px] z-50">
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
       <path fill="var(--primary)" d="M6 4h14v2h2v6h-8v2h6v2h-4v2h-2v2H2V8h2V6h2zm2 6h2V8H8z" />
@@ -106,7 +162,7 @@
       <!-- Icons -->
       <div class="flex justify-center items-center w-full space-x-4 mt-4">
         <svg class="bounce-click w-5" id="gt" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <path fill="var(--secondary)" d="M5 2h4v2H7v2H5zm0 10H3V6h2zm2 2H5v-2h2zm2 2v-2H7v2H3v-2H1v2h2v2h4v4h2v-4h2v-2zm0 0v2H7v-2zm6-12v2H9V4zm4 2h-2V4h-2V2h4zm0 6V6h2v6zm-2 2v-2h2v2zm-2 2v-2h2v2zm0 2h-2v-2h2zm0 0h2v4h-2z" />
+          <path fill="var(--secondary)" d="M5 2h4v2H5zm0 10H3V6h2zm2 2H5v-2h2zm2 2v-2H7v2H3v-2H1v2h2v2h4v4h2v-4h2v-2zm0 0v2H7v-2zm6-12v2H9V4zm4 2h-2V4h-2V2h4zm0 6V6h2v6zm-2 2v-2h2v2zm-2 2v-2h2v2zm0 2h-2v-2h2zm0 0h2v4h-2z" />
         </svg>
       </div>
     </div>
@@ -132,7 +188,7 @@
           </button>
           <button id="share-btn" data-ripple-light="true" onclick="setTimeout(shareToTelegram, 250);" class="bounce-click align-middle select-none font-sans font-bold text-center uppercase  disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs rounded-[var(--border-radius)] bg-[var(--button-bg-color)] text-[var(--secondary)] shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none border border-[var(--border-color)]" type="button">
             <svg id="telegram-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="telegram">
-              <path fill="#000000" d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427c0 0 7.961-3.267 10.722-4.418 1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path>
+              <path fill="#000000" d="M16.114 9.291c.552-.552 1.1-1.84-1.2-.276a395.806 395.806 0 0 1-6.489 4.372 2.7 2.7 0 0 1-2.117.046c-1.38-.414-2.991-.966-2.991-.966s-1.1-.691.783-1.427 0 0 7.961-3.267 10.722-4.418c1.058-.46 4.647-1.932 4.647-1.932s1.657-.645 1.519.92c-.046.644-.414 2.9-.782 5.338-.553 3.451-1.151 7.225-1.151 7.225s-.092 1.058-.874 1.242a3.787 3.787 0 0 1-2.3-.828c-.184-.138-3.451-2.209-4.648-3.221a.872.872 0 0 1 .046-1.473 169.31 169.31 0 0 0 4.835-4.602Z"></path>
             </svg>
           </button>
         </div>
