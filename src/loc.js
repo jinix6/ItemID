@@ -1,15 +1,3 @@
-const en = {
-  imageQualityDescription: `
-    Choose the quality level for your PNG image:
-
-    - Low Quality: Produces a smaller file size, ideal for quick loading or situations where minimal detail is needed.
-    - Medium Quality: Balances file size and image clarity, making it suitable for general use cases.
-    - High Quality: Offers the best image clarity and detail, perfect for professional or highly detailed visuals.
-  `,
-  
-  themeToggleDescription: `Toggle between light and dark modes for a better viewing experience!`,
-};
-
 // The object you want to save
 const itemID = {
   config: {
@@ -28,3 +16,15 @@ let currentPage = 1;
 let cdn_img_json;
 let pngs_json_list;
 const notFoundText = () => document.getElementById("not_found_text");
+
+const bgMap = {
+  WHITE: "UI_GachaLimit_QualitySlotBg2_01.png",
+  GREEN: "UI_GachaLimit_QualitySlotBg2_02.png",
+  BLUE: "UI_GachaLimit_QualitySlotBg2_03.png",
+  PURPLE: "UI_GachaLimit_QualitySlotBg2_04.png",
+  ORANGE: "UI_GachaLimit_QualitySlotBg2_05.png",
+  CARD: "UI_GachaLimit_QualitySlotBg2_06.png",
+  Red: "UI_GachaLimit_QualitySlotBg2_07.png",
+  PURPLE_PLUS: "UI_GachaExtraAward_QualitySlotBg_04.png",
+  ORANGE_PLUS: "UI_GachaExtraAward_QualitySlotBg_05.png"
+};

@@ -1,5 +1,3 @@
-
-
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
     // Fetching 'cdn.json' and parsing it as JSON
@@ -46,52 +44,56 @@ async function displayPage(pageNumber, searchTerm, webps) {
   const fragment = document.createDocumentFragment(); // Use DocumentFragment for batch DOM updates
   webpGallery.innerHTML = ""; // Clear existing content
   
-  const promises = [];
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
-    promises.push((async () => {
-      const image = new Image();
-      image.className = "image border p-3 bounce-click ";
-      image.loading = "lazy";
-      image.id = "list_item_img";
-      image.setAttribute("crossorigin", "anonymous");
-      image.setAttribute("alt", item.description);
-      
-      let imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/UI_EPFP_unknown.png`;
-      if (pngs_json_list?.includes(item.icon + ".png")) {
-        imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/${item.icon}.png`;
+    
+    let imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/UI_EPFP_unknown.png`;
+    if (pngs_json_list?.includes(item.icon + ".png")) {
+      imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/${item.icon}.png`;
+    } else {
+      const keyToFind = item?.itemID ? String(item.itemID) : "Not Provided";
+      const value = cdn_img_json[item.itemID.toString()] ?? null;
+      if (value) {
+        imgSrc = value;
       } else {
-        const keyToFind = item?.itemID ? String(item.itemID) : "Not Provided";
-        const value = cdn_img_json[item.itemID.toString()] ?? null;
-        if (value) {
-          imgSrc = value;
-        } else {
-          // try {
-          //   const astcData = new Uint8Array(await smartFetch(
-          //     `https://dl-tata.freefireind.in/live/ABHotUpdates/IconCDN/android/${keyToFind}_rgb.astc`));
-          //   if (astcData) {
-          //     console.log(astcData);
-          //   }
-          // } catch (err) {
-          //   console.warn(`ASTC fetch failed for ${keyToFind}`, err);
-          // }
-        }
+        // try {
+        //   const astcData = new Uint8Array(await smartFetch(
+        //     `https://dl-tata.freefireind.in/live/ABHotUpdates/IconCDN/android/${keyToFind}_rgb.astc`));
+        //   if (astcData) {
+        //     console.log(astcData);
+        //   }
+        // } catch (err) {
+        //   console.warn(`ASTC fetch failed for ${keyToFind}`, err);
+        // }
       }
-      
-      image.src = imgSrc;
-      if (item.description === "Didn't have an ID and description.") {
-        image.style.background = "#607D8B";
-      }
-      
-      image.addEventListener("click", () =>
-        displayItemInfo(item, imgSrc, image, (isTrashMode = false))
-      );
-      
-      fragment.appendChild(image);
-    })());
+    }
+    const figure = document.createElement('figure');
+    figure.className = "bg-center bg-no-repeat [background-size:120%] image p-3 bounce-click border border-[var(--border-color)]";
+    figure.setAttribute('aria-label', `${item.description}, ${item.Rare} ${item.itemType}`);
+    const fileName = bgMap[item.Rare] || "UI_GachaLimit_QualitySlotBg2_01.png";
+    figure.style.backgroundImage = `url('https://raw.githubusercontent.com/0xme/ff-resources/main/pngs/300x300/${fileName}')`;
+    
+    
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = item.description;
+    img.src = imgSrc;
+    img.setAttribute("crossorigin", "anonymous");
+    
+    
+    figure.addEventListener('click', () => {
+      displayItemInfo(item, imgSrc, img, (isTrashMode = false))
+    });
+    
+    
+    figure.appendChild(img);
+    fragment.appendChild(figure);
+    
+    
   }
   
-  await Promise.allSettled(promises);
+  
+  
   webpGallery.appendChild(fragment); // Add all images at once
   let totalPages = Math.ceil(
     filteredItems.length / itemID.config.perPageLimitItem,
