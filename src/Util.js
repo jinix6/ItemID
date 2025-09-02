@@ -41,7 +41,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   if (imgBg) {
     const dominantColor = getDominantColor(sharedElement);
     if (dominantColor) {
-      imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b})`;
+      imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b}, 0.8)`;
       const dominantColorobj = {
         r: dominantColor.r,
         g: dominantColor.g,
