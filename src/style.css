@@ -238,7 +238,7 @@ body {
   opacity: 1;
 }
 
-#telegram-icon {
+#svg-icon {
   width: 20px;
   fill: #CFD8DC;
 }
@@ -352,4 +352,9 @@ input[disabled] {
   overflow-y: auto;
   padding-right: 8px; /* for scrollbar space */
   scroll-behavior: smooth;
+}
+
+#google-lens-btn {
+  padding: 3%;
+  border-radius: var(--border-radius);
 }

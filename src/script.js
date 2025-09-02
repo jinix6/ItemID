@@ -111,4 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeInterfaceEdgeBtn();
   const inputField = document.getElementById("search-input");
   addEnterKeyListener(inputField, search);
+  const lensBtn = document.getElementById("google-lens-btn");
+  if (lensBtn) {
+    lensBtn.addEventListener("click", () => {
+      const img = document.getElementById("cardimage");
+      if (!img || !img.src) return;
+      const googleLensUrl = `https://lens.google.com/uploadbyurl?url=${encodeURIComponent(img.src)}`;
+      window.open(googleLensUrl, "_blank");
+    });
+  }
+  
 });

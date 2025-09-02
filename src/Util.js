@@ -62,7 +62,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
       const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
       const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
       const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
-      ["hide_dialg_btn", "share-btn"].forEach((id) => {
+      ["hide_dialg_btn", "share-btn", "google-lens-btn"].forEach((id) => {
         const btn = document.getElementById(id);
         if (btn) {
           btn.style.background = closebtnBgColor;
