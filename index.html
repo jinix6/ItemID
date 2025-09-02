@@ -57,10 +57,10 @@
   <link rel="stylesheet" href="src/global.css">
   
   <!-- Scripts -->
-  <script src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
+  <script rel="preload" src="https://cdn-sc-g.sharechat.com/33d5318_1c8/35409e5b_1732412421739_sc.null" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chroma-js@2.1.0/chroma.min.js"></script>
   <script src="src/CacheManager.js"></script>
-  <script src="src/loc.js"></script>
+  <script rel="preload" src="src/loc.js"></script>
   
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="J20YkdBYbFS0_YZdIu9Z-sKGKzYZfqOFFkQ0numjLq0" />
@@ -95,7 +95,7 @@
   </div>
   
   <!-- Settings Panel -->
-  <div id="settings-bg" class="w-[100vw] h-[100vh] z-[99999] fixed bg-[var(--bBackground-color)] ">
+  <div id="settings-bg" class="w-[100vw] h-[100vh] z-[99999] fixed bg-[var(--bBackground-color)]" role="dialog" aria-modal="true" aria-labelledby="settings-title">
     <div id="extra_set" class="w-[100vw] h-[100vh] bg-[var(--primary)]">
       <div class="flex items-center justify-center p-4 bg-[var(--primary)] border-b border-[var(--border-color)] relative">
         <!-- Close Button -->
@@ -105,8 +105,8 @@
           </svg>
         </button>
         <!-- Title -->
-        <h2 class="ibm-plex-mono-regular text-xl text-[var(--secondary)]">
-          Appearance
+        <h2 id="settings-title" class="ibm-plex-mono-regular text-xl text-[var(--secondary)]">
+          Settings
         </h2>
       </div>
       
@@ -188,10 +188,9 @@
   </div>
   
   <!-- Dialog Popup -->
-  <div class="invisible fixed touch-none" id="mainnnnn-bg">
+  <div role="dialog" aria-modal="true" class="invisible fixed" id="mainnnnn-bg">
     <div id="dialog-main-bg" class="invisible fixed dialog-main-bg flex flex-col text-[var(--secondary)] shadow-md bg-clip-border rounded-[24px] w-96">
-      <div id="background-dia"></div>
-      <div class="container-dialog touch-none relative m-2 overflow-hidden text-[var(--secondary)] shadow-lg bg-clip-border rounded-[24px] bg-[var(--bBackground-color)] shadow-blue-gray-500/40 border border-[var(--border-color)]">
+      <div id="container-dialog" class="container-dialog m-2 text-[var(--secondary)] shadow-lg bg-clip-border rounded-[24px] bg-[var(--bBackground-color)] shadow-blue-gray-500/40 border border-[var(--border-color)]">
         <img crossorigin="anonymous" class="p-3 invisible" id="cardimage" alt="No-Preview" />
       </div>
       <div id="info-dialoh-bg" class="bg-[var(--bBackground-color)] rounded-[24px] m-2 border border-[var(--border-color)]">
@@ -216,6 +215,9 @@
       </div>
     </div>
   </div>
+  
+  
+  
   
   <!-- Main Content -->
   <div id="container" class="container h-[100vh] flex mt-5 mb-5">

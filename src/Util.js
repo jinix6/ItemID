@@ -1,4 +1,246 @@
 /**
+ * Displays detailed information about an item when the user interacts with an element.
+ * This function handles UI updates, animations, and transitions for both normal and trash modes.
+ *
+ * @param {Object} itemData - An object containing the item's data (e.g., id, icon, descriptions).
+ * @param {string} imageSource - The URL or path to the item's image.
+ * @param {HTMLElement} sharedElement - The DOM element shared between pages for transition/animation.
+ * @param {boolean} isTrashMode - A flag indicating whether the app is in trash/recycle mode.
+ */
+function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
+  // First, check if required elements exist
+  const targetElement = document.getElementById("cardimage");
+  const containerDialog = document.getElementById("container-dialog");
+  
+  if (!targetElement || !containerDialog) {
+    console.error("Required elements not found in DOM");
+    return;
+  }
+  
+  const pageBackgrounds = ["mainnnnn-bg", "dialog-main-bg"];
+  const dialogTitleParagraphs = {
+    hedear: document.getElementById("dialog-tittle"),
+    title: document.getElementById("dialog-tittle-p"),
+    iconName: document.getElementById("dialog-tittle-pp"),
+    closeBtn: document.getElementById("hide_dialg_btn"),
+    shareButton: document.getElementById("share-btn"),
+  };
+  
+  // Verify all required dialog elements exist
+  for (const [key, element] of Object.entries(dialogTitleParagraphs)) {
+    if (!element) {
+      console.error(`Dialog element ${key} not found`);
+      return;
+    }
+  }
+  
+  // Set the image source for the item
+  targetElement.src = imageSource || "";
+  
+  const imgBg = document.getElementById("info-dialoh-bg");
+  if (imgBg) {
+    const dominantColor = getDominantColor(sharedElement);
+    if (dominantColor) {
+      imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b})`;
+      const dominantColorobj = {
+        r: dominantColor.r,
+        g: dominantColor.g,
+        b: dominantColor.b,
+      };
+      const dialogTitleElements = [
+        "dialog-tittle",
+        "dialog-tittle-p",
+        "dialog-tittle-pp",
+      ];
+      const textColor = getContrastColor(dominantColorobj, 5, 5);
+      dialogTitleElements.forEach(
+        (id) => {
+          const el = document.getElementById(id);
+          if (el) el.style.color = textColor;
+        },
+      );
+      const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
+      const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
+      const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
+      ["hide_dialg_btn", "share-btn"].forEach((id) => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          btn.style.background = closebtnBgColor;
+          btn.style.borderColor = closebtnBrColor;
+          btn.style.color = closebtnTextColor;
+        }
+      });
+    } else {
+      console.error("Failed to extract the dominant color.");
+    }
+  }
+  
+  // Apply fade-in animation to background elements
+  pageBackgrounds.forEach((id) => {
+    const bgElement = document.getElementById(id);
+    if (bgElement) {
+      bgElement.style.animation = "fadeIn 250ms 1 forwards";
+    }
+  });
+  
+  // Handle display content based on trash mode
+  if (!isTrashMode) {
+    // Extract and display item details when not in trash mode
+    const { icon, description, description2, itemID } = itemData;
+    const itemDetail = description2 ?
+      `${description} - ${description2}` :
+      description;
+    dialogTitleParagraphs.hedear.textContent = itemDetail;
+    dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
+    dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
+    
+    // Show dialog title, description, and icon name with animation
+    [
+      dialogTitleParagraphs.hedear,
+      dialogTitleParagraphs.title,
+      dialogTitleParagraphs.iconName,
+    ].forEach((element, index) => {
+      if (element) {
+        element.style.display = "";
+        setTimeout(() => {
+          element.classList.add("slide-top");
+          element.classList.remove("slide-bottom");
+        }, index * 200);
+      }
+    });
+    
+    // Ensure the share button is visible in normal mode
+    if (dialogTitleParagraphs.shareButton) {
+      dialogTitleParagraphs.shareButton.style.display = "";
+    }
+  } else {
+    // Display item name in trash mode (without description)
+    dialogTitleParagraphs.hedear.textContent = itemData.replace(".png", "");
+    
+    // Hide unnecessary elements (title, iconName) in trash mode
+    [dialogTitleParagraphs.title, dialogTitleParagraphs.iconName].forEach(
+      (element) => {
+        if (element) {
+          element.style.display = "none";
+        }
+      },
+    );
+    
+    // Apply animation for dialog title in trash mode
+    setTimeout(() => {
+      if (dialogTitleParagraphs.hedear) {
+        dialogTitleParagraphs.hedear.classList.add("slide-top");
+        dialogTitleParagraphs.hedear.classList.remove("slide-bottom");
+      }
+    }, 0);
+    
+    // Hide the share button in trash mode
+    if (dialogTitleParagraphs.shareButton) {
+      dialogTitleParagraphs.shareButton.style.display = "none";
+    }
+  }
+  
+  // Get the position and size of the shared element and target element
+  const startRect = sharedElement.getBoundingClientRect();
+  const endRect = targetElement.getBoundingClientRect();
+  const containerRect = containerDialog.getBoundingClientRect();
+  
+  // Clone the shared element for the animation
+  const clone = sharedElement.cloneNode(true);
+  containerDialog.appendChild(clone);
+  
+  // Calculate positions relative to the container
+  const startTop = startRect.top - containerRect.top;
+  const startLeft = startRect.left - containerRect.left;
+  const endTop = endRect.top - containerRect.top;
+  const endLeft = endRect.left - containerRect.left;
+  
+  // Calculate 90% size for both start and end positions
+  const startWidthCal = startRect.width * 0.90;
+  const startHeightCal = startRect.height * 0.90;
+  const endWidthCal = endRect.width * 0.90;
+  const endHeightCal = endRect.height * 0.90;
+  
+  // Calculate center offsets to maintain centered positioning at 98% size
+  const startWidthOffset = (startRect.width - startWidthCal) / 2;
+  const startHeightOffset = (startRect.height - startHeightCal) / 2;
+  const endWidthOffset = (endRect.width - endWidthCal) / 2;
+  const endHeightOffset = (endRect.height - endHeightCal) / 2;
+  
+  // Style the clone element to match the shared element's position and size at 98%
+  gsap.set(clone, {
+    position: "absolute",
+    top: startTop + startHeightOffset,
+    left: startLeft + startWidthOffset,
+    width: startWidthCal,
+    height: startHeightCal,
+    zIndex: 10,
+    margin: 0,
+    transform: "none",
+  });
+  
+  // Animate the clone to the target element's position at 98% size
+  gsap.to(clone, {
+    duration: 0.5,
+    top: endTop + endHeightOffset,
+    left: endLeft + endWidthOffset,
+    width: endWidthCal,
+    height: endHeightCal,
+    ease: "power2.inOut",
+  });
+  
+  // Event listener to close the dialog and return the shared element to its original position
+  const closeHandler = () => {
+    // Remove event listener to prevent multiple bindings
+    dialogTitleParagraphs.closeBtn.removeEventListener("click", closeHandler);
+    
+    // Animate closing of dialog title and paragraphs
+    [
+      dialogTitleParagraphs.hedear,
+      dialogTitleParagraphs.title,
+      dialogTitleParagraphs.iconName,
+    ].forEach((element, index) => {
+      if (element) {
+        setTimeout(() => {
+          element.classList.remove("slide-top");
+          element.classList.add("slide-bottom");
+        }, index * 100);
+      }
+    });
+    
+    // Apply fade-out animation to the background
+    setTimeout(() => {
+      pageBackgrounds.forEach((id) => {
+        const bgElement = document.getElementById(id);
+        if (bgElement) {
+          bgElement.style.animation = "fadeOut 300ms 1 forwards";
+        }
+      });
+    }, 250);
+    
+    // Animate the clone back to its original position at 98% size
+    gsap.to(clone, {
+      duration: 0.5,
+      top: startTop + startHeightOffset,
+      left: startLeft + startWidthOffset,
+      width: startWidthCal,
+      height: startHeightCal,
+      ease: "power2.inOut",
+      onComplete: () => {
+        clone.remove();
+      },
+    });
+  };
+  
+  dialogTitleParagraphs.closeBtn.addEventListener("click", closeHandler);
+}
+
+
+
+
+
+
+/**
  * Renders pagination controls based on total page count and current search context.
  * Handles empty results by showing a "NOT FOUND" message and hiding pagination.
  *
@@ -413,186 +655,9 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
   return textColor;
 }
 
-/**
- * Displays detailed information about an item when the user interacts with an element.
- * This function handles UI updates, animations, and transitions for both normal and trash modes.
- *
- * @param {Object} itemData - An object containing the item's data (e.g., id, icon, descriptions).
- * @param {string} imageSource - The URL or path to the item's image.
- * @param {HTMLElement} sharedElement - The DOM element shared between pages for transition/animation.
- * @param {boolean} isTrashMode - A flag indicating whether the app is in trash/recycle mode.
- */
-function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
-  const targetElement = document.getElementById("cardimage");
-  const pageBackgrounds = ["mainnnnn-bg", "dialog-main-bg"];
-  const dialogTitleParagraphs = {
-    hedear: document.getElementById("dialog-tittle"),
-    title: document.getElementById("dialog-tittle-p"),
-    iconName: document.getElementById("dialog-tittle-pp"),
-    closeBtn: document.getElementById("hide_dialg_btn"),
-    shareButton: document.getElementById("share-btn"),
-  };
-  
-  // Set the image source for the item
-  targetElement.src = imageSource || "";
-  
-  const imgBg = document.getElementById("info-dialoh-bg");
-  const dominantColor = getDominantColor(sharedElement);
-  if (dominantColor) {
-    imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b})`;
-    const dominantColorobj = {
-      r: dominantColor.r,
-      g: dominantColor.g,
-      b: dominantColor.b,
-    };
-    const dialogTitleElements = [
-      "dialog-tittle",
-      "dialog-tittle-p",
-      "dialog-tittle-pp",
-    ];
-    const textColor = getContrastColor(dominantColorobj, 5, 5);
-    dialogTitleElements.forEach(
-      (id) => (document.getElementById(id).style.color = textColor),
-    );
-    const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
-    const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
-    const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
-    ["hide_dialg_btn", "share-btn"].forEach((id) => {
-      const btn = document.getElementById(id);
-      btn.style.background = closebtnBgColor;
-      btn.style.borderColor = closebtnBrColor;
-      btn.style.textColor = closebtnTextColor;
-    });
-  } else {
-    console.error("Failed to extract the dominant color.");
-  }
-  
-  // Apply fade-in animation to background elements
-  pageBackgrounds.forEach((id) => {
-    document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
-  });
-  
-  // Handle display content based on trash mode
-  if (!isTrashMode) {
-    // Extract and display item details when not in trash mode
-    const { icon, description, description2, itemID } = itemData;
-    const itemDetail = description2 ?
-      `${description} - ${description2}` :
-      description;
-    dialogTitleParagraphs.hedear.textContent = itemDetail;
-    dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
-    dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
-    
-    // Show dialog title, description, and icon name with animation
-    [
-      dialogTitleParagraphs.hedear,
-      dialogTitleParagraphs.title,
-      dialogTitleParagraphs.iconName,
-    ].forEach((element, index) => {
-      element.style.display = "";
-      setTimeout(() => {
-        element.classList.add("slide-top");
-        element.classList.remove("slide-bottom");
-      }, index * 200);
-    });
-    
-    // Ensure the share button is visible in normal mode
-    if (dialogTitleParagraphs.shareButton) {
-      dialogTitleParagraphs.shareButton.style.display = "";
-    }
-  } else {
-    // Display item name in trash mode (without description)
-    dialogTitleParagraphs.hedear.textContent = itemData.replace(".png", "");
-    
-    // Hide unnecessary elements (title, iconName) in trash mode
-    [dialogTitleParagraphs.title, dialogTitleParagraphs.iconName].forEach(
-      (element) => {
-        element.style.display = "none";
-      },
-    );
-    
-    // Apply animation for dialog title in trash mode
-    setTimeout(() => {
-      dialogTitleParagraphs.hedear.classList.add("slide-top");
-      dialogTitleParagraphs.hedear.classList.remove("slide-bottom");
-    }, 0);
-    
-    // Hide the share button in trash mode
-    if (dialogTitleParagraphs.shareButton) {
-      dialogTitleParagraphs.shareButton.style.display = "none";
-    }
-  }
-  
-  // Disable interactions with the shared element during transition
-  sharedElement.classList.add("touch-none");
-  
-  // Get the position and size of the shared element and target element
-  const startRect = sharedElement.getBoundingClientRect();
-  const endRect = targetElement.getBoundingClientRect();
-  
-  // Clone the shared element for the animation
-  const clone = sharedElement.cloneNode(true);
-  document.body.appendChild(clone);
-  
-  // Style the clone element to match the shared element's position and size
-  gsap.set(clone, {
-    position: "absolute",
-    top: startRect.top + window.scrollY,
-    left: startRect.left + window.scrollX,
-    width: startRect.width,
-    height: startRect.height,
-    zIndex: 10,
-  });
-  
-  // Animate the clone to the target element's position
-  gsap.to(clone, {
-    duration: 0.5,
-    top: endRect.top + window.scrollY,
-    left: endRect.left + window.scrollX,
-    width: endRect.width,
-    height: endRect.height,
-    ease: "power2.inOut",
-  });
-  
-  // Event listener to close the dialog and return the shared element to its original position
-  dialogTitleParagraphs.closeBtn.addEventListener("click", () => {
-    // Restore interaction with the shared element
-    sharedElement.classList.remove("touch-none");
-    
-    // Animate closing of dialog title and paragraphs
-    [
-      dialogTitleParagraphs.hedear,
-      dialogTitleParagraphs.title,
-      dialogTitleParagraphs.iconName,
-    ].forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.remove("slide-top");
-        element.classList.add("slide-bottom");
-      }, index * 100);
-    });
-    
-    // Apply fade-out animation to the background
-    setTimeout(() => {
-      pageBackgrounds.forEach((id) => {
-        document.getElementById(id).style.animation =
-          "fadeOut 300ms 1 forwards";
-      });
-    }, 250);
-    
-    // Animate the clone back to its original position and remove it after completion
-    gsap.to(clone, {
-      duration: 0.5,
-      top: startRect.top + window.scrollY,
-      left: startRect.left + window.scrollX,
-      width: startRect.width,
-      height: startRect.height,
-      ease: "power2.inOut",
-      onComplete: () => {
-        clone.remove();
-      },
-    });
-  });
-}
+
+
+
 
 /**
  * Handles the search functionality for filtering items based on the provided keyword.
