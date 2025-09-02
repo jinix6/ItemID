@@ -92,7 +92,7 @@
       <path fill="var(--primary)" d="M6 4h14v2h2v6h-8v2h6v2h-4v2h-2v2H2V8h2V6h2zm2 6h2V8H8z" />
     </svg>
   </div>
-  <div id="settings-bg" class="touch-none w-[100vw] h-[100vh] z-[99999] fixed bg-[var(--bBackground-color)] ">
+  <div id="settings-bg" class="w-[100vw] h-[100vh] z-[99999] fixed bg-[var(--bBackground-color)] ">
     <div id="extra_set" class="w-[100vw] h-[100vh] bg-[var(--primary)]">
       <div class="flex items-center justify-center p-4 bg-[var(--primary)] border-b border-[var(--border-color)] relative">
         <!-- Close Button -->
@@ -141,8 +141,8 @@
         </div>
         <div id="commit-list" class="bg-[var(--button-text)] rounded-lg p-4 shadow-sm border border-zinc-300">
           <p class="text-[var(--button)] ibm-plex-mono-regular font-medium mb-2">Latest Commits</p>
-          <ul class="text-[var(--button)] ibm-plex-mono-regular list-disc list-inside text-sm space-y-1">
-            <li class="ibm-plex-mono-regular">Loading commits...</li>
+          <ul class="text-[var(--button)] ibm-plex-mono-regular list-disc list-inside text-xm space-y-1">
+            <li class="ibm-plex-mono-regular text-xm">Loading commits...</li>
           </ul>
         </div>
       </section>
@@ -154,7 +154,7 @@
           try {
             const res = await fetch(commitsUrl);
             const commits = await res.json();
-            const topCommits = commits.slice(0, 2).map(commit => {
+            const topCommits = commits.slice(0, 1).map(commit => {
               const msg = commit.commit.message;
               const author = commit.commit.author.name;
               const date = new Date(commit.commit.author.date).toLocaleString();
