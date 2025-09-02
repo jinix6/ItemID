@@ -215,7 +215,7 @@ function handleDisplayChange(element, searchKeyword) {
   const displayMode = element.value;
   
   // Encrypt and update the URL parameter for 'mode'
-  updateUrlParameter("mode", displayMode);
+  updateUrlParameter("mode", displayMode, currentPage);
   
   let [all_tag_id, trashItem_btn] = ["AllItem_btn", "trashItem_btn"].map((id) =>
     document.getElementById(id),
@@ -240,14 +240,14 @@ function handleDisplayChange(element, searchKeyword) {
     case "1":
       addClassesList([all_tag_id], "Mtext-color2");
       addClasses(element, "Mtext-color", "Mbg-color");
-      displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
+      displayFilteredTrashItems(currentPage, searchKeyword, pngs_json_list);
       itemID.state.displayMode = 1;
       break;
       
     case "2":
       addClassesList([trashItem_btn], "Mtext-color2");
       addClasses(element, "Mtext-color", "Mbg-color");
-      displayPage(1, searchKeyword, itemData);
+      displayPage(currentPage, searchKeyword, itemData);
       itemID.state.displayMode = 2;
       break;
       
@@ -602,9 +602,8 @@ function search() {
   // Retrieve the search keyword from the input field
   const searchKeyword = document.getElementById("search-input").value;
   
-  // Encrypt and update the URL parameter for 'icon'
-  updateUrlParameter("q", searchKeyword);
-  
+  updateUrlParameter("q", searchKeyword, 1);
+  currentPage = 1;
   // Determine the current display mode and call the corresponding function
   if (itemID.state.displayMode === 1) {
     // Display filtered trash items if the display mode is set to 1
@@ -616,27 +615,31 @@ function search() {
 }
 
 
+
 /**
- * Updates the browser URL by adding or modifying a query parameter,
- * without triggering a page reload. Useful for dynamic filtering or state tracking.
- *
- * @param {string} key - The query parameter name to add or update
- * @param {string} value - The value to assign to the parameter
+ * Updates specified URL query parameter and maintains pagination state
+ * Creates a new browser history entry without triggering page reload
+ * 
+ * @param {string} key - The query parameter key to update
+ * @param {string} value - The value to set for the specified key
+ * @param {number} page - The page number to set (defaults to 1)
  */
-function updateUrlParameter(key, value) {
-  // Parse current query parameters
+function updateUrlParameter(key, value, page = 1) {
+  // Get current URL query parameters
   const queryParams = new URLSearchParams(window.location.search);
   
-  // Set or update the specified parameter
+  // Update the specified parameter and pagination
   queryParams.set(key, value);
-  
-  // Construct the new URL without reloading the page
+  queryParams.set("page", page.toString()); // Ensure page is string for URL compatibility
+
+  // Reconstruct URL with updated parameters
   const baseUrl = `${window.location.origin}${window.location.pathname}`;
   const updatedUrl = `${baseUrl}?${queryParams.toString()}`;
   
-  // Push the new URL to browser history
+  // Update browser URL without page refresh (adds to history)
   history.pushState({ path: updatedUrl }, "", updatedUrl);
 }
+
 
 
 /**
@@ -697,7 +700,7 @@ function shareToTelegram() {
  * @param {string} searchKeyword - The keyword to filter trash items.
  */
 function filterAndDisplayTrashItems(searchKeyword) {
-  displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
+  displayFilteredTrashItems(currentPage, searchKeyword, pngs_json_list);
 }
 
 /**
@@ -705,61 +708,55 @@ function filterAndDisplayTrashItems(searchKeyword) {
  * @param {string} searchKeyword - The keyword to filter the page content.
  */
 function filterAndDisplayPage(searchKeyword) {
-  displayPage(1, searchKeyword, current_data);
+  displayPage(currentPage, searchKeyword, current_data);
 }
 
+
+
+
+
+
 /**
- * Navigates to a specific page and performs an action based on search term and mode.
- *
- * @param {number} pageNumber - The page number to navigate to.
- * @param {string} searchTerm - The term to search for.
- * @param {Array} webps - The list of webps to be used in displaying the page.
- * @param {boolean} isTrashMode - A flag indicating whether trash mode is enabled.
- * @returns {Promise<void>} A promise that resolves when the page is displayed.
+ * Navigates to a specific page of results with current filters applied
+ * Updates URL parameters, manages application state, and triggers appropriate display
+ * 
+ * @param {number} pageNumber - The target page number to navigate to
+ * @param {string} searchTerm - The current search filter term
+ * @param {Array} webpSupport - Array indicating WebP support status for different image types
+ * @param {boolean} isTrashMode - Whether trash/view mode is active
+ * @param {number} totalPages - Total number of available pages (for validation)
+ * @returns {Promise<void>}
  */
-async function goToPage(
-  pageNumber,
-  searchTerm,
-  webps,
-  isTrashMode,
-  totalPages,
-) {
-  // Validate input
-  if (
-    !Number.isInteger(pageNumber) ||
-    pageNumber < 1 ||
-    pageNumber > totalPages
-  ) {
-    console.error("Invalid page number:", pageNumber);
+async function goToPage(pageNumber, searchTerm, webpSupport, isTrashMode, totalPages) {
+  // Validate page number is within bounds
+  if (pageNumber < 1 || pageNumber > totalPages) {
+    console.warn(`Page number ${pageNumber} is out of bounds. Total pages: ${totalPages}`);
     return;
   }
-  
-  if (typeof searchTerm !== "string") {
-    console.error("Invalid search term:", searchTerm);
-    return;
-  }
-  
-  if (!Array.isArray(webps)) {
-    console.error("Invalid webps array:", webps);
-    return;
-  }
-  
-  // Set the current page and search term
+
+  // Update global application state
   currentPage = pageNumber;
   currentSearchTerm = searchTerm;
-  
+
+  // Synchronize URL with current state
+  updateUrlParameter("q", searchTerm, pageNumber);
+
   try {
-    // Display content based on trash mode
     if (isTrashMode) {
-      await displayFilteredTrashItems(currentPage, currentSearchTerm, webps);
+      await displayFilteredTrashItems(currentPage, currentSearchTerm, webpSupport);
     } else {
-      await displayPage(currentPage, currentSearchTerm, webps);
+      await displayPage(currentPage, currentSearchTerm, webpSupport);
     }
   } catch (error) {
-    // Handle any errors during the page display
-    console.error("Error displaying page:", error);
+    console.error("Error displaying page content:", error);
+    // Consider adding user-facing error notification here
   }
 }
+
+
+
+
+
 
 /**
  * Generates an array of pagination numbers from 1 to the total number of pages.
@@ -827,31 +824,38 @@ function filterItemsBySearch(items, searchTerm) {
   );
 }
 
+
+
 /**
- * Checks URL parameters for a search keyword and display mode, then updates the UI accordingly.
+ * Handles UI display configuration based on URL query parameters
+ * Extracts search criteria, display mode, and pagination from URL
+ * and applies them to the interface
  */
 function handleDisplayBasedOnURL() {
-  // Retrieve URL parameters
+  // Parse URL query parameters for application state
   const urlParams = new URLSearchParams(window.location.search);
-  const searchKeyword = urlParams.get("q") || ""; // Default to empty string if 'q' is not set
-  const displayMode = urlParams.get("mode");
-  
-  // Set the input field's value to the search keyword
+  const searchKeyword = urlParams.get("q") || ""; // Default to empty string if no search term
+  const displayMode = urlParams.get("mode"); // Display mode parameter (e.g., trash vs all items)
+  const pageNumber = parseInt(urlParams.get("page")) || 1; // Default to page 1 if not specified
+
+  // Set search input value from URL parameter
   document.getElementById("search-input").value = searchKeyword;
-  
-  // Map of display modes to buttons
-  const buttonMap = {
-    1: "trashItem_btn",
-    2: "AllItem_btn",
+
+  // Map URL mode values to corresponding button IDs in the UI
+  const displayModeToButtonIdMap = { 
+    1: "trashItem_btn",  // Mode 1: Trash items view
+    2: "AllItem_btn"     // Mode 2: All items view (default)
   };
   
-  // Determine the button to show based on the display mode or fallback to 'AllItem_btn'
-  const buttonId = buttonMap[displayMode] || "AllItem_btn";
-  const targetButton = document.getElementById(buttonId);
-  
-  // Call the function to change the display with the selected button and search keyword
-  handleDisplayChange(targetButton, searchKeyword);
+  // Determine which button to activate based on mode, default to "All Items"
+  const targetButtonId = displayModeToButtonIdMap[displayMode] || "AllItem_btn";
+  const targetButtonElement = document.getElementById(targetButtonId);
+
+  // Update global pagination state and trigger display change
+  currentPage = pageNumber;
+  handleDisplayChange(targetButtonElement, searchKeyword);
 }
+
 
 /**
  * Theme Switcher Module
