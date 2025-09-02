@@ -346,3 +346,10 @@ input[disabled] {
   visibility: hidden;
   background: black;
 }
+
+.settings-scrollable-content {
+  max-height: calc(100vh - 70px); /* 70px for header (adjust as needed) */
+  overflow-y: auto;
+  padding-right: 8px; /* for scrollbar space */
+  scroll-behavior: smooth;
+}
