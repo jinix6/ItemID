@@ -1,27 +1,27 @@
 // Fetch data from multiple JSON files concurrently using Promise.all
 Promise.all([
-    // Fetching 'cdn.json' and parsing it as JSON
-    smartFetch("assets/cdn.json", "data-cache-v1")
+  // Fetching 'cdn.json' and parsing it as JSON
+  smartFetch("assets/cdn.json", "data-cache-v1")
     .then((data) => new TextDecoder().decode(data))
     .then((text) => JSON.parse(text)),
-    // Fetching 'pngs.json' and parsing it as JSON
-    smartFetch(
-      `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`,
-      "data-cache-v1",
-    )
+  // Fetching 'pngs.json' and parsing it as JSON
+  smartFetch(
+    `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/list.json`,
+    "data-cache-v1",
+  )
     .then((data) => new TextDecoder().decode(data))
     .then((text) => JSON.parse(text)),
-    // Fetching 'itemData.json' and parsing it as JSON
-    smartFetch("assets/itemData.json", "data-cache-v1")
+  // Fetching 'itemData.json' and parsing it as JSON
+  smartFetch("assets/itemData.json", "data-cache-v1")
     .then((data) => new TextDecoder().decode(data))
     .then((text) => JSON.parse(text)),
-  ])
+])
   .then(([cdnData, pngsData, itemDatar]) => {
     // Assign the fetched data to global variables for further use
     cdn_img_json = cdnData.reduce((map, obj) => Object.assign(map, obj), {});
     pngs_json_list = pngsData; // Contains data from 'pngs.json'
     itemData = itemDatar; // Contains data from 'itemData.json'
-    
+
     handleDisplayBasedOnURL();
   })
   .catch((error) => {
@@ -45,10 +45,10 @@ async function displayPage(pageNumber, searchTerm, webps) {
   const webpGallery = document.getElementById("webpGallery");
   const fragment = document.createDocumentFragment(); // Use DocumentFragment for batch DOM updates
   webpGallery.innerHTML = ""; // Clear existing content
-  
+
   for (let i = startIdx; i < endIdx; i++) {
     const item = filteredItems[i];
-    
+
     let imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/UI_EPFP_unknown.png`;
     if (pngs_json_list?.includes(item.icon + ".png")) {
       imgSrc = `https://raw.githubusercontent.com/0xme/ff-resources/refs/heads/main/pngs/300x300/${item.icon}.png`;
@@ -78,21 +78,21 @@ async function displayPage(pageNumber, searchTerm, webps) {
     );
     const fileName = bgMap[item.Rare] || "UI_GachaLimit_QualitySlotBg2_01.png";
     figure.style.backgroundImage = `url('https://raw.githubusercontent.com/0xme/ff-resources/main/pngs/300x300/${fileName}')`;
-    
+
     const img = document.createElement("img");
     img.loading = "lazy";
     img.alt = item.description;
     img.src = imgSrc;
     img.setAttribute("crossorigin", "anonymous");
-    
+
     figure.addEventListener("click", () => {
       displayItemInfo(item, imgSrc, img, (isTrashMode = false));
     });
-    
+
     figure.appendChild(img);
     fragment.appendChild(figure);
   }
-  
+
   webpGallery.appendChild(fragment); // Add all images at once
   let totalPages = Math.ceil(
     filteredItems.length / itemID.config.perPageLimitItem,
@@ -116,17 +116,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const clearBtn = document.getElementById('clear_btn');
+  const clearBtn = document.getElementById("clear_btn");
   // Show/hide clear button based on input value
-  inputField.addEventListener('input', function() {
-    clearBtn.style.display = this.value ? 'block' : 'none';
+  inputField.addEventListener("input", function () {
+    clearBtn.style.display = this.value ? "block" : "none";
   });
 
   // When clear button is clicked: clear input and trigger search
-  clearBtn.addEventListener('click', function() {
-    inputField.value = '';
-    clearBtn.style.display = 'none';
+  clearBtn.addEventListener("click", function () {
+    inputField.value = "";
+    clearBtn.style.display = "none";
     search(); // Optionally re-run search to reset results
   });
-
 });
