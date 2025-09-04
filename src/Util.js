@@ -1,11 +1,8 @@
-
-
-
 /**
  * Advanced item filtering with support for complex boolean logic and multiple data types
  * Uses '&&' to separate OR groups and '&' for AND conditions within groups
  * Supports string, number, and boolean field types with proper type handling
- * 
+ *
  * @param {Array} itemData - Array of item objects to filter
  * @param {string|number} query - Search query with advanced boolean syntax
  * @returns {Array} Filtered array of items matching the search criteria
@@ -17,71 +14,75 @@ function filterItemsBySearch(itemData, query) {
 
   // Normalize query to string and trim whitespace
   const normalizedQuery = String(query).trim();
-  
+
   // Return all items for empty query
   if (!normalizedQuery) return itemData;
 
   // Parse query into OR groups separated by '&&'
   const orGroups = normalizedQuery
     .split("&&")
-    .map(group => group.trim())
-    .filter(group => group.length > 0);
+    .map((group) => group.trim())
+    .filter((group) => group.length > 0);
 
   // Filter items: match if ANY OR group satisfies ALL its AND conditions
-  return itemData.filter(item => {
-    return orGroups.some(orGroup => {
+  return itemData.filter((item) => {
+    return orGroups.some((orGroup) => {
       // Split OR group into AND conditions separated by '&'
       const andConditions = orGroup
         .split("&")
-        .map(condition => condition.trim())
-        .filter(condition => condition.length > 0);
+        .map((condition) => condition.trim())
+        .filter((condition) => condition.length > 0);
 
       // All AND conditions in this group must match
-      return andConditions.every(condition => {
+      return andConditions.every((condition) => {
         // Handle field-specific search (e.g., "color:red")
         if (condition.includes(":")) {
-          const [fieldName, fieldValueRaw] = condition.split(":").map(part => part.trim());
+          const [fieldName, fieldValueRaw] = condition
+            .split(":")
+            .map((part) => part.trim());
           const fieldValue = fieldValueRaw.toLowerCase();
-          
+
           // Check if field exists in item
           if (!item.hasOwnProperty(fieldName)) return false;
-          
+
           const itemFieldValue = item[fieldName];
-          
+
           // Handle different data types with appropriate comparison logic
           switch (typeof itemFieldValue) {
-            case 'string':
+            case "string":
               return itemFieldValue.toLowerCase() === fieldValue;
-            case 'number':
+            case "number":
               return itemFieldValue.toString() === fieldValue;
-            case 'boolean':
+            case "boolean":
               // Handle boolean string representations
-              if (fieldValue === 'true') return itemFieldValue === true;
-              if (fieldValue === 'false') return itemFieldValue === false;
+              if (fieldValue === "true") return itemFieldValue === true;
+              if (fieldValue === "false") return itemFieldValue === false;
               return false;
             default:
               // Skip null, undefined, objects, etc.
               return false;
           }
-        } 
-        
+        }
+
         // Handle keyword search across all item properties
         else {
-          return Object.values(item).some(itemValue => {
+          return Object.values(item).some((itemValue) => {
             // Skip null/undefined values
             if (itemValue == null) return false;
-            
+
             // Handle different data types with appropriate search logic
             switch (typeof itemValue) {
-              case 'string':
-                return itemValue.toLowerCase().includes(condition.toLowerCase());
-              case 'number':
+              case "string":
+                return itemValue
+                  .toLowerCase()
+                  .includes(condition.toLowerCase());
+              case "number":
                 return itemValue.toString().includes(condition);
-              case 'boolean':
+              case "boolean":
                 // Match boolean against "true" or "false" strings
                 const conditionLower = condition.toLowerCase();
-                if (conditionLower === 'true') return itemValue === true;
-                if (conditionLower === 'false') return itemValue === false;
+                if (conditionLower === "true") return itemValue === true;
+                if (conditionLower === "false") return itemValue === false;
                 return false;
               default:
                 // Skip objects, arrays, etc.
@@ -94,7 +95,6 @@ function filterItemsBySearch(itemData, query) {
   });
 }
 
- 
 /**
  * Displays detailed information about an item when the user interacts with an element.
  * This function handles UI updates, animations, and transitions for both normal and trash modes.
@@ -108,12 +108,12 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   // First, check if required elements exist
   const targetElement = document.getElementById("cardimage");
   const containerDialog = document.getElementById("container-dialog");
-  
+
   if (!targetElement || !containerDialog) {
     console.error("Required elements not found in DOM");
     return;
   }
-  
+
   const pageBackgrounds = ["mainnnnn-bg", "dialog-main-bg"];
   const dialogTitleParagraphs = {
     hedear: document.getElementById("dialog-tittle"),
@@ -122,7 +122,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
     closeBtn: document.getElementById("hide_dialg_btn"),
     shareButton: document.getElementById("share-btn"),
   };
-  
+
   // Verify all required dialog elements exist
   for (const [key, element] of Object.entries(dialogTitleParagraphs)) {
     if (!element) {
@@ -130,10 +130,10 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
       return;
     }
   }
-  
+
   // Set the image source for the item
   targetElement.src = imageSource || "";
-  
+
   const imgBg = document.getElementById("info-dialoh-bg");
   if (imgBg) {
     const dominantColor = getDominantColor(sharedElement);
@@ -150,12 +150,10 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         "dialog-tittle-pp",
       ];
       const textColor = getContrastColor(dominantColorobj, 5, 5);
-      dialogTitleElements.forEach(
-        (id) => {
-          const el = document.getElementById(id);
-          if (el) el.style.color = textColor;
-        },
-      );
+      dialogTitleElements.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.style.color = textColor;
+      });
       const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
       const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
       const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
@@ -171,7 +169,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
       console.error("Failed to extract the dominant color.");
     }
   }
-  
+
   // Apply fade-in animation to background elements
   pageBackgrounds.forEach((id) => {
     const bgElement = document.getElementById(id);
@@ -179,18 +177,18 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
       bgElement.style.animation = "fadeIn 250ms 1 forwards";
     }
   });
-  
+
   // Handle display content based on trash mode
   if (!isTrashMode) {
     // Extract and display item details when not in trash mode
     const { icon, description, description2, itemID } = itemData;
-    const itemDetail = description2 ?
-      `${description} - ${description2}` :
-      description;
+    const itemDetail = description2
+      ? `${description} - ${description2}`
+      : description;
     dialogTitleParagraphs.hedear.textContent = itemDetail;
     dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
     dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
-    
+
     // Show dialog title, description, and icon name with animation
     [
       dialogTitleParagraphs.hedear,
@@ -205,7 +203,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         }, index * 200);
       }
     });
-    
+
     // Ensure the share button is visible in normal mode
     if (dialogTitleParagraphs.shareButton) {
       dialogTitleParagraphs.shareButton.style.display = "";
@@ -213,7 +211,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
   } else {
     // Display item name in trash mode (without description)
     dialogTitleParagraphs.hedear.textContent = itemData.replace(".png", "");
-    
+
     // Hide unnecessary elements (title, iconName) in trash mode
     [dialogTitleParagraphs.title, dialogTitleParagraphs.iconName].forEach(
       (element) => {
@@ -222,7 +220,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         }
       },
     );
-    
+
     // Apply animation for dialog title in trash mode
     setTimeout(() => {
       if (dialogTitleParagraphs.hedear) {
@@ -230,40 +228,40 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         dialogTitleParagraphs.hedear.classList.remove("slide-bottom");
       }
     }, 0);
-    
+
     // Hide the share button in trash mode
     if (dialogTitleParagraphs.shareButton) {
       dialogTitleParagraphs.shareButton.style.display = "none";
     }
   }
-  
+
   // Get the position and size of the shared element and target element
   const startRect = sharedElement.getBoundingClientRect();
   const endRect = targetElement.getBoundingClientRect();
   const containerRect = containerDialog.getBoundingClientRect();
-  
+
   // Clone the shared element for the animation
   const clone = sharedElement.cloneNode(true);
   containerDialog.appendChild(clone);
-  
+
   // Calculate positions relative to the container
   const startTop = startRect.top - containerRect.top;
   const startLeft = startRect.left - containerRect.left;
   const endTop = endRect.top - containerRect.top;
   const endLeft = endRect.left - containerRect.left;
-  
+
   // Calculate 90% size for both start and end positions
-  const startWidthCal = startRect.width * 0.90;
-  const startHeightCal = startRect.height * 0.90;
-  const endWidthCal = endRect.width * 0.90;
-  const endHeightCal = endRect.height * 0.90;
-  
+  const startWidthCal = startRect.width * 0.9;
+  const startHeightCal = startRect.height * 0.9;
+  const endWidthCal = endRect.width * 0.9;
+  const endHeightCal = endRect.height * 0.9;
+
   // Calculate center offsets to maintain centered positioning at 98% size
   const startWidthOffset = (startRect.width - startWidthCal) / 2;
   const startHeightOffset = (startRect.height - startHeightCal) / 2;
   const endWidthOffset = (endRect.width - endWidthCal) / 2;
   const endHeightOffset = (endRect.height - endHeightCal) / 2;
-  
+
   // Style the clone element to match the shared element's position and size at 98%
   gsap.set(clone, {
     position: "absolute",
@@ -275,7 +273,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
     margin: 0,
     transform: "none",
   });
-  
+
   // Animate the clone to the target element's position at 98% size
   gsap.to(clone, {
     duration: 0.5,
@@ -285,12 +283,12 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
     height: endHeightCal,
     ease: "power2.inOut",
   });
-  
+
   // Event listener to close the dialog and return the shared element to its original position
   const closeHandler = () => {
     // Remove event listener to prevent multiple bindings
     dialogTitleParagraphs.closeBtn.removeEventListener("click", closeHandler);
-    
+
     // Animate closing of dialog title and paragraphs
     [
       dialogTitleParagraphs.hedear,
@@ -304,7 +302,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         }, index * 100);
       }
     });
-    
+
     // Apply fade-out animation to the background
     setTimeout(() => {
       pageBackgrounds.forEach((id) => {
@@ -314,7 +312,7 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
         }
       });
     }, 250);
-    
+
     // Animate the clone back to its original position at 98% size
     gsap.to(clone, {
       duration: 0.5,
@@ -328,14 +326,9 @@ function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
       },
     });
   };
-  
+
   dialogTitleParagraphs.closeBtn.addEventListener("click", closeHandler);
 }
-
-
-
-
-
 
 /**
  * Renders pagination controls based on total page count and current search context.
@@ -350,11 +343,11 @@ async function renderPagination(searchTerm, itemList, isTrashMode, totalPages) {
   const pageNumbers = await generatePaginationNumbers(totalPages);
   const paginationHeader = document.getElementById("pagi73hd");
   const paginationContainer = document.getElementById("pagination");
-  
+
   // Handle empty result set: hide pagination and show "NOT FOUND" message
   if (pageNumbers.length === 0) {
     paginationHeader.style.visibility = "hidden";
-    
+
     // Prevent duplicate "NOT FOUND" message
     if (!notFoundText()) {
       const notFoundMessage = document.createElement("h1");
@@ -366,21 +359,21 @@ async function renderPagination(searchTerm, itemList, isTrashMode, totalPages) {
     }
     return;
   }
-  
+
   // Valid results: show pagination and remove "NOT FOUND" if present
   paginationHeader.style.visibility = "visible";
   const notFoundElement = notFoundText();
   if (notFoundElement) notFoundElement.remove();
-  
+
   // Clear existing pagination buttons
   paginationContainer.innerHTML = "";
-  
+
   // Render each pagination button
   pageNumbers.forEach((pageNum) => {
     const button = document.createElement("button");
     button.className =
       "px-[8%] bg-[var(--secondary)] bounce-click select-none rounded-[11px] text-center ibm-plex-mono-regular font-medium uppercase text-[var(--primary)] disabled:pointer-events-none disabled:shadow-none";
-    
+
     // Highlight the active page
     if (pageNum === currentPage) {
       button.classList.remove(
@@ -388,29 +381,21 @@ async function renderPagination(searchTerm, itemList, isTrashMode, totalPages) {
         "text-[var(--primary)]",
         "border",
         "border-2",
-        "border-[var(--border-color)]"
+        "border-[var(--border-color)]",
       );
-      button.classList.add(
-        "text-[var(--secondary)]",
-        "bg-[var(--primary)]"
-      );
+      button.classList.add("text-[var(--secondary)]", "bg-[var(--primary)]");
     }
-    
+
     button.textContent = pageNum;
-    
+
     // Attach click handler to navigate to selected page
     button.addEventListener("click", async () => {
       await goToPage(pageNum, searchTerm, itemList, isTrashMode, totalPages);
     });
-    
+
     paginationContainer.appendChild(button);
   });
 }
-
-
-
-
-
 
 /**
  * Initializes the interactive behavior for the edge button and related elements.
@@ -419,7 +404,7 @@ function initializeInterfaceEdgeBtn() {
   const extraSetElement = document.getElementById("settings-bg");
   const edgeButtonElement = document.getElementById("edge_btn");
   const settingsCloseBtn = document.getElementById("settings-close-btn");
-  
+
   /**
    * Handles the animation for the specified elements.
    * @param {string} action - The action to perform ('expand' or 'collapse').
@@ -427,13 +412,13 @@ function initializeInterfaceEdgeBtn() {
   const handleAnimation = (action) => {
     const animationType = action === "expand" ? "fadeOut" : "fadeIn";
     const duration = "250ms";
-    
+
     ["extra_set"].forEach((id) => {
       const element = document.getElementById(id);
       element.style.animation = `${animationType} ${duration} 1 forwards`;
     });
   };
-  
+
   /**
    * Expands the interface by updating classes and triggering animations.
    */
@@ -442,7 +427,7 @@ function initializeInterfaceEdgeBtn() {
     extraSetElement.classList.add("expanded2");
     handleAnimation("expand");
   };
-  
+
   /**
    * Collapses the interface by updating classes and triggering animations.
    */
@@ -453,9 +438,9 @@ function initializeInterfaceEdgeBtn() {
     extraSetElement.classList.add("collapsed2");
     handleAnimation("collapse");
   };
-  
+
   //collapseInterface() // for test
-  
+
   // Attach event listeners
   edgeButtonElement.addEventListener("click", collapseInterface);
   settingsCloseBtn.addEventListener("click", expandInterface);
@@ -552,10 +537,10 @@ const addClassesList = (elements, ...classes) => {
  */
 function handleDisplayChange(element, searchKeyword) {
   const displayMode = element.value;
-  
+
   // Encrypt and update the URL parameter for 'mode'
   updateUrlParameter("mode", displayMode, currentPage);
-  
+
   let [all_tag_id, trashItem_btn] = ["AllItem_btn", "trashItem_btn"].map((id) =>
     document.getElementById(id),
   );
@@ -564,14 +549,14 @@ function handleDisplayChange(element, searchKeyword) {
     tags: [all_tag_id, trashItem_btn],
     webpGallery: document.getElementById("webpGallery"),
   };
-  
+
   /**
    * Resets the UI elements to their default state.
    */
   const resetUI = () => {
     removeClasses(uiElements.tags, "Mtext-color", "Mbg-color");
   };
-  
+
   // Update UI and call specific functions based on the selected mode
   resetUI();
   searchKeyword = searchKeyword === null ? "" : searchKeyword;
@@ -582,19 +567,19 @@ function handleDisplayChange(element, searchKeyword) {
       displayFilteredTrashItems(currentPage, searchKeyword, pngs_json_list);
       itemID.state.displayMode = 1;
       break;
-      
+
     case "2":
       addClassesList([trashItem_btn], "Mtext-color2");
       addClasses(element, "Mtext-color", "Mbg-color");
       displayPage(currentPage, searchKeyword, itemData);
       itemID.state.displayMode = 2;
       break;
-      
+
     default:
       console.warn(`Unsupported display mode: ${displayMode}`);
       return; // Exit if the mode is invalid
   }
-  
+
   // Trigger animation on the gallery element
   if (uiElements.webpGallery) {
     uiElements.webpGallery.classList.remove("slide-top");
@@ -616,9 +601,9 @@ function addEnterKeyListener(inputElement, searchFunction) {
     );
     return;
   }
-  
+
   // Add event listener for keydown events
-  inputElement.addEventListener("keydown", function(event) {
+  inputElement.addEventListener("keydown", function (event) {
     // Trigger search function when the Enter key is pressed
     if (event.key === "Enter") {
       searchFunction();
@@ -646,7 +631,7 @@ function getDominantColor(element) {
         "Invalid element type. Expected an HTMLImageElement, HTMLCanvasElement, or HTMLVideoElement.",
       );
     }
-    
+
     // Ensure the element has valid dimensions
     const width = element.naturalWidth || element.width || element.videoWidth;
     const height =
@@ -654,22 +639,22 @@ function getDominantColor(element) {
     if (!width || !height) {
       throw new Error("The element has invalid or zero dimensions.");
     }
-    
+
     // Create a canvas to draw the element
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     if (!ctx) {
       throw new Error("Failed to get canvas 2D context.");
     }
-    
+
     // Set canvas dimensions and draw the element
     canvas.width = width;
     canvas.height = height;
     ctx.drawImage(element, 0, 0, width, height);
-    
+
     // Extract pixel data
     const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    
+
     // Calculate the average RGB values
     let r = 0,
       g = 0,
@@ -681,12 +666,12 @@ function getDominantColor(element) {
       b += imageData[i + 2]; // Blue
       count++;
     }
-    
+
     // Compute average values
     r = Math.floor(r / count);
     g = Math.floor(g / count);
     b = Math.floor(b / count);
-    
+
     return { r, g, b };
   } catch (error) {
     console.error("Error in getDominantColor:", error.message);
@@ -721,7 +706,7 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
       'Invalid RGB color format. Expected an object with properties "r", "g", and "b".',
     );
   }
-  
+
   // Extract RGB values and ensure they're within valid range (0-255)
   const { r, g, b } = rgbColor;
   if (
@@ -729,16 +714,16 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
   ) {
     throw new Error("RGB values must be integers between 0 and 255.");
   }
-  
+
   // Create a color object using chroma.js
   const bgColorObj = chroma(r, g, b);
-  
+
   // Calculate luminance of the background color
   const luminanceValue = bgColorObj.luminance();
-  
+
   // Default text color
   let textColor;
-  
+
   // Adjust brightness or darkness based on luminance value
   if (luminanceValue < 0.5) {
     // If the background is dark, brighten the text
@@ -747,14 +732,10 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
     // If the background is light, darken the text
     textColor = bgColorObj.darken(adjustDarkness).hex();
   }
-  
+
   // Return the calculated text color in hex format
   return textColor;
 }
-
-
-
-
 
 /**
  * Handles the search functionality for filtering items based on the provided keyword.
@@ -763,7 +744,7 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
 function search() {
   // Retrieve the search keyword from the input field
   const searchKeyword = document.getElementById("search-input").value;
-  
+
   updateUrlParameter("q", searchKeyword, 1);
   currentPage = 1;
   // Determine the current display mode and call the corresponding function
@@ -776,12 +757,10 @@ function search() {
   }
 }
 
-
-
 /**
  * Updates specified URL query parameter and maintains pagination state
  * Creates a new browser history entry without triggering page reload
- * 
+ *
  * @param {string} key - The query parameter key to update
  * @param {string} value - The value to set for the specified key
  * @param {number} page - The page number to set (defaults to 1)
@@ -789,7 +768,7 @@ function search() {
 function updateUrlParameter(key, value, page = 1) {
   // Get current URL query parameters
   const queryParams = new URLSearchParams(window.location.search);
-  
+
   // Update the specified parameter and pagination
   queryParams.set(key, value);
   queryParams.set("page", page.toString()); // Ensure page is string for URL compatibility
@@ -797,12 +776,10 @@ function updateUrlParameter(key, value, page = 1) {
   // Reconstruct URL with updated parameters
   const baseUrl = `${window.location.origin}${window.location.pathname}`;
   const updatedUrl = `${baseUrl}?${queryParams.toString()}`;
-  
+
   // Update browser URL without page refresh (adds to history)
   history.pushState({ path: updatedUrl }, "", updatedUrl);
 }
-
-
 
 /**
  * Returns the current page URL without any query parameters or hash fragments.
@@ -816,8 +793,6 @@ function getBaseUrl() {
   return `${origin}${path}`; // Combined clean URL
 }
 
-
-
 /**
  * Shares item details via Telegram using a formatted message and dynamic URL.
  * Extracts title, ID, and icon name from dialog elements and opens Telegram share link.
@@ -827,35 +802,34 @@ function shareToTelegram() {
   const iconName = document
     .getElementById("dialog-tittle-pp")
     .textContent.replace("Icon Name: ", "");
-  
+
   // Build view URL without query parameters
   const viewUrl =
     getBaseUrl() +
-    "?q=" + encodeURIComponent(iconName) +
-    "&mode=" + encodeURIComponent(itemID.state.displayMode);
-  
+    "?q=" +
+    encodeURIComponent(iconName) +
+    "&mode=" +
+    encodeURIComponent(itemID.state.displayMode);
+
   // Extract title and ID from dialog elements
   const itemTitle = document.getElementById("dialog-tittle").textContent;
   const itemId = document
     .getElementById("dialog-tittle-p")
     .textContent.replace("Id: ", "");
-  
+
   // Construct Telegram message with Markdown formatting
   const telegramMessage =
     `Title: \`${itemTitle}\`\n` +
     `ID: \`${itemId}\`\n` +
     `Icon Name: \`${iconName}\`\n\n` +
     `View: ${viewUrl}`;
-  
+
   // Open Telegram share URL with encoded message
   window.open(
     `https://t.me/share/url?url=${encodeURIComponent(telegramMessage)}&text=`,
-    "_blank"
+    "_blank",
   );
 }
-
-
-
 
 /**
  * Filters and displays trash items based on the search keyword.
@@ -873,15 +847,10 @@ function filterAndDisplayPage(searchKeyword) {
   displayPage(currentPage, searchKeyword, current_data);
 }
 
-
-
-
-
-
 /**
  * Navigates to a specific page of results with current filters applied
  * Updates URL parameters, manages application state, and triggers appropriate display
- * 
+ *
  * @param {number} pageNumber - The target page number to navigate to
  * @param {string} searchTerm - The current search filter term
  * @param {Array} webpSupport - Array indicating WebP support status for different image types
@@ -889,10 +858,18 @@ function filterAndDisplayPage(searchKeyword) {
  * @param {number} totalPages - Total number of available pages (for validation)
  * @returns {Promise<void>}
  */
-async function goToPage(pageNumber, searchTerm, webpSupport, isTrashMode, totalPages) {
+async function goToPage(
+  pageNumber,
+  searchTerm,
+  webpSupport,
+  isTrashMode,
+  totalPages,
+) {
   // Validate page number is within bounds
   if (pageNumber < 1 || pageNumber > totalPages) {
-    console.warn(`Page number ${pageNumber} is out of bounds. Total pages: ${totalPages}`);
+    console.warn(
+      `Page number ${pageNumber} is out of bounds. Total pages: ${totalPages}`,
+    );
     return;
   }
 
@@ -905,7 +882,11 @@ async function goToPage(pageNumber, searchTerm, webpSupport, isTrashMode, totalP
 
   try {
     if (isTrashMode) {
-      await displayFilteredTrashItems(currentPage, currentSearchTerm, webpSupport);
+      await displayFilteredTrashItems(
+        currentPage,
+        currentSearchTerm,
+        webpSupport,
+      );
     } else {
       await displayPage(currentPage, currentSearchTerm, webpSupport);
     }
@@ -914,11 +895,6 @@ async function goToPage(pageNumber, searchTerm, webpSupport, isTrashMode, totalP
     // Consider adding user-facing error notification here
   }
 }
-
-
-
-
-
 
 /**
  * Generates an array of pagination numbers from 1 to the total number of pages.
@@ -936,8 +912,9 @@ async function generatePaginationNumbers(totalPages) {
   if (typeof totalPages !== "number") {
     throw new Error("Invalid totalPages value.");
   }
-  
-  const paginationNumbers = Array.from({ length: totalPages },
+
+  const paginationNumbers = Array.from(
+    { length: totalPages },
     (_, index) => index + 1,
   );
   return paginationNumbers;
@@ -949,7 +926,7 @@ async function generatePaginationNumbers(totalPages) {
 function updateUrl() {
   const urlParams = new URLSearchParams(window.location.search);
   let isUrlUpdated = false;
-  
+
   // Iterate through all parameters and remove those with empty values
   for (const [key, value] of urlParams.entries()) {
     if (value === "") {
@@ -957,17 +934,13 @@ function updateUrl() {
       isUrlUpdated = true;
     }
   }
-  
+
   // Update the URL in the browser if changes were made
   if (isUrlUpdated) {
     const newUrl = `${window.location.origin}${window.location.pathname}${urlParams.toString() ? "?" + urlParams.toString() : ""}`;
     history.pushState({ path: newUrl }, "", newUrl);
   }
 }
-
-
-
-
 
 /**
  * Handles UI display configuration based on URL query parameters
@@ -985,11 +958,11 @@ function handleDisplayBasedOnURL() {
   document.getElementById("search-input").value = searchKeyword;
 
   // Map URL mode values to corresponding button IDs in the UI
-  const displayModeToButtonIdMap = { 
-    1: "trashItem_btn",  // Mode 1: Trash items view
-    2: "AllItem_btn"     // Mode 2: All items view (default)
+  const displayModeToButtonIdMap = {
+    1: "trashItem_btn", // Mode 1: Trash items view
+    2: "AllItem_btn", // Mode 2: All items view (default)
   };
-  
+
   // Determine which button to activate based on mode, default to "All Items"
   const targetButtonId = displayModeToButtonIdMap[displayMode] || "AllItem_btn";
   const targetButtonElement = document.getElementById(targetButtonId);
@@ -998,7 +971,6 @@ function handleDisplayBasedOnURL() {
   currentPage = pageNumber;
   handleDisplayChange(targetButtonElement, searchKeyword);
 }
-
 
 /**
  * Theme Switcher Module
@@ -1073,11 +1045,11 @@ function toggleTheme() {
   document
     .getElementById("toggle-switcher")
     .classList.toggle("light-toggle-on");
-  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS) ?
-    "light" :
-    "dark";
+  const currentTheme = document.body.classList.contains(LIGHT_MODE_CLASS)
+    ? "light"
+    : "dark";
   const newTheme = currentTheme === "light" ? "dark" : "light";
-  
+
   applyTheme(newTheme);
   saveThemeToLocalStorage(newTheme);
 }
@@ -1091,7 +1063,7 @@ function handleSystemThemeChange() {
     "(prefers-color-scheme: dark)",
   ).matches;
   const currentTheme = getStoredTheme();
-  
+
   if (!localStorage.getItem(THEME_STORAGE_KEY)) {
     applyTheme(systemPrefersDark ? "dark" : "light");
   }
@@ -1103,13 +1075,13 @@ function handleSystemThemeChange() {
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize the theme based on the stored or system preference
   initializeTheme();
-  
+
   // Add event listener for the theme toggle button
   const themeToggleButton = document.getElementById(
     "setting-toggle-appearance-autoLanguage",
   );
   themeToggleButton.addEventListener("click", toggleTheme);
-  
+
   // Listen for changes in the system's theme preference
   window
     .matchMedia("(prefers-color-scheme: dark)")
@@ -1135,7 +1107,6 @@ function updateSwitcherAppearance(qualityIndex) {
       index === qualityIndex ? "var(--primary)" : "var(--secondary)";
   });
 }
-
 
 /**
  * Item Rarity Types
@@ -1226,7 +1197,7 @@ const CollectionType = {
 function populateSelect(selectId, data) {
   const selectElement = document.getElementById(selectId);
   if (!selectElement) return; // Prevent errors if element is missing
-  
+
   Object.entries(data).forEach(([key, value]) => {
     const option = document.createElement("option");
     option.value = value;
@@ -1252,17 +1223,17 @@ populateSelect("collectionTypeSelect", CollectionType);
 function handleSelectionChange(selectId, data, label) {
   const selectElement = document.getElementById(selectId);
   if (!selectElement) return; // Ensure the select element exists
-  
-  selectElement.addEventListener("change", function() {
+
+  selectElement.addEventListener("change", function () {
     const selectedKey = Object.keys(data).find(
       (key) => data[key] == this.value,
     );
     const searchInput = document.getElementById("search-input");
     if (!searchInput) return; // Ensure search input exists
-    
+
     let query = searchInput.value.trim();
     let labelPattern = new RegExp(`\\b${label}:([^&]*)`, "i");
-    
+
     if (selectedKey === "ALL") {
       // Remove the label if "ALL" is selected
       searchInput.value = query
@@ -1276,9 +1247,9 @@ function handleSelectionChange(selectId, data, label) {
       );
     } else {
       // Append new label if not already present
-      searchInput.value = query ?
-        query + "&" + label + ":" + selectedKey :
-        label + ":" + selectedKey;
+      searchInput.value = query
+        ? query + "&" + label + ":" + selectedKey
+        : label + ":" + selectedKey;
     }
   });
 }

@@ -26,5 +26,5 @@ const bgMap = {
   CARD: "UI_GachaLimit_QualitySlotBg2_06.png",
   Red: "UI_GachaLimit_QualitySlotBg2_07.png",
   PURPLE_PLUS: "UI_GachaExtraAward_QualitySlotBg_04.png",
-  ORANGE_PLUS: "UI_GachaExtraAward_QualitySlotBg_05.png"
+  ORANGE_PLUS: "UI_GachaExtraAward_QualitySlotBg_05.png",
 };
