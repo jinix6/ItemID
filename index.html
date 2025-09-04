@@ -182,7 +182,7 @@
         try {
           const res = await fetch(commitsUrl);
           const commits = await res.json();
-          const topCommits = commits.slice(0, 1).map(commit => {
+          const topCommits = commits.slice(0, 5).map(commit => {
             const msg = commit.commit.message;
             const author = commit.commit.author.name;
             const date = new Date(commit.commit.author.date).toLocaleString();
