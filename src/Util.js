@@ -1,3 +1,100 @@
+
+
+
+/**
+ * Advanced item filtering with support for complex boolean logic and multiple data types
+ * Uses '&&' to separate OR groups and '&' for AND conditions within groups
+ * Supports string, number, and boolean field types with proper type handling
+ * 
+ * @param {Array} itemData - Array of item objects to filter
+ * @param {string|number} query - Search query with advanced boolean syntax
+ * @returns {Array} Filtered array of items matching the search criteria
+ */
+function filterItemsBySearch(itemData, query) {
+  // Validate input parameters
+  if (!Array.isArray(itemData)) return [];
+  if (query === undefined || query === null) return itemData;
+
+  // Normalize query to string and trim whitespace
+  const normalizedQuery = String(query).trim();
+  
+  // Return all items for empty query
+  if (!normalizedQuery) return itemData;
+
+  // Parse query into OR groups separated by '&&'
+  const orGroups = normalizedQuery
+    .split("&&")
+    .map(group => group.trim())
+    .filter(group => group.length > 0);
+
+  // Filter items: match if ANY OR group satisfies ALL its AND conditions
+  return itemData.filter(item => {
+    return orGroups.some(orGroup => {
+      // Split OR group into AND conditions separated by '&'
+      const andConditions = orGroup
+        .split("&")
+        .map(condition => condition.trim())
+        .filter(condition => condition.length > 0);
+
+      // All AND conditions in this group must match
+      return andConditions.every(condition => {
+        // Handle field-specific search (e.g., "color:red")
+        if (condition.includes(":")) {
+          const [fieldName, fieldValueRaw] = condition.split(":").map(part => part.trim());
+          const fieldValue = fieldValueRaw.toLowerCase();
+          
+          // Check if field exists in item
+          if (!item.hasOwnProperty(fieldName)) return false;
+          
+          const itemFieldValue = item[fieldName];
+          
+          // Handle different data types with appropriate comparison logic
+          switch (typeof itemFieldValue) {
+            case 'string':
+              return itemFieldValue.toLowerCase() === fieldValue;
+            case 'number':
+              return itemFieldValue.toString() === fieldValue;
+            case 'boolean':
+              // Handle boolean string representations
+              if (fieldValue === 'true') return itemFieldValue === true;
+              if (fieldValue === 'false') return itemFieldValue === false;
+              return false;
+            default:
+              // Skip null, undefined, objects, etc.
+              return false;
+          }
+        } 
+        
+        // Handle keyword search across all item properties
+        else {
+          return Object.values(item).some(itemValue => {
+            // Skip null/undefined values
+            if (itemValue == null) return false;
+            
+            // Handle different data types with appropriate search logic
+            switch (typeof itemValue) {
+              case 'string':
+                return itemValue.toLowerCase().includes(condition.toLowerCase());
+              case 'number':
+                return itemValue.toString().includes(condition);
+              case 'boolean':
+                // Match boolean against "true" or "false" strings
+                const conditionLower = condition.toLowerCase();
+                if (conditionLower === 'true') return itemValue === true;
+                if (conditionLower === 'false') return itemValue === false;
+                return false;
+              default:
+                // Skip objects, arrays, etc.
+                return false;
+            }
+          });
+        }
+      });
+    });
+  });
+}
+
+ 
 /**
  * Displays detailed information about an item when the user interacts with an element.
  * This function handles UI updates, animations, and transitions for both normal and trash modes.
@@ -868,26 +965,7 @@ function updateUrl() {
   }
 }
 
-/**
- * Filters an array of objects based on a search term.
- *
- * @param {Array<Object>} items - The list of objects to search through.
- * @param {string} searchTerm - The term to match against object values.
- * @returns {Array<Object>} - Filtered list of objects.
- */
-function filterItemsBySearch(items, searchTerm) {
-  if (!Array.isArray(items) || typeof searchTerm !== "string") return [];
-  
-  const lowerSearch = searchTerm.trim().toLowerCase();
-  if (!lowerSearch) return items; // Return all if search term is empty
-  
-  return items.filter((item) =>
-    Object.values(item).some(
-      (value) =>
-      value != null && String(value).toLowerCase().includes(lowerSearch),
-    ),
-  );
-}
+
 
 
 
@@ -1058,47 +1136,6 @@ function updateSwitcherAppearance(qualityIndex) {
   });
 }
 
-function filterItemsBySearch(item_data, query) {
-  // Validate input types
-  if (!Array.isArray(item_data)) {
-    throw new TypeError("Expected 'item_data' to be an array of objects.");
-  }
-  if (query === undefined || query === null) {
-    throw new TypeError("Expected 'query' to be a string or number.");
-  }
-  
-  // Convert query to string
-  query = String(query).trim();
-  
-  // Return item IDs if query is empty
-  if (!query) return item_data.map((item) => item.itemID);
-  
-  // Parse query filters
-  const filters = query.split("&").map((filter) => filter.trim());
-  
-  // Filter data based on conditions
-  return item_data.filter((item) => {
-    return filters.every((filter) => {
-      if (filter.includes(":")) {
-        // Handle key-value filters (e.g., "collectionType:FINAL_SHOT")
-        const [key, value] = filter.split(":").map((str) => str.trim());
-        return (
-          item.hasOwnProperty(key) &&
-          typeof item[key] === "string" &&
-          item[key].toLowerCase() === value.toLowerCase()
-        );
-      } else {
-        // Handle general keyword/number search in all string values
-        return Object.values(item).some(
-          (value) =>
-          (typeof value === "string" &&
-            value.toLowerCase().includes(filter.toLowerCase())) ||
-          (typeof value === "number" && value.toString().includes(filter)),
-        );
-      }
-    });
-  });
-}
 
 /**
  * Item Rarity Types
