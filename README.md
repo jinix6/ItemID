@@ -61,7 +61,7 @@ A comprehensive, open-source searchable database for all Garena Free Fire game i
 
 ## Roadmap
 
-- [✓] Advanced search (multi-keyword, fuzzy)
+- [x] Advanced search (multi-keyword, fuzzy)
 - [ ] Desktop optimizations
 - [ ] Community contributions: add new items, translations
 - more ideas...

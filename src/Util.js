@@ -1,4 +1,121 @@
+
+
+
+
+
+
+
 /**
+ * Sets the active suggestion in the autocomplete dropdown for keyboard navigation
+ * Applies visual highlighting to the selected suggestion
+ * 
+ * @param {number} activeIndex - Index of the suggestion to highlight
+ */
+function setActiveSuggestion(activeIndex) {
+    const dropdownElement = document.getElementById('autocomplete-dropdown');
+    const suggestionElements = dropdownElement.querySelectorAll('.autocomplete-suggestion');
+    
+    // Remove highlight from all suggestions
+    suggestionElements.forEach(suggestion => {
+        suggestion.classList.remove('bg-[var(--button-hover)]');
+    });
+    
+    // Apply highlight to the active suggestion
+    if (suggestionElements[activeIndex]) {
+        suggestionElements[activeIndex].classList.add('bg-[var(--button-hover)]');
+    }
+}
+
+/**
+ * Handles autocomplete functionality with Tailwind CSS styling
+ * Generates and displays relevant search suggestions based on input
+ * Supports multiple field matching with text highlighting
+ * 
+ * @param {string} inputValue - Current value of the search input field
+ */
+function handleAutocomplete(inputValue) {
+    const dropdownElement = document.getElementById('autocomplete-dropdown');
+    const searchQuery = inputValue.trim();
+    const MIN_QUERY_LENGTH = 2;
+    const MAX_SUGGESTIONS = 10;
+    
+    // Hide dropdown for short queries
+    if (searchQuery.length < MIN_QUERY_LENGTH) {
+        dropdownElement.classList.add('hidden');
+        return;
+    }
+    
+    // Generate suggestions from item data
+    const suggestions = [];
+    const queryWords = searchQuery.toLowerCase().split(/\s+/).filter(word => word.length > 0);
+    
+    if (itemData && Array.isArray(itemData)) {
+        for (const item of itemData) {
+            if (suggestions.length >= MAX_SUGGESTIONS) break;
+            
+            // Check multiple fields for matches with priority ordering
+            const fieldsToCheck = [
+                item.icon,
+                item.description,
+                item.description2,
+                item.itemID?.toString()
+            ];
+            
+            for (const fieldValue of fieldsToCheck) {
+                if (!fieldValue) continue;
+                
+                const lowerFieldValue = fieldValue.toLowerCase();
+                const allWordsMatch = queryWords.every(word => lowerFieldValue.includes(word));
+                
+                if (allWordsMatch && !suggestions.includes(fieldValue)) {
+                    suggestions.push(fieldValue);
+                    break; // Only add one suggestion per item
+                }
+            }
+        }
+    }
+    
+    // Display suggestions or hide dropdown if none found
+    if (suggestions.length > 0) {
+        // Clear previous suggestions
+        dropdownElement.innerHTML = '';
+        
+        // Create and append new suggestion elements
+        suggestions.forEach((suggestionText, index) => {
+            const suggestionElement = document.createElement('div');
+            suggestionElement.className = 'autocomplete-suggestion px-4 py-2 cursor-pointer border-b border-gray-600 font-mono text-sm text-[var(--secondary)] hover:bg-[var(--button-hover)] transition-colors';
+            
+            // Highlight matching text portions
+            let highlightedText = suggestionText;
+            queryWords.forEach(word => {
+                const regex = new RegExp(`(${word})`, 'gi');
+                highlightedText = highlightedText.replace(regex, '<strong class="font-bold text-[var(--toggle-bg-enabled)]">$1</strong>');
+            });
+            
+            suggestionElement.innerHTML = highlightedText;
+            
+            // Add click handler to select suggestion
+            suggestionElement.addEventListener('click', () => {
+                document.getElementById('search-input').value = suggestionText;
+                dropdownElement.classList.add('hidden');
+                // Consider triggering search here if desired
+            });
+            
+            // Add hover effect
+            suggestionElement.addEventListener('mouseover', () => {
+                setActiveSuggestion(index);
+            });
+            
+            dropdownElement.appendChild(suggestionElement);
+        });
+        
+        dropdownElement.classList.remove('hidden');
+    } else {
+        dropdownElement.classList.add('hidden');
+    }
+}
+
+ /**
  * Advanced item filtering with support for complex boolean logic and multiple data types
  * Uses '&&' to separate OR groups and '&' for AND conditions within groups
  * Supports string, number, and boolean field types with proper type handling
