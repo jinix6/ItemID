@@ -67,11 +67,11 @@
   --popup-stroke: rgba(0, 0, 0, .08);
   --dialog-backdrop: rgba(255, 255, 255, .3);
   --sidebar-bg: #000000;
-  --sidebar-highlight: #ffffff;
+  --sidebar-highlight: rgba(10, 10, 10);
   --sidebar-hover: rgba(255, 255, 255, .1);
   --input-border: #adadb7;
   --toggle-bg: var(--input-border);
-  --toggle-bg-enabled: var(--secondary);
+  --toggle-bg-enabled: rgba(100, 100, 100);
   --padding: 12px;
   --border-radius: 11px;
   --sidebar-width: 80px;
