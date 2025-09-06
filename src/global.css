@@ -42,6 +42,14 @@
   --subnav-padding: 30px;
   --subnav-padding-small: calc(var(--subnav-padding) - var(--padding));
   --subnav-nav-width: 100%;
+  --bBackground-color: #191919;
+  --cBackground-color: #252525;
+  --button-bg-color: #423F3E;
+  --sb-thumb-color: white;
+  --border-color: #333333;
+  --sb-size-radius: 14px;
+  --transition-duration: 0.5s;
+  --transition-timing-function: ease-in-out;
 }
 
 .light-mode {
@@ -84,6 +92,10 @@
   --sidebar-mobile-gradient: linear-gradient(90deg, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, 0) 4%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0) 96%, rgba(0, 0, 0, .9) 100%);
   --skeleton-gradient: linear-gradient(90deg, var(--button-hover), var(--button), var(--button-hover));
   --skeleton-gradient-elevated: linear-gradient(90deg, var(--button-elevated), var(--button-elevated-shimmer), var(--button-elevated));
+  --bBackground-color: #cccccc;
+  --sb-thumb-color: black;
+  --button-bg-color: #c1bebd;
+  --border-color: #cccccc;
 }
 
 .ibm-plex-mono-thin {
@@ -207,7 +219,7 @@
   padding: calc(var(--switcher-padding) * 2) 16px;
   border-radius: var(--border-radius);
   overflow: scroll;
-
+  
 }
 
 
@@ -248,7 +260,7 @@
   border-radius: 100px;
   background: var(--toggle-bg);
   transition: background .2s;
-
+  
 }
 
 .toggle-switcher {
@@ -271,7 +283,7 @@
   border-radius: 100px;
   transform: translate(5%);
   transition: transform .2s, width .2s;
-
+  
 }
 
 .light-toggle-on {

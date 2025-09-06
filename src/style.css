@@ -1,35 +1,3 @@
-:root {
-  --bBackground-color: #191919;
-  --cBackground-color: #252525;
-  --button-bg-color: #423F3E;
-  --sb-thumb-color: white;
-  --border-color: #333333;
-  --sb-size-radius: 14px;
-  --transition-duration: 0.5s;
-  /* Increased transition duration */
-  --transition-timing-function: ease-in-out;
-}
-
-.light-mode {
-  --bBackground-color: #cccccc;
-  --sb-thumb-color: black;
-  --button-bg-color: #c1bebd;
-  --border-color: #cccccc;
-}
-
-/* For Tag Buttons*/
-.Mtext-color {
-  color: var(--secondary);
-}
-
-.Mtext-color2 {
-  color: var(--primary);
-}
-
-.Mbg-color {
-  background-color: var(--primary);
-}
-
 @keyframes themeChange {
   0% {
     opacity: 0;
@@ -77,10 +45,6 @@ body {
   padding-right: 5%;
 }
 
-.search-input {
-  margin-bottom: 10px;
-}
-
 .page {
   display: -ms-grid;
   display: grid;
@@ -92,35 +56,20 @@ body {
 
 .image {
   width: 100%;
-  height: auto;
-  -o-object-fit: cover;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 24px;
-  background: var(--bBackground-color);
-  border-color: var(--border-color);
+  background-color: var(--bBackground-color);
+  border: 1px solid var(--border-color);
 }
 
 .dialog-main-bg {
-  background: rgba(255, 255, 255, 0.13);
   border-radius: 24px;
-  border: 1.5px solid rgba(255, 255, 255, 0.28);
-  box-shadow: 0 8px 40px 0 rgba(0, 0, 0, 0.27);
-  background: linear-gradient(135deg, rgba(255,255,255,0.16) 0%, rgba(200,200,210,0.09) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(200, 200, 210, 0.09) 100%);
   border: 1.5px solid rgba(255, 255, 255, 0.33);
   box-shadow: 0 1.5px 24px rgba(0, 0, 0, 0.18), inset 0 1.5px 8px rgba(255, 255, 255, 0.10);
 }
 
-@-webkit-keyframes fadeOut {
-  from {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 @keyframes fadeOut {
   from {
@@ -134,17 +83,6 @@ body {
   }
 }
 
-@-webkit-keyframes fadeIn {
-  to {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  from {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
 
 @keyframes fadeIn {
   to {
@@ -163,18 +101,8 @@ body {
   animation: fadeInOut 1s ease-in-out;
 }
 
-@-webkit-keyframes fadeInOut {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
 
 @keyframes fadeInOut {
-  
   0%,
   100% {
     opacity: 1;
@@ -204,13 +132,6 @@ body {
   width: 20px;
   fill: #CFD8DC;
 }
-
-img {
-  height: auto;
-  width: 100%;
-  border-radius: var(--border-radius);
-}
-
 
 .collapsed {
   visibility: visible;
@@ -349,4 +270,16 @@ input[disabled] {
   align-items: center;
   z-index: 3;
   background: rgba(30, 30, 30, 0.5);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
