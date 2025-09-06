@@ -55,7 +55,7 @@ A comprehensive, open-source searchable database for all Garena Free Fire game i
 
 ## Usage
 
-- **Search:** Type a keyword, item ID, or any part of the description. Supports advanced boolean search:  
+- **Search:** Type a keyword, item ID, or any part of the description. Supports advanced boolean search:
   - Use `&&` for OR, `&` for AND, and `field:value` for field-specific queries (e.g. `itemType:WEAPON&Rare:ORANGE`).
 - **Filter:** Use dropdowns to refine results by rarity, item type, or collection.
 - **Trash Mode:** Browse all raw icons and assets.
@@ -92,4 +92,3 @@ Pull requests, bug reports, and feature ideas are welcome!
 ---
 
 > **Note:** This project is not affiliated with Garena or Free Fire. All assets are for educational and non-commercial use only.
-> 
