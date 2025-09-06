@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Browser Cache Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['IBM Plex Mono', 'monospace'],
+                    },
+                    borderRadius: {
+                        'custom': '11px',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.3s ease-out',
+                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(10px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-black text-white font-mono min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="bg-gray-900 border border-gray-800 rounded-custom shadow-2xl overflow-hidden mb-8">
+            <div class="bg-gray-800 border-b border-gray-700 text-white p-8">
+                <h1 class="text-4xl font-bold mb-3 text-center">🗄️ Enhanced Cache Viewer</h1>
+                <p class="text-xl opacity-80 text-center text-gray-300">Comprehensive browser cache analysis and management</p>
+            </div>
+            
+            <!-- Controls -->
+            <div class="p-6 bg-gray-900 border-b border-gray-800">
+                <div class="flex flex-wrap gap-4 justify-center items-center">
+                    <button id="refreshBtn" class="px-6 py-3 bg-green-600 hover:bg-green-500 text-white font-semibold rounded-custom border border-green-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-2">
+                        <span>🔄</span> Refresh Cache Data
+                    </button>
+                    <button id="clearAllBtn" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-semibold rounded-custom border border-red-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-2">
+                        <span>🗑️</span> Clear All Caches
+                    </button>
+                    <button id="exportBtn" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-custom border border-blue-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex items-center gap-2">
+                        <span>📊</span> Export Report
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Statistics Dashboard -->
+            <div class="p-6 bg-gray-900">
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4" id="statsContainer">
+                    <div class="bg-gray-800 border border-gray-700 text-white p-4 rounded-custom text-center">
+                        <div class="text-2xl font-bold" id="totalCaches">0</div>
+                        <div class="text-sm opacity-80 text-gray-300">Total Caches</div>
+                    </div>
+                    <div class="bg-gray-800 border border-gray-700 text-white p-4 rounded-custom text-center">
+                        <div class="text-2xl font-bold text-green-400" id="totalResources">0</div>
+                        <div class="text-sm opacity-80 text-gray-300">Resources</div>
+                    </div>
+                    <div class="bg-gray-800 border border-gray-700 text-white p-4 rounded-custom text-center">
+                        <div class="text-2xl font-bold text-purple-400" id="totalSize">0 KB</div>
+                        <div class="text-sm opacity-80 text-gray-300">Total Size</div>
+                    </div>
+                    <div class="bg-gray-800 border border-gray-700 text-white p-4 rounded-custom text-center">
+                        <div class="text-2xl font-bold text-orange-400" id="imageCount">0</div>
+                        <div class="text-sm opacity-80 text-gray-300">Images</div>
+                    </div>
+                    <div class="bg-gray-800 border border-gray-700 text-white p-4 rounded-custom text-center">
+                        <div class="text-2xl font-bold text-yellow-400" id="jsCount">0</div>
+                        <div class="text-sm opacity-80 text-gray-300">JavaScript</div>
+                    </div>
+                    <div class="bg-gray-800 border border-gray-700 text-white p-4 rounded-custom text-center">
+                        <div class="text-2xl font-bold text-blue-400" id="cssCount">0</div>
+                        <div class="text-sm opacity-80 text-gray-300">CSS Files</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Filter Controls -->
+        <div class="bg-gray-900 border border-gray-800 rounded-custom p-6 mb-6">
+            <div class="flex flex-wrap gap-4 items-center justify-between">
+                <div class="flex flex-wrap gap-3">
+                    <button class="filter-btn px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-custom transition-all duration-200" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-custom transition-all duration-200" data-filter="image">🖼️ Images</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-custom transition-all duration-200" data-filter="javascript">📜 JavaScript</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-custom transition-all duration-200" data-filter="css">🎨 CSS</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-custom transition-all duration-200" data-filter="html">📄 HTML</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 rounded-custom transition-all duration-200" data-filter="font">🔤 Fonts</button>
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="text" id="searchInput" placeholder="Search cache entries..." class="px-4 py-2 bg-gray-800 border border-gray-700 text-white rounded-custom focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent placeholder-gray-400">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading State -->
+        <div id="loadingState" class="bg-gray-900 border border-gray-800 rounded-custom p-12 text-center">
+            <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white mb-4"></div>
+            <p class="text-gray-300 text-lg">Loading cache data...</p>
+        </div>
+        
+        <!-- Cache List -->
+        <div id="cacheList" class="space-y-6"></div>
+        
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden bg-gray-900 border border-gray-800 rounded-custom p-12 text-center">
+            <div class="text-6xl mb-4">🗄️</div>
+            <h3 class="text-xl font-semibold text-white mb-2">No Caches Found</h3>
+            <p class="text-gray-400">No cache data available in this browser session.</p>
+        </div>
+    </div>
+
+    <script>
+        class CacheViewer {
+            constructor() {
+                this.cacheData = [];
+                this.filteredData = [];
+                this.currentFilter = 'all';
+                this.searchTerm = '';
+                this.init();
+            }
+
+            init() {
+                this.bindEvents();
+                this.loadCacheData();
+            }
+
+            bindEvents() {
+                document.getElementById('refreshBtn').addEventListener('click', () => this.loadCacheData());
+                document.getElementById('clearAllBtn').addEventListener('click', () => this.clearAllCaches());
+                document.getElementById('exportBtn').addEventListener('click', () => this.exportReport());
+                document.getElementById('searchInput').addEventListener('input', (e) => this.handleSearch(e.target.value));
+                
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.handleFilter(e.target.dataset.filter));
+                });
+            }
+
+            async loadCacheData() {
+                this.showLoading();
+                
+                try {
+                    const cacheNames = await caches.keys();
+                    this.cacheData = [];
+                    
+                    if (cacheNames.length === 0) {
+                        this.showEmptyState();
+                        return;
+                    }
+
+                    for (const cacheName of cacheNames) {
+                        const cache = await caches.open(cacheName);
+                        const requests = await cache.keys();
+                        const resources = [];
+
+                        for (const request of requests) {
+                            try {
+                                const response = await cache.match(request);
+                                if (response) {
+                                    const blob = await response.blob();
+                                    const headers = {};
+                                    response.headers.forEach((value, key) => {
+                                        headers[key] = value;
+                                    });
+
+                                    const resource = {
+                                        url: request.url,
+                                        method: request.method,
+                                        size: blob.size,
+                                        type: this.getResourceType(request.url, headers['content-type']),
+                                        mimeType: headers['content-type'] || 'unknown',
+                                        lastModified: headers['last-modified'],
+                                        etag: headers['etag'],
+                                        cacheControl: headers['cache-control'],
+                                        expires: headers['expires'],
+                                        status: response.status,
+                                        statusText: response.statusText,
+                                        timestamp: new Date().toISOString()
+                                    };
+                                    resources.push(resource);
+                                }
+                            } catch (error) {
+                                console.warn('Error processing cached resource:', error);
+                            }
+                        }
+
+                        this.cacheData.push({
+                            name: cacheName,
+                            resources: resources,
+                            totalSize: resources.reduce((sum, r) => sum + r.size, 0),
+                            resourceCount: resources.length
+                        });
+                    }
+
+                    this.filteredData = [...this.cacheData];
+                    this.updateStatistics();
+                    this.renderCacheList();
+                    this.hideLoading();
+
+                } catch (error) {
+                    console.error('Error loading cache data:', error);
+                    this.showError(error.message);
+                }
+            }
+
+            getResourceType(url, mimeType) {
+                if (mimeType) {
+                    if (mimeType.startsWith('image/')) return 'image';
+                    if (mimeType.startsWith('text/css')) return 'css';
+                    if (mimeType.startsWith('text/html')) return 'html';
+                    if (mimeType.startsWith('application/javascript') || mimeType.startsWith('text/javascript')) return 'javascript';
+                    if (mimeType.startsWith('font/') || mimeType.includes('font')) return 'font';
+                    if (mimeType.startsWith('audio/')) return 'audio';
+                    if (mimeType.startsWith('video/')) return 'video';
+                }
+
+                const extension = url.split('.').pop().toLowerCase();
+                const typeMap = {
+                    'js': 'javascript',
+                    'css': 'css',
+                    'html': 'html',
+                    'htm': 'html',
+                    'png': 'image',
+                    'jpg': 'image',
+                    'jpeg': 'image',
+                    'gif': 'image',
+                    'svg': 'image',
+                    'webp': 'image',
+                    'ico': 'image',
+                    'woff': 'font',
+                    'woff2': 'font',
+                    'ttf': 'font',
+                    'otf': 'font',
+                    'mp3': 'audio',
+                    'mp4': 'video',
+                    'json': 'data',
+                    'xml': 'data'
+                };
+
+                return typeMap[extension] || 'other';
+            }
+
+            handleFilter(filter) {
+                this.currentFilter = filter;
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-white', 'text-black', 'border-white');
+                    btn.classList.add('bg-gray-800', 'text-white', 'border-gray-700');
+                });
+                const activeBtn = document.querySelector(`[data-filter="${filter}"]`);
+                activeBtn.classList.add('bg-white', 'text-black', 'border-white');
+                activeBtn.classList.remove('bg-gray-800', 'text-white', 'border-gray-700');
+                
+                this.applyFilters();
+            }
+
+            handleSearch(term) {
+                this.searchTerm = term.toLowerCase();
+                this.applyFilters();
+            }
+
+            applyFilters() {
+                this.filteredData = this.cacheData.map(cache => {
+                    let filteredResources = cache.resources;
+
+                    // Apply type filter
+                    if (this.currentFilter !== 'all') {
+                        filteredResources = filteredResources.filter(resource => 
+                            resource.type === this.currentFilter
+                        );
+                    }
+
+                    // Apply search filter
+                    if (this.searchTerm) {
+                        filteredResources = filteredResources.filter(resource =>
+                            resource.url.toLowerCase().includes(this.searchTerm) ||
+                            resource.type.toLowerCase().includes(this.searchTerm) ||
+                            resource.mimeType.toLowerCase().includes(this.searchTerm)
+                        );
+                    }
+
+                    return {
+                        ...cache,
+                        resources: filteredResources,
+                        filteredSize: filteredResources.reduce((sum, r) => sum + r.size, 0),
+                        filteredCount: filteredResources.length
+                    };
+                }).filter(cache => cache.resources.length > 0);
+
+                this.renderCacheList();
+            }
+
+            updateStatistics() {
+                const stats = {
+                    totalCaches: this.cacheData.length,
+                    totalResources: 0,
+                    totalSize: 0,
+                    imageCount: 0,
+                    jsCount: 0,
+                    cssCount: 0
+                };
+
+                this.cacheData.forEach(cache => {
+                    stats.totalResources += cache.resources.length;
+                    stats.totalSize += cache.totalSize;
+                    
+                    cache.resources.forEach(resource => {
+                        switch(resource.type) {
+                            case 'image': stats.imageCount++; break;
+                            case 'javascript': stats.jsCount++; break;
+                            case 'css': stats.cssCount++; break;
+                        }
+                    });
+                });
+
+                document.getElementById('totalCaches').textContent = stats.totalCaches;
+                document.getElementById('totalResources').textContent = stats.totalResources;
+                document.getElementById('totalSize').textContent = this.formatBytes(stats.totalSize);
+                document.getElementById('imageCount').textContent = stats.imageCount;
+                document.getElementById('jsCount').textContent = stats.jsCount;
+                document.getElementById('cssCount').textContent = stats.cssCount;
+            }
+
+            renderCacheList() {
+                document.getElementById('emptyState').classList.add('hidden');
+                const container = document.getElementById('cacheList');
+                container.innerHTML = '';
+
+                if (this.filteredData.length === 0) {
+                    this.showEmptyState();
+                    return;
+                }
+
+                this.filteredData.forEach((cache, index) => {
+                    const cacheElement = this.createCacheElement(cache, index);
+                    container.appendChild(cacheElement);
+                });
+            }
+
+            createCacheElement(cache, index) {
+                const div = document.createElement('div');
+                div.className = 'bg-gray-900 border border-gray-800 rounded-custom overflow-hidden animate-slide-up';
+                div.style.animationDelay = `${index * 0.1}s`;
+
+                const typeStats = this.getTypeStatistics(cache.resources);
+                const typeStatsHtml = Object.entries(typeStats).map(([type, count]) => {
+                    const icons = {
+                        image: '🖼️',
+                        javascript: '📜',
+                        css: '🎨',
+                        html: '📄',
+                        font: '🔤',
+                        other: '📁'
+                    };
+                    return `<span class="inline-flex items-center gap-1 px-2 py-1 bg-gray-800 border border-gray-700 rounded-custom text-xs text-white">${icons[type] || '📁'} ${count}</span>`;
+                }).join('');
+
+                div.innerHTML = `
+                    <div class="bg-gray-800 border-b border-gray-700 text-white p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">${cache.name}</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    ${typeStatsHtml}
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl font-bold text-white">${cache.filteredCount || cache.resourceCount}</div>
+                                <div class="text-sm opacity-75 text-gray-300">Resources</div>
+                                <div class="text-lg font-semibold mt-2 text-gray-200">${this.formatBytes(cache.filteredSize || cache.totalSize)}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-3 max-h-96 overflow-y-auto">
+                            ${cache.resources.map(resource => this.createResourceElement(resource)).join('')}
+                        </div>
+                    </div>
+                `;
+
+                return div;
+            }
+
+            createResourceElement(resource) {
+                const typeIcons = {
+                    image: '🖼️',
+                    javascript: '📜',
+                    css: '🎨',
+                    html: '📄',
+                    font: '🔤',
+                    audio: '🎵',
+                    video: '🎬',
+                    data: '📊',
+                    other: '📁'
+                };
+
+                const typeColors = {
+                    image: 'text-green-400 border-green-400',
+                    javascript: 'text-yellow-400 border-yellow-400',
+                    css: 'text-blue-400 border-blue-400',
+                    html: 'text-orange-400 border-orange-400',
+                    font: 'text-purple-400 border-purple-400',
+                    audio: 'text-pink-400 border-pink-400',
+                    video: 'text-red-400 border-red-400',
+                    data: 'text-cyan-400 border-cyan-400',
+                    other: 'text-gray-400 border-gray-400'
+                };
+
+                return `
+                    <div class="border border-gray-700 bg-gray-800 rounded-custom p-4 hover:border-gray-600 transition-all duration-200 hover:bg-gray-750">
+                        <div class="flex justify-between items-start gap-4">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <span class="text-lg">${typeIcons[resource.type] || '📁'}</span>
+                                    <span class="px-2 py-1 border ${typeColors[resource.type] || typeColors.other} text-xs rounded-custom font-medium bg-transparent">
+                                        ${resource.type.toUpperCase()}
+                                    </span>
+                                    <span class="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-custom border border-gray-600">
+                                        ${resource.status} ${resource.statusText}
+                                    </span>
+                                </div>
+                                <div class="text-sm font-medium text-white truncate mb-1" title="${resource.url}">
+                                    ${resource.url}
+                                </div>
+                                <div class="text-xs text-gray-400 space-y-1">
+                                    <div>MIME Type: ${resource.mimeType}</div>
+                                    <div>Method: ${resource.method}</div>
+                                    ${resource.lastModified ? `<div>Last Modified: ${new Date(resource.lastModified).toLocaleString()}</div>` : ''}
+                                    ${resource.cacheControl ? `<div>Cache Control: ${resource.cacheControl}</div>` : ''}
+                                    ${resource.etag ? `<div>ETag: ${resource.etag.substring(0, 20)}...</div>` : ''}
+                                </div>
+                            </div>
+                            <div class="text-right flex-shrink-0">
+                                <div class="text-lg font-bold text-white">${this.formatBytes(resource.size)}</div>
+                                <div class="text-xs text-gray-400">${new Date(resource.timestamp).toLocaleTimeString()}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            getTypeStatistics(resources) {
+                const stats = {};
+                resources.forEach(resource => {
+                    stats[resource.type] = (stats[resource.type] || 0) + 1;
+                });
+                return stats;
+            }
+
+            async clearAllCaches() {
+                if (!confirm('⚠️ Are you sure you want to clear all caches?\n\nThis will remove all cached resources and cannot be undone.')) {
+                    return;
+                }
+
+                try {
+                    const cacheNames = await caches.keys();
+                    await Promise.all(cacheNames.map(name => caches.delete(name)));
+                    
+                    // Show success message
+                    this.showSuccessMessage('All caches cleared successfully!');
+                    this.loadCacheData();
+                } catch (error) {
+                    console.error('Error clearing caches:', error);
+                    this.showErrorMessage('Error clearing caches: ' + error.message);
+                }
+            }
+
+            exportReport() {
+                const report = {
+                    timestamp: new Date().toISOString(),
+                    summary: {
+                        totalCaches: this.cacheData.length,
+                        totalResources: this.cacheData.reduce((sum, cache) => sum + cache.resourceCount, 0),
+                        totalSize: this.cacheData.reduce((sum, cache) => sum + cache.totalSize, 0)
+                    },
+                    caches: this.cacheData.map(cache => ({
+                        name: cache.name,
+                        resourceCount: cache.resourceCount,
+                        totalSize: cache.totalSize,
+                        resources: cache.resources.map(resource => ({
+                            url: resource.url,
+                            type: resource.type,
+                            size: resource.size,
+                            mimeType: resource.mimeType,
+                            status: resource.status
+                        }))
+                    }))
+                };
+
+                const blob = new Blob([JSON.stringify(report, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `cache-report-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                this.showSuccessMessage('Cache report exported successfully!');
+            }
+
+            formatBytes(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            showLoading() {
+                document.getElementById('loadingState').classList.remove('hidden');
+                document.getElementById('cacheList').innerHTML = '';
+                document.getElementById('emptyState').classList.add('hidden');
+            }
+
+            hideLoading() {
+                document.getElementById('loadingState').classList.add('hidden');
+            }
+
+            showEmptyState() {
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('emptyState').classList.remove('hidden');
+                document.getElementById('cacheList').innerHTML = '';
+            }
+
+            showSuccessMessage(message) {
+                this.showToast(message, 'success');
+            }
+
+            showErrorMessage(message) {
+                this.showToast(message, 'error');
+            }
+
+            showError(message) {
+                document.getElementById('loadingState').innerHTML = `
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">⚠️</div>
+                        <h3 class="text-xl font-semibold text-red-400 mb-2">Error Loading Cache Data</h3>
+                        <p class="text-gray-400">${message}</p>
+                    </div>
+                `;
+            }
+
+            showToast(message, type) {
+                const toast = document.createElement('div');
+                const bgColor = type === 'success' ? 'bg-green-600 border-green-500' : 'bg-red-600 border-red-500';
+                toast.className = `fixed top-4 right-4 ${bgColor} text-white px-6 py-3 rounded-custom border shadow-lg z-50 animate-fade-in font-mono`;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 3000);
+            }
+        }
+
+        // Initialize the cache viewer when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new CacheViewer();
+        });
+    </script>
+</body>
+</html>

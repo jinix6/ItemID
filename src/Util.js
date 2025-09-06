@@ -1,8 +1,527 @@
 /**
+ * Sets the active suggestion in the autocomplete dropdown for keyboard navigation
+ * Applies visual highlighting to the selected suggestion
+ *
+ * @param {number} activeIndex - Index of the suggestion to highlight
+ */
+function setActiveSuggestion(activeIndex) {
+  const dropdownElement = document.getElementById("autocomplete-dropdown");
+  const suggestionElements = dropdownElement.querySelectorAll(
+    ".autocomplete-suggestion",
+  );
+
+  // Remove highlight from all suggestions
+  suggestionElements.forEach((suggestion) => {
+    suggestion.classList.remove("bg-[var(--button-hover)]");
+  });
+
+  // Apply highlight to the active suggestion
+  if (suggestionElements[activeIndex]) {
+    suggestionElements[activeIndex].classList.add("bg-[var(--button-hover)]");
+  }
+}
+
+/**
+ * Handles autocomplete functionality with Tailwind CSS styling
+ * Generates and displays relevant search suggestions based on input
+ * Supports multiple field matching with text highlighting
+ *
+ * @param {string} inputValue - Current value of the search input field
+ */
+function handleAutocomplete(inputValue) {
+  const dropdownElement = document.getElementById("autocomplete-dropdown");
+  const searchQuery = inputValue.trim();
+  const MIN_QUERY_LENGTH = 2;
+  const MAX_SUGGESTIONS = 10;
+
+  // Hide dropdown for short queries
+  if (searchQuery.length < MIN_QUERY_LENGTH) {
+    dropdownElement.classList.add("hidden");
+    return;
+  }
+
+  // Generate suggestions from item data
+  const suggestions = [];
+  const queryWords = searchQuery
+    .toLowerCase()
+    .split(/\s+/)
+    .filter((word) => word.length > 0);
+
+  if (itemData && Array.isArray(itemData)) {
+    for (const item of itemData) {
+      if (suggestions.length >= MAX_SUGGESTIONS) break;
+
+      // Check multiple fields for matches with priority ordering
+      const fieldsToCheck = [
+        item.icon,
+        item.description,
+        item.description2,
+        item.itemID?.toString(),
+      ];
+
+      for (const fieldValue of fieldsToCheck) {
+        if (!fieldValue) continue;
+
+        const lowerFieldValue = fieldValue.toLowerCase();
+        const allWordsMatch = queryWords.every((word) =>
+          lowerFieldValue.includes(word),
+        );
+
+        if (allWordsMatch && !suggestions.includes(fieldValue)) {
+          suggestions.push(fieldValue);
+          break; // Only add one suggestion per item
+        }
+      }
+    }
+  }
+
+  // Display suggestions or hide dropdown if none found
+  if (suggestions.length > 0) {
+    // Clear previous suggestions
+    dropdownElement.innerHTML = "";
+
+    // Create and append new suggestion elements
+    suggestions.forEach((suggestionText, index) => {
+      const suggestionElement = document.createElement("div");
+      suggestionElement.className =
+        "autocomplete-suggestion px-4 py-2 cursor-pointer border-b border-gray-600 font-mono text-sm text-[var(--secondary)] hover:bg-[var(--button-hover)] transition-colors";
+
+      // Highlight matching text portions
+      let highlightedText = suggestionText;
+      queryWords.forEach((word) => {
+        const regex = new RegExp(`(${word})`, "gi");
+        highlightedText = highlightedText.replace(
+          regex,
+          '<strong class="font-bold text-[var(--toggle-bg-enabled)]">$1</strong>',
+        );
+      });
+
+      suggestionElement.innerHTML = highlightedText;
+
+      // Add click handler to select suggestion
+      suggestionElement.addEventListener("click", () => {
+        document.getElementById("search-input").value = suggestionText;
+        dropdownElement.classList.add("hidden");
+        // Consider triggering search here if desired
+      });
+
+      // Add hover effect
+      suggestionElement.addEventListener("mouseover", () => {
+        setActiveSuggestion(index);
+      });
+
+      dropdownElement.appendChild(suggestionElement);
+    });
+
+    dropdownElement.classList.remove("hidden");
+  } else {
+    dropdownElement.classList.add("hidden");
+  }
+}
+
+/**
+ * Advanced item filtering with support for complex boolean logic and multiple data types
+ * Uses '&&' to separate OR groups and '&' for AND conditions within groups
+ * Supports string, number, and boolean field types with proper type handling
+ *
+ * @param {Array} itemData - Array of item objects to filter
+ * @param {string|number} query - Search query with advanced boolean syntax
+ * @returns {Array} Filtered array of items matching the search criteria
+ */
+function filterItemsBySearch(itemData, query) {
+  // Validate input parameters
+  if (!Array.isArray(itemData)) return [];
+  if (query === undefined || query === null) return itemData;
+
+  // Normalize query to string and trim whitespace
+  const normalizedQuery = String(query).trim();
+
+  // Return all items for empty query
+  if (!normalizedQuery) return itemData;
+
+  // Parse query into OR groups separated by '&&'
+  const orGroups = normalizedQuery
+    .split("&&")
+    .map((group) => group.trim())
+    .filter((group) => group.length > 0);
+
+  // Filter items: match if ANY OR group satisfies ALL its AND conditions
+  return itemData.filter((item) => {
+    return orGroups.some((orGroup) => {
+      // Split OR group into AND conditions separated by '&'
+      const andConditions = orGroup
+        .split("&")
+        .map((condition) => condition.trim())
+        .filter((condition) => condition.length > 0);
+
+      // All AND conditions in this group must match
+      return andConditions.every((condition) => {
+        // Handle field-specific search (e.g., "color:red")
+        if (condition.includes(":")) {
+          const [fieldName, fieldValueRaw] = condition
+            .split(":")
+            .map((part) => part.trim());
+          const fieldValue = fieldValueRaw.toLowerCase();
+
+          // Check if field exists in item
+          if (!item.hasOwnProperty(fieldName)) return false;
+
+          const itemFieldValue = item[fieldName];
+
+          // Handle different data types with appropriate comparison logic
+          switch (typeof itemFieldValue) {
+            case "string":
+              return itemFieldValue.toLowerCase() === fieldValue;
+            case "number":
+              return itemFieldValue.toString() === fieldValue;
+            case "boolean":
+              // Handle boolean string representations
+              if (fieldValue === "true") return itemFieldValue === true;
+              if (fieldValue === "false") return itemFieldValue === false;
+              return false;
+            default:
+              // Skip null, undefined, objects, etc.
+              return false;
+          }
+        }
+
+        // Handle keyword search across all item properties
+        else {
+          return Object.values(item).some((itemValue) => {
+            // Skip null/undefined values
+            if (itemValue == null) return false;
+
+            // Handle different data types with appropriate search logic
+            switch (typeof itemValue) {
+              case "string":
+                return itemValue
+                  .toLowerCase()
+                  .includes(condition.toLowerCase());
+              case "number":
+                return itemValue.toString().includes(condition);
+              case "boolean":
+                // Match boolean against "true" or "false" strings
+                const conditionLower = condition.toLowerCase();
+                if (conditionLower === "true") return itemValue === true;
+                if (conditionLower === "false") return itemValue === false;
+                return false;
+              default:
+                // Skip objects, arrays, etc.
+                return false;
+            }
+          });
+        }
+      });
+    });
+  });
+}
+
+/**
+ * Displays detailed information about an item when the user interacts with an element.
+ * This function handles UI updates, animations, and transitions for both normal and trash modes.
+ *
+ * @param {Object} itemData - An object containing the item's data (e.g., id, icon, descriptions).
+ * @param {string} imageSource - The URL or path to the item's image.
+ * @param {HTMLElement} sharedElement - The DOM element shared between pages for transition/animation.
+ * @param {boolean} isTrashMode - A flag indicating whether the app is in trash/recycle mode.
+ */
+function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
+  // First, check if required elements exist
+  const targetElement = document.getElementById("cardimage");
+  const containerDialog = document.getElementById("container-dialog");
+
+  if (!targetElement || !containerDialog) {
+    console.error("Required elements not found in DOM");
+    return;
+  }
+
+  const pageBackgrounds = ["mainnnnn-bg", "dialog-main-bg"];
+  const dialogTitleParagraphs = {
+    hedear: document.getElementById("dialog-tittle"),
+    title: document.getElementById("dialog-tittle-p"),
+    iconName: document.getElementById("dialog-tittle-pp"),
+    closeBtn: document.getElementById("hide_dialg_btn"),
+    shareButton: document.getElementById("share-btn"),
+  };
+
+  // Verify all required dialog elements exist
+  for (const [key, element] of Object.entries(dialogTitleParagraphs)) {
+    if (!element) {
+      console.error(`Dialog element ${key} not found`);
+      return;
+    }
+  }
+
+  // Set the image source for the item
+  targetElement.src = imageSource || "";
+
+  const imgBg = document.getElementById("info-dialoh-bg");
+  if (imgBg) {
+    const dominantColor = getDominantColor(sharedElement);
+    if (dominantColor) {
+      imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b}, 0.8)`;
+      const dominantColorobj = {
+        r: dominantColor.r,
+        g: dominantColor.g,
+        b: dominantColor.b,
+      };
+      const dialogTitleElements = [
+        "dialog-tittle",
+        "dialog-tittle-p",
+        "dialog-tittle-pp",
+      ];
+      const textColor = getContrastColor(dominantColorobj, 5, 5);
+      dialogTitleElements.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.style.color = textColor;
+      });
+      const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
+      const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
+      const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
+      ["hide_dialg_btn", "share-btn", "google-lens-btn"].forEach((id) => {
+        const btn = document.getElementById(id);
+        if (btn) {
+          btn.style.background = closebtnBgColor;
+          btn.style.borderColor = closebtnBrColor;
+          btn.style.color = closebtnTextColor;
+        }
+      });
+    } else {
+      console.error("Failed to extract the dominant color.");
+    }
+  }
+
+  // Apply fade-in animation to background elements
+  pageBackgrounds.forEach((id) => {
+    const bgElement = document.getElementById(id);
+    if (bgElement) {
+      bgElement.style.animation = "fadeIn 250ms 1 forwards";
+    }
+  });
+
+  // Handle display content based on trash mode
+  if (!isTrashMode) {
+    // Extract and display item details when not in trash mode
+    const { icon, description, description2, itemID } = itemData;
+    const itemDetail = description2
+      ? `${description} - ${description2}`
+      : description;
+    dialogTitleParagraphs.hedear.textContent = itemDetail;
+    dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
+    dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
+
+    // Show dialog title, description, and icon name with animation
+    [
+      dialogTitleParagraphs.hedear,
+      dialogTitleParagraphs.title,
+      dialogTitleParagraphs.iconName,
+    ].forEach((element, index) => {
+      if (element) {
+        element.style.display = "";
+        setTimeout(() => {
+          element.classList.add("slide-top");
+          element.classList.remove("slide-bottom");
+        }, index * 200);
+      }
+    });
+
+    // Ensure the share button is visible in normal mode
+    if (dialogTitleParagraphs.shareButton) {
+      dialogTitleParagraphs.shareButton.style.display = "";
+    }
+  } else {
+    // Display item name in trash mode (without description)
+    dialogTitleParagraphs.hedear.textContent = itemData.replace(".png", "");
+
+    // Hide unnecessary elements (title, iconName) in trash mode
+    [dialogTitleParagraphs.title, dialogTitleParagraphs.iconName].forEach(
+      (element) => {
+        if (element) {
+          element.style.display = "none";
+        }
+      },
+    );
+
+    // Apply animation for dialog title in trash mode
+    setTimeout(() => {
+      if (dialogTitleParagraphs.hedear) {
+        dialogTitleParagraphs.hedear.classList.add("slide-top");
+        dialogTitleParagraphs.hedear.classList.remove("slide-bottom");
+      }
+    }, 0);
+
+    // Hide the share button in trash mode
+    if (dialogTitleParagraphs.shareButton) {
+      dialogTitleParagraphs.shareButton.style.display = "none";
+    }
+  }
+
+  // Get the position and size of the shared element and target element
+  const startRect = sharedElement.getBoundingClientRect();
+  const endRect = targetElement.getBoundingClientRect();
+  const containerRect = containerDialog.getBoundingClientRect();
+
+  // Clone the shared element for the animation
+  const clone = sharedElement.cloneNode(true);
+  containerDialog.appendChild(clone);
+
+  // Calculate positions relative to the container
+  const startTop = startRect.top - containerRect.top;
+  const startLeft = startRect.left - containerRect.left;
+  const endTop = endRect.top - containerRect.top;
+  const endLeft = endRect.left - containerRect.left;
+
+  // Calculate 90% size for both start and end positions
+  const startWidthCal = startRect.width * 0.9;
+  const startHeightCal = startRect.height * 0.9;
+  const endWidthCal = endRect.width * 0.9;
+  const endHeightCal = endRect.height * 0.9;
+
+  // Calculate center offsets to maintain centered positioning at 98% size
+  const startWidthOffset = (startRect.width - startWidthCal) / 2;
+  const startHeightOffset = (startRect.height - startHeightCal) / 2;
+  const endWidthOffset = (endRect.width - endWidthCal) / 2;
+  const endHeightOffset = (endRect.height - endHeightCal) / 2;
+
+  // Style the clone element to match the shared element's position and size at 98%
+  gsap.set(clone, {
+    position: "absolute",
+    top: startTop + startHeightOffset,
+    left: startLeft + startWidthOffset,
+    width: startWidthCal,
+    height: startHeightCal,
+    zIndex: 10,
+    margin: 0,
+    transform: "none",
+  });
+
+  // Animate the clone to the target element's position at 98% size
+  gsap.to(clone, {
+    duration: 0.5,
+    top: endTop + endHeightOffset,
+    left: endLeft + endWidthOffset,
+    width: endWidthCal,
+    height: endHeightCal,
+    ease: "power2.inOut",
+  });
+
+  // Event listener to close the dialog and return the shared element to its original position
+  const closeHandler = () => {
+    // Remove event listener to prevent multiple bindings
+    dialogTitleParagraphs.closeBtn.removeEventListener("click", closeHandler);
+
+    // Animate closing of dialog title and paragraphs
+    [
+      dialogTitleParagraphs.hedear,
+      dialogTitleParagraphs.title,
+      dialogTitleParagraphs.iconName,
+    ].forEach((element, index) => {
+      if (element) {
+        setTimeout(() => {
+          element.classList.remove("slide-top");
+          element.classList.add("slide-bottom");
+        }, index * 100);
+      }
+    });
+
+    // Apply fade-out animation to the background
+    setTimeout(() => {
+      pageBackgrounds.forEach((id) => {
+        const bgElement = document.getElementById(id);
+        if (bgElement) {
+          bgElement.style.animation = "fadeOut 300ms 1 forwards";
+        }
+      });
+    }, 250);
+
+    // Animate the clone back to its original position at 98% size
+    gsap.to(clone, {
+      duration: 0.5,
+      top: startTop + startHeightOffset,
+      left: startLeft + startWidthOffset,
+      width: startWidthCal,
+      height: startHeightCal,
+      ease: "power2.inOut",
+      onComplete: () => {
+        clone.remove();
+      },
+    });
+  };
+
+  dialogTitleParagraphs.closeBtn.addEventListener("click", closeHandler);
+}
+
+/**
+ * Renders pagination controls based on total page count and current search context.
+ * Handles empty results by showing a "NOT FOUND" message and hiding pagination.
+ *
+ * @param {string} searchTerm - Current search input
+ * @param {Array} itemList - Full dataset of items
+ * @param {boolean} isTrashMode - Flag for alternate rendering mode
+ * @param {number} totalPages - Total number of pages to render
+ */
+async function renderPagination(searchTerm, itemList, isTrashMode, totalPages) {
+  const pageNumbers = await generatePaginationNumbers(totalPages);
+  const paginationHeader = document.getElementById("pagi73hd");
+  const paginationContainer = document.getElementById("pagination");
+
+  // Handle empty result set: hide pagination and show "NOT FOUND" message
+  if (pageNumbers.length === 0) {
+    paginationHeader.style.visibility = "hidden";
+
+    // Prevent duplicate "NOT FOUND" message
+    if (!notFoundText()) {
+      const notFoundMessage = document.createElement("h1");
+      notFoundMessage.id = "not_found_text";
+      notFoundMessage.className =
+        "transition-all duration-100 ease-in-out font-black select-none ibm-plex-mono-regular text-zinc-500 rotate-90 text-[500%] w-[10vw] text-center whitespace-nowrap";
+      notFoundMessage.innerText = "NOT FOUND";
+      document.getElementById("container").appendChild(notFoundMessage);
+    }
+    return;
+  }
+
+  // Valid results: show pagination and remove "NOT FOUND" if present
+  paginationHeader.style.visibility = "visible";
+  const notFoundElement = notFoundText();
+  if (notFoundElement) notFoundElement.remove();
+
+  // Clear existing pagination buttons
+  paginationContainer.innerHTML = "";
+
+  // Render each pagination button
+  pageNumbers.forEach((pageNum) => {
+    const button = document.createElement("button");
+    button.className =
+      "px-[8%] bg-[var(--secondary)] bounce-click select-none rounded-[11px] text-center ibm-plex-mono-regular font-medium uppercase text-[var(--primary)] disabled:pointer-events-none disabled:shadow-none";
+
+    // Highlight the active page
+    if (pageNum === currentPage) {
+      button.classList.remove(
+        "bg-[var(--secondary)]",
+        "text-[var(--primary)]",
+        "border",
+        "border-2",
+        "border-[var(--border-color)]",
+      );
+      button.classList.add("text-[var(--secondary)]", "bg-[var(--primary)]");
+    }
+
+    button.textContent = pageNum;
+
+    // Attach click handler to navigate to selected page
+    button.addEventListener("click", async () => {
+      await goToPage(pageNum, searchTerm, itemList, isTrashMode, totalPages);
+    });
+
+    paginationContainer.appendChild(button);
+  });
+}
+
+/**
  * Initializes the interactive behavior for the edge button and related elements.
  */
 function initializeInterfaceEdgeBtn() {
-  const bodyElement = document.body;
   const extraSetElement = document.getElementById("settings-bg");
   const edgeButtonElement = document.getElementById("edge_btn");
   const settingsCloseBtn = document.getElementById("settings-close-btn");
@@ -25,7 +544,7 @@ function initializeInterfaceEdgeBtn() {
    * Expands the interface by updating classes and triggering animations.
    */
   const expandInterface = () => {
-    bodyElement.classList.remove("collapsed");
+    document.body.classList.remove("collapsed");
     extraSetElement.classList.add("expanded2");
     handleAnimation("expand");
   };
@@ -34,7 +553,8 @@ function initializeInterfaceEdgeBtn() {
    * Collapses the interface by updating classes and triggering animations.
    */
   const collapseInterface = () => {
-    bodyElement.classList.add("collapsed");
+    fetchRecentCommits();
+    document.body.classList.add("collapsed");
     extraSetElement.classList.remove("expanded2");
     extraSetElement.classList.add("collapsed2");
     handleAnimation("collapse");
@@ -122,7 +642,7 @@ const removeClasses = (elements, ...classes) => {
 };
 
 const addClasses = (element, ...classes) => {
-  element.classList.remove("Mtext-color2");
+  element.classList.remove("text-[var(--primary)]");
   element.classList.add(...classes);
 };
 
@@ -140,7 +660,7 @@ function handleDisplayChange(element, searchKeyword) {
   const displayMode = element.value;
 
   // Encrypt and update the URL parameter for 'mode'
-  updateUrlParameter("mode", displayMode);
+  updateUrlParameter("mode", displayMode, currentPage);
 
   let [all_tag_id, trashItem_btn] = ["AllItem_btn", "trashItem_btn"].map((id) =>
     document.getElementById(id),
@@ -155,7 +675,11 @@ function handleDisplayChange(element, searchKeyword) {
    * Resets the UI elements to their default state.
    */
   const resetUI = () => {
-    removeClasses(uiElements.tags, "Mtext-color", "Mbg-color");
+    removeClasses(
+      uiElements.tags,
+      "text-[var(--secondary)]",
+      "bg-[var(--primary)]",
+    );
   };
 
   // Update UI and call specific functions based on the selected mode
@@ -163,16 +687,16 @@ function handleDisplayChange(element, searchKeyword) {
   searchKeyword = searchKeyword === null ? "" : searchKeyword;
   switch (displayMode) {
     case "1":
-      addClassesList([all_tag_id], "Mtext-color2");
-      addClasses(element, "Mtext-color", "Mbg-color");
-      displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
+      addClassesList([all_tag_id], "text-[var(--primary)]");
+      addClasses(element, "text-[var(--secondary)]", "bg-[var(--primary)]");
+      displayFilteredTrashItems(currentPage, searchKeyword, pngs_json_list);
       itemID.state.displayMode = 1;
       break;
 
     case "2":
-      addClassesList([trashItem_btn], "Mtext-color2");
-      addClasses(element, "Mtext-color", "Mbg-color");
-      displayPage(1, searchKeyword, itemData);
+      addClassesList([trashItem_btn], "text-[var(--primary)]");
+      addClasses(element, "text-[var(--secondary)]", "bg-[var(--primary)]");
+      displayPage(currentPage, searchKeyword, itemData);
       itemID.state.displayMode = 2;
       break;
 
@@ -339,187 +863,6 @@ function getContrastColor(rgbColor, adjustBrightness = 1, adjustDarkness = 1) {
 }
 
 /**
- * Displays detailed information about an item when the user interacts with an element.
- * This function handles UI updates, animations, and transitions for both normal and trash modes.
- *
- * @param {Object} itemData - An object containing the item's data (e.g., id, icon, descriptions).
- * @param {string} imageSource - The URL or path to the item's image.
- * @param {HTMLElement} sharedElement - The DOM element shared between pages for transition/animation.
- * @param {boolean} isTrashMode - A flag indicating whether the app is in trash/recycle mode.
- */
-function displayItemInfo(itemData, imageSource, sharedElement, isTrashMode) {
-  const targetElement = document.getElementById("cardimage");
-  const pageBackgrounds = ["mainnnnn-bg", "dialog-main-bg"];
-  const dialogTitleParagraphs = {
-    hedear: document.getElementById("dialog-tittle"),
-    title: document.getElementById("dialog-tittle-p"),
-    iconName: document.getElementById("dialog-tittle-pp"),
-    closeBtn: document.getElementById("hide_dialg_btn"),
-    shareButton: document.getElementById("share-btn"),
-  };
-
-  // Set the image source for the item
-  targetElement.src = imageSource || "";
-
-  const imgBg = document.getElementById("info-dialoh-bg");
-  const dominantColor = getDominantColor(sharedElement);
-  if (dominantColor) {
-    imgBg.style.backgroundColor = `rgb(${dominantColor.r}, ${dominantColor.g}, ${dominantColor.b})`;
-    const dominantColorobj = {
-      r: dominantColor.r,
-      g: dominantColor.g,
-      b: dominantColor.b,
-    };
-    const dialogTitleElements = [
-      "dialog-tittle",
-      "dialog-tittle-p",
-      "dialog-tittle-pp",
-    ];
-    const textColor = getContrastColor(dominantColorobj, 5, 5);
-    dialogTitleElements.forEach(
-      (id) => (document.getElementById(id).style.color = textColor),
-    );
-    const closebtnBgColor = getContrastColor(dominantColorobj, 3, 3);
-    const closebtnBrColor = getContrastColor(dominantColorobj, 4, 4);
-    const closebtnTextColor = getContrastColor(dominantColorobj, 0, 0);
-    ["hide_dialg_btn", "share-btn"].forEach((id) => {
-      const btn = document.getElementById(id);
-      btn.style.background = closebtnBgColor;
-      btn.style.borderColor = closebtnBrColor;
-      btn.style.textColor = closebtnTextColor;
-    });
-  } else {
-    console.error("Failed to extract the dominant color.");
-  }
-
-  // Apply fade-in animation to background elements
-  pageBackgrounds.forEach((id) => {
-    document.getElementById(id).style.animation = "fadeIn 250ms 1 forwards";
-  });
-
-  // Handle display content based on trash mode
-  if (!isTrashMode) {
-    // Extract and display item details when not in trash mode
-    const { icon, description, description2, itemID } = itemData;
-    const itemDetail = description2
-      ? `${description} - ${description2}`
-      : description;
-    dialogTitleParagraphs.hedear.textContent = itemDetail;
-    dialogTitleParagraphs.title.textContent = `Id: ${itemID}`;
-    dialogTitleParagraphs.iconName.textContent = `Icon Name: ${icon}`;
-
-    // Show dialog title, description, and icon name with animation
-    [
-      dialogTitleParagraphs.hedear,
-      dialogTitleParagraphs.title,
-      dialogTitleParagraphs.iconName,
-    ].forEach((element, index) => {
-      element.style.display = "";
-      setTimeout(() => {
-        element.classList.add("slide-top");
-        element.classList.remove("slide-bottom");
-      }, index * 200);
-    });
-
-    // Ensure the share button is visible in normal mode
-    if (dialogTitleParagraphs.shareButton) {
-      dialogTitleParagraphs.shareButton.style.display = "";
-    }
-  } else {
-    // Display item name in trash mode (without description)
-    dialogTitleParagraphs.hedear.textContent = itemData.replace(".png", "");
-
-    // Hide unnecessary elements (title, iconName) in trash mode
-    [dialogTitleParagraphs.title, dialogTitleParagraphs.iconName].forEach(
-      (element) => {
-        element.style.display = "none";
-      },
-    );
-
-    // Apply animation for dialog title in trash mode
-    setTimeout(() => {
-      dialogTitleParagraphs.hedear.classList.add("slide-top");
-      dialogTitleParagraphs.hedear.classList.remove("slide-bottom");
-    }, 0);
-
-    // Hide the share button in trash mode
-    if (dialogTitleParagraphs.shareButton) {
-      dialogTitleParagraphs.shareButton.style.display = "none";
-    }
-  }
-
-  // Disable interactions with the shared element during transition
-  sharedElement.classList.add("touch-none");
-
-  // Get the position and size of the shared element and target element
-  const startRect = sharedElement.getBoundingClientRect();
-  const endRect = targetElement.getBoundingClientRect();
-
-  // Clone the shared element for the animation
-  const clone = sharedElement.cloneNode(true);
-  document.body.appendChild(clone);
-
-  // Style the clone element to match the shared element's position and size
-  gsap.set(clone, {
-    position: "absolute",
-    top: startRect.top + window.scrollY,
-    left: startRect.left + window.scrollX,
-    width: startRect.width,
-    height: startRect.height,
-    zIndex: 10,
-  });
-
-  // Animate the clone to the target element's position
-  gsap.to(clone, {
-    duration: 0.5,
-    top: endRect.top + window.scrollY,
-    left: endRect.left + window.scrollX,
-    width: endRect.width,
-    height: endRect.height,
-    ease: "power2.inOut",
-  });
-
-  // Event listener to close the dialog and return the shared element to its original position
-  dialogTitleParagraphs.closeBtn.addEventListener("click", () => {
-    // Restore interaction with the shared element
-    sharedElement.classList.remove("touch-none");
-
-    // Animate closing of dialog title and paragraphs
-    [
-      dialogTitleParagraphs.hedear,
-      dialogTitleParagraphs.title,
-      dialogTitleParagraphs.iconName,
-    ].forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.remove("slide-top");
-        element.classList.add("slide-bottom");
-      }, index * 100);
-    });
-
-    // Apply fade-out animation to the background
-    setTimeout(() => {
-      pageBackgrounds.forEach((id) => {
-        document.getElementById(id).style.animation =
-          "fadeOut 300ms 1 forwards";
-      });
-    }, 250);
-
-    // Animate the clone back to its original position and remove it after completion
-    gsap.to(clone, {
-      duration: 0.5,
-      top: startRect.top + window.scrollY,
-      left: startRect.left + window.scrollX,
-      width: startRect.width,
-      height: startRect.height,
-      ease: "power2.inOut",
-      onComplete: () => {
-        clone.remove();
-      },
-    });
-  });
-}
-
-/**
  * Handles the search functionality for filtering items based on the provided keyword.
  * It updates the URL parameters and triggers the appropriate display function based on the current display mode.
  */
@@ -527,9 +870,8 @@ function search() {
   // Retrieve the search keyword from the input field
   const searchKeyword = document.getElementById("search-input").value;
 
-  // Encrypt and update the URL parameter for 'icon'
-  updateUrlParameter("q", searchKeyword);
-
+  updateUrlParameter("q", searchKeyword, 1);
+  currentPage = 1;
   // Determine the current display mode and call the corresponding function
   if (itemID.state.displayMode === 1) {
     // Display filtered trash items if the display mode is set to 1
@@ -541,12 +883,77 @@ function search() {
 }
 
 /**
- * Updates the URL parameter without refreshing the page.
- * @param {string} paramName - The name of the URL parameter.
- * @param {string} paramValue - The value of the URL parameter.
+ * Updates specified URL query parameter and maintains pagination state
+ * Creates a new browser history entry without triggering page reload
+ *
+ * @param {string} key - The query parameter key to update
+ * @param {string} value - The value to set for the specified key
+ * @param {number} page - The page number to set (defaults to 1)
  */
-function updateUrlParameter(paramName, paramValue) {
-  addParameterWithoutRefresh(paramName, paramValue);
+function updateUrlParameter(key, value, page = 1) {
+  // Get current URL query parameters
+  const queryParams = new URLSearchParams(window.location.search);
+
+  // Update the specified parameter and pagination
+  queryParams.set(key, value);
+  queryParams.set("page", page.toString()); // Ensure page is string for URL compatibility
+
+  // Reconstruct URL with updated parameters
+  const baseUrl = `${window.location.origin}${window.location.pathname}`;
+  const updatedUrl = `${baseUrl}?${queryParams.toString()}`;
+
+  // Update browser URL without page refresh (adds to history)
+  history.pushState({ path: updatedUrl }, "", updatedUrl);
+}
+
+/**
+ * Returns the current page URL without any query parameters or hash fragments.
+ * Useful for generating clean base URLs for sharing or navigation.
+ *
+ * @returns {string} Base URL (origin + pathname)
+ */
+function getBaseUrl() {
+  const origin = window.location.origin; // e.g., https://example.com
+  const path = window.location.pathname; // e.g., /gallery/view.html
+  return `${origin}${path}`; // Combined clean URL
+}
+
+/**
+ * Shares item details via Telegram using a formatted message and dynamic URL.
+ * Extracts title, ID, and icon name from dialog elements and opens Telegram share link.
+ */
+function shareToTelegram() {
+  // Extract icon name from dialog element
+  const iconName = document
+    .getElementById("dialog-tittle-pp")
+    .textContent.replace("Icon Name: ", "");
+
+  // Build view URL without query parameters
+  const viewUrl =
+    getBaseUrl() +
+    "?q=" +
+    encodeURIComponent(iconName) +
+    "&mode=" +
+    encodeURIComponent(itemID.state.displayMode);
+
+  // Extract title and ID from dialog elements
+  const itemTitle = document.getElementById("dialog-tittle").textContent;
+  const itemId = document
+    .getElementById("dialog-tittle-p")
+    .textContent.replace("Id: ", "");
+
+  // Construct Telegram message with Markdown formatting
+  const telegramMessage =
+    `Title: \`${itemTitle}\`\n` +
+    `ID: \`${itemId}\`\n` +
+    `Icon Name: \`${iconName}\`\n\n` +
+    `View: ${viewUrl}`;
+
+  // Open Telegram share URL with encoded message
+  window.open(
+    `https://t.me/share/url?url=${encodeURIComponent(telegramMessage)}&text=`,
+    "_blank",
+  );
 }
 
 /**
@@ -554,7 +961,7 @@ function updateUrlParameter(paramName, paramValue) {
  * @param {string} searchKeyword - The keyword to filter trash items.
  */
 function filterAndDisplayTrashItems(searchKeyword) {
-  displayFilteredTrashItems(1, searchKeyword, pngs_json_list);
+  displayFilteredTrashItems(currentPage, searchKeyword, pngs_json_list);
 }
 
 /**
@@ -562,59 +969,55 @@ function filterAndDisplayTrashItems(searchKeyword) {
  * @param {string} searchKeyword - The keyword to filter the page content.
  */
 function filterAndDisplayPage(searchKeyword) {
-  displayPage(1, searchKeyword, current_data);
+  displayPage(currentPage, searchKeyword, current_data);
 }
 
 /**
- * Navigates to a specific page and performs an action based on search term and mode.
+ * Navigates to a specific page of results with current filters applied
+ * Updates URL parameters, manages application state, and triggers appropriate display
  *
- * @param {number} pageNumber - The page number to navigate to.
- * @param {string} searchTerm - The term to search for.
- * @param {Array} webps - The list of webps to be used in displaying the page.
- * @param {boolean} isTrashMode - A flag indicating whether trash mode is enabled.
- * @returns {Promise<void>} A promise that resolves when the page is displayed.
+ * @param {number} pageNumber - The target page number to navigate to
+ * @param {string} searchTerm - The current search filter term
+ * @param {Array} webpSupport - Array indicating WebP support status for different image types
+ * @param {boolean} isTrashMode - Whether trash/view mode is active
+ * @param {number} totalPages - Total number of available pages (for validation)
+ * @returns {Promise<void>}
  */
 async function goToPage(
   pageNumber,
   searchTerm,
-  webps,
+  webpSupport,
   isTrashMode,
   totalPages,
 ) {
-  // Validate input
-  if (
-    !Number.isInteger(pageNumber) ||
-    pageNumber < 1 ||
-    pageNumber > totalPages
-  ) {
-    console.error("Invalid page number:", pageNumber);
+  // Validate page number is within bounds
+  if (pageNumber < 1 || pageNumber > totalPages) {
+    console.warn(
+      `Page number ${pageNumber} is out of bounds. Total pages: ${totalPages}`,
+    );
     return;
   }
 
-  if (typeof searchTerm !== "string") {
-    console.error("Invalid search term:", searchTerm);
-    return;
-  }
-
-  if (!Array.isArray(webps)) {
-    console.error("Invalid webps array:", webps);
-    return;
-  }
-
-  // Set the current page and search term
+  // Update global application state
   currentPage = pageNumber;
   currentSearchTerm = searchTerm;
 
+  // Synchronize URL with current state
+  updateUrlParameter("q", searchTerm, pageNumber);
+
   try {
-    // Display content based on trash mode
     if (isTrashMode) {
-      await displayFilteredTrashItems(currentPage, currentSearchTerm, webps);
+      await displayFilteredTrashItems(
+        currentPage,
+        currentSearchTerm,
+        webpSupport,
+      );
     } else {
-      await displayPage(currentPage, currentSearchTerm, webps);
+      await displayPage(currentPage, currentSearchTerm, webpSupport);
     }
   } catch (error) {
-    // Handle any errors during the page display
-    console.error("Error displaying page:", error);
+    console.error("Error displaying page content:", error);
+    // Consider adding user-facing error notification here
   }
 }
 
@@ -665,50 +1068,33 @@ function updateUrl() {
 }
 
 /**
- * Filters an array of objects based on a search term.
- *
- * @param {Array<Object>} items - The list of objects to search through.
- * @param {string} searchTerm - The term to match against object values.
- * @returns {Array<Object>} - Filtered list of objects.
- */
-function filterItemsBySearch(items, searchTerm) {
-  if (!Array.isArray(items) || typeof searchTerm !== "string") return [];
-
-  const lowerSearch = searchTerm.trim().toLowerCase();
-  if (!lowerSearch) return items; // Return all if search term is empty
-
-  return items.filter((item) =>
-    Object.values(item).some(
-      (value) =>
-        value != null && String(value).toLowerCase().includes(lowerSearch),
-    ),
-  );
-}
-
-/**
- * Checks URL parameters for a search keyword and display mode, then updates the UI accordingly.
+ * Handles UI display configuration based on URL query parameters
+ * Extracts search criteria, display mode, and pagination from URL
+ * and applies them to the interface
  */
 function handleDisplayBasedOnURL() {
-  // Retrieve URL parameters
+  // Parse URL query parameters for application state
   const urlParams = new URLSearchParams(window.location.search);
-  const searchKeyword = urlParams.get("q") || ""; // Default to empty string if 'q' is not set
-  const displayMode = urlParams.get("mode");
+  const searchKeyword = urlParams.get("q") || ""; // Default to empty string if no search term
+  const displayMode = urlParams.get("mode"); // Display mode parameter (e.g., trash vs all items)
+  const pageNumber = parseInt(urlParams.get("page")) || 1; // Default to page 1 if not specified
 
-  // Set the input field's value to the search keyword
+  // Set search input value from URL parameter
   document.getElementById("search-input").value = searchKeyword;
 
-  // Map of display modes to buttons
-  const buttonMap = {
-    1: "trashItem_btn",
-    2: "AllItem_btn",
+  // Map URL mode values to corresponding button IDs in the UI
+  const displayModeToButtonIdMap = {
+    1: "trashItem_btn", // Mode 1: Trash items view
+    2: "AllItem_btn", // Mode 2: All items view (default)
   };
 
-  // Determine the button to show based on the display mode or fallback to 'AllItem_btn'
-  const buttonId = buttonMap[displayMode] || "AllItem_btn";
-  const targetButton = document.getElementById(buttonId);
+  // Determine which button to activate based on mode, default to "All Items"
+  const targetButtonId = displayModeToButtonIdMap[displayMode] || "AllItem_btn";
+  const targetButtonElement = document.getElementById(targetButtonId);
 
-  // Call the function to change the display with the selected button and search keyword
-  handleDisplayChange(targetButton, searchKeyword);
+  // Update global pagination state and trigger display change
+  currentPage = pageNumber;
+  handleDisplayChange(targetButtonElement, searchKeyword);
 }
 
 /**
@@ -844,48 +1230,6 @@ function updateSwitcherAppearance(qualityIndex) {
     );
     switcher.style.color =
       index === qualityIndex ? "var(--primary)" : "var(--secondary)";
-  });
-}
-
-function filterItemsBySearch(item_data, query) {
-  // Validate input types
-  if (!Array.isArray(item_data)) {
-    throw new TypeError("Expected 'item_data' to be an array of objects.");
-  }
-  if (query === undefined || query === null) {
-    throw new TypeError("Expected 'query' to be a string or number.");
-  }
-
-  // Convert query to string
-  query = String(query).trim();
-
-  // Return item IDs if query is empty
-  if (!query) return item_data.map((item) => item.itemID);
-
-  // Parse query filters
-  const filters = query.split("&").map((filter) => filter.trim());
-
-  // Filter data based on conditions
-  return item_data.filter((item) => {
-    return filters.every((filter) => {
-      if (filter.includes(":")) {
-        // Handle key-value filters (e.g., "collectionType:FINAL_SHOT")
-        const [key, value] = filter.split(":").map((str) => str.trim());
-        return (
-          item.hasOwnProperty(key) &&
-          typeof item[key] === "string" &&
-          item[key].toLowerCase() === value.toLowerCase()
-        );
-      } else {
-        // Handle general keyword/number search in all string values
-        return Object.values(item).some(
-          (value) =>
-            (typeof value === "string" &&
-              value.toLowerCase().includes(filter.toLowerCase())) ||
-            (typeof value === "number" && value.toString().includes(filter)),
-        );
-      }
-    });
   });
 }
 

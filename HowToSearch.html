@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Search Documentation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            800: '#1a1a1a',
+                            700: '#262626',
+                            600: '#404040',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .code-font {
+            font-family: 'IBM Plex Mono', monospace;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #262626;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #404040;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #525252;
+        }
+    </style>
+</head>
+<body class="code-font bg-black text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-5xl">
+        <!-- Header -->
+        <header class="bg-dark-800 rounded-xl p-6 mb-8 border border-dark-600">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Advanced Search Documentation</h1>
+            <p class="text-gray-400">Learn how to use powerful search operators to find exactly what you're looking for</p>
+        </header>
+
+        <!-- Search Syntax Section -->
+        <section class="bg-dark-800 rounded-xl p-6 mb-8 border border-dark-600">
+            <h2 class="text-2xl font-bold mb-4">Search Syntax</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2"><span class="bg-dark-600 text-white py-1 px-2 rounded mr-2">&&</span> OR Operator</h3>
+                <p class="mb-2 text-gray-400">Use <code class="bg-dark-700 text-white px-2 py-1 rounded code-font">&&</code> to separate groups of conditions where any group can match.</p>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">Icon_Emote_Hello&&Icon_Token_Camo</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items that contain either "Icon_Emote_Hello" OR "Icon_Token_Camo".</p>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2"><span class="bg-dark-600 text-white py-1 px-2 rounded mr-2">&</span> AND Operator</h3>
+                <p class="mb-2 text-gray-400">Use <code class="bg-dark-700 text-white px-2 py-1 rounded code-font">&</code> to combine conditions that must all be true.</p>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">Icon_Token_Camo&Rare:BLUE</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items that contain both "Icon_Token_Camo" AND have rarity set to "BLUE".</p>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2"><span class="bg-dark-600 text-white py-1 px-2 rounded mr-2">field:value</span> Field-Specific Search</h3>
+                <p class="mb-2 text-gray-400">Search within specific fields using the <code class="bg-dark-700 text-white px-2 py-1 rounded code-font">field:value</code> syntax.</p>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">collectionType:EMOTE&Rare:PURPLE</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items where the collectionType is exactly "EMOTE" AND rarity is exactly "PURPLE".</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Available Fields Section -->
+        <section class="bg-dark-800 rounded-xl p-6 mb-8 border border-dark-600">
+            <h2 class="text-2xl font-bold mb-4">Available Fields</h2>
+            <p class="text-gray-400 mb-4">You can search by any of these fields using the field:value syntax:</p>
+            
+            <div class="bg-dark-700 p-4 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">icon</span>
+                        <span class="text-gray-400 text-sm">The icon identifier for the item</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">itemID</span>
+                        <span class="text-gray-400 text-sm">The unique identifier for the item</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">description</span>
+                        <span class="text-gray-400 text-sm">The primary description of the item</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">description2</span>
+                        <span class="text-gray-400 text-sm">Secondary description field</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">Rare</span>
+                        <span class="text-gray-400 text-sm">The rarity level of the item</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">isUnique</span>
+                        <span class="text-gray-400 text-sm">Whether the item is unique (true/false)</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">IconInAB</span>
+                        <span class="text-gray-400 text-sm">Icon location identifier</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">itemType</span>
+                        <span class="text-gray-400 text-sm">The type of item</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="bg-dark-600 text-white px-2 py-1 rounded code-font text-sm mr-2">collectionType</span>
+                        <span class="text-gray-400 text-sm">The collection category of the item</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Item Types Section -->
+        <section class="bg-dark-800 rounded-xl p-6 mb-8 border border-dark-600">
+            <h2 class="text-2xl font-bold mb-4">Item Types & Rarities</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Rarity Types</h3>
+                    <div class="bg-dark-700 p-4 rounded-lg max-h-80 overflow-y-auto custom-scrollbar">
+                        <div class="grid grid-cols-1 gap-2" id="rarityTypesList">
+                            <!-- JavaScript will populate this -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-3">Collection Types</h3>
+                    <div class="bg-dark-700 p-4 rounded-lg max-h-80 overflow-y-auto custom-scrollbar">
+                        <div class="grid grid-cols-1 gap-2" id="collectionTypesList">
+                            <!-- JavaScript will populate this -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Advanced Examples Section -->
+        <section class="bg-dark-800 rounded-xl p-6 mb-8 border border-dark-600">
+            <h2 class="text-2xl font-bold mb-4">Advanced Examples</h2>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2">Complex Boolean Search</h3>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">Icon_Emote_Hello&collectionType:EMOTE&&Icon_Token_Camo&collectionType:WEAPON_SKIN</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items that are (Icon_Emote_Hello AND collectionType=EMOTE) OR (Icon_Token_Camo AND collectionType=WEAPON_SKIN).</p>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2">Multiple Field Search</h3>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">Icon_Token_Camo&collectionType:WEAPON_SKIN&Rare:BLUE</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items containing "Icon_Token_Camo" with collectionType=WEAPON_SKIN and rarity=BLUE.</p>
+                </div>
+            </div>
+            
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2">Mixed Search</h3>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">collectionType:EMOTE&Rare:PURPLE&&collectionType:WEAPON_SKIN&Rare:ORANGE</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items that are (collectionType=EMOTE AND rarity=PURPLE) OR (collectionType=WEAPON_SKIN AND rarity=ORANGE).</p>
+                </div>
+            </div>
+
+            <div class="mb-6">
+                <h3 class="text-xl font-semibold mb-2">Field-Specific Examples</h3>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">itemID:909000001</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds the item with ID 909000001.</p>
+                </div>
+                <div class="bg-dark-700 p-4 rounded-lg mb-2">
+                    <pre class="text-white code-font overflow-x-auto">isUnique:true&Rare:PURPLE</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds unique items with purple rarity.</p>
+                </div>
+                <div class="bg-dark-700 p-4 rounded-lg">
+                    <pre class="text-white code-font overflow-x-auto">description:Hello</pre>
+                    <p class="text-gray-400 text-sm mt-1">Finds items with "Hello" in their description.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Item Rarity Types
+        const RareType = {
+            ALL: 0,
+            WHITE: 1,
+            GREEN: 2,
+            BLUE: 3,
+            PURPLE: 4,
+            ORANGE: 5,
+            CARD: 6,
+            RED: 7,
+            PURPLE_PLUS: 8,
+            ORANGE_PLUS: 9,
+            NONE: 10,
+        };
+
+        // Collection Types
+        const CollectionType = {
+            ALL: 0,
+            BANNER: 1,
+            HEADPIC: 2,
+            LOOTBOX: 3,
+            GAMEBAG: 4,
+            PARACHUTE: 5,
+            SKATE: 6,
+            WEAPON_SKIN: 7,
+            VEHICLE_SKIN: 8,
+            EMOTE: 9,
+            PIN: 10,
+            FLIGHT: 11,
+            GROUPANIM: 12,
+            MUSIC: 13,
+            TRANSFORM_EMOTE: 14,
+            TITLE: 16,
+            ACTION_JUMP: 17,
+            ACTION_FIRST_AID_KIT: 18,
+            ACTION_CROSS_WINDOW: 19,
+            ACTION_FALL: 20,
+            QUICK_CHAT: 21,
+            SKILL_SKIN: 22,
+            FINAL_SHOT: 23,
+            SUPER_EMOTE: 24,
+            LOADING_CARD: 25,
+            NONE: 26,
+        };
+
+        // Function to display types using loops
+        function displayTypes() {
+            const rarityTypesList = document.getElementById('rarityTypesList');
+            const collectionTypesList = document.getElementById('collectionTypesList');
+            
+            // Display Rarity Types
+            for (const [key, value] of Object.entries(RareType)) {
+                const typeItem = document.createElement('div');
+                typeItem.className = 'flex justify-between items-center py-2 border-b border-dark-600 last:border-b-0';
+                typeItem.innerHTML = `
+                    <span class="text-white">${key}</span>
+                    <span class="text-gray-400 code-font">${value}</span>
+                `;
+                rarityTypesList.appendChild(typeItem);
+            }
+            
+            // Display Collection Types
+            for (const [key, value] of Object.entries(CollectionType)) {
+                const typeItem = document.createElement('div');
+                typeItem.className = 'flex justify-between items-center py-2 border-b border-dark-600 last:border-b-0';
+                typeItem.innerHTML = `
+                    <span class="text-white">${key}</span>
+                    <span class="text-gray-400 code-font">${value}</span>
+                `;
+                collectionTypesList.appendChild(typeItem);
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = displayTypes;
+    </script>
+</body>
+</html>
