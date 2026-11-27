@@ -1,0 +1,117 @@
+/* Hallmark · v2.0.0 · theme: The Accession Catalogue · genre: editorial · stamp 2026-11-26 */
+
+:root {
+  color-scheme: dark;
+  --paper: #171410;
+  --raised: #201c16;
+  --plate: #262119;
+  --deep: #0f0d0a;
+  --ink: #e9e1d2;
+  --soft: #c3b8a5;
+  --faint: #948a79;
+  --rule: #3a3329;
+  --strong: #5c5243;
+  --accent: #d6a45a;
+  --accent-ink: #171410;
+  --accent-text: #d6a45a;
+  --green: #8fa89a;
+  --red: #d47a6a;
+  --scrim: rgba(9, 7, 5, 0.76);
+  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow-plate: rgba(0, 0, 0, 0.32);
+  --veil: rgba(23, 20, 16, 0.72);
+  --accent-wash: rgba(214, 164, 90, 0.16);
+  --grain: rgba(233, 225, 210, 0.02);
+  --rarity-none: #5c5243;
+  --rarity-white: #cfc8ba;
+  --rarity-green: #9fc0ae;
+  --rarity-blue: #a8c7fa;
+  --rarity-purple: #d0b8f8;
+  --rarity-orange: #e8b46a;
+  --rarity-red: #e69a8a;
+  --rarity-purple-plus: #e4ccff;
+  --rarity-orange-plus: #f0d49a;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 140ms;
+  --dur: 220ms;
+  --dur-slow: 380ms;
+  --shell: 1560px;
+  --gutter: clamp(16px, 4vw, 64px);
+  --pane: 380px;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --paper: #f4efe4;
+  --raised: #faf6ec;
+  --plate: #e9e1d2;
+  --deep: #ddd3c0;
+  --ink: #1e1b16;
+  --soft: #4a443a;
+  --faint: #7a7264;
+  --rule: #c9bfae;
+  --strong: #9d9280;
+  --accent: #b7791f;
+  --accent-ink: #1e1b16;
+  --accent-text: #8a5512;
+  --green: #3f5a4a;
+  --red: #a33a2a;
+  --scrim: rgba(30, 27, 22, 0.48);
+  --shadow: rgba(30, 27, 22, 0.18);
+  --shadow-plate: rgba(30, 27, 22, 0.14);
+  --veil: rgba(244, 239, 228, 0.76);
+  --accent-wash: rgba(183, 121, 31, 0.12);
+  --grain: rgba(30, 27, 22, 0.028);
+  --rarity-none: #9d9280;
+  --rarity-white: #6b665c;
+  --rarity-green: #3f5a4a;
+  --rarity-blue: #356fa8;
+  --rarity-purple: #6b4fa8;
+  --rarity-orange: #8a5512;
+  --rarity-red: #a33a2a;
+  --rarity-purple-plus: #5c3d8a;
+  --rarity-orange-plus: #8a5b12;
+}
+
+[data-rarity="NONE"] {
+  --rarity: var(--rarity-none);
+}
+
+[data-rarity="WHITE"] {
+  --rarity: var(--rarity-white);
+}
+
+[data-rarity="GREEN"] {
+  --rarity: var(--rarity-green);
+}
+
+[data-rarity="BLUE"] {
+  --rarity: var(--rarity-blue);
+}
+
+[data-rarity="PURPLE"] {
+  --rarity: var(--rarity-purple);
+}
+
+[data-rarity="ORANGE"] {
+  --rarity: var(--rarity-orange);
+}
+
+[data-rarity="RED"] {
+  --rarity: var(--rarity-red);
+}
+
+[data-rarity="PURPLE_PLUS"] {
+  --rarity: var(--rarity-purple-plus);
+}
+
+[data-rarity="ORANGE_PLUS"] {
+  --rarity: var(--rarity-orange-plus);
+}
+
+[data-rarity="CARD"] {
+  --rarity: var(--rarity-orange);
+}
