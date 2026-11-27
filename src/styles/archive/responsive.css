@@ -1,0 +1,145 @@
+/* Hallmark · v2.0.0 · theme: The Accession Catalogue · genre: editorial · stamp 2026-11-26 */
+
+@media (max-width: 599px) {
+  .fields {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .field__label {
+    font-size: 0.75rem;
+  }
+
+  .field__input {
+    font-size: 0.6875rem;
+  }
+
+  .control-foot {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  #result-meta {
+    text-align: left;
+  }
+
+  .overlay {
+    padding: 12px;
+  }
+
+  .dialog {
+    max-height: calc(100dvh - 24px);
+  }
+
+  .dialog .detail__art {
+    min-height: 200px;
+  }
+
+  .detail__actions .btn--filled {
+    flex: 1;
+  }
+
+  .stats-sheet {
+    right: 8px;
+    bottom: 8px;
+    left: 8px;
+  }
+
+  .item-card__meta {
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .item-card__id {
+    gap: 4px;
+    font-size: 0.625rem;
+  }
+
+  .item-card__id::before {
+    width: 4px;
+    height: 4px;
+  }
+
+  .item-card__name {
+    font-size: 0.8125rem;
+  }
+
+  .item-card__media::after {
+    inset: 4px;
+  }
+}
+
+@media (min-width: 840px) {
+  .panes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--pane);
+    gap: 32px;
+    align-items: start;
+  }
+
+  .detail-pane {
+    display: block;
+    position: sticky;
+    top: 108px;
+    min-height: 320px;
+    max-height: calc(100dvh - 132px);
+    overflow-y: auto;
+  }
+
+  .detail__empty {
+    display: grid;
+    place-items: center;
+    min-height: 280px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --pane: 420px;
+  }
+
+  .app-bar {
+    min-height: 84px;
+  }
+
+  .app-bar__title {
+    font-size: 1.75rem;
+  }
+
+  .search-bar {
+    min-height: 76px;
+  }
+
+  .search-bar input {
+    font-size: 1.9rem;
+  }
+
+  .fields {
+    gap: 28px;
+  }
+
+  .feed {
+    gap: 20px;
+  }
+
+  .item-card__meta {
+    padding: 16px;
+  }
+
+  .panes {
+    gap: 40px;
+  }
+
+  .detail__art {
+    padding: 40px;
+  }
+
+  .detail__art img {
+    max-height: 360px;
+  }
+
+  .detail__info {
+    padding: 24px;
+  }
+}
